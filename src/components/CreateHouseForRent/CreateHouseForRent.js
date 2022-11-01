@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import CreateImageView from "../CreateImageView/CreateImageView";
 import CreateBackdrop from "../CreateBackdrop/CreateBackdrop";
+import {useSelector} from "react-redux";
+import createBackdrop from "../CreateBackdrop/CreateBackdrop";
 
 
 function CreateHouseForRent() {
@@ -14,13 +16,13 @@ function CreateHouseForRent() {
         name: '',
         address: '',
         typeRoom: '',
-        numberOfBathroom: '',
-        numberOfBedroom: '',
+        numberOfBathrooms: '',
+        numberOfBedrooms: '',
         roomRate: '',
-        image_backdrop: '',
-        image_view: '',
         description: '',
     });
+
+    const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
 
 
     const getTypeRooms = async () => {
@@ -30,18 +32,37 @@ function CreateHouseForRent() {
         setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value});
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let data = {
+            name: newHouseForRent.name,
+            address: newHouseForRent.address,
+            typeRoom: newHouseForRent.typeRoom,
+            numberOfBathroom: newHouseForRent.numberOfBathrooms,
+            numberOfBedroom: newHouseForRent.numberOfBedrooms,
+            roomRate: newHouseForRent.roomRate,
+            image_backdrop: backdropURL,
+            image_view: '',
+            description: newHouseForRent.description,
+        }
+        await axios.post('http://localhost:8000/api/products', data)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => console.log(err.message))
+    }
 
     useEffect(() => {
         getTypeRooms().then(res => setTypeRooms(res.data.data))
             .catch(err => console.log(err))
     }, [])
 
-    console.log(newHouseForRent)
+
 
 
     return (
         <div className="bg-[url('/src/public/background_sea.jpg')]">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="flex bg-100 ">
                     <div className="m-auto">
                         <div>
@@ -139,7 +160,8 @@ function CreateHouseForRent() {
                                 </textarea>
                                     <div className="flex flex-row-reverse p-3">
                                         <div className="flex-initial pl-3">
-                                            <button type="button"
+
+                                            <button type="submit"
                                                     className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                                      viewBox="0 0 24 24"
@@ -155,7 +177,8 @@ function CreateHouseForRent() {
                                             </button>
                                         </div>
                                         <div className="flex-initial">
-                                            <button type="button"
+                                            <button
+                                                type="submit"
                                                     className="flex items-center px-5 py-2.5 font-medium tracking-wide text-black capitalize rounded-md  hover:bg-red-200 hover:fill-current hover:text-red-600  focus:outline-none  transition duration-300 transform active:scale-95 ease-in-out">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                                      viewBox="0 0 24 24"
@@ -175,10 +198,7 @@ function CreateHouseForRent() {
 
                     </div>
                 </div>
-
             </form>
-
-
         </div>
 
 

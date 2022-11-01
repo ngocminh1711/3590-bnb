@@ -1,10 +1,9 @@
 
-
 import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    backDropUrl: ''
+    backdropURl: ''
 }
 
 
@@ -13,7 +12,7 @@ export const createBackdropSlice = createSlice({
     initialState,
     reducers: {
         createBackdropURL: (state, action) => {
-            state.backDropUrl = action.payload
+            state.backdropURl = action.payload
         }
     }
 })

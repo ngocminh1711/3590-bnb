@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'backgroundCreate' : "url('/src/public/background_sea.jpg')"
-      }
+      },
     },
   },
   plugins: [],

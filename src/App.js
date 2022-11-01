@@ -6,15 +6,15 @@ import Login from "./components/login/Login";
 import Home from "./components/home/Index.js";
 
 function App() {
-  return (
-    <>
-      <Header />
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<Home />} />
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <Routes>
+                <Route path='/login' element={<Login />} />
+                <Route path='/' element={<Home />} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;

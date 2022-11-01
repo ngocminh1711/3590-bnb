@@ -1,5 +1,4 @@
-import { housesData } from "../data";
-import House from "./House";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 

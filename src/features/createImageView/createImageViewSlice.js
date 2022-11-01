@@ -2,7 +2,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const initialState = [];
+const initialState = {
+    urls: []
+}
 
 
 
@@ -11,6 +13,7 @@ export const createImageViewSlice = createSlice({
     initialState,
     reducers: {
         createImageViewURL: (state, action) => {
+            state.urls.push(action.payload)
 
         }
     }

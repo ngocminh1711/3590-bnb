@@ -13,6 +13,7 @@ export const createBackdropSlice = createSlice({
     reducers: {
         createBackdropURL: (state, action) => {
             state.backdropURl = action.payload
+
         }
     }
 })

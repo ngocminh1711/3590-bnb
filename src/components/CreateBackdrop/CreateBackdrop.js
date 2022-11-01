@@ -19,7 +19,7 @@ function CreateBackdrop () {
         setFile(e.target.files[0]);
     }
 
-    const handleUpdload = () => {
+    const handleUpload = () => {
         if (!file) {
             alert('Please choosse a file')
         }
@@ -65,7 +65,7 @@ function CreateBackdrop () {
                 </label>
 
                 <button
-                    onClick={handleUpdload}
+                    onClick={handleUpload}
                     type="button"
                     className="flex px-14 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                     <span>{percent}%</span>

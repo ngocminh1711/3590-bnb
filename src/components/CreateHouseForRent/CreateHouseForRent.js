@@ -23,7 +23,7 @@ function CreateHouseForRent() {
     });
 
     const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
-
+    const viewURL = useSelector(state => state.createImageView.urls)
 
     const getTypeRooms = async () => {
         return await axios.get('http://localhost:8000/api/products/type-room')
@@ -42,9 +42,10 @@ function CreateHouseForRent() {
             numberOfBedroom: newHouseForRent.numberOfBedrooms,
             roomRate: newHouseForRent.roomRate,
             image_backdrop: backdropURL,
-            image_view: '',
+            image_view: viewURL,
             description: newHouseForRent.description,
         }
+
         await axios.post('http://localhost:8000/api/products', data)
             .then(res => {
                 console.log(res.data)

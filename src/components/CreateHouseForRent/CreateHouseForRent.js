@@ -1,7 +1,42 @@
 import './CreateHouseForRent.css'
+import {useEffect, useState} from "react";
+import axios from "axios";
+
 
 
 function CreateHouseForRent() {
+
+    const [typeRooms, setTypeRooms] = useState([]);
+    const numberOfBedrooms = [1,2,3,4,5,6,7,8,9,10];
+    const numberOfBathrooms = [1,2,3]
+    const [newHouseForRent, setNewHouseForRent] = useState({
+        name: '',
+        address: '',
+        typeRoom: '',
+        numberOfBathroom: '',
+        numberOfBedroom: '',
+        roomRate: '',
+        image_backdrop: '',
+        image_view: '',
+        description: '',
+    });
+
+
+    const getTypeRooms = async () => {
+        return  await axios.get('http://localhost:8000/api/products/type-room')
+    }
+    const handleChange = (e) => {
+        setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value});
+    }
+
+
+    useEffect( () => {
+        getTypeRooms().then(res => setTypeRooms(res.data.data))
+            .catch(err => console.log(err))
+    },[])
+
+    console.log(newHouseForRent)
+
 
     return (
         <div className="bg-[url('/src/public/background_sea.jpg')]">
@@ -18,37 +53,64 @@ function CreateHouseForRent() {
                             </button>
                             <div className="mt-5 bg-white rounded-lg shadow">
                                 <div className="px-5 pb-5">
-                                    <input placeholder="Name House For Rent"
-                                           className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
                                     <input
+                                        onChange={handleChange}
+                                        name="name"
+                                        placeholder="Name House For Rent"
+                                        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
+                                    <input
+                                        onChange={handleChange}
+                                        name="address"
                                         placeholder="Address"
                                         className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
                                     <div className="flex">
                                         <div className="flex-grow w-1/4 pr-2">
-                                            <select className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
+                                            <select
+                                                name="typeRoom"
+                                                onChange={ (e) => {
+                                                    setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value})
+                                                }}
+                                                className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
+                                                { typeRooms.map(typeRoom => (
+                                                    <option key={typeRoom._id} value={typeRoom._id}>{typeRoom.name}</option>
+                                                ))}
                                             </select>
                                         </div>
                                         <div className="flex-grow">
-                                            <input placeholder="Room Rates"
-                                                   className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
+                                            <input
+                                                type="number"
+                                                onChange={handleChange}
+                                                name='roomRate'
+                                                placeholder="Room Rates"
+                                                className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
                                         </div>
                                     </div>
                                     <div className="flex">
                                         <div className="flex-grow w-1/4 pr-2">
-                                            <select className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
+                                            <select
+                                                name="numberOfBedrooms"
+                                                onChange={(e) => {
+                                                    setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value})
+                                                }}
+                                                className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
+                                                <option value="">Number Of Bedrooms</option>
+                                                { numberOfBedrooms.map((item,index) => (
+                                                    <option key={index} value={item}>{item}</option>
+                                                    )
+                                                ) }
                                             </select>
                                         </div>
                                         <div className="flex-grow w-1/4 pr-2">
-                                            <select className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
+                                            <select
+                                                name="numberOfBathrooms"
+                                                onChange={(e) => {
+                                                    setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value})
+                                                }}
+                                                className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400">
+                                                <option value="">Number Of Bathrooms</option>
+                                                { numberOfBathrooms.map((item,index) => (
+                                                    <option key={index} value={item}>{item}</option>
+                                                ))}
                                             </select>
                                         </div>
                                     </div>
@@ -79,11 +141,12 @@ function CreateHouseForRent() {
                                             </label>
                                         </div>
                                     </div>
-
-
-                                    <textarea placeholder="Description"
-                                              className="form-textarea block  text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" id="my-textarea"
-                                              rows="8">
+                                    <textarea
+                                        onChange={handleChange}
+                                        name="description"
+                                        placeholder="Description"
+                                        className="form-textarea block  text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" id="my-textarea"
+                                        rows="8">
                                 </textarea>
                                     <div className="flex flex-row-reverse p-3">
                                         <div className="flex-initial pl-3">
@@ -114,7 +177,6 @@ function CreateHouseForRent() {
                                                 <span className="pl-2 mx-1">Delete</span>
                                             </button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

@@ -1,25 +1,43 @@
+import { Button } from "@material-tailwind/react";
+import Swal from "sweetalert2";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Switch from "react-switch";
 function ListHost() {
   const [state, setState] = useState({
-    products:[],
+    products: [],
     isLoading: false,
   });
-  // console.log(state)
-  // const deleteApi = async()=>{
-  //   await axios.delete(`http://localhost:8000/api/products/${id}`)
-  // }
+  const [products,setProducts] = useState([])
+
   const getApi = async () => {
     return await axios.get("http://localhost:8000/api/products");
   };
-  useEffect(() => {
-    getApi().then((res) => {
-      setState({products:res.data.houseForRents,isLoading:false});
+  const handleDelete = (id) => {Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+       axios.delete(`http://localhost:8000/api/products/${id}`)
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+      }
+  })
+        }
+    useEffect(() => {
+      getApi().then((res) => {
+        
+        setProducts(res.data.houseForRents);
+      });
     });
-    
-  }, []);
-  console.log(state)
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -50,13 +68,13 @@ function ListHost() {
           </tr>
         </thead>
         <tbody>
-          {state.products.map((item, index) => (
+          {products.map((item, index) => (
             <tr
-              key={item.id}
+              key={item._id}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
             >
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white text-center ">
-                {index + 1}
+                {index +1}
               </td>
               <td className="p-4 w-32">
                 <img src={item.image_backdrop} alt="Apple Watch" />
@@ -69,25 +87,20 @@ function ListHost() {
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white mr-2">
                 {item.status}
-                <Switch  />
+                <Switch />
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                 {item.roomRates}
               </td>
               <td className="py-4 px-6">
-                <a
-                  href="#"
+                <Button
+                onClick={() => {
+                  handleDelete(item._id);
+                }}
                   className="font-medium text-red-600 dark:text-red-500 hover:underline mr-2"
                 >
                   Delete
-                </a>
-
-                <a
-                  href="#"
-                  className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                >
-                  Update
-                </a>
+                </Button>
               </td>
             </tr>
           ))}

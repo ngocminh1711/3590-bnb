@@ -5,6 +5,7 @@ import CreateImageView from "../CreateImageView/CreateImageView";
 import CreateBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {useSelector} from "react-redux";
 import createBackdrop from "../CreateBackdrop/CreateBackdrop";
+import {Alert} from "@material-tailwind/react";
 
 
 function CreateHouseForRent() {
@@ -13,8 +14,15 @@ function CreateHouseForRent() {
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const numberOfBathrooms = [1, 2, 3]
     const [newHouseForRent, setNewHouseForRent] = useState({
-        name: '', address: '', typeRoom: '', numberOfBathrooms: '', numberOfBedrooms: '', roomRate: '', description: '',
+        name: '',
+        address: '',
+        typeRoom: '',
+        numberOfBathrooms: '',
+        numberOfBedrooms: '',
+        roomRate: '',
+        description: '',
     });
+    const [statusCreate, setStatusCreate] = useState(false)
 
     const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
     const viewURL = useSelector(state => state.createImageView.urls)
@@ -43,6 +51,7 @@ function CreateHouseForRent() {
         await axios.post('http://localhost:8000/api/products', data)
             .then(res => {
                 console.log(res.data)
+                setStatusCreate(true)
             })
             .catch(err => console.log(err.message))
     }
@@ -75,6 +84,11 @@ function CreateHouseForRent() {
                                         </svg>
                                         <span className="text-center">Create new House For Rent</span>
                                     </button>
+                                    { statusCreate ?
+                                        <div className="flex w-full flex-col gap-2">
+                                            <Alert color="green">A success alert for showing message.</Alert>
+                                        </div>
+                                         : ''}
                                     <div className="mt-5 bg-white rounded-lg shadow">
                                         <div className="px-5 pb-5">
                                             <input

@@ -4,16 +4,28 @@ import Register from "./components/login/Register.js";
 import Login from "./components/login/Login.js";
 import Home from "./components/home/Index.js";
 import ListHost from "./components/host/Dashboard.js";
+import CreateHouseForRent from "./components/CreateHouseForRent/CreateHouseForRent";
+import Header from "./components/header/Header.js";
+import Footer from "./components/footer/Footer.js";
 function App() {
   return (
     <div>
+      <Header />
       <Routes>
       <Route path='/' element={<Home />}/>
-      <Route path='/login' element={<Login />} />
+      <Route path='/login' element={<Login />}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/dashboard" element={<ListHost/>}/>
+        <Route path='/admin/host-create' element={<CreateHouseForRent/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }
-export default App;
+export default App
+
+
+
+
+            
+  

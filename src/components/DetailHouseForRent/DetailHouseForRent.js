@@ -1,25 +1,53 @@
 import './DetailHouseForRent.css'
 import 'tw-elements';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
+import {useLocation} from "react-router-dom";
 
 function DetailHouseForRent() {
 
-    const [data, setData] = useState();
+    const [houseForRent, setHouseForRent] = useState({
+        name: '',
+        address: '',
+        typeRoom: '',
+        numberOfBedrooms: '',
+        numberOfBathrooms: '',
+        roomRates: '',
+        description: '',
+        image_backdrop: '',
+        image_view: [],
+    });
 
 
+    const { state } = useLocation()
+
+    const id = state.houseId
     const getData = async () => {
-
-        return await axios.get('http://localhost:8000/api')
+        return await axios.get(`http://localhost:8000/api/products/${id}`)
     }
+    useEffect( () => {
+        getData().then(res =>{
+            console.log(res)
+            // setHouseForRent({...houseForRent,
+            //     name: res.data.data.name,
+            //     address: res.data.data.address,
+            //     typeRoom: res.data.data.typeRoom.name,
+            //     numberOfBedrooms: ,
+            //     numberOfBathrooms: Number,
+            //     roomRates: Number,
+            //     description: String,
+            //     image_backdrop: String,
+            //     image_view: res.data.data.image_view,})
+        })
+    },[])
 
-
+    console.log(houseForRent)
 
     return (
 
         <>
             <div className="grid grid-cols-2 gap-4 py-10 px-24">
-                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1"></h1>
             </div>
             <div className="grid grid-cols-2 gap-4 py-10 px-24">
                 <div
@@ -27,6 +55,7 @@ function DetailHouseForRent() {
                     className="carousel slide relative" data-bs-ride="carousel">
                     <div className="carousel-inner relative w-full overflow-hidden">
                         <div className="carousel-item active relative float-left w-full h-50">
+
                             <img
                                 src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
                                 className="block w-full rounded-lg  border"

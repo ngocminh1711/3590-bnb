@@ -1,12 +1,14 @@
 import Banner from "../Banner";
 import HomestayList from "../HomestayList.js";
+import Header from "../header/Header";
 
 function Home(props) {
   return (
     <>
-        <Banner/>
-        <HomestayList />
+      <Header />
+      <Banner />
+      <HomestayList />
     </>
-  )
+  );
 }
 export default Home;

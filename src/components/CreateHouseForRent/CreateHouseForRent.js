@@ -33,15 +33,14 @@ function CreateHouseForRent() {
     const handleChange = (e) => {
         setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value});
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
             name: newHouseForRent.name,
             address: newHouseForRent.address,
             typeRoom: newHouseForRent.typeRoom,
-            numberOfBathroom: newHouseForRent.numberOfBathrooms,
-            numberOfBedroom: newHouseForRent.numberOfBedrooms,
+            numberOfBathrooms: newHouseForRent.numberOfBathrooms,
+            numberOfBedrooms: newHouseForRent.numberOfBedrooms,
             roomRate: newHouseForRent.roomRate,
             image_backdrop: backdropURL,
             image_view: viewURL,

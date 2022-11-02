@@ -1,7 +1,19 @@
 import './DetailHouseForRent.css'
 import 'tw-elements';
+import {useState} from "react";
+import axios from "axios";
 
 function DetailHouseForRent() {
+
+    const [data, setData] = useState();
+
+
+    const getData = async () => {
+
+        return await axios.get('http://localhost:8000/api')
+    }
+
+
 
     return (
 

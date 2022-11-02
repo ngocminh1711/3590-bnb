@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import createBackdropURL from "../features/createBackdrop/createBackdropSlice";
+import createImageViewURL from "../features/createImageView/createImageViewSlice";
+
+
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    createBackdrop: createBackdropURL,
+    createImageView: createImageViewURL
   },
 });
+

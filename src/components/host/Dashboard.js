@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Switch from "react-switch";
 function ListHost() {
-
-  const data = [[1,2,3,4]]
   const [state, setState] = useState({
     products:[],
     isLoading: false,
@@ -71,9 +69,7 @@ function ListHost() {
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white mr-2">
                 {item.status}
-                <Switch
-                               
-                              />
+                <Switch  />
               </td>
               <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
                 {item.roomRates}

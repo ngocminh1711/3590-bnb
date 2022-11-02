@@ -43,7 +43,7 @@ function Header() {
           </Link>
           <Link
             className="bg-violet-700 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
-            to="/"
+            to="/register"
           >
             Sign up
           </Link>

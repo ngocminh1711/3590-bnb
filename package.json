@@ -24,7 +24,9 @@
     "react-switch": "^7.0.0",
     "sweetalert": "^2.1.2",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "tw-elements": "^1.0.0-alpha12"
+   
   },
   "scripts": {
     "start": "react-scripts start",

@@ -55,7 +55,6 @@ function CreateHouseForRent() {
             })
             .catch(err => console.log(err.message))
     }
-
     useEffect(() => {
         getTypeRooms().then(res => setTypeRooms(res.data.data))
             .catch(err => console.log(err))
@@ -186,7 +185,7 @@ function CreateHouseForRent() {
                                                 </div>
                                                 <div className="flex-initial">
                                                     <button
-                                                        type="submit"
+                                                        type="reset"
                                                         className="flex items-center px-5 py-2.5 font-medium tracking-wide text-black capitalize rounded-md  hover:bg-red-200 hover:fill-current hover:text-red-600  focus:outline-none  transition duration-300 transform active:scale-95 ease-in-out">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                                              viewBox="0 0 24 24"
@@ -196,7 +195,7 @@ function CreateHouseForRent() {
                                                             <path
                                                                 d="M15.5 4l-1-1h-5l-1 1H5v2h14V4zM6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9z"></path>
                                                         </svg>
-                                                        <span className="pl-2 mx-1">Delete</span>
+                                                        <span className="pl-2 mx-1">Reset</span>
                                                     </button>
                                                 </div>
                                             </div>

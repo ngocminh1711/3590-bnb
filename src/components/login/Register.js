@@ -157,10 +157,12 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
+
 // import 'flowbite';
 
 const RegisterSchema = Yup.object().shape({
-  name: Yup.string()
+  username: Yup.string()
     .min(4, "Tối thiểu 4 ký tự!")
     .max(50, "Tối đa 50 ký tự!")
     .required("Bắt buộc!"),
@@ -187,12 +189,13 @@ export default function Register() {
   const [existedEmail, setExistedEmail] = useState("");
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
   const handleRegister = async (data) => {
     return await axios.post("http://localhost:8000/api/auth/register", data);
+    
   };
   return (
     <Formik
@@ -200,9 +203,16 @@ export default function Register() {
       validationSchema={RegisterSchema}
       onSubmit={value => {
         handleRegister(value)
+        
           .then((res) => {
             console.log(res);
             if (res.data.success === true) {
+              swal({
+                title: "Register Suscess!",
+                text: "You clicked OK!",
+                icon: "success",
+                button: "Ok!",
+              });
               navigate("/login");
             }
           })
@@ -268,11 +278,11 @@ export default function Register() {
                 <Field
                   required
                   type="text"
-                  name="name"
+                  name="username"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
                 <a className="errors text-sm text-red-700 ">
-                  <ErrorMessage name="name" />
+                  <ErrorMessage name="username" />
                 </a>
               </div>
               <div className="relative mb-4">

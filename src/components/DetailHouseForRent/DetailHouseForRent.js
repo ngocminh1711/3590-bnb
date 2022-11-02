@@ -1,5 +1,4 @@
 import './DetailHouseForRent.css'
-import 'tw-elements';
 import {useState} from "react";
 import axios from "axios";
 

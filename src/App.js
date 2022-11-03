@@ -1,4 +1,6 @@
 import React from "react";
+import "./App.css";
+// import Header from "./components/header/Header";
 import { Route, Routes } from "react-router-dom";
 import Register from "./components/login/Register.js";
 import Login from "./components/login/Login.js";
@@ -11,7 +13,6 @@ import Footer from "./components/footer/Footer.js";
 function App() {
   return (
     <div>
-      <Header />
       <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/login' element={<Login />}/>
@@ -28,6 +29,3 @@ export default App
 
 
 
-
-            
-  

@@ -53,6 +53,7 @@ function Login() {
           .then((res) => {
             let token = res.data.data.token;
             let username=jwtDecode(token).username;
+            console.log(jwtDecode(token));
             localStorage.setItem("username",JSON.stringify(username));
             localStorage.setItem('token', JSON.stringify(token))
             setTimeout(() => {
@@ -74,8 +75,9 @@ function Login() {
     axios
       .post(`http://localhost:${PORT}/login`, data)
       .then((res) => {
-        console.log(form.username);
+        
         if (res.status === 200) {
+          console.log(res.data);
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
           Swal.fire({

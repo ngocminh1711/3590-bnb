@@ -273,7 +273,7 @@ export default function Register() {
                   //   htmlFor="full-name"className="block text-sm font-semibold text-gray-800"
                   className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
                 >
-                  Tên
+                  Username
                 </label>
                 <Field
                   required
@@ -306,7 +306,7 @@ export default function Register() {
                   htmlFor="email"
                   className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
                 >
-                  Mật khẩu
+                 Password
                 </label>
                 <Field
                   type="password"
@@ -322,7 +322,7 @@ export default function Register() {
                   htmlFor="email"
                   className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
                 >
-                  Xác nhận mật khẩu
+                  Repeat Password
                 </label>
                 <Field
                   type="password"

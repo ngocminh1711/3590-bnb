@@ -8,6 +8,7 @@ import {
   SearchIcon,
 } from "@heroicons/react/solid";
 import { useState } from "react";
+import SearchHouses from "../searchHouses/searchHouses";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
@@ -71,11 +72,16 @@ function Header() {
     
   }
 
-  const handleSignup = (e) => {};
+  const handleSignup = (e) => {
+    setTimeout(() => {
+      navigate("/register");
+    }, 500);
+  };
 
   const search = (e) => {};
 
   return (
+
     <>
       <header className="py-6 mb-0 border-b">
         <div className="container mx-auto flex justify-between items-center">

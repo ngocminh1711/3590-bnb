@@ -11,7 +11,6 @@ import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRe
 function App() {
     return (
         <>
-            
             <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/' element={<Home />} />

@@ -8,6 +8,7 @@ import CreateHouseForRent from "./components/CreateHouseForRent/CreateHouseForRe
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
 import Header from "./components/header/Header.js";
 import Footer from "./components/footer/Footer.js";
+import ChangePassword from "./components/host/ChangePassword.js";
 function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dashboard" element={<ListHost/>}/>
         <Route path='/admin/host-create' element={<CreateHouseForRent/>}/>
         <Route path='/detail-house' element={<DetailHouseForRent/>}/>
+        <Route path='/change-password' element={<ChangePassword/>}/>
       </Routes>
       <Footer/>
     </div>

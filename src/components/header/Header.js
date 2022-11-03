@@ -9,7 +9,6 @@ import {
 } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-
 function Header() {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();

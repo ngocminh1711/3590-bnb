@@ -1,10 +1,12 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import { useDispatch } from "react-redux";
 import { getUserLogin } from "../../features/addUserToNavbar/addUserToNavbarSlice";
 import Swal from "sweetalert2";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 function Login() {
   const navigate = useNavigate();
@@ -22,6 +24,48 @@ function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const loginGoogle = useGoogleLogin({
+    onSuccess: async (respose) => {
+      try {
+        const res = await axios.get(
+          "https://www.googleapis.com/oauth2/v3/userinfo",
+          {
+            headers: {
+              Authorization: `Bearer ${respose.access_token}`,
+            },
+          }
+        );
+
+        let data = {
+          email: res.data.email,
+          email_verified: res.data.email_verified,
+          family_name: res.data.family_name,
+          given_name: res.data.given_name,
+          locale: res.data.locale,
+          name: res.data.name,
+          picture: res.data.picture,
+          sub: res.data.sub,
+        };
+
+        await axios
+          .post(`http://localhost:${PORT}/login/google`, data)
+
+          .then((res) => {
+            let token = res.data.data.token;
+            let username=jwtDecode(token).username;
+            console.log(jwtDecode(token));
+            localStorage.setItem("username",JSON.stringify(username));
+            localStorage.setItem('token', JSON.stringify(token))
+            setTimeout(() => {
+              navigate("/");
+            }, 1000);
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
@@ -29,10 +73,11 @@ function Login() {
       password: form.password,
     };
     axios
-      .post(`http://localhost:8000/login`, data)
+      .post(`http://localhost:${PORT}/login`, data)
       .then((res) => {
-        console.log(res);
+        
         if (res.status === 200) {
+          console.log(res.data);
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
           Swal.fire({
@@ -55,7 +100,7 @@ function Login() {
 
   return (
     <>
-      <Header />
+      
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
@@ -157,6 +202,9 @@ function Login() {
                 </span>
                 Sign in
               </button>
+            </div>
+            <div>
+              <button onClick={loginGoogle}>Login with google</button>
             </div>
           </form>
         </div>

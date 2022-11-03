@@ -1,12 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import {
-  SearchIcon,
-} from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
 function Header() {
-  const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
@@ -64,14 +60,19 @@ function Header() {
   };
 
   const handleEditProfile = () => {};
-
+  const handleChangePassword=()=>{
+    setTimeout(()=>{
+      navigate("/change-password");
+    },500)
+  }
+  const handleCreate = (e) => {
+    navigate('/admin/host-create')
+  };
   const handleSignup = (e) => {
     setTimeout(() => {
       navigate("/register");
     }, 500);
   };
-
-  const search = (e) => {};
 
   return (
     <>
@@ -84,27 +85,25 @@ function Header() {
               alt=""
             />
           </Link>
-          <div className="flex w-96 items-center md:border-2 rounded-full py-2 md:shadow-sm">
-            <input
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
-              type="text"
-            />
-            <SearchIcon
-              className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"
-              onClick={(e) => search(e)}
-            />
-          </div>
-
+         
+            <SearchHouses/>
           {userLogin ? (
             <>
               <>
-                <div class="relative inline-block text-left">
+                <div class="relative inline-block text-left  "> 
+                  
                   <div>
+                  <button
+                            href="#"
+                            
+                            role="menuitem"
+                            tabindex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleCreate(e)}>
+                            Create House
+                          </button>
                     <button
                       type="button"
-                      class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                       id="menu-button"
                       aria-expanded="true"
                       aria-haspopup="true"
@@ -137,25 +136,25 @@ function Header() {
                       ""
                     ) : (
                       <>
-                        <div class="py-1" role="none">
+                        <div className="py-1" role="none">
+                        
                           <button
                             href="#"
                             class="text-gray-700 block px-4 py-2 text-sm"
                             role="menuitem"
                             tabindex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleShowProfile(e)}
-                          >
+                            onClick={(e) => handleShowProfile(e)}>
                             {userLogin}
                           </button>
+                       
                           <button
                             href="#"
                             class="text-gray-700 block px-4 py-2 text-sm"
                             role="menuitem"
                             tabindex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleLogout(e)}
-                          >
+                            onClick={(e) => handleLogout(e)}>
                             Logout
                           </button>
                         </div>
@@ -271,6 +270,6 @@ function Header() {
       )}
     </>
   );
-  //sds
+  
 }
 export default Header;

@@ -160,7 +160,6 @@ import axios from "axios";
 import swal from 'sweetalert';
 
 // import 'flowbite';
-
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
     .min(4, "Tối thiểu 4 ký tự!")
@@ -194,18 +193,15 @@ export default function Register() {
     password: "",
   });
   const handleRegister = async (data) => {
-    return await axios.post("http://localhost:8000/api/auth/register", data);
-    
-  };
+    return await axios.post("http://localhost:8000/api/auth/register", data); };
   return (
     <Formik
       initialValues={form}
       validationSchema={RegisterSchema}
       onSubmit={value => {
         handleRegister(value)
-        
           .then((res) => {
-            console.log(res);
+            console.log(res.data);
             if (res.data.success === true) {
               swal({
                 title: "Register Suscess!",
@@ -216,7 +212,7 @@ export default function Register() {
               navigate("/login");
             }
           })
-          .catch((e) => console.log(e.message));
+          .catch((e) => setExistedEmail("Email da ton tai"))
       }}
     >
       <Form>

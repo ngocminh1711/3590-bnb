@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../header/Header";
 import { useDispatch } from "react-redux";
 import { getUserLogin } from "../../features/addUserToNavbar/addUserToNavbarSlice";
 import Swal from "sweetalert2";
@@ -48,7 +47,7 @@ function Login() {
         };
 
         await axios
-          .post(`http://localhost:${PORT}/login/google`, data)
+          .post(`http://localhost:${PORT}/api/auth/login/google`, data)
 
           .then((res) => {
             let token = res.data.data.token;
@@ -72,10 +71,8 @@ function Login() {
       username: form.username,
       password: form.password,
     };
-    axios
-      .post(`http://localhost:${PORT}/login`, data)
+    axios.post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
-        
         if (res.status === 200) {
           console.log(res.data);
           localStorage.setItem("token", JSON.stringify(res.data.token));

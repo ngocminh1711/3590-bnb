@@ -23,15 +23,16 @@ function ChangePassword() {
     newPassword: "",
   });
   const handleChangePassword = async (data) => {
-    return await axios.post('http://localhost:8000/api/user/change-password').then((res) => setForm(res.data));
+    return await axios
+      .post("http://localhost:8000/api/user/change-password")
+      .then((res) => setForm(res.data));
   };
   return (
     <>
       <Formik>
         initialValues={form}
         validationSchema={ChangePasswordSchesma}
-        onSubmit=
-        {(value) => {
+        onSubmit={(value) => {
           handleChangePassword(value)
             .then((res) => {
               console.log(res);
@@ -51,8 +52,7 @@ function ChangePassword() {
           <div className="mb-6">
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
               Current Password
             </label>
             <input

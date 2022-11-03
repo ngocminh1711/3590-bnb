@@ -1,10 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import {
-  GlobeAltIcon,
-  MenuIcon,
-  UserCircleIcon,
-  UsersIcon,
   SearchIcon,
 } from "@heroicons/react/solid";
 import { useState } from "react";
@@ -258,45 +254,23 @@ function Header() {
                     </div>
                   </div>
                 </div>
+                <button
+              onClick={(e) => handleClose(e)}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+            >
+              cancel
+            </button>
               </div>
             </div>
+            
           </div>
-          <header className="py-6 mb-0 border-b">
-            <div className="container mx-auto flex justify-between items-center">
-              <Link to="/">
-                <img
-                  className="w-28 h-9 cursor-pointer"
-                  src={"https://links.papareact.com/qd3"}
-                  alt=""
-                />
-              </Link>
-              <SearchHouses />
-              {userLogin ? (
-                <>
-                  <div>
-                    <p>
-                      WelCome <strong>{userLogin}</strong>
-                    </p>
-                    <button onClick={(e) => handleLogout(e)}>Logout</button>
-                  </div>
-                  <button
-                    
-                    onClick={(e) => handleSignup(e)}
-                    className="bg-violet-700 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
-                  >
-                    cancel
-                  </button>
-                </>
-              ) : (
-                ""
-              )}
-            </div>
-          </header>
+          
         </div>
       ) : (
         ""
       )}
     </>
   );
+  //sds
 }
 export default Header;

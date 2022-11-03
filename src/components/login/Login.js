@@ -74,7 +74,7 @@ function Login() {
     axios
       .post(`http://localhost:${PORT}/login`, data)
       .then((res) => {
-        console.log(res);
+        console.log(form.username);
         if (res.status === 200) {
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);

@@ -80,6 +80,7 @@ function Header() {
             onClick={(e) => search(e)}
           />
         </div>
+
         {userLogin ? (
           <>
             <div>
@@ -110,5 +111,4 @@ function Header() {
     </header>
   );
 }
-
 export default Header;

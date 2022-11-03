@@ -6,7 +6,6 @@ import Home from "./components/home/Index.js";
 import ListHost from "./components/host/Dashboard.js";
 import CreateHouseForRent from "./components/CreateHouseForRent/CreateHouseForRent";
 import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
-
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
 import Header from "./components/header/Header.js";
 import Footer from "./components/footer/Footer.js";
@@ -14,10 +13,10 @@ import ChangePassword from "./components/host/ChangePassword.js";
 function App() {
   return (
     <div>
-      <Header />
+      <Header/>
       <Routes>
-      <Route path='/' element={<Home />}/>
-      <Route path='/login' element={<Login />}/>
+        <Route path='/' element={<Home />}/>
+        <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/dashboard" element={<ListHost/>}/>
         <Route path='/admin/host-create' element={<CreateHouseForRent/>}/>
@@ -34,6 +33,3 @@ export default App
 
 
 
-
-            
-  

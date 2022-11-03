@@ -51,11 +51,13 @@ function Header() {
     setTimeout(() => {
       navigate("/login");
     }, 500);
-  }
+  };
 
   const handleSignup = (e) => {
-   
-  }
+    setTimeout(() => {
+      navigate("/register");
+    }, 500);
+  };
 
   const search = (e) => {};
 
@@ -71,6 +73,7 @@ function Header() {
         </Link>
         <SearchHouses />
         {userLogin ? (
+          
           <>
             <div>
               <p>
@@ -90,7 +93,6 @@ function Header() {
             <button
               onClick={(e) => handleSignup(e)}
               className="bg-violet-700 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
-              to="/"
             >
               Sign up
             </button>

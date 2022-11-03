@@ -2,7 +2,7 @@ import BannerImg from "../assets/img/house-banner.png";
 
 function Banner() {
 
-  
+  // image below header
   return (
     <section className="h-full max-h-[640px] mb-8 xl:mb-1">
       <div className="flex flex-col lg:flex-row">

@@ -48,7 +48,7 @@ function Login() {
         };
 
         await axios
-          .post(`http://localhost:${PORT}/login/google`, data)
+          .post(`http://localhost:${PORT}/api/auth/login/google`, data)
 
           .then((res) => {
             let token = res.data.data.token;
@@ -73,7 +73,7 @@ function Login() {
       password: form.password,
     };
     axios
-      .post(`http://localhost:${PORT}/login`, data)
+      .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         
         if (res.status === 200) {

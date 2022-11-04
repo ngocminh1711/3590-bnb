@@ -5,13 +5,15 @@ import React from "react";
 import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
 
 function Home(props) {
-  return (
-    <>
-        <Header/>
-      <Banner />
-      <HomestayList />
-      <TopHouseForRent/>
-    </>
-  );
+    return (
+        <>
+            <Header/>
+            <Banner/>
+            <TopHouseForRent/>
+            <HomestayList/>
+
+        </>
+    );
 }
+
 export default Home;

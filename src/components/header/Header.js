@@ -168,13 +168,12 @@ function Header() {
             <div className="flex items-center gap-6">
               <button
                 className="hover:text-violet-900 transition"
-                onClick={(e) => handleLogin(e)}
-              >
+                onClick={(e) => handleLogin(e)} >
                 Log in
               </button>
               <button
                 onClick={(e) => handleSignup(e)}
-                className="bg-violet-700 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
+                className="bg-red-400 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
                 to="/"
               >
                 Sign up

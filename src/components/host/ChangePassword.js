@@ -165,8 +165,8 @@ function ChangePassword() {
   const [existedEmail, setExistedEmail] = useState("");
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    currentPassword: "",
-    newPassword: "",
+    currentPassword:"",
+    newPassword:"",
     newPassword2:"",
   });
   const updatePass = (e) => {

@@ -157,31 +157,32 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
+import BannerImg from "../../assets/img/house-banner.png";
 
 // import 'flowbite';
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
-    .min(4, "Tối thiểu 4 ký tự!")
+    .min(4, "At least 4 characters!")
     .max(50, "Tối đa 50 ký tự!")
-    .required("Bắt buộc!"),
+    .required("compulsory!"),
 
   email: Yup.string()
-    .email("Email không hợp lệ!")
-    .required("Bắt buộc!")
+    .email("Invalid email!")
+    .required("compulsory!")
     .matches(
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      "Email không đúng định dạng.(vd: abc@gmail.com)"
+      "Email invalidate.(vd: abc@gmail.com)"
     ),
   password: Yup.string()
-    .required("Bắt buộc")
+    .required("compulsory!")
     .matches(
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-      "Mật khẩu phải ít nhất 8 ký tự ít nhất một viết hoa, một viết thường và một số."
+      "Password must be at least 8 characters with at least one uppercase, one lowercase and a number."
     ),
   confirmPassword: Yup.string()
-    .required("Bắt buộc!")
-    .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp!"),
+    .required("compulsory!")
+    .oneOf([Yup.ref("password"), null], "password incorrect!"),
 });
 
 export default function Register() {
@@ -193,12 +194,13 @@ export default function Register() {
     password: "",
   });
   const handleRegister = async (data) => {
-    return await axios.post("http://localhost:8000/api/auth/register", data); };
+    return await axios.post("http://localhost:8000/api/auth/register", data);
+  };
   return (
     <Formik
       initialValues={form}
       validationSchema={RegisterSchema}
-      onSubmit={value => {
+      onSubmit={(value) => {
         handleRegister(value)
           .then((res) => {
             console.log(res.data);
@@ -212,34 +214,19 @@ export default function Register() {
               navigate("/login");
             }
           })
-          .catch((e) => setExistedEmail("Email da ton tai"))
+          .catch((e) => setExistedEmail("Email da ton tai"));
       }}
     >
       <Form>
         <section className="text-gray-600 body-font">
-          <div
-            className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center"
-            style={{
-              background:
-                'url("https://cdn.pixabay.com/photo/2017/08/19/19/43/nature-2659682_1280.jpg")',
-            }}
-          >
+          <div className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
             <div className="lg:w-3/5 lg:pr-0 pr-0">
-              <h1 className="title-font font-medium font-bold text-5xl text-white">
-                Slow-carb next level shoindcgoitch ethical authentic, poko
-                scenester
-              </h1>
-              <p className="leading-relaxed mt-4 text-white">
-                Poke slow-carb mixtape knausgaard, typewriter street art
-                gentrify hammock starladder roathse. Craies vegan tousled etsy
-                austin.
-              </p>
+            <img src={BannerImg} alt="" />
             </div>
             <div className="lg:w-2/6 xl:w-2/5 md:w-2/3 bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
-              <h2 className="text-gray-900 text-lg font-medium title-font mb-5 block text-sm font-semibold">
-                Đăng ký
-              </h2>
-
+            <h2 className="mt-5 text-center text-3xl font-bold tracking-tight text-gray-900">
+              Register 
+            </h2>
               {existedEmail ? (
                 <div
                   style={{ height: 10, fontSize: 15 }}
@@ -302,7 +289,7 @@ export default function Register() {
                   htmlFor="email"
                   className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
                 >
-                 Password
+                  Password
                 </label>
                 <Field
                   type="password"
@@ -332,18 +319,32 @@ export default function Register() {
               </div>
               <button
                 type="submit"
-                className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
+                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                  {/* Heroicon name: mini/lock-closed */}
+                  <svg
+                    className="h-5 w-5 text-red-100 group-hover:text-indigo-400"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
                 Register
               </button>
               <p className="mt-8 text-xs font-light text-center text-gray-700">
                 {" "}
-                Bạn đẫ có tài khoản?{" "}
-                <a
-                  href="/login"
-                  className="font-medium text-purple-600 hover:underline"
-                >
-                  Đăng nhập
+                Do you already have an account?{" "}
+                <a href="/login"
+                  className="font-medium text-purple-600 hover:underline">
+                  Login
                 </a>
               </p>
             </div>

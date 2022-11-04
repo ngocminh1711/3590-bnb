@@ -1,6 +1,7 @@
 
 import Banner from "../Banner";
 import {useSelector} from "react-redux";
+import Header from "../header/Header";
 
 
 function SearchedHouseList() {
@@ -8,6 +9,7 @@ function SearchedHouseList() {
 
     return (
         <>
+            <Header/>
             <Banner/>
             {houses.length === 0 ?
                 <div className="text-center">

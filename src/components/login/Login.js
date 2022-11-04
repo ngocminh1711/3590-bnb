@@ -71,7 +71,9 @@ function Login() {
       username: form.username,
       password: form.password,
     };
+
     axios.post(`http://localhost:${PORT}/api/auth/login`, data)
+
       .then((res) => {
         if (res.status === 200) {
           console.log(res.data);

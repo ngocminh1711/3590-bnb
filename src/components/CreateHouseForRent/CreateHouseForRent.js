@@ -33,16 +33,15 @@ function CreateHouseForRent() {
     const handleChange = (e) => {
         setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value});
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
             name: newHouseForRent.name,
             address: newHouseForRent.address,
             typeRoom: newHouseForRent.typeRoom,
-            numberOfBathroom: newHouseForRent.numberOfBathrooms,
-            numberOfBedroom: newHouseForRent.numberOfBedrooms,
-            roomRate: newHouseForRent.roomRate,
+            numberOfBathrooms: newHouseForRent.numberOfBathrooms,
+            numberOfBedrooms: newHouseForRent.numberOfBedrooms,
+            roomRates: newHouseForRent.roomRates,
             image_backdrop: backdropURL,
             image_view: viewURL,
             description: newHouseForRent.description,
@@ -118,7 +117,7 @@ function CreateHouseForRent() {
                                                     <input
                                                         type="number"
                                                         onChange={handleChange}
-                                                        name='roomRate'
+                                                        name='roomRates'
                                                         placeholder="Room Rates"
                                                         className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
                                                 </div>

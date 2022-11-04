@@ -85,8 +85,10 @@ function Header() {
               alt=""
             />
           </Link>
+
          
             <SearchHouses/>
+
           {userLogin ? (
             <>
               <>
@@ -184,9 +186,9 @@ function Header() {
       </header>
       {showProfile ? (
         <div>
-          <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center">
+          <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center z-40">
             <div className="bg-white p-2 rounded max-w-6xl">
-              <div class="h-full">
+              <div className="h-full">
                 <div className="border-b-2 block md:flex">
                   <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
                     <div className="flex justify-between">

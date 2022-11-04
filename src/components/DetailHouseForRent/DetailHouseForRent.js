@@ -21,7 +21,7 @@ function DetailHouseForRent() {
         image_view: [],
     });
 
-
+//yhh
     const {state} = useLocation()
 
     const id = state.houseId

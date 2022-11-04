@@ -26,7 +26,7 @@ function DetailHouseForRent() {
 
     const id = state.houseId
     const getData = async () => {
-        return await axios.get(`http://localhost:8000/api/products/${id}`)
+        return await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`)
     }
     useEffect(() => {
         getData().then(res => {
@@ -91,11 +91,11 @@ function DetailHouseForRent() {
                     <div className="basic-1/2">
                         <img
                             style={{ width: 280 , height: 150}}
-                            className="rounded border-r-3xl "
+                            className="rounded-tr-3xl border "
                             src={houseForRent.image_view[2]}
                             alt="image not found"/>
                         <img
-                            className="rounded border-r-3xl "
+                            className="rounded-br-3xl border "
                             style={{ width: 280 , height: 150}}
                             src={houseForRent.image_view[3]}
                             alt="image not found"/>

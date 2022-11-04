@@ -173,7 +173,7 @@ function Header() {
               </button>
               <button
                 onClick={(e) => handleSignup(e)}
-                className="bg-red-400 hover:bg-violet-800 text-white px-4 py-3 rounded-lg transition"
+                className="bg-red-400 hover:bg-red-300 text-white px-4 py-3 rounded-lg transition"
                 to="/"
               >
                 Sign up

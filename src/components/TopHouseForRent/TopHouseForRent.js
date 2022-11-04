@@ -27,8 +27,7 @@ function TopHouseForRent() {
         })
 
     }, [])
-
-
+    //
     return (
         <div className="pt-0">
             <div className="bg-white">

@@ -55,9 +55,9 @@ function DetailHouseForRent() {
                     <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{houseForRent.name}</h1>
                     <div className=" grid grid-cols-3 gap-4 ">
                         <div>
-                            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
-                                 stroke-linejoin="round"
-                                 stroke-width="2" className="w-4 h-4 text-red-500 float-left" viewBox="0 0 24 24">
+                            <svg fill="currentColor" stroke="currentColor" strokeLinecap="round"
+                                 strokeLinejoin="round"
+                                 strokeWidth="2" className="w-4 h-4 text-red-500 float-left" viewBox="0 0 24 24">
                                 <path
                                     d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
                                 </path>
@@ -70,7 +70,7 @@ function DetailHouseForRent() {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-3 pb-3 ">
-                <div>
+                <div className="w-full mr-2">
                     <img
                         style={{ width: 560 , height: 300}}
                         className="rounded-l-3xl border"
@@ -91,7 +91,7 @@ function DetailHouseForRent() {
                     <div className="basic-1/2">
                         <img
                             style={{ width: 280 , height: 150}}
-                            className="rounded-tr-3xl border "
+                            className="rounded-tr-3xl border"
                             src={houseForRent.image_view[2]}
                             alt="image not found"/>
                         <img

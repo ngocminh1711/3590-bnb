@@ -2,7 +2,6 @@ import {useDispatch} from "react-redux";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-
 import {searchHouse} from "../../features/search/searchSlice";
 import {SearchIcon} from "@heroicons/react/solid";
 
@@ -18,7 +17,10 @@ function SearchHouses(){
         setKeywordSearch(e.target.value)
     }
     let getApiHouseSearch = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/products/search/${keywordSearch}`)
+        if (keywordSearch) {
+            return await axios.get(`http://localhost:${PORT}/api/products/search/${keywordSearch}`)
+        }
+
     }
     const handlePress = async (event) => {
         if (event.key === 'Enter') {
@@ -32,9 +34,9 @@ function SearchHouses(){
     }
     useEffect(()=>{
         getApiHouseSearch().then(res =>{
-        console.log(res.data)
-            setHouseForRents(res.data.houseForRent)
-
+            if (keywordSearch) {
+                setHouseForRents(res.data.houseForRent)
+            }
         }).catch(err => console.log({err : 'Please fill keyword to search'}))
     }, [keywordSearch])
     return(

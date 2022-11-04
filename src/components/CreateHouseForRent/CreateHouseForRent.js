@@ -4,7 +4,6 @@ import axios from "axios";
 import CreateImageView from "../CreateImageView/CreateImageView";
 import CreateBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {useSelector} from "react-redux";
-import createBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {Alert} from "@material-tailwind/react";
 
 
@@ -76,7 +75,7 @@ function CreateHouseForRent() {
                             <div className="m-auto">
                                 <div>
                                     <button type="button"
-                                            className="relative w-full flex justify-center items-center px-2 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-900  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out">
+                                            className="relative w-full flex justify-center items-center px-2 py-2.5 font-medium tracking-wide text-white capitalize  bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="30px"
                                              viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
                                         </svg>
@@ -168,10 +167,10 @@ function CreateHouseForRent() {
                                                 <div className="flex-initial pl-3">
 
                                                     <button type="submit"
-                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
+                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                                              viewBox="0 0 24 24"
-                                                             width="24px" fill="#FFFFFF">
+                                                             width="24px" fill="#18181b">
                                                             <path d="M0 0h24v24H0V0z" fill="none"></path>
                                                             <path
                                                                 d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z"

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import Header from "../Header/Header";
+import Header from "../header/Header.js";
 
 function Login() {
   const navigate = useNavigate();

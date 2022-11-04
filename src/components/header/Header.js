@@ -64,6 +64,10 @@ function Header() {
     setShowDropDown(!showDropDown);
   };
 
+//   const handleCloseInfo = () => {
+//     setShowDropDown(false)
+//   }
+
   const handleClose = () => {
     setShowProfile(false);
     setBlockInput(true);
@@ -126,6 +130,8 @@ function Header() {
                       id="menu-button"
                       aria-expanded="true"
                       aria-haspopup="true"
+                    //   onMouseOver={() => handleShowInfo()}
+                    //   onMouseOut={() => handleCloseInfo()}
                       onClick={() => handleShowInfo()}
                     >
                       Options

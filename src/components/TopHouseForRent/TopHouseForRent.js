@@ -55,7 +55,7 @@ function TopHouseForRent() {
                                             {item.name}
                                         </h2>
                                         <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
-                                        <div className="text-sm font-medium text-gray-900">VNĐ {item.roomRates} Night
+                                        <div className="text-sm font-medium text-gray-900">{item.roomRates} VNĐ/Day
                                         </div>
                                     </div>
 

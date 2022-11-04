@@ -51,7 +51,7 @@ function HomestayList() {
                                         {item.name}
                                     </h2>
                                     <p className="mt-1 text-sm text-gray-500">Địa chỉ : {item.address}</p>
-                                    <div className="text-sm font-medium text-gray-900">VNĐ {item.roomRates} Đêm</div>
+                                    <div className="text-sm font-medium text-gray-900">{item.roomRates} VNĐ/Day</div>
                                 </div>
 
                             </div>

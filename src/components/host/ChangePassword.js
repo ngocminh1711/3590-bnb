@@ -167,7 +167,7 @@ function ChangePassword() {
       currentPassword: currentPassword,
       newPassword: newPassword,
     };
-    
+
     await axios.put(
       `http://localhost:8000/api/user/change-password/${id}`,
       data
@@ -179,7 +179,7 @@ function ChangePassword() {
       initialValues={password}
       validationSchema={RegisterSchema}
       onSubmit={(password) => {
-        getApiChange(form._id,password.currentPassword, password.newPassword)
+        getApiChange(password.currentPassword, password.newPassword)
           .then((res) => {
             setPassword(res.data.password);
             swal({

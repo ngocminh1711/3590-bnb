@@ -10,7 +10,7 @@ function Home(props) {
         <>
             <Header/>
             <Banner/>
-            <TopHouseForRent/>
+            {/* <TopHouseForRent/> */}
             <HomestayList/>
 
         </>

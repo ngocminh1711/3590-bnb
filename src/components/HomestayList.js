@@ -38,6 +38,7 @@ function HomestayList() {
                              onClick={ () => handleClick(item._id)}
                              className="group relative"
                         >
+                            
                             <div
                                 className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
                                 <img

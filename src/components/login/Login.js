@@ -18,7 +18,6 @@ function Login() {
     username: "",
     password: "",
   });
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -36,6 +35,7 @@ function Login() {
         );
 
         let data = {
+          _id : res.data._id,
           email: res.data.email,
           email_verified: res.data.email_verified,
           family_name: res.data.family_name,
@@ -50,11 +50,14 @@ function Login() {
           .post(`http://localhost:${PORT}/api/auth/login/google`, data)
 
           .then((res) => {
+            
             let token = res.data.data.token;
             let username=jwtDecode(token).username;
+            let userId=jwtDecode(token).userId;
             console.log(jwtDecode(token));
             localStorage.setItem("username",JSON.stringify(username));
             localStorage.setItem('token', JSON.stringify(token))
+            localStorage.setItem('userId', JSON.stringify(userId))
             setTimeout(() => {
               navigate("/");
             }, 1000);
@@ -79,6 +82,7 @@ function Login() {
           console.log(res.data);
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
+          localStorage.setItem("userId",form._id);
           Swal.fire({
             position: "center",
             icon: "success",

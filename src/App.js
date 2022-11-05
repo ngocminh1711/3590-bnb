@@ -12,7 +12,6 @@ import ChangePassword from "./components/host/ChangePassword.js";
 function App() {
   return (
     <div>
-
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path="/login" element={<Login />}/>

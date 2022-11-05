@@ -8,9 +8,9 @@ function Header() {
   const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
-
+  const userId = localStorage.getItem("userId");
+    console.log(localSt)
   const handleLogout = async (e) => {
-    
     Swal.fire({
       title: "Are you sure to logout?",
       text: "You won't be able to revert this!",
@@ -60,7 +60,6 @@ function Header() {
     setShowProfile(true);
     setShowDropDown(false);
   };
-
   const handleEditProfile = () => {};
   const handleChangePassword=()=>{
     navigate(`/change-password/${id}`)

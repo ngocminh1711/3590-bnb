@@ -1,9 +1,3 @@
-
-
-
-
-
-  
 // import React, { useState } from "react";
 // import * as Yup from "yup";
 // import { Formik, Form,ErrorMessage } from "formik";
@@ -22,7 +16,6 @@
 // });
 
 // function ChangePassword() {
-  
 
 //   const onChangePassword= (e)=>{
 //       setForm({...form,[e.target.name]:e.target.value});
@@ -54,7 +47,7 @@
 //               type="password"
 //               id="currentPassword"
 //               name="currentPassword"
-              
+
 //               autoFocus
 //               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 //               placeholder=" Input Curent Password"
@@ -88,7 +81,7 @@
 //               type="password"
 //               id="newPassword2"
 //               name="newPassword2"
-             
+
 //               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
 //               placeholder="Input Repeat Password"
 //               required
@@ -129,12 +122,12 @@
 //   );
 // }
 import React from "react";
-import { useState } from "react"; 
+import { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link,Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
@@ -161,53 +154,43 @@ const RegisterSchema = Yup.object().shape({
 });
 
 function ChangePassword() {
- 
+  
   const [existedEmail, setExistedEmail] = useState("");
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    currentPassword:"",
-    newPassword:"",
-    newPassword2:"",
+  const [password, setPassword] = useState({
+    currentPassword: "",
+    newPassword: "",
   });
-  const updatePass = (e) => {
-    setForm({...form, [e.target.name]: e.target.value });
+  
+  const getApiChange = async (id, currentPassword, newPassword) => {
+    const data = {
+      currentPassword: currentPassword,
+      newPassword: newPassword,
     };
-    console.log(form)
-  const handleChangePassword = async (e) => { 
-    e.preventDefault();
-    try{
-      console.log(form)
-      
-  const resp = await axios({
-    method: "POST",
-    url: `http://localhost:8000/api/user/change-password`,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: form,
-  });
-  console.log(resp);
-} catch (error) {
-  console.log(error.message);
-}
-  }
+    
+    await axios.put(
+      `http://localhost:8000/api/user/change-password/${id}`,
+      data
+    );
+  };
+
   return (
     <Formik
-      initialValues={form}
+      initialValues={password}
       validationSchema={RegisterSchema}
-      onSubmit={value => {
-        handleChangePassword(value)
+      onSubmit={(password) => {
+        getApiChange(form._id,password.currentPassword, password.newPassword)
           .then((res) => {
-            console.log(res.data);
-              swal({
-                title: "Register Suscess!",
-                text: "You clicked OK!",
-                icon: "success",
-                button: "Ok!",
-              });
-              navigate("/");
+            setPassword(res.data.password);
+            swal({
+              title: "Register Suscess!",
+              text: "You clicked OK!",
+              icon: "success",
+              button: "Ok!",
+            });
+            navigate("/");
           })
-          .catch((e) => setExistedEmail("Password not "))
+          .catch((e) => setExistedEmail("Password not "));
       }}
     >
       <Form>
@@ -237,14 +220,13 @@ function ChangePassword() {
               <div className="relative mb-4">
                 <label
                   htmlFor="Password-old"
-                  className="leading-7 text-sm text-gray-600 block text-sm font-semibold">
+                  className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
+                >
                   Password old
                 </label>
                 <Field
-                  
                   type="password"
                   name="currentPassword"
-                  onChange={updatePass}
                   id="currentPassword"
                   required
                   autoComplete="currentPassword"
@@ -272,7 +254,7 @@ function ChangePassword() {
                   <ErrorMessage name="password" />
                 </a>
               </div>
-              <div className="relative mb-4">
+              {/* <div className="relative mb-4">
                 <label
                   htmlFor="email"
                   className="leading-7 text-sm text-gray-600 block text-sm font-semibold"
@@ -282,14 +264,13 @@ function ChangePassword() {
                 <Field
                   type="password"
                   id="newPassword2"
-                  
-                  name="newPassword2"
+                  name="newPassword"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
                 <a className="errors text-sm text-red-700">
                   <ErrorMessage name="confirmPassword" />
                 </a>
-              </div>
+              </div> */}
               <button
                 type="submit"
                 className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"

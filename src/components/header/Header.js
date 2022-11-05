@@ -1,14 +1,16 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
 function Header() {
+  const {id} =useParams
   const [showDropDown, setShowDropDown] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
 
   const handleLogout = async (e) => {
+    
     Swal.fire({
       title: "Are you sure to logout?",
       text: "You won't be able to revert this!",
@@ -53,7 +55,7 @@ function Header() {
   const handleClose = () => {
     setShowProfile(false);
   };
-
+  
   const handleShowProfile = () => {
     setShowProfile(true);
     setShowDropDown(false);
@@ -61,9 +63,7 @@ function Header() {
 
   const handleEditProfile = () => {};
   const handleChangePassword=()=>{
-    setTimeout(()=>{
-      navigate("/change-password");
-    },500)
+    navigate(`/change-password`)
   }
   const handleCreate = (e) => {
     navigate('/admin/host-create')
@@ -85,7 +85,6 @@ function Header() {
               alt=""
             />
           </Link>
-         
             <SearchHouses/>
           {userLogin ? (
             <>
@@ -147,6 +146,15 @@ function Header() {
                             id="menu-item-0"
                             onClick={(e) => handleCreate(e)}>
                             Create House
+                          </button>
+                          <button
+                            href="#"
+                      class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabindex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleChangePassword(e)}>
+                            Change Password
                           </button>
                           <button
                             href="#"

@@ -8,16 +8,15 @@ import jwtDecode from "jwt-decode";
 //aa
 
 function Header() {
-
-  let token = localStorage.getItem('token')
+  let token = localStorage.getItem("token");
   let user;
-  if(token){
-    user = jwtDecode(token)
+  if (token) {
+    user = jwtDecode(token);
   }
- 
+
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
+  // const [showProfile, setShowProfile] = useState(false);
   const [blockInput, setBlockInput] = useState(true);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
@@ -64,36 +63,38 @@ function Header() {
     setShowDropDown(!showDropDown);
   };
 
-//   const handleCloseInfo = () => {
-//     setShowDropDown(false)
-//   }
+  //   const handleCloseInfo = () => {
+  //     setShowDropDown(false)
+  //   }
 
-  const handleClose = () => {
-    setShowProfile(false);
-    setBlockInput(true);
-  };
+  // const handleClose = () => {
+  //   setShowProfile(false);
+  //   setBlockInput(true);
+  // };
 
   const handleShowProfile = () => {
-    setShowProfile(true);
     setShowDropDown(false);
+    if(token){
+      navigate('/profile')
+    }else{
+      navigate('/login')
+    }  
   };
 
-  const handleEditProfile = (e) => {
-    e.preventDefault();
-    setBlockInput(false)
-  };
+  // const handleEditProfile = (e) => {
+  //   e.preventDefault();
+  //   setBlockInput(false);
+  // };
 
-  const handleSaveChange = () => {}
+  const handleSaveChange = () => {};
 
-
-
-  const handleChangePassword=()=>{
-    setTimeout(()=>{
+  const handleChangePassword = () => {
+    setTimeout(() => {
       navigate("/change-password");
-    },500)
-  }
+    }, 500);
+  };
   const handleCreate = (e) => {
-    navigate('/admin/host-create')
+    navigate("/admin/host-create");
   };
 
   const handleSignup = (e) => {
@@ -114,48 +115,65 @@ function Header() {
             />
           </Link>
 
-         
-            <SearchHouses/>
+          <div className="ml-0">
+            <SearchHouses />
+          </div>
 
           {userLogin ? (
             <>
               <>
-                <div class="relative inline-block text-left"> 
-                  
+                <div className="relative inline-block text-left">
                   <div>
-                 
                     <button
                       type="button"
-                      class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                      className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 hover:shadow-md "
                       id="menu-button"
                       aria-expanded="true"
                       aria-haspopup="true"
-                    //   onMouseOver={() => handleShowInfo()}
-                    //   onMouseOut={() => handleCloseInfo()}
                       onClick={() => handleShowInfo()}
                     >
-                      Options
-                      <svg
-                        class="-mr-1 ml-2 h-5 w-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="w-5 h-auto">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
+                            />
+                          </svg>
+                        </div>
+                        <div className="w-5 h-auto">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </button>
                   </div>
                   <div
-                    class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
-                    tabindex="-1"
+                    tabIndex="-1"
                   >
                     {!showDropDown ? (
                       ""
@@ -164,29 +182,32 @@ function Header() {
                         <div className="py-1" role="none">
                           <button
                             href="#"
-                            class="text-gray-700 block px-4 py-2 text-sm"
+                            className="text-gray-700 block px-4 py-2 text-sm"
                             role="menuitem"
-                            tabindex="-1"
+                            tabIndex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleShowProfile(e)}>
+                            onClick={(e) => handleShowProfile(e)}
+                          >
                             {userLogin}
                           </button>
                           <button
                             href="#"
-                      class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-full justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
-                            tabindex="-1"
+                            tabIndex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleCreate(e)}>
+                            onClick={(e) => handleCreate(e)}
+                          >
                             Create House
                           </button>
                           <button
                             href="#"
-                            class="text-gray-700 block px-4 py-2 text-sm"
+                            className="text-gray-700 block px-4 py-2 text-sm"
                             role="menuitem"
-                            tabindex="-1"
+                            tabIndex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleLogout(e)}>
+                            onClick={(e) => handleLogout(e)}
+                          >
                             Logout
                           </button>
                         </div>
@@ -200,7 +221,8 @@ function Header() {
             <div className="flex items-center gap-6">
               <button
                 className="hover:text-violet-900 transition"
-                onClick={(e) => handleLogin(e)} >
+                onClick={(e) => handleLogin(e)}
+              >
                 Log in
               </button>
               <button
@@ -214,142 +236,6 @@ function Header() {
           )}
         </div>
       </header>
-      {showProfile ? (
-        <div>
-
-          <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white h-auto p-2 rounded w-5/6 ">
-              <form onSubmit={(e) => handleSaveChange(e)}>
-                <div class="h-full ">
-                  <div className="border-b-2 block md:flex">
-                    <div className="w-full md:w-2/5 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
-                      <div className="flex justify-between">
-                        <span className="text-xl font-semibold block">
-                          Admin Profile
-                        </span>
-                        <button
-                          className="-mt-2 text-md font-bold text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800"
-                          onClick={(e) => handleEditProfile(e)}
-                        >
-                          Edit
-                        </button>
-                      </div>
-                      <div className="w-full p-8 mx-2 flex justify-center">
-                        <img
-                          id="showImage"
-                          className="max-w-xs w-72 items-center border"
-                          src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="w-full md:w-3/5 p-8 bg-white lg:ml-4 shadow-md">
-                      <div className="rounded   p-6">
-                      <div className="pb-6 hidden">
-                          <label
-                            htmlFor="name"
-                            className="font-semibold text-gray-700 block pb-1"
-                          >
-                            Username
-                          </label>
-                          <div className="flex">
-                            <input
-                              disabled
-                              id="name"
-                              className="border-1  rounded-r px-4 py-2 w-full shadow-xl"
-                              type="text"
-                              defaultValue={user.username}
-                            />
-                          </div>
-                        </div>
-                        <div className="pb-6">
-                          <label
-                            htmlFor="name"
-                            className="font-semibold text-gray-700 block pb-1"
-                          >
-                            Name
-                          </label>
-                          <div className="flex">
-                            <input
-                              disabled={blockInput}
-                              id="name"
-                              className="border-1  rounded-r px-4 py-2 w-full shadow-xl"
-                              type="text"
-                              defaultValue={user.name}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="pb-6">
-                          <label
-                            htmlFor="about"
-                            className="font-semibold text-gray-700 block pb-1"
-                          >
-                            Email
-                          </label>
-
-                          <div className="flex">
-                            <input
-                              disabled
-                              id="email"
-                              className="border-1 rounded-r px-4 py-2 w-full shadow-xl"
-                              type="email"
-                              defaultValue={user.email}
-                            />
-                          </div>
-                        </div>
-
-                        <div className="pb-6">
-                          <label
-                            htmlFor="phone"
-                            className="font-semibold text-gray-700 block pb-1"
-                          > 
-                            phone
-                          </label>
-                          <div className="flex">
-                            <input
-                              disabled={blockInput}
-                              id="phone"
-                              className="border-1  rounded-r px-4 py-2 w-full shadow-xl"
-                              type="number"
-                              defaultValue={user.phone}
-                            />
-                          </div>
-                        </div>
-                        <div className="pb-6">
-                          <label
-                            htmlFor="phone"
-                            className="font-semibold text-gray-700 block pb-1"
-                          > 
-                            Address
-                          </label>
-                          <div className="flex">
-                            <input
-                              disabled={blockInput}
-                              id="address"
-                              className="border-1  rounded-r px-4 py-2 w-full shadow-xl"
-                              type="text"
-                              defaultValue={user.address}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={(e) => handleClose(e)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                  >
-                    cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
     </>
   );
 }

@@ -17,7 +17,10 @@ function SearchHouses(){
         setKeywordSearch(e.target.value)
     }
     let getApiHouseSearch = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/products/search/${keywordSearch}`)
+        if (keywordSearch) {
+            return await axios.get(`http://localhost:${PORT}/api/products/search/${keywordSearch}`)
+        }
+
     }
     const handlePress = async (event) => {
         if (event.key === 'Enter') {
@@ -31,9 +34,9 @@ function SearchHouses(){
     }
     useEffect(()=>{
         getApiHouseSearch().then(res =>{
-        console.log(res.data)
-            setHouseForRents(res.data.houseForRent)
-
+            if (keywordSearch) {
+                setHouseForRents(res.data.houseForRent)
+            }
         }).catch(err => console.log({err : 'Please fill keyword to search'}))
     }, [keywordSearch])
     return(

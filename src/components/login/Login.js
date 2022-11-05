@@ -52,10 +52,10 @@ function Login() {
 
           .then((res) => {
             let token = res.data.data.token;
-            let username=jwtDecode(token).username;
+            let username = jwtDecode(token).username;
             console.log(jwtDecode(token));
-            localStorage.setItem("username",JSON.stringify(username));
-            localStorage.setItem('token', JSON.stringify(token))
+            localStorage.setItem("username", JSON.stringify(username));
+            localStorage.setItem("token", JSON.stringify(token));
             setTimeout(() => {
               navigate("/");
             }, 1000);
@@ -73,7 +73,8 @@ function Login() {
       password: form.password,
     };
 
-    axios.post(`http://localhost:${PORT}/api/auth/login`, data)
+    axios
+      .post(`http://localhost:${PORT}/api/auth/login`, data)
 
       .then((res) => {
         if (res.status === 200) {
@@ -100,7 +101,7 @@ function Login() {
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

@@ -9,25 +9,26 @@ import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
 import Footer from "./components/footer/Footer.js";
 import ChangePassword from "./components/host/ChangePassword.js";
+// import Profile from "./components/Profile/RawInformation.js";
+import Profile from "./components/Profile/Profile.js";
+
 function App() {
   return (
     <div>
-
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/dashboard" element={<ListHost/>}/>
-        <Route path='/admin/host-create' element={<CreateHouseForRent/>}/>
-        <Route path='/detail-house' element={<DetailHouseForRent/>}/>
-        <Route path='/change-password' element={<ChangePassword/>}/>
-        <Route path='/searchList' element={<SearchedHouseList/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<ListHost />} />
+        <Route path="/admin/host-create" element={<CreateHouseForRent />} />
+        <Route path="/detail-house" element={<DetailHouseForRent />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/searchList" element={<SearchedHouseList />} />
+        <Route path="/profile" element={<Profile />} />
+
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }
-export default App
-
-
-
+export default App;

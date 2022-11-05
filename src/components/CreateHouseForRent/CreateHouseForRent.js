@@ -5,6 +5,8 @@ import CreateImageView from "../CreateImageView/CreateImageView";
 import CreateBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {useSelector} from "react-redux";
 import {Alert} from "@material-tailwind/react";
+import Header from "../header/Header";
+import {useNavigate} from "react-router";
 
 
 function CreateHouseForRent() {
@@ -25,6 +27,7 @@ function CreateHouseForRent() {
 
     const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
     const viewURL = useSelector(state => state.createImageView.urls)
+    const navigate = useNavigate()
 
     const getTypeRooms = async () => {
         return await axios.get('http://localhost:8000/api/products/type-room')
@@ -50,6 +53,7 @@ function CreateHouseForRent() {
             .then(res => {
                 console.log(res.data)
                 setStatusCreate(true)
+                navigate('/')
             })
             .catch(err => console.log(err.message))
     }
@@ -61,15 +65,16 @@ function CreateHouseForRent() {
 
     return (
         <>
-            <video autoPlay loop muted className="absolute z-10 h-auto w-max min-w-full min-h-full max-w-none mb-0 ">
+            <Header/>
+            <video autoPlay loop muted className="fixed z-10 h-auto w-max min-w-full min-h-full max-w-none mb-0 ">
                 <source
                     src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4"
                     type="video/mp4"/>
             </video>
             <div
-                className="relative flex items-center h-auto justify-center h-screen mb-12 overflow-hidden"
+                className=" z-20 flex items-center h-auto justify-center h-screen mb-12 overflow-hidden"
             >
-                <div className="z-20 mt-2 h-auto">
+                <div className=" fixed z-20 mt-2 h-auto">
                     <form onSubmit={handleSubmit}>
                         <div className="flex bg-100 h-auto">
                             <div className="m-auto">
@@ -206,7 +211,6 @@ function CreateHouseForRent() {
                     </form>
                 </div>
             </div>
-
         </>
     )
 }

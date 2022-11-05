@@ -63,7 +63,7 @@ function Header() {
 
   const handleEditProfile = () => {};
   const handleChangePassword=()=>{
-    navigate(`/change-password`)
+    navigate(`/change-password/${id}`)
   }
   const handleCreate = (e) => {
     navigate('/admin/host-create')

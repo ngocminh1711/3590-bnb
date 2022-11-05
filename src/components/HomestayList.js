@@ -1,16 +1,22 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 function HomestayList() {
 
     const PORT = process.env.PORT || 8000;
 
     const [houseForRents, setHouseForRents] = useState([]);
+    const navigate = useNavigate();
 
     const getApiHouse = async () => {
         return await axios.get(`http://localhost:${PORT}/api/products`);
     };
+    const handleClick = (e) => {
+        let id = e
+        navigate('/detail-house', {state: { houseId: id }})
+    }
 
     useEffect(() => {
         getApiHouse().then(res => {
@@ -21,17 +27,21 @@ function HomestayList() {
 
     
   return (
-    <>
+    <div>
       <div className="bg-white">
-            <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Houses</h2>
+            <div className="mx-auto max-w-2xl  py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">House For Rent</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {houseForRents.map((item) => (
-                        <div key={item.id} className="group relative">
+                        <div key={item._id}
+                             onClick={ () => handleClick(item._id)}
+                             className="group relative"
+                        >
                             <div
-                                className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                                className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
                                 <img
+                                    style={{ width: 560 , height: 300}}
                                     src={item.image_backdrop}
                                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                 />
@@ -51,7 +61,7 @@ function HomestayList() {
                 </div>
             </div>
         </div>
-    </>
+    </div>
   );
 }
 export default HomestayList;

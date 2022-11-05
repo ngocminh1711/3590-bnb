@@ -4,8 +4,9 @@ import axios from "axios";
 import CreateImageView from "../CreateImageView/CreateImageView";
 import CreateBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {useSelector} from "react-redux";
-import createBackdrop from "../CreateBackdrop/CreateBackdrop";
 import {Alert} from "@material-tailwind/react";
+import Header from "../header/Header";
+import {useNavigate} from "react-router";
 
 
 function CreateHouseForRent() {
@@ -26,6 +27,7 @@ function CreateHouseForRent() {
 
     const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
     const viewURL = useSelector(state => state.createImageView.urls)
+    const navigate = useNavigate()
 
     const getTypeRooms = async () => {
         return await axios.get('http://localhost:8000/api/products/type-room')
@@ -33,16 +35,15 @@ function CreateHouseForRent() {
     const handleChange = (e) => {
         setNewHouseForRent({...newHouseForRent, [e.target.name]: e.target.value});
     }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         let data = {
             name: newHouseForRent.name,
             address: newHouseForRent.address,
             typeRoom: newHouseForRent.typeRoom,
-            numberOfBathroom: newHouseForRent.numberOfBathrooms,
-            numberOfBedroom: newHouseForRent.numberOfBedrooms,
-            roomRate: newHouseForRent.roomRate,
+            numberOfBathrooms: newHouseForRent.numberOfBathrooms,
+            numberOfBedrooms: newHouseForRent.numberOfBedrooms,
+            roomRates: newHouseForRent.roomRates,
             image_backdrop: backdropURL,
             image_view: viewURL,
             description: newHouseForRent.description,
@@ -52,6 +53,7 @@ function CreateHouseForRent() {
             .then(res => {
                 console.log(res.data)
                 setStatusCreate(true)
+                navigate('/')
             })
             .catch(err => console.log(err.message))
     }
@@ -63,21 +65,22 @@ function CreateHouseForRent() {
 
     return (
         <>
-            <video autoPlay loop muted className="absolute z-10 h-auto w-max min-w-full min-h-full max-w-none mb-0 ">
+            <Header/>
+            <video autoPlay loop muted className="fixed z-10 h-auto w-max min-w-full min-h-full max-w-none mb-0 ">
                 <source
                     src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4"
                     type="video/mp4"/>
             </video>
             <div
-                className="relative flex items-center h-auto justify-center h-screen mb-12 overflow-hidden"
+                className=" z-20 flex items-center h-auto justify-center h-screen mb-12 overflow-hidden"
             >
-                <div className="z-20 mt-2 h-auto">
+                <div className=" fixed z-20 mt-2 h-auto">
                     <form onSubmit={handleSubmit}>
                         <div className="flex bg-100 h-auto">
                             <div className="m-auto">
                                 <div>
                                     <button type="button"
-                                            className="relative w-full flex justify-center items-center px-2 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-900  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out">
+                                            className="relative w-full flex justify-center items-center px-2 py-2.5 font-medium tracking-wide text-white capitalize  bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="30px"
                                              viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
                                         </svg>
@@ -118,7 +121,7 @@ function CreateHouseForRent() {
                                                     <input
                                                         type="number"
                                                         onChange={handleChange}
-                                                        name='roomRate'
+                                                        name='roomRates'
                                                         placeholder="Room Rates"
                                                         className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"/>
                                                 </div>
@@ -169,10 +172,10 @@ function CreateHouseForRent() {
                                                 <div className="flex-initial pl-3">
 
                                                     <button type="submit"
-                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
+                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                                              viewBox="0 0 24 24"
-                                                             width="24px" fill="#FFFFFF">
+                                                             width="24px" fill="#18181b">
                                                             <path d="M0 0h24v24H0V0z" fill="none"></path>
                                                             <path
                                                                 d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z"
@@ -208,7 +211,6 @@ function CreateHouseForRent() {
                     </form>
                 </div>
             </div>
-
         </>
     )
 }

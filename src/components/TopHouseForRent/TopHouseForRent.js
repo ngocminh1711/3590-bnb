@@ -3,14 +3,14 @@ import axios from "axios";
 import {useNavigate} from "react-router";
 import './TopHouseForRent.css'
 
+let count = 0;
 
 function TopHouseForRent() {
 
-    const [topHouseForRent, setTopHouseForRent] = useState([])
+    const [topHouseForRent, setTopHouseForRent] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0)
     const [imageView, setImageView] = useState([])
     const navigate = useNavigate()
-
-    let slideIndex = 1;
 
 
     const getTopHouseForRent = async () => {
@@ -28,53 +28,33 @@ function TopHouseForRent() {
 
         getTopHouseForRent().then(res => {
             setTopHouseForRent(res.data.topHouseForRent)
-            setImageView(res.data.topHouseForRent[0].image_view)
         })
 
     }, [])
-    const plusSlides = (n) => {
-        showSlide(slideIndex += n)
-    }
-    const currentSlide = (n) => {
-        showSlide(slideIndex = n)
-    }
-    const showSlide = (n) => {
-        let i;
-        let slides = document.getElementsByClassName("mySlides")
-        if (n > slides.length) {
-            slideIndex = 1
-        }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = 'none';
-        }
 
-        slides[slideIndex - 1].style.display = 'block';
-    }
+
+    console.log(topHouseForRent)
+
     return (
         <div>
             <div className="bg-white">
-                <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
                     <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">Top 4 houses with the most
                         tenants</h2>
                     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {topHouseForRent.map((item) => (
+                        {topHouseForRent.map((item, index) => (
                             <div key={item._id}
-                                 onClick={() => handleClick(item._id)}
-                                 className="group relative"
+                                className="group relative"
+                                 onClick={()=> handleClick(item._id)}
                             >
                                 <div
-                                    className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
-                                    <div>
-                                        <img
-                                            style={{width: 560, height: 300}}
-                                            src={item.image_backdrop}
-                                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                        />
-                                    </div>
+                                    className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75  ">
+                                    <img
+                                        style={{width: 560, height: 300}}
+                                        src={item.image_backdrop}
+                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                    />
                                 </div>
                                 <div className="mt-4 flex justify-between">
                                     <div>

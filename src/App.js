@@ -12,6 +12,8 @@ import ChangePassword from "./components/host/ChangePassword.js";
 import Profile from "./components/Profile/Profile.js";
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
+import DemoSlide from "./components/DemoSlide/DemoSlide";
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
         <Route path="/profile/:id" element={<Profile />} />
         <Route path="/profile2" element={<ProfileExample />} />
         <Route path="/profile/edit/:id" element={<EditProfile />} />
+        <Route path="/demo" element={<DemoSlide/>}/>
       </Routes>
       <Footer />
     </div>

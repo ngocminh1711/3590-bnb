@@ -8,7 +8,6 @@ import Header from "../header/Header";
 
 
 function DetailHouseForRent() {
-
     const [houseForRent, setHouseForRent] = useState({
         name: '',
         address: '',
@@ -21,15 +20,16 @@ function DetailHouseForRent() {
         image_view: [],
     });
 
-//yhh
     const {state} = useLocation()
-
-    const id = state.houseId
-    const getData = async () => {
+   
+    const getData = async (id) => {
         return await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`)
     }
     useEffect(() => {
-        getData().then(res => {
+      
+    let id = state.houseId
+
+        getData(id).then(res => {
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -44,9 +44,7 @@ function DetailHouseForRent() {
             })
         })
     }, [])
-
     return (
-
         <>
             <Header/>
             <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2">

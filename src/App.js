@@ -14,8 +14,8 @@ import Profile from "./components/Profile/Profile.js";
 import Header from "./components/header/Header.js";
 function App() {
   return (
-    <div>
-      
+    <>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -26,9 +26,10 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/update/:id" element={<Profile/>}/>
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 export default App;

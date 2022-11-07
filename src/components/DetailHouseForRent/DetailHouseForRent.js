@@ -31,6 +31,7 @@ function DetailHouseForRent() {
         let id = state.houseId
 
 
+
         getData(id).then(res => {
             setHouseForRent({
                 ...houseForRent,

@@ -1,31 +1,33 @@
 import Header from "../header/Header";
-import { useNavigate, useParams} from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../footer/Footer";
 
 export default function Profile() {
   const PORT = process.env.PORT || 8000;
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
-  const {id} = useParams();
-  
+  const { id } = useParams();
+
   let token = localStorage.getItem("token");
   if (!token) {
     navigate("/login");
   }
   const getApiProfile = async () => {
     return await axios.get(`http://localhost:${PORT}/api/user/${id}`);
-  }
-
+  };
 
   const handleEditProfile = (e) => {
-    navigate(`/profile/edit/${id}`)
-  }
+    navigate(`/profile/edit/${id}`);
+  };
 
   useEffect(() => {
-      getApiProfile().then(res => {
-        setProfile(res.data.data)
-      }).catch(err => console.log(err.message))
+    getApiProfile()
+      .then((res) => {
+        setProfile(res.data.data);
+      })
+      .catch((err) => console.log(err.message));
   }, []);
 
   return (
@@ -45,8 +47,7 @@ export default function Profile() {
             <div
               className="absolute top-0 w-full h-full bg-center bg-cover"
               style={{
-                backgroundImage:
-                  `url(${profile.backdrop_Image})`,
+                backgroundImage: `url(${profile.backdrop_Image})`,
               }}
             >
               <span
@@ -93,7 +94,7 @@ export default function Profile() {
                         <button
                           className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                           type="button"
-                          onClick={(e)=> handleEditProfile(e)}
+                          onClick={(e) => handleEditProfile(e)}
                         >
                           Edit your profile
                         </button>
@@ -195,6 +196,8 @@ export default function Profile() {
           </section>
         </main>
       </div>
+      <Footer />   
     </>
   );
 }
+//dsa

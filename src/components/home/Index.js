@@ -7,6 +7,7 @@ import './Index.css'
 import IconSlide from "../iconSlide/IconSlide";
 import OptionsTab from "../iconSlide/optionsTab";
 import DemoSlide from "../DemoSlide/DemoSlide";
+import Footer from "../footer/Footer";
 
 function Home(props) {
     return (
@@ -16,7 +17,7 @@ function Home(props) {
             {/* <Banner/> */}
             <TopHouseForRent/>
             <HomestayList/>
-
+            <Footer />
         </>
     );
 }

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Header from "../header/Header.js";
 
 function Login() {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ function Login() {
     username: "",
     password: "",
   });
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -36,6 +36,7 @@ function Login() {
         );
 
         let data = {
+          _id: res.data._id,
           email: res.data.email,
           email_verified: res.data.email_verified,
           family_name: res.data.family_name,
@@ -51,10 +52,10 @@ function Login() {
 
           .then((res) => {
             let token = res.data.data.token;
-            let username=jwtDecode(token).username;
+            let username = jwtDecode(token).username;
             console.log(jwtDecode(token));
-            localStorage.setItem("username",JSON.stringify(username));
-            localStorage.setItem('token', JSON.stringify(token))
+            localStorage.setItem("username", JSON.stringify(username));
+            localStorage.setItem("token", JSON.stringify(token));
             setTimeout(() => {
               navigate("/");
             }, 1000);
@@ -68,17 +69,21 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
+      
       username: form.username,
       password: form.password,
     };
-
-    axios.post(`http://localhost:${PORT}/api/auth/login`, data)
-
+    axios
+      .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
+          
           localStorage.setItem("token", JSON.stringify(res.data.token));
+
           localStorage.setItem("username", form.username);
+
+          localStorage.setItem("userId", form._id);
+
           Swal.fire({
             position: "center",
             icon: "success",
@@ -99,7 +104,7 @@ function Login() {
 
   return (
     <>
-      
+      <Header />
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

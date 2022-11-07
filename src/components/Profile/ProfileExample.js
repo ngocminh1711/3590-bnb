@@ -7,14 +7,13 @@ import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
 
-export default function Profile() {
+export default function ProfileExample() {
   const navigate = useNavigate();
 
   let token = localStorage.getItem("token");
   let user;
   if (token) {
     user = jwtDecode(token);
-    console.log(user);
   }
 
   useEffect(() => {

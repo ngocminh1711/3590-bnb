@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getUserLogin } from "../../features/addUserToNavbar/addUserToNavbarSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Header from "../header/Header.js";
+import { setIdUserLogin } from "../../features/userProfile/UserProfileSlice";
+
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [errMessage, setErrMessage] = useState("");
 
   const PORT = process.env.PORT || 8000;
@@ -52,10 +54,13 @@ function Login() {
 
           .then((res) => {
             let token = res.data.data.token;
-            let username = jwtDecode(token).username;
+            let data = jwtDecode(token);
             console.log(jwtDecode(token));
-            localStorage.setItem("username", JSON.stringify(username));
+
+            localStorage.setItem("username", JSON.stringify(data.username));
             localStorage.setItem("token", JSON.stringify(token));
+            localStorage.setItem("_id", JSON.stringify(data._id));
+            dispatch(setIdUserLogin(data._id))
             setTimeout(() => {
               navigate("/");
             }, 1000);
@@ -77,13 +82,13 @@ function Login() {
       .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
+
           
           localStorage.setItem("token", JSON.stringify(res.data.token));
 
           localStorage.setItem("username", form.username);
 
           localStorage.setItem("userId", form._id);
-
           Swal.fire({
             position: "center",
             icon: "success",

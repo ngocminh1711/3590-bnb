@@ -1,9 +1,10 @@
 import "./DetailHouseForRent.css";
+
 import { useEffect, useState } from "react";
+
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Header from "../header/Header";
-import Footer from "../footer/Footer";
 
 function DetailHouseForRent() {
   const [houseForRent, setHouseForRent] = useState({
@@ -18,17 +19,17 @@ function DetailHouseForRent() {
     image_view: [],
   });
 
-  //yhh
   const { state } = useLocation();
 
-  const id = state.houseId;
-  const getData = async () => {
+  const getData = async (id) => {
     return await axios.get(
       `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
     );
   };
   useEffect(() => {
-    getData().then((res) => {
+    let id = state.houseId;
+
+    getData(id).then((res) => {
       setHouseForRent({
         ...houseForRent,
         name: res.data.data.name,
@@ -43,7 +44,6 @@ function DetailHouseForRent() {
       });
     });
   }, []);
-
   return (
     <>
       <Header />
@@ -372,7 +372,6 @@ function DetailHouseForRent() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

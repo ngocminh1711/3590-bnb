@@ -22,7 +22,6 @@ function Login() {
     username: "",
     password: "",
   });
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -40,6 +39,7 @@ function Login() {
         );
 
         let data = {
+          _id: res.data._id,
           email: res.data.email,
           email_verified: res.data.email_verified,
           family_name: res.data.family_name,
@@ -75,20 +75,21 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
+      
       username: form.username,
       password: form.password,
     };
-
     axios
       .post(`http://localhost:${PORT}/api/auth/login`, data)
-
       .then((res) => {
         if (res.status === 200) {
-          localStorage.setItem("token", JSON.stringify(res.data.token));
-         
-          // lu id loca
-          localStorage.setItem("username", data.username);
+
           
+          localStorage.setItem("token", JSON.stringify(res.data.token));
+
+          localStorage.setItem("username", form.username);
+
+          localStorage.setItem("userId", form._id);
           Swal.fire({
             position: "center",
             icon: "success",

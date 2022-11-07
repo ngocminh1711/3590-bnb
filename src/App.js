@@ -18,7 +18,8 @@ import GetStarted from "./components/getStarted/GetStarted.js";
 
 function App() {
   return (
-    <div>
+    <>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -35,7 +36,7 @@ function App() {
         <Route path="/get-started" element={<GetStarted/>}/>
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 export default App;

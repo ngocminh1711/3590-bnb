@@ -60,6 +60,7 @@ function CreateBackdrop () {
                     <span className="mt-2 text-base leading-normal">Select a Backdrop</span>
                     <input
                         onChange={handleChange}
+                        accept="image/png, image/jpg"
                         type='file' className="hidden"
                     />
                 </label>

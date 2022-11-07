@@ -24,7 +24,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<ListHost />} />
         <Route path="/admin/host-create" element={<CreateHouseForRent />} />
-        <Route path="/detail-house/:id" element={<DetailHouseForRent />} />
+        <Route path="/detail-house" element={<DetailHouseForRent />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile/:id" element={<Profile />} />

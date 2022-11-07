@@ -16,6 +16,8 @@ import DemoSlide from "./components/DemoSlide/DemoSlide";
 import GetStarted from "./components/getStarted/GetStarted.js";
 
 
+
+
 function App() {
   return (
     <>
@@ -30,12 +32,11 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/profile2" element={<ProfileExample />} />
+        {/*<Route path="/profile2" element={<ProfileExample />} />*/}
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
         <Route path="/get-started" element={<GetStarted/>}/>
       </Routes>
-      <Footer />
     </>
   );
 }

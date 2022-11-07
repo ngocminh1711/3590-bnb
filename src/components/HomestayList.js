@@ -11,16 +11,19 @@ function HomestayList() {
   const getApiHouse = async () => {
     return await axios.get(`http://localhost:${PORT}/api/products`);
   };
-  const handleClick = (e) => {
-    let id = e;
-    navigate("/detail-house", { state: { houseId: id } });
-  };
+
 
   useEffect(() => {
     getApiHouse().then((res) => {
       setHouseForRents(res.data.houseForRents);
     });
   }, []);
+
+    const handleClick = (item) => {
+       let id = item._id
+        console.log(id)
+
+    };
 
   return (
     <div>
@@ -34,7 +37,7 @@ function HomestayList() {
             {houseForRents.map((item) => (
               <div
                 key={item._id}
-                onClick={() => handleClick(item._id)}
+                onClick={() => handleClick(item)}
                 className="group relative"
               >
                 <div className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">

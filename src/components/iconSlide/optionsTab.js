@@ -4,13 +4,11 @@ import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import {useState} from 'react'
-
 import { FaFilter } from 'react-icons/fa';
 import {locationsTab} from '../iconSlide/Icon.js';
 
 const OptionsTab = () => {
     const [value, setValue] = useState(0);
-  
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -31,8 +29,11 @@ const OptionsTab = () => {
           <Tabs
             value={value}
             onChange={handleChange}
+            indicatorColor="secondary"
+             textColor="primary"
             variant="scrollable"
             scrollButtons
+
             sx={{
               [`& .${tabsClasses.scrollButtons}`]: {
                 '&.Mui-disabled': { opacity: 0.3 },
@@ -47,7 +48,7 @@ const OptionsTab = () => {
           <Button
             sx={{
               display: { xs: 'none', md: 'block' },
-              border: '1px solid #DDDDDD',
+              border: '1px solid #DDDDD',
               minWidth: 90,
               justifyContent: 'space-between',
               borderRadius: 2,

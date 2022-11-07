@@ -15,9 +15,12 @@ import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 
 
+
+
 function App() {
   return (
-    <div>
+    <>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -28,12 +31,13 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/profile2" element={<ProfileExample />} />
+        {/*<Route path="/profile2" element={<ProfileExample />} />*/}
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
+
       </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 export default App;

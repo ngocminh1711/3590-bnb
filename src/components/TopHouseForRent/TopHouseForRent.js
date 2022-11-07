@@ -14,9 +14,7 @@ function TopHouseForRent() {
 
 
     const getTopHouseForRent = async () => {
-
         return await axios.get('http://localhost:8000/api/products/top-house')
-
     }
 
     const handleClick = (e) => {

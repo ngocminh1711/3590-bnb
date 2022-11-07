@@ -12,18 +12,17 @@ function HomestayList() {
     return await axios.get(`http://localhost:${PORT}/api/products`);
   };
 
+  const handleClick = (e) => {
+    let id = e;
+    navigate("/detail-house", { state: { houseId: id } });
+  };
+
 
   useEffect(() => {
     getApiHouse().then((res) => {
       setHouseForRents(res.data.houseForRents);
     });
   }, []);
-
-    const handleClick = (item) => {
-       let id = item._id
-        console.log(id)
-
-    };
 
   return (
     <div>

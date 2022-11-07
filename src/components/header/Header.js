@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
@@ -77,26 +77,28 @@ function Header() {
     }
   };
 
+
   const handleSaveChange = () => {};
 
   const handleChangePassword = () => {
     setTimeout(() => {
-      navigate("/change-password");
+      navigate("/change-password`");
     }, 500);
   };
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
-
+  const handleDashBoard = (e) => {
+    navigate("/dashboard");
+  };
   const handleSignup = (e) => {
-    setTimeout(() => {
+    setTimeout(() => { 
       navigate("/register");
     }, 500);
   };
-
   return (
     <>
-      <header className="py-6 mb-0 border-b">
+      <header className="py-6 mb-0">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/">
             <img
@@ -113,7 +115,7 @@ function Header() {
           {userLogin ? (
             <>
               <>
-                <div className="relative inline-block text-left">
+                <div className="text-left">
                   <div>
                     <button
                       type="button"
@@ -159,8 +161,7 @@ function Header() {
                       </div>
                     </button>
                   </div>
-                  <div
-                    className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  <div className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
@@ -171,9 +172,9 @@ function Header() {
                     ) : (
                       <>
                         <div className="py-1" role="none">
-                          <button
+                        <button
                             href="#"
-                            className="text-gray-700 block px-4 py-2 text-sm"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -181,9 +182,10 @@ function Header() {
                           >
                             {userLogin}
                           </button>
+                          <br></br>
                           <button
                             href="#"
-                            className="inline-flex w-full justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -191,9 +193,21 @@ function Header() {
                           >
                             Create House
                           </button>
+                          <br></br>
                           <button
                             href="#"
-                            className="text-gray-700 block px-4 py-2 text-sm"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleDashBoard(e)}
+                          >
+                            Dash Board
+                          </button>
+                          <br></br>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -231,3 +245,4 @@ function Header() {
   );
 }
 export default Header;
+

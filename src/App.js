@@ -11,7 +11,7 @@ import Footer from "./components/footer/Footer.js";
 import ChangePassword from "./components/host/ChangePassword.js";
 // import Profile from "./components/Profile/RawInformation.js";
 import Profile from "./components/Profile/Profile.js";
-import Header from "./components/header/Header.js";
+
 function App() {
   return (
     <>
@@ -26,7 +26,7 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/update/:id" element={<Profile/>}/>
+
       </Routes>
       <Footer />
     </>

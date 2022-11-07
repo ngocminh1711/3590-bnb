@@ -12,6 +12,9 @@ module.exports = {
       scale: {
         'icon': '2.5',
       },
+      colors: {
+        'black-rgba': 'rgba(0, 0, 0, 0.5)',
+      },
     },
     
   },

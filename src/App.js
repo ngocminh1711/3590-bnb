@@ -26,10 +26,13 @@ function App() {
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />
         <Route path="/profile" element={<Profile />} />
-
       </Routes>
+      
       <Footer />
     </>
+
   );
+
 }
+
 export default App;

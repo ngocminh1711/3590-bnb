@@ -17,7 +17,7 @@ export const getHouseDetailSlice = createSlice({
     reducers: {
         getDetailHouse: (state, action) => {
             state.house = action.payload
-
+            console.log(state.house)
         }
     }
 })

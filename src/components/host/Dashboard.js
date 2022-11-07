@@ -6,11 +6,14 @@ import Switch from "react-switch";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {getDetailHouse} from "../../features/getHouseDetail/GetHouseDetailSlice";
 function ListHost() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
 
   const [value, setValue] = useState(false);
+  const dispatch = useDispatch();
 
 
   const getApiStatus = async (id) => {
@@ -21,7 +24,7 @@ function ListHost() {
     setValue(true);
     getApiStatus(id)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   };
@@ -30,10 +33,13 @@ function ListHost() {
   const getApi = async () => {
     return await axios.get("http://localhost:8000/api/products");
   };
-  const handleClick = (id) => {
-    let idProduct = id;
 
-    navigate(`/dashboard/detail/${idProduct}`);
+
+  const handleClick = async (e) => {
+    let id = e;
+    await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`).then(res => dispatch(getDetailHouse(res.data.data)))
+    navigate(`/dashboard/detail/${id}`)
+
   };
   const [showDropDown, setShowDropDown] = useState(false);
   const handleShowInfo = () => {

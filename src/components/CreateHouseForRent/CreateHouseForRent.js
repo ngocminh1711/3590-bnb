@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 import {Alert} from "@material-tailwind/react";
 import Header from "../header/Header";
 import {useNavigate} from "react-router";
-import isEmpty from "validator/lib/isEmpty"
+
 
 
 function CreateHouseForRent() {
@@ -27,29 +27,13 @@ function CreateHouseForRent() {
 
 
     const [statusCreate, setStatusCreate] = useState(false)
-    const [validateMsg, setValidateMsg] = useState('')
-
-
 
 
     const backdropURL = useSelector(state => state.createBackdrop.backdropURl)
     const viewURL = useSelector(state => state.createImageView.urls)
     const navigate = useNavigate()
 
-    // const validateAll =() => {
-    //     const msg = {}
-    //     if (isEmpty(name)) {
-    //         msg.name = "Please input a name house for rent"
-    //     }
-    //
-    //     if (isEmpty(description)) {
-    //         msg.description = "Please input a description for rent"
-    //     }
-    //     setValidateMsg(msg)
-    //     if (Object.keys(msg).length >0 ) return false
-    //     return true
-    //
-    // }
+
     const getTypeRooms = async () => {
         return await axios.get('http://localhost:8000/api/products/type-room')
     }

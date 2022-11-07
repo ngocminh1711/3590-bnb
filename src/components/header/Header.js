@@ -1,18 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { SearchIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-import { FaEdit } from "react-icons/fa";
 import jwtDecode from "jwt-decode";
-//aa
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
+  const PORT = process.env.PORT || 8000;
+  const dispatch = useDispatch();
   let token = localStorage.getItem("token");
-  let user;
-  if (token) {
-    user = jwtDecode(token);
-  }
+  const userLoginProfile = useSelector(state => state.profileUser)
+  console.log('id--------' + userLoginProfile.idUserLogin);
+
+  // let user;
+  // if (token) {
+  //   user = jwtDecode(token);
+  // }
+  // console.log(user)
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
@@ -63,28 +67,15 @@ function Header() {
     setShowDropDown(!showDropDown);
   };
 
-  //   const handleCloseInfo = () => {
-  //     setShowDropDown(false)
-  //   }
-
-  // const handleClose = () => {
-  //   setShowProfile(false);
-  //   setBlockInput(true);
-  // };
-
   const handleShowProfile = () => {
     setShowDropDown(false);
-    if(token){
-      navigate('/profile')
-    }else{
-      navigate('/login')
-    }  
+  
+    if (token) {
+      navigate(`/profile/${userLoginProfile.idUserLogin}`)
+    } else {
+      navigate("/login");
+    }
   };
-
-  // const handleEditProfile = (e) => {
-  //   e.preventDefault();
-  //   setBlockInput(false);
-  // };
 
   const handleSaveChange = () => {};
 

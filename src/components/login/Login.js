@@ -7,6 +7,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Header from "../header/Header.js";
 import { setIdUserLogin } from "../../features/userProfile/UserProfileSlice";
+import Footer from "../footer/Footer.js";
 
 
 function Login() {
@@ -218,6 +219,7 @@ function Login() {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

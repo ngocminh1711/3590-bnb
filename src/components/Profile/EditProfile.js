@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "../header/Header.js";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+import Footer from "../footer/Footer.js";
 
 
 export default function EditProfile() {
@@ -49,7 +50,6 @@ export default function EditProfile() {
   return (
     <>
       <Header />
-
         <div className="mt-10 sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="md:col-span-1">
@@ -134,6 +134,7 @@ export default function EditProfile() {
             </div>
           </div>
         </div>
+        <Footer/>
     </>
   );
 }

@@ -36,7 +36,7 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div className="text-center text-gray-700 p-4 bg-rose-300" >
+        <div className="text-center text-gray-700 p-4 bg-rose-500" >
           © 2022 Inc:
           <a className="text-gray-800" href="https://tailwind-elements.com/">AIR BNB </a>
         </div>

@@ -63,7 +63,7 @@ function CreateImageView () {
                 <input
                     multiple
                     onChange={handleChange}
-                    type='file' accept="image" className="hidden"/>
+                    type='file'  accept="image/png, image/jpg, image/jpeg" className="hidden"/>
             </label>
             <button
                 onClick={handleUpload}

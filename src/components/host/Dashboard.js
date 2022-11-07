@@ -30,7 +30,7 @@ function ListHost() {
       })
       .catch((err) => console.log(err));
   };
-  // console.log(index)
+
   const getApi = async () => {
     return await axios.get("http://localhost:8000/api/products");
   };

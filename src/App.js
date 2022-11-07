@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile.js";
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
+import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<ListHost />} />
+        <Route path="/dashboard/detail/:idProduct" element={<DetailHouse />}/>
         <Route path="/admin/host-create" element={<CreateHouseForRent />} />
         <Route path="/detail-house" element={<DetailHouseForRent />} />
         <Route path="/change-password" element={<ChangePassword />} />
@@ -35,7 +37,7 @@ function App() {
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
       </Routes>
-      <Footer />
+      {/*<Footer />*/}
     </>
   );
 }

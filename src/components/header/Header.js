@@ -10,7 +10,7 @@ function Header() {
   const dispatch = useDispatch();
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector(state => state.profileUser)
-  console.log('id--------' + userLoginProfile.idUserLogin);
+  // console.log('id--------' + userLoginProfile.idUserLogin);
 
   // let user;
   // if (token) {

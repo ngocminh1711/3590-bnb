@@ -117,7 +117,7 @@ function Header() {
               <>
                 <div className="text-left">
                   <div>
-                    <button
+                    <button 
                       type="button"
                       className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 hover:shadow-md "
                       id="menu-button"
@@ -169,7 +169,7 @@ function Header() {
                   >
                     {!showDropDown ? (
                       ""
-                    ) : (
+                        ) : (
                       <>
                         <div className="py-1" role="none">
                         <button

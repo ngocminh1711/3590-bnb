@@ -38,7 +38,10 @@ function ListHost() {
   // const handleUpdate = (id)=>{
   //     navigate(`/update-house/${id}`)
   // }
-
+  const [showDropDown, setShowDropDown] = useState(false);
+  const handleShowInfo = () => {
+    setShowDropDown(!showDropDown);
+  };
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -94,7 +97,10 @@ function ListHost() {
                     STT
                   </th>
                   <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
-                    Image/Name
+                    Image
+                  </th>
+                  <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                    Name
                   </th>
                   <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
                     Status
@@ -127,13 +133,16 @@ function ListHost() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                      <div className="text-sm leading-5 text-blue-900 text-center ">
-                        {item.name}
-                        <img
-                          className="w-20 h-20 rounded-full border-gray-200 border -m-1 transform hover:scale-150"
+                    <img
+                          className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
                           src={item.image_backdrop}
                           alt="null"
                         />
+                        </td>
+                    <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                      <div className="text-sm leading-5 text-blue-900 text-center ">
+                        {item.name}
+                       
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
@@ -152,15 +161,85 @@ function ListHost() {
                       {item.renter}
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
+                   
+                    <div className="text-left">
+                  <div>
+                    <button 
+                      type="button"
+                      className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 hover:shadow-md "
+                      id="menu-button"
+                      aria-expanded="true"
+                      aria-haspopup="true"
+                      onClick={() => handleShowInfo()}
+                    >
+                      <a
+                          className="text-black-400 hover:text-black-200 mr-2">
+                    <i className="material-icons-outlined text-base">
+                        more_horiz
+                          </i></a>
+                    </button>
+                  </div>
+                  
+                  <div className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="menu-button"
+                    tabIndex="-1"
+                  >
+                    {!showDropDown ? (
+                      ""
+                        ) : (
+                      <>
+                        <div className="py-1" role="none">
+                        <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={() => {
+                              handleClick(item._id);
+                            }}
+                          >
+                            Detail
+                          </button>
+                          <br></br>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={() => {
+                              handleDelete(item._id);
+                            }}
+                          >
+                           <a className="text-red-400 hover:text-orange-300  mx-2">
+                          <i className="material-icons-round text-base">
+                            delete_outline
+                          </i>
+                        </a>
+                          </button>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+                       
+                        {/* <a
+                          className="text-black-400 hover:text-black-200 mr-2">
+                    <i className="material-icons-outlined text-base">
+                        more_horiz
+                          </i>
+
+                                </a>
                       <button
                         onClick={() => {
                           handleClick(item._id);
                         }}
                       >
                         <a
-                          href="#"
-                          className="text-gray-400 hover:text-blue-200 mr-2"
-                        >
+                          className="text-blue-400 hover:text-blue-200 mr-2">
                           <i className="material-icons-outlined text-base">
                             visibility
                           </i>
@@ -171,7 +250,7 @@ function ListHost() {
                         //   handleUpdate(item._id);
                         // }}
                       >
-                        <a className="text-gray-400 hover:text-orange-300  mx-2">
+                        <a className="text-orange-400 hover:text-orange-300  mx-2">
                           <i className="material-icons-outlined text-base">
                             edit
                           </i>
@@ -182,12 +261,12 @@ function ListHost() {
                           handleDelete(item._id);
                         }}
                       >
-                        <a className="text-gray-400 hover:text-orange-300  mx-2">
+                        <a className="text-red-400 hover:text-orange-300  mx-2">
                           <i className="material-icons-round text-base">
                             delete_outline
                           </i>
                         </a>
-                      </button>
+                      </button> */}
                     </td>
                   </tr>
                 ))}

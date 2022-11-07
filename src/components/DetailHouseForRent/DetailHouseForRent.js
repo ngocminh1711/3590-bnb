@@ -8,7 +8,6 @@ import Header from "../header/Header";
 
 
 function DetailHouseForRent() {
-
     const [houseForRent, setHouseForRent] = useState({
         name: '',
         address: '',
@@ -21,7 +20,6 @@ function DetailHouseForRent() {
         image_view: [],
     });
 
-//yhh
     const {state} = useLocation()
 
 
@@ -31,6 +29,7 @@ function DetailHouseForRent() {
     useEffect(() => {
 
         let id = state.houseId
+
 
         getData(id).then(res => {
             setHouseForRent({
@@ -47,9 +46,7 @@ function DetailHouseForRent() {
             })
         })
     }, [])
-
     return (
-
         <>
             <Header/>
             <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">

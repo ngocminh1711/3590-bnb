@@ -20,10 +20,9 @@ import {
   import { AiOutlineCoffee } from 'react-icons/ai';
   import { FaCampground, FaUmbrellaBeach, FaSwimmingPool } from 'react-icons/fa';
   import { RiEarthquakeFill } from 'react-icons/ri';
-
-
+  
   export const locationsTab = [
-    { id: 1, label: 'Top 4', icon: <MdOutlineApartment size={24} /> },
+    { id: 1, label: 'Top 4', icon: <MdOutlineApartment size={24}/> },
     { id: 2, label: 'Vip house', icon: <BsSnow size={24} /> },
     { id: 3, label: 'Normal house', icon: <MdHouseSiding size={24} /> },
     { id: 4, label: 'Single bed', icon: <MdOutlineWater size={24} /> },

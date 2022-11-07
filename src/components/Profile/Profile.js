@@ -1,20 +1,13 @@
 import Header from "../header/Header";
-
+import { useNavigate, useParams} from "react-router";
+import { useEffect, useState } from "react";
 import axios from "axios";
-
-
-import { useNavigate } from "react-router";
-import {useEffect, useState} from "react";
-import jwtDecode from "jwt-decode";
-import {useParams} from "react-router-dom";
 
 export default function Profile() {
     const PORT = process.env.PORT || 8000;
     const navigate = useNavigate();
-
     const [profile, setProfile] = useState({});
     const {id} = useParams();
-
 
     let token = localStorage.getItem("token");
     if (!token) {
@@ -203,5 +196,5 @@ export default function Profile() {
                 </main>
             </div>
         </>
-                                    );
-                                    }
+    );
+}

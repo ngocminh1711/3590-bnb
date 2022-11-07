@@ -34,7 +34,6 @@ function App() {
         {/*<Route path="/profile2" element={<ProfileExample />} />*/}
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
-
       </Routes>
       <Footer />
     </>

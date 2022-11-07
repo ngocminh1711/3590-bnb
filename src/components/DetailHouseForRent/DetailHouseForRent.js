@@ -22,12 +22,15 @@ function DetailHouseForRent() {
 
     const {state} = useLocation()
 
-   
-    const getData = async (id) => {
+
+    const getData = async (id ) => {
         return await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`)
     }
     useEffect(() => {
-    let id = state.houseId
+
+        let id = state.houseId
+
+
 
         getData(id).then(res => {
             setHouseForRent({

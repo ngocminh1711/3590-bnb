@@ -5,17 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/FormErrors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/EditProfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileExample.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/RawInformation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/DownArrow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/Friends.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/Hat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/HomeAlt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/More.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/Phone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/Pin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/Rss.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/icons/suitCase.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Slide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/iconSlide/Icon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/iconSlide/IconSlide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/userProfile/UserProfileSlice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Banner.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateBackdrop/CreateBackdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateBackdrop/CreateBackdrop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateImageView/CreateImageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateImageView/CreateImageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomestayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomestayList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/host/ChangePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/ChangePassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/searchHouses/searchHouses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchHouses/searchHouses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>

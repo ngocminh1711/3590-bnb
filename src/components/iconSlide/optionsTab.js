@@ -28,6 +28,12 @@ const OptionsTab = () => {
     const handleClickNormalHouse = () => {
         navigate('/normal')
     }
+    const handleClickOneBedRoom = () => {
+        navigate('/onebedroom')
+    }
+    const handleClickMultipleBedRoom = () => {
+        navigate('/multiplebedroom')
+    }
 
 
     return (
@@ -61,8 +67,8 @@ const OptionsTab = () => {
                         <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
                         <Tab onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
                         <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={24} />} label='Normal house'/>;
-                        <Tab icon={<MdOutlineWater size={24} />} label='Single bed'/>;
-                        <Tab icon={<GiKidSlide size={24} />} label='Double bed'/>;
+                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
+                        <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
                         <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
                         <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
                         <Tab icon={<FaCampground size={24} />} label='Address'/>;

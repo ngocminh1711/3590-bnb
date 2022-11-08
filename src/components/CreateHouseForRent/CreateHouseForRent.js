@@ -11,16 +11,18 @@ import Footer from "../footer/Footer";
 
 function CreateHouseForRent() {
   const [typeRooms, setTypeRooms] = useState([]);
+  const [houseStatus, setHouseStatus] = useState([]);
   const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const numberOfBathrooms = [1, 2, 3];
+  const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const [newHouseForRent, setNewHouseForRent] = useState({
     name: "",
     address: "",
     typeRoom: "",
     numberOfBathrooms: "",
     numberOfBedrooms: "",
-    roomRate: "",
+    roomRates: "",
     description: "",
+    status:""
   });
 
   const [statusCreate, setStatusCreate] = useState(false);
@@ -31,6 +33,10 @@ function CreateHouseForRent() {
 
   const getTypeRooms = async () => {
     return await axios.get("http://localhost:8000/api/products/type-room");
+  };
+
+  const getHouseStatus = async () => {
+    return await axios.get("http://localhost:8000/api/products/house-status");
   };
 
   const handleChange = (e) => {
@@ -48,14 +54,15 @@ function CreateHouseForRent() {
       image_backdrop: backdropURL,
       image_view: viewURL,
       description: newHouseForRent.description,
+      status: newHouseForRent.status
     };
+    console.log(data)
     // if (!isValid)  return
     await axios
       .post("http://localhost:8000/api/products", data)
       .then((res) => {
-        console.log(res.data);
         setStatusCreate(true);
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => console.log(err.message));
   };
@@ -65,6 +72,12 @@ function CreateHouseForRent() {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    getHouseStatus()
+      .then((res) => setHouseStatus(res.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+    console.log(newHouseForRent)
   return (
     <>
       <Header />
@@ -129,8 +142,10 @@ function CreateHouseForRent() {
                                     [e.target.name]: e.target.value,
                                   });
                                 }}
+                                defaultValue={'Choose somethings ...'}
                                 className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                               >
+                                <option value='' selected disabled hidden >Choose type ...</option>
                                 {typeRooms.map((typeRoom) => (
                                   <option
                                     key={typeRoom._id}
@@ -151,6 +166,28 @@ function CreateHouseForRent() {
                               />
                             </div>
                           </div>
+                          <div className="flex-grow w-full pr-2">
+                              <select
+                                name="status"
+                                onChange={(e) => {
+                                  setNewHouseForRent({
+                                    ...newHouseForRent,
+                                    [e.target.name]: e.target.value,
+                                  });
+                                }}
+                                className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+                              >
+                                <option value='' selected disabled hidden >Choose status ...</option>
+                                {houseStatus.map((houseStatus) => (
+                                  <option
+                                    key={houseStatus._id}
+                                    value={houseStatus._id}
+                                  >
+                                    {houseStatus.name}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
                           <div className="flex">
                             <div className="flex-grow w-1/4 pr-2">
                               <select

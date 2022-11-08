@@ -63,7 +63,7 @@ function Login() {
             localStorage.setItem("_id", JSON.stringify(data._id));
             dispatch(setIdUserLogin(data._id))
             setTimeout(() => {
-              navigate("/");
+              navigate("/home");
             }, 1000);
           });
       } catch (err) {

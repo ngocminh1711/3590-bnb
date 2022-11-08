@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 function DetailHouseForRent() {
   const [houseForRent, setHouseForRent] = useState({
@@ -372,6 +373,7 @@ function DetailHouseForRent() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

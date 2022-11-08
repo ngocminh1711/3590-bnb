@@ -19,24 +19,30 @@ function HomestayList() {
 
 
     useEffect(() => {
-        getApiHouse().then(res =>  setHouseForRents(res.data.houseForRents))
+        getApiHouse().then((res) => {
+            console.log(res);
+            setHouseForRents(res.data.houseForRents);
+        });
     }, []);
 
     return (
         <div>
             <div className="bg-white">
+
                 <div className="mx-auto max-w-2xl  py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 className="text-2xl pt-0 font-bold tracking-tight text-gray-900">House For Rent</h2>
+
+
                     <div
-                        className="mt-6 cursor-pointer grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
+                        className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
                         {houseForRents && houseForRents.map((item) => (
                             <div
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}
-                                className="group relative"
+                                className="group relative cursor-pointer"
                             >
                                 <div
-                                    className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
+                                    className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
                                     <img
                                         style={{width: 560, height: 300}}
                                         src={item.image_backdrop}
@@ -53,7 +59,7 @@ function HomestayList() {
                                             Address : {item.address}
                                         </p>
                                         <div className="text-sm font-medium text-gray-900">
-                                            VNĐ {item.roomRates} Đêm
+                                            $ {item.roomRates}/night
                                         </div>
                                     </div>
                                 </div>

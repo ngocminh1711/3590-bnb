@@ -10,13 +10,6 @@ function Header() {
   const dispatch = useDispatch();
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector(state => state.profileUser)
-  // console.log('id--------' + userLoginProfile.idUserLogin);
-
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
@@ -100,7 +93,7 @@ function Header() {
     <>
       <header className="py-6 mb-0">
         <div className="container mx-auto flex justify-between items-center">
-          <Link to="/">
+          <Link to="/home">
             <img
               className="w-28 h-9 cursor-pointer"
               src={"https://links.papareact.com/qd3"}
@@ -108,7 +101,7 @@ function Header() {
             />
           </Link>
 
-          <div className="ml-0">
+          <div className="mb-0">
             <SearchHouses />
           </div>
 

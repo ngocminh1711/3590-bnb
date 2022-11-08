@@ -261,6 +261,7 @@ function ListHost() {
           </div>
         </div>
       </>
+      <Footer/>
     </div>
   );
 }

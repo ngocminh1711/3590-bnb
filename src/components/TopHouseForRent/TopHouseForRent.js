@@ -43,15 +43,15 @@ function TopHouseForRent() {
                     <div className="mt-6 cursor-pointer grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                         {topHouseForRent.map((item, index) => (
                             <div key={item._id}
-                                className="group relative"
+                                className="group relative cursor-pointer"
                                  onClick={()=> handleClick(item._id)}
                             >
                                 <div
-                                    className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75  ">
+                                    className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75  ">
                                     <img
                                         style={{width: 560, height: 300}}
                                         src={item.image_backdrop}
-                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                        className="h-300 w-full object-cover object-center lg:h-full lg:w-full"
                                     />
                                 </div>
                                 <div className="mt-4 flex justify-between">
@@ -62,7 +62,7 @@ function TopHouseForRent() {
                                             {item.name}
                                         </h2>
                                         <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
-                                        <div className="text-sm font-medium text-gray-900">VNĐ {item.roomRates} Night
+                                        <div className="text-sm font-medium text-gray-900">$ {item.roomRates} Night
                                         </div>
 
                                     </div>

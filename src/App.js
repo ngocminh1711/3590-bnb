@@ -14,6 +14,7 @@ import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
+import GetStarted from "./components/getStarted/GetStarted.js";
 
 
 
@@ -23,7 +24,8 @@ function App() {
     <>
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<GetStarted />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<ListHost />} />
@@ -36,8 +38,9 @@ function App() {
         {/*<Route path="/profile2" element={<ProfileExample />} />*/}
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
+        <Route path="/get-started" element={<GetStarted/>}/>
       </Routes>
-      {/*<Footer />*/}
+
     </>
   );
 }

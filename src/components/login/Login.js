@@ -7,6 +7,7 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import Header from "../header/Header.js";
 import { setIdUserLogin } from "../../features/userProfile/UserProfileSlice";
+import Footer from "../footer/Footer.js";
 
 
 function Login() {
@@ -62,7 +63,7 @@ function Login() {
             localStorage.setItem("_id", JSON.stringify(data._id));
             dispatch(setIdUserLogin(data._id))
             setTimeout(() => {
-              navigate("/");
+              navigate("/home");
             }, 1000);
           });
       } catch (err) {
@@ -218,6 +219,7 @@ function Login() {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

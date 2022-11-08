@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile.js";
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
+import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
 import OptionsTab from "./components/iconSlide/optionsTab";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
@@ -34,6 +35,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<ListHost />} />
+        <Route path="/dashboard/detail/:id" element={<DetailHouse />}/>
         <Route path="/admin/host-create" element={<CreateHouseForRent />} />
         <Route path="/detail-house" element={<DetailHouseForRent />} />
         <Route path="/change-password" element={<ChangePassword />} />
@@ -49,6 +51,7 @@ function App() {
         <Route path="/onebedroom" element={<ShowOneBedRoom/>}/>
         <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
       </Routes>
+
     </>
   );
 }

@@ -3,7 +3,8 @@ import createBackdropURL from "../features/createBackdrop/createBackdropSlice";
 import createImageViewURL from "../features/createImageView/createImageViewSlice";
 import createUserLogin from "../features/addUserToNavbar/addUserToNavbarSlice.js";
 import searchReducer from "../features/search/searchSlice";
-import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
+import profileUserReducer from '../features/userProfile/UserProfileSlice.js';
+import getHouseDetail from "../features/getHouseDetail/GetHouseDetailSlice";
 
 
 
@@ -13,7 +14,8 @@ export const store = configureStore({
     createImageView: createImageViewURL,
     createUserLogin: createUserLogin,
     search: searchReducer,
-    profileUser: profileUserReducer
+    profileUser: profileUserReducer,
+    getHouse: getHouseDetail,
   },
 });
 

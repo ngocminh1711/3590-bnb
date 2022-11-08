@@ -77,7 +77,7 @@ function CreateHouseForRent() {
       .then((res) => setHouseStatus(res.data.data))
       .catch((err) => console.log(err));
   }, []);
-    console.log(newHouseForRent)
+
   return (
     <>
       <Header />

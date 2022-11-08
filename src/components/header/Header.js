@@ -1,18 +1,40 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import styled from "styled-components";
+
 import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
 import { FaEdit } from "react-icons/fa";
-import jwtDecode from "jwt-decode";
-//aa
+import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 
-function Header() {
+import jwtDecode from "jwt-decode";
+
+const Item = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  padding: 7.5px 0px;
+  &:hover {
+    background-color: ${({ theme }) => theme.soft};
+  }
+`;
+const Hr = styled.hr`
+  margin: 15px 0px;
+  border: 0.5px solid ${({ theme }) => theme.soft};
+`;
+function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
   let user;
   if (token) {
     user = jwtDecode(token);
   }
+
+  const abc = (e) => {
+    let id = e;
+  };
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
@@ -74,11 +96,11 @@ function Header() {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-    if(token){
-      navigate('/profile')
-    }else{
-      navigate('/login')
-    }  
+    if (token) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
   };
   // const handleEditProfile = (e) => {
   //   e.preventDefault();
@@ -99,7 +121,7 @@ function Header() {
     navigate("/dashboard");
   };
   const handleSignup = (e) => {
-    setTimeout(() => { 
+    setTimeout(() => {
       navigate("/register");
     }, 500);
   };
@@ -118,13 +140,16 @@ function Header() {
           <div className="ml-0">
             <SearchHouses />
           </div>
-
+          <button onClick={() => setLightMode(!lightMode)}>
+            <SettingsBrightnessOutlinedIcon />
+            {lightMode ? "Pink" : "Light"} Mode
+          </button>
           {userLogin ? (
             <>
               <>
                 <div className="text-left">
                   <div>
-                    <button 
+                    <button
                       type="button"
                       className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 hover:shadow-md "
                       id="menu-button"
@@ -168,7 +193,8 @@ function Header() {
                       </div>
                     </button>
                   </div>
-                  <div className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  <div
+                    className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
@@ -176,10 +202,10 @@ function Header() {
                   >
                     {!showDropDown ? (
                       ""
-                        ) : (
+                    ) : (
                       <>
                         <div className="py-1" role="none">
-                        <button
+                          <button
                             href="#"
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
@@ -252,4 +278,3 @@ function Header() {
   );
 }
 export default Header;
-

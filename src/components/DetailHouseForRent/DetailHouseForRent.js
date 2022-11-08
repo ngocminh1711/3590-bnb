@@ -5,9 +5,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import Header from "../header/Header";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { like } from '../../features/likeanddislikeSlice/likeSlice';
+import { dislike } from '../../features/likeanddislikeSlice/disLikeSlice';
 
 function DetailHouseForRent() {
+    const {stateUser} = useSelector(state => state.like)
     const [houseForRent, setHouseForRent] = useState({
         name: '',
         address: '',
@@ -19,11 +22,19 @@ function DetailHouseForRent() {
         image_backdrop: '',
         image_view: [],
     });
-
+    const dispath = useDispatch() 
     const {state} = useLocation()
    
     const getData = async (id) => {
         return await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`)
+    }
+    const handleLike = async(id)=>{
+        await axios.put(`http://localhost:8000/api/user/like/${id}`)
+        // dispath(like(currentUser._id))
+    }
+    const handledisLike = async(id)=>{
+        await axios.put(`http://localhost:8000/api/user/dislike/${id}`)
+        // dispath(dislike(currentUser._id))
     }
     useEffect(() => {
       

@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/BedRoom/MultipleBedRoom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BedRoom/OneBedRoom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BedRoom/ShowMultipleBedRoom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/BedRoom/ShowOneBedRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VipHouse/VipHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" afterDir="false" />
-    </list>
+    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +67,7 @@
       <workItem from="1667524235047" duration="1265000" />
       <workItem from="1667527952963" duration="2219000" />
       <workItem from="1667546261984" duration="1645000" />
-      <workItem from="1667888816471" duration="6415000" />
+      <workItem from="1667888816471" duration="7116000" />
     </task>
     <servers />
   </component>

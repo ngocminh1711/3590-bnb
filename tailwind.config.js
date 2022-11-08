@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}",],
+  content: ["./src/**/*.{js,jsx,ts,tsx}", './node_modules/tw-elements/dist/js/**/*.js', './src/**/*.{html,js}'],
   plugins: [
-
+    require('tw-elements/dist/plugin')
   ],
   theme: {
     extend: {
@@ -13,9 +13,11 @@ module.exports = {
       scale: {
         'icon': '2.5',
       },
+
       colors: {
         'black-rgba': 'rgba(0, 0, 0, 0.5)',
       },
+
     },
     
   },

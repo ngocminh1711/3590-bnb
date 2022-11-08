@@ -7,14 +7,14 @@ import '../home/Index.css'
 import OptionsTab from "../iconSlide/optionsTab";
 
 import Footer from "../footer/Footer";
+import OptionsTabTop4 from "../../OptionTab/OptionTabTop4";
 
 
 function TopHouse(props) {
     return (
         <>
-            <Header/>
-            <OptionsTab/>
-            {/* <Banner/> */}
+            
+            <OptionsTabTop4/>
             <TopHouseForRent/>
             <Footer />
         </>

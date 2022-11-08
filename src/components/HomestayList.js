@@ -20,6 +20,7 @@ function HomestayList() {
 
     useEffect(() => {
         getApiHouse().then((res) => {
+            console.log(res);
             setHouseForRents(res.data.houseForRents);
         });
     }, []);
@@ -34,14 +35,14 @@ function HomestayList() {
 
                     <div
                         className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
-                        {houseForRents.map((item) => (
+                        {houseForRents && houseForRents.map((item) => (
                             <div
                                 key={item._id}
-                                onClick={() => handleClick(item)}
-                                className="group relative"
+                                onClick={() => handleClick(item._id)}
+                                className="group relative cursor-pointer"
                             >
                                 <div
-                                    className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
+                                    className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
                                     <img
                                         style={{width: 560, height: 300}}
                                         src={item.image_backdrop}
@@ -58,7 +59,7 @@ function HomestayList() {
                                             Địa chỉ : {item.address}
                                         </p>
                                         <div className="text-sm font-medium text-gray-900">
-                                            VNĐ {item.roomRates} Đêm
+                                            $ {item.roomRates} Đêm
                                         </div>
                                     </div>
                                 </div>

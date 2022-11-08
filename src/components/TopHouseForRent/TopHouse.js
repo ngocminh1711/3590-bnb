@@ -1,25 +1,24 @@
-import HomestayList from "../HomestayList.js";
+
 import Header from "../header/Header";
 import React from "react";
 import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
-import './Index.css'
+import '../home/Index.css'
 
 import OptionsTab from "../iconSlide/optionsTab";
 
 import Footer from "../footer/Footer";
 
 
-function Home(props) {
+function TopHouse(props) {
     return (
         <>
             <Header/>
             <OptionsTab/>
             {/* <Banner/> */}
             <TopHouseForRent/>
-            <HomestayList/>
-            <Footer/>
+            <Footer />
         </>
     );
 }
 
-export default Home;
+export default TopHouse;

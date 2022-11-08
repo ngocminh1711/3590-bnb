@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouseForRent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -44,6 +59,7 @@
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -61,6 +77,7 @@
       <workItem from="1667524235047" duration="1265000" />
       <workItem from="1667527952963" duration="2219000" />
       <workItem from="1667546261984" duration="1645000" />
+      <workItem from="1667888816471" duration="1541000" />
     </task>
     <servers />
   </component>

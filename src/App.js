@@ -14,6 +14,10 @@ import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import GetStarted from "./components/getStarted/GetStarted.js";
+import OptionsTab from "./components/iconSlide/optionsTab";
+import TopHouse from "./components/TopHouseForRent/TopHouse";
+import VipHouse from "./components/VipHouse/VipHouse";
+import NormalHouse from "./components/NormalHouse/NormalHouse";
 
 
 
@@ -37,6 +41,9 @@ function App() {
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
         <Route path="/get-started" element={<GetStarted/>}/>
+        <Route path="/top4" element={<TopHouse/>}/>
+        <Route path="/vip" element={<VipHouse/>}/>
+        <Route path="/normal" element={<NormalHouse/>}/>
       </Routes>
     </>
   );

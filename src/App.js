@@ -21,22 +21,18 @@ import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
-const Container = styled.div`
-flex`
-const Main = styled.div`
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
-  background-color: ${({ theme }) => theme.bg};
-`;
-import OptionsTab from "./components/iconSlide/optionsTab";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
 import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
 import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
+
 const Container = styled.div`
 flex`;
+
 const Main = styled.div`
   background-color: ${({ theme }) => theme.bg} !important;
 `;
@@ -73,7 +69,9 @@ function App() {
               <Route path="/vip" element={<VipHouse />} />
               <Route path="/normal" element={<NormalHouse />} />
               <Route path="/onebedroom" element={<ShowOneBedRoom />} />
-              <Route path="/multiplebedroom"element={<ShowMultipleBedRoom />}
+              <Route
+                path="/multiplebedroom"
+                element={<ShowMultipleBedRoom />}
               />
             </Routes>
           </Main>

@@ -119,7 +119,7 @@ function Header({ lightMode, setLightMode }) {
     <>
       <header className="py-6 mb-0">
         <div className="container mx-auto flex justify-between items-center">
-          <Link to="/">
+          <Link to="/home">
             <img
               className="w-28 h-9 cursor-pointer"
               src={"https://links.papareact.com/qd3"}
@@ -127,7 +127,7 @@ function Header({ lightMode, setLightMode }) {
             />
           </Link>
 
-          <div className="ml-0">
+          <div className="mb-0">
             <SearchHouses />
           </div>
           <button onClick={() => setLightMode(!lightMode)}>

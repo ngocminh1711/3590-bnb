@@ -23,14 +23,10 @@ import GetStarted from "./components/getStarted/GetStarted.js";
 const Container = styled.div`
 flex`
 const Main = styled.div`
-
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
-
-
   background-color: ${({ theme }) => theme.bg};
-
 `;
 function App() {
   const [lightMode, setLightMode] = useState(true);

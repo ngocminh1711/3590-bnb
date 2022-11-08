@@ -4,6 +4,8 @@ import React from "react";
 import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
 import './Index.css'
 import OptionsTab from "../iconSlide/optionsTab";
+import DemoSlide from "../DemoSlide/DemoSlide";
+import Footer from "../footer/Footer";
 
 function Home(props) {
     return (
@@ -12,7 +14,7 @@ function Home(props) {
             {/* <Banner/> */}
             <TopHouseForRent/>
             <HomestayList/>
-
+            <Footer />
         </>
     );
 }

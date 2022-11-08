@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
 export default function Profile() {
   const navigate = useNavigate();
+  const [profile, setProfile] = useState({});
+  const {id} = useParams();
+  
   let token = localStorage.getItem("token");
   let user;
   if (token) {

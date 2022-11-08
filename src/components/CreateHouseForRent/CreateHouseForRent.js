@@ -77,7 +77,7 @@ function CreateHouseForRent() {
       .then((res) => setHouseStatus(res.data.data))
       .catch((err) => console.log(err));
   }, []);
-    console.log(newHouseForRent)
+
   return (
     <>
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">

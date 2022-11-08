@@ -10,13 +10,6 @@ function Header() {
   const dispatch = useDispatch();
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector(state => state.profileUser)
-  console.log('id--------' + userLoginProfile.idUserLogin);
-
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);

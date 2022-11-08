@@ -17,6 +17,10 @@ import { useState } from "react";
 import { darkTheme, lightTheme } from "./utils/Theme";
 import Header from "./components/header/Header.js";
 import Example from "./components/home/Example.js";
+import ProfileExample from "./components/Profile/ProfileExample.js";
+import EditProfile from "./components/Profile/EditProfile.js";
+import DemoSlide from "./components/DemoSlide/DemoSlide";
+import GetStarted from "./components/getStarted/GetStarted.js";
 const Container = styled.div`
 flex`
 const Main = styled.div`
@@ -44,6 +48,11 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/slide" element={<Slide />} />
           <Route path ="/example" element={<Example />} />
+          <Route path="/profile/:id" element={<Profile />} />
+        {/*<Route path="/profile2" element={<ProfileExample />} />*/}
+        <Route path="/profile/edit/:id" element={<EditProfile />} />
+        <Route path="/demo" element={<DemoSlide/>}/>
+        <Route path="/get-started" element={<GetStarted/>}/>
         </Routes>
         <Footer />
         </Main>

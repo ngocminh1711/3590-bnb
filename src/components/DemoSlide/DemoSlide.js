@@ -1,114 +1,50 @@
-import './DemoSlide.css'
-import {useEffect, useRef, useState} from "react";
-import {useNavigate} from "react-router";
-import axios from "axios";
-let count =0;
+import './DemoSlide.css';
+import 'flowbite';
+
 function DemoSlide() {
-
-
-
-    const [topHouseForRent, setTopHouseForRent] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [imageView, setImageView] = useState([])
-    const navigate = useNavigate()
-
-
-    const getTopHouseForRent = async () => {
-
-        return await axios.get('http://localhost:8000/api/products/top-house')
-
-    }
-
-    const handleClick = (e) => {
-        let id = e
-        navigate('/detail-house', {state: {houseId: id}})
-    }
-
-    useEffect(() => {
-
-        getTopHouseForRent().then(res => {
-            setTopHouseForRent(res.data.topHouseForRent)
-        })
-
-    }, [])
-
-    const  handleOnNextClick = (index) => {
-        const isLastSlide = currentIndex === topHouseForRent[index].image_view.length - 1;
-        const newIndex = isLastSlide ? 0 : currentIndex + 1
-        setCurrentIndex(newIndex)
-    }
-    const  handleOnPrevClick = (index) => {
-        const isFirstSlide = currentIndex === 0
-        const newIndex = isFirstSlide ? topHouseForRent[index].image_view.length - 1 : currentIndex - 1;
-        setCurrentIndex(newIndex)
-    }
-
-    console.log(topHouseForRent)
 
     return (
         <>
-            <div>
-                <div className="bg-white">
-                    <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8 ">
-
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">Top 4 houses with the most
-                            tenants</h2>
-                        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {topHouseForRent.map((item,index) => (
-                                <div key={item._id}
-                                    // className="group relative"
-                                >
-                                    <div
-                                        className=" aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-2xl border bg-gray-200  ">
-                                        <div className=" w-full ">
-                                            <div className="aspect-w-16 aspect-h-9 ">
-                                                <img
-                                                    style={{width: 560, height: 300}}
-                                                    src={item.image_view[currentIndex]}
-                                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                                />
-                                            </div>
-                                            <div className=' w-full top-1/2 transform -translate-y-1/2 px-3 flex justify-between items-center'>
-                                            <button type="button" onClick={()=> handleOnPrevClick(index)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
-                                                </svg>
-                                            </button>
-                                            <button type="button" onClick={()=>handleOnNextClick(index)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                                </svg>
-                                            </button>
-                                        </div>
-
-
-
-                                        </div>
-
-                                    </div>
-                                    <div className="mt-4 flex justify-between">
-                                        <div>
-                                            <h2 className="text-sm font-medium text-gray-700">
-                                            <span aria-hidden="true"
-                                                  className="absolute inset-0"/>
-                                                {item.name}
-                                            </h2>
-                                            <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
-                                            <div className="text-sm font-medium text-gray-900">VNĐ {item.roomRates} Night
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-
-                                </div>
-
-                            ))}
-                        </div>
+            <div id="controls-carousel" className="relative" data-carousel="static">
+                {/* Carousel wrapper */}
+                <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    {/* Item 1 */}
+                    <div className="duration-700 ease-in-out absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item>
+                        <img src="https://vcdn1-dulich.vnecdn.net/2022/07/29/ks6-1659081502.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=xd2jX_GTvalgcdKu-2Ktqw" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                    </div>
+                    {/* Item 2 */}
+                    <div className="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="active">
+                        <img src="https://cdn3.ivivu.com/2014/01/SUPER-DELUXE2.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                    </div>
+                    {/* Item 3 */}
+                    <div className="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-full z-10" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-3.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                    </div>
+                    {/* Item 4 */}
+                    <div className="hidden duration-700 ease-in-out absolute inset-0 transition-all transform" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-4.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+                    </div>
+                    {/* Item 5 */}
+                    <div className="hidden duration-700 ease-in-out absolute inset-0 transition-all transform" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-5.svg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
                     </div>
                 </div>
+                {/* Slider controls */}
+                <button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" className="w-6 h-6 text-white dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            <span className="sr-only">Previous</span>
+          </span>
+                </button>
+                <button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg aria-hidden="true" className="w-6 h-6 text-white dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            <span className="sr-only">Next</span>
+          </span>
+                </button>
             </div>
+
+
         </>
 
     )

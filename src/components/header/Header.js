@@ -27,10 +27,15 @@ const Hr = styled.hr`
 `;
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
-  let user;
-  if (token) {
-    user = jwtDecode(token);
-  }
+  const userLoginProfile = useSelector(state => state.profileUser)
+  console.log('id--------' + userLoginProfile.idUserLogin);
+  const PORT = process.env.PORT || 8000;
+  const dispatch = useDispatch();
+  // let user;
+  // if (token) {
+  //   user = jwtDecode(token);
+  // }
+  // console.log(user)
 
   const abc = (e) => {
     let id = e;
@@ -85,27 +90,16 @@ function Header({ lightMode, setLightMode }) {
     setShowDropDown(!showDropDown);
   };
 
-  //   const handleCloseInfo = () => {
-  //     setShowDropDown(false)
-  //   }
-
-  // const handleClose = () => {
-  //   setShowProfile(false);
-  //   setBlockInput(true);
-  // };
-
   const handleShowProfile = () => {
     setShowDropDown(false);
+  
     if (token) {
-      navigate("/profile");
+      navigate(`/profile/${userLoginProfile.idUserLogin}`)
     } else {
       navigate("/login");
     }
   };
-  // const handleEditProfile = (e) => {
-  //   e.preventDefault();
-  //   setBlockInput(false);
-  // };
+
 
   const handleSaveChange = () => {};
 

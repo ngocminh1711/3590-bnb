@@ -1,32 +1,102 @@
 import Header from "../header/Header";
+
+import axios from "axios";
+
+
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
+
 export default function Profile() {
+  const PORT = process.env.PORT || 8000;
   const navigate = useNavigate();
+
+  const [profile, setProfile] = useState({});
+  const {id} = useParams();
+  
+
   let token = localStorage.getItem("token");
-  let user;
-  if (token) {
-    user = jwtDecode(token);
-    console.log(user);
+  if (!token) {
+    navigate("/login");
+  }
+  const getApiProfile = async () => {
+    return await axios.get(`http://localhost:${PORT}/api/user/${id}`);
+  }
+
+
+  const handleEditProfile = (e) => {
+    navigate(`/profile/edit/${id}`)
   }
 
   useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
+      getApiProfile().then(res => {
+        setProfile(res.data.data)
+      }).catch(err => console.log(err.message))
   }, []);
   return (
     <>
+<<<<<<< HEAD
       <Header />
       {/* <div>
+=======
+      <div>
+        <Header />
+        <link
+          rel="stylesheet"
+          href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+        />
+        <main className="profile-page">
+          <section className="relative block h-500-px">
+            <div
+              className="absolute top-0 w-full h-full bg-center bg-cover"
+              style={{
+                backgroundImage:
+                  `url(${profile.backdrop_Image})`,
+              }}
+            >
+              <span
+                id="blackOverlay"
+                className="w-full h-full absolute opacity-50 bg-black"
+              />
+            </div>
+            <div
+              className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
+              style={{ transform: "translateZ(0px)" }}
+            >
+              <svg
+                className="absolute bottom-0 overflow-hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+                version="1.1"
+                viewBox="0 0 2560 100"
+                x={0}
+                y={0}
+              >
+                <polygon
+                  className="text-blueGray-200 fill-current"
+                  points="2560 0 2560 100 0 100"
+                />
+              </svg>
+            </div>
+          </section>
+          <section className="relative py-16 bg-blueGray-200">
+            <div className="container mx-auto px-4">
+              <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+                <div className="px-6">
+
+>>>>>>> 5f6ce78acffbb209d3a5605af47f60da1f3a0a83
     <div className="px-6 mt-20">
+
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                       <div className="relative">
                         <img
                           alt="..."
-                          src={user.image}
+                          src={profile.image}
                           className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                         />
                       </div>
@@ -36,6 +106,7 @@ export default function Profile() {
                         <button
                           className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                           type="button"
+                          onClick={(e)=> handleEditProfile(e)}
                         >
                           Edit your profile
                         </button>
@@ -71,20 +142,20 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className="text-center mt-12">
-                    <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                      {user.name}
+                    <h3 className="text-4xl font-semibold leading-normal text-blueGray-700 mb-2">
+                      {profile.name}
                     </h3>
                     <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                       <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400" />
-                      {user.address}
+                      {profile.address}
                     </div>
-                    <div className="mb-2 text-blueGray-600 mt-10">
+                    <div className="mb-2 text-blueGray-600">
                       <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400" />
-                      {user.email}
+                      {profile.email}
                     </div>
                     <div className="mb-2 text-blueGray-600">
                       <i className="fas fa-phone mr-2 text-lg text-blueGray-400" />
-                      {user.phone}
+                      {profile.phone}
                     </div>
                   </div>
                   <div className="mt-10 py-10 border-t border-blueGray-200 text-center">

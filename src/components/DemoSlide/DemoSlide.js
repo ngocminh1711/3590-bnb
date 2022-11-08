@@ -1,5 +1,6 @@
 import "./DemoSlide.css";
 import "flowbite";
+import Footer from "../footer/Footer";
 
 function DemoSlide() {
   return (
@@ -113,6 +114,7 @@ function DemoSlide() {
           </span>
         </button>
       </div>
+      <Footer/>
     </>
   );
 }

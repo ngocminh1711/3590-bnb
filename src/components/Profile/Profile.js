@@ -2,6 +2,7 @@ import Header from "../header/Header";
 import { useNavigate, useParams} from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../footer/Footer";
 
 export default function Profile() {
   const PORT = process.env.PORT || 8000;
@@ -195,6 +196,7 @@ export default function Profile() {
           </section>
         </main>
       </div>
+      <Footer/>
     </>
   );
 }

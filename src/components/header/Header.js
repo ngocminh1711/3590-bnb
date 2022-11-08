@@ -108,7 +108,7 @@ function Header() {
             />
           </Link>
 
-          <div className="ml-0">
+          <div className="mb-0">
             <SearchHouses />
           </div>
 

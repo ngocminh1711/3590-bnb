@@ -200,28 +200,28 @@ function DetailHouse() {
                                         Basic</h1>
 
                                     <div className="py-4">
-                                        <h2 className="text-slate-500 text-1xl title-font font-medium">Listing title</h2>
+                                        <h2 className="text-gray-900 text-1xl title-font font-medium">Listing title</h2>
                                         <p className="text-slate-400">{house?.name}</p>
                                     </div>
                                 </div>
                                 <span></span>
                                 <div className="py-4">
 
-                                    <h2 className="text-slate-500 text-1xl title-font font-medium mb-1 inline">Listing
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
                                         description</h2>
                                     <p className="text-slate-400">{house?.description}</p>
                                 </div>
                                 <span></span>
                                 <div className="py-4">
 
-                                    <h2 className="text-slate-500 text-1xl title-font font-medium mb-1 inline">Listing
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
                                         description</h2>
 
                                     <p className="text-slate-400">{house?.address}</p>
                                 </div>
                                 <span></span>
                                 <div className="py-4">
-                                    <h2 className="text-slate-500 text-1xl title-font font-medium mb-1 inline">Property and
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Property and
                                         rooms</h2>
                                     <p className="text-slate-400">{house?.typeRoom.name}</p>
                                     <p className="text-slate-400">Bedroom: {house?.numberOfBedrooms}</p>

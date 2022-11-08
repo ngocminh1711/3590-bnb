@@ -13,7 +13,7 @@ function ListHost() {
   const [products, setProducts] = useState([]);
 
   const [value, setValue] = useState(false);
-  const dispatch = useDispatch();
+
 
 
   const getApiStatus = async (id) => {
@@ -65,7 +65,10 @@ function ListHost() {
     getApi().then((res) => {
       setProducts(res.data.houseForRents);
     });
-  }, [value]);
+  }, []);
+
+
+  console.log(products)
   return (
     <div>
       <Header />
@@ -104,7 +107,7 @@ function ListHost() {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {products.map((item, index) => (
+                {products && products.map((item, index) => (
                   <tr
                     key={item._id}
                     // onClick={()=>{handleClick(item._id)}}
@@ -137,7 +140,7 @@ function ListHost() {
                           aria-hidden
                           className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                         />
-                        <span className="relative text-xs">{item.status}</span>
+                        <span className="relative text-xs">{item.status.name}</span>
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">

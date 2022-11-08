@@ -5,11 +5,8 @@ import createUserLogin from "../features/addUserToNavbar/addUserToNavbarSlice.js
 import searchReducer from "../features/search/searchSlice"
 import likeHouseForRentReducer from "../features/likeanddislikeSlice/likeSlice"
 import dislikeHouseForRentReducer from "../features/likeanddislikeSlice/disLikeSlice"
-import searchReducer from "../features/search/searchSlice";
+// import searchReducer from "../features/search/searchSlice";
 import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
-
-
-
 export const store = configureStore({
   reducer: {
     createBackdrop: createBackdropURL,

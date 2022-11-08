@@ -1,12 +1,12 @@
 import Header from "../header/Header";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
+import { useState } from "react";
 export default function Profile() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
-  const {id} = useParams();
-  
+  const { id } = useParams();
   let token = localStorage.getItem("token");
   let user;
   if (token) {
@@ -20,9 +20,8 @@ export default function Profile() {
     }
   }, []);
   return (
-  
     <>
-    {/* <div>
+      {/* <div>
     <div className="px-6 mt-20">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -163,13 +162,11 @@ export default function Profile() {
 
       <div
         className="p-16 px-0 pb-0 w-auto bg-[url('/src/public/background_sea.jpg')]"
-        style={{paddingBotton:0 ,
-      paddingLeft:150 ,
-      paddingRight:150}}
+        style={{ paddingBotton: 0, paddingLeft: 150, paddingRight: 150 }}
       >
         <div
           className=" bg-white shadow p-8 mt-44"
-          style={{marginBotton:-20}}
+          style={{ marginBotton: -20 }}
         >
           {" "}
           <div className="grid grid-cols-1 md:grid-cols-3">

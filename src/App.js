@@ -20,14 +20,14 @@ import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import GetStarted from "./components/getStarted/GetStarted.js";
+
+
 const Container = styled.div`
 flex`
 const Main = styled.div`
-import ProfileExample from "./components/Profile/ProfileExample.js";
-import EditProfile from "./components/Profile/EditProfile.js";
-import DemoSlide from "./components/DemoSlide/DemoSlide";
-  background-color: ${({ theme }) => theme.bg};
+  background-color: ${({ theme }) => theme.bg} !important;
 `;
+
 function App() {
   const [lightMode, setLightMode] = useState(true);
   return (
@@ -37,7 +37,8 @@ function App() {
         <Header lightMode={lightMode} setLightMode={setLightMode}/>
         <Main>
         <Routes>
-          <Route path="/" element={<Home/>} />
+        <Route path="/" element={<GetStarted/>}/> 
+          <Route path="/home" element={<Home/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<ListHost />} />
@@ -52,9 +53,8 @@ function App() {
         {/*<Route path="/profile2" element={<ProfileExample />} />*/}
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
-        <Route path="/get-started" element={<GetStarted/>}/>
+        
         </Routes>
-        <Footer />
         </Main>
         </Container>
      </ThemeProvider>

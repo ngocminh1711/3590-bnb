@@ -77,6 +77,7 @@ const OptionsTabOneBed = () => {
                         <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
 
                     
+                   
                 </Tabs>
                 <Button
                     sx={{

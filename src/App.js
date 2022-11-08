@@ -60,9 +60,7 @@ function App() {
               <Route path="/profile/:id" element={<Profile />} />
               <Route path="/profile/edit/:id" element={<EditProfile />} />
               <Route path="/demo" element={<DemoSlide />} />
-
               <Route path="/dashboard/detail/:id" element={<DetailHouse />} />
-
               <Route path="/get-started" element={<GetStarted />} />
               <Route path="/top4" element={<TopHouse />} />
               <Route path="/vip" element={<VipHouse />} />

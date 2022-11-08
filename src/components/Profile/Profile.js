@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { useEffect } from "react";
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
+import Footer from "../footer/Footer";
 export default function Profile() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
@@ -232,6 +233,7 @@ export default function Profile() {
           </div>{" "}
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

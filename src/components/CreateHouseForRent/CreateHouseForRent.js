@@ -80,7 +80,6 @@ function CreateHouseForRent() {
     console.log(newHouseForRent)
   return (
     <>
-      <Header />
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 pl-2 pr-2 ">
           <img

@@ -25,6 +25,7 @@ const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
+
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector(state => state.profileUser)

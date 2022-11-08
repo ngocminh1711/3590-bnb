@@ -40,6 +40,7 @@ function ListHost() {
     // await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`).then(res => dispatch(getDetailHouse(res.data.data)))
     navigate(`/dashboard/detail/${id}`)
 
+
   };
   const [showDropDown, setShowDropDown] = useState(false);
   const handleShowInfo = () => {

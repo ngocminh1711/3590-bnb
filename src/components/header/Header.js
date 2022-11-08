@@ -37,10 +37,6 @@ function Header({ lightMode, setLightMode }) {
   // }
   // console.log(user)
 
-  const abc = (e) => {
-    let id = e;
-  };
-
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   // const [showProfile, setShowProfile] = useState(false);

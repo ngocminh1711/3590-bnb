@@ -9,7 +9,6 @@ import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
 import Footer from "./components/footer/Footer.js";
 import ChangePassword from "./components/host/ChangePassword.js";
-// import Profile from "./components/Profile/RawInformation.js";
 import Profile from "./components/Profile/Profile.js";
 import Slide from "./components/Slide.js";
 import styled, { ThemeProvider } from "styled-components";
@@ -25,13 +24,18 @@ const Container = styled.div`
 flex`
 const Main = styled.div`
 
+import ProfileExample from "./components/Profile/ProfileExample.js";
+import EditProfile from "./components/Profile/EditProfile.js";
+import DemoSlide from "./components/DemoSlide/DemoSlide";
+
+
   background-color: ${({ theme }) => theme.bg};
 
 `;
 function App() {
   const [lightMode, setLightMode] = useState(true);
   return (
-
+<>
     <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
       <Container>
         <Header lightMode={lightMode} setLightMode={setLightMode}/>
@@ -58,6 +62,7 @@ function App() {
         </Main>
         </Container>
      </ThemeProvider>
+    </>
   );
 }
 export default App;

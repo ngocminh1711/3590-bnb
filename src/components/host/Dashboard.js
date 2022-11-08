@@ -132,9 +132,11 @@ function ListHost() {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {products.map((item, index) => (
-                  // showDropDown[item._id] = false
-                  <tr key={item._id}>
+                {products && products.map((item, index) => (
+                  <tr
+                    key={item._id}
+                    // onClick={()=>{handleClick(item._id)}}
+                  >
                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                       <div className="flex items-center">
                         <div>
@@ -162,7 +164,7 @@ function ListHost() {
                           aria-hidden
                           className="absolute inset-0 bg-rose-600 opacity-50 rounded-full"
                         />
-                        <span className="relative text-xs">{item.status}</span>
+                        <span className="relative text-xs">{item.status.name}</span>
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">

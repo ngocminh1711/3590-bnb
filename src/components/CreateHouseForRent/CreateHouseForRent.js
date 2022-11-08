@@ -69,6 +69,8 @@ function CreateHouseForRent() {
             .catch(err => console.log(err))
     }, [])
 
+    console.log(newHouseForRent)
+
 
     return (
         <>

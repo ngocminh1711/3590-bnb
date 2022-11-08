@@ -52,6 +52,7 @@ function DetailHouseForRent() {
                     <div>
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">HOUSE FOR RENT' NAME</h2>
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{houseForRent.name}</h1>
+                         
                         <div className=" grid grid-cols-3 gap-4 ">
                             <div>
                                 <svg fill="currentColor" stroke="currentColor" strokeLinecap="round"
@@ -63,7 +64,8 @@ function DetailHouseForRent() {
                                 </svg>
                                 <p className="float-left">4.65</p>
                             </div>
-                            <p>30 reviews </p>
+                            <p>30 reviews  
+                                    </p>
                             <p>{houseForRent.address}</p>
                         </div>
                     </div>
@@ -100,9 +102,8 @@ function DetailHouseForRent() {
                     </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
-                    <div className="grid grid-rows-4 gap-4">
-                        <h1 className="text-black-500 text-2xl title-font font-medium mb-1">Entire rental unti hosted by
-                            Nguyen</h1>
+                    <div className="grid grid-rows-4 gap-2">
+                        <h1 className="text-black-500 text-2xl title-font font-medium mb-1">Entire rental unti hosted by Nguyen</h1>
                         <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">*{houseForRent.numberOfBedrooms} bedrooms
                             * {houseForRent.numberOfBathrooms} bathrooms </p>
                         <div>

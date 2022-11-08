@@ -29,11 +29,10 @@ const OptionsTab = () => {
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor="secondary"
-             textColor="primary"
+            indicatorColor="undefined"
+             textColor="secondary"
             variant="scrollable"
             scrollButtons
-
             sx={{
               [`& .${tabsClasses.scrollButtons}`]: {
                 '&.Mui-disabled': { opacity: 0.3 },

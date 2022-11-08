@@ -16,7 +16,6 @@ import Slide from "./components/Slide.js";
 function App() {
   return (
     <>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

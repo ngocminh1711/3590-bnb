@@ -20,6 +20,12 @@ import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import GetStarted from "./components/getStarted/GetStarted.js";
+import OptionsTab from "./components/iconSlide/optionsTab";
+import TopHouse from "./components/TopHouseForRent/TopHouse";
+import VipHouse from "./components/VipHouse/VipHouse";
+import NormalHouse from "./components/NormalHouse/NormalHouse";
+import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
+import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
 
 
 const Container = styled.div`
@@ -54,7 +60,15 @@ function App() {
         <Route path="/profile/edit/:id" element={<EditProfile />} />
         <Route path="/demo" element={<DemoSlide/>}/>
         
-        </Routes>
+      
+        <Route path="/get-started" element={<GetStarted/>}/>
+        <Route path="/top4" element={<TopHouse/>}/>
+        <Route path="/vip" element={<VipHouse/>}/>
+        <Route path="/normal" element={<NormalHouse/>}/>
+        <Route path="/onebedroom" element={<ShowOneBedRoom/>}/>
+        <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
+      </Routes>
+    
         </Main>
         </Container>
      </ThemeProvider>

@@ -31,6 +31,7 @@ function DetailHouseForRent() {
     let id = state.houseId;
 
     getData(id).then((res) => {
+      console.log(res);
       setHouseForRent({
         ...houseForRent,
         name: res.data.data.name,
@@ -47,8 +48,8 @@ function DetailHouseForRent() {
   }, []);
   return (
     <>
-      
-      <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
+     
+      {houseForRent && houseForRent ?<> <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 ">
           <div>
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -372,7 +373,7 @@ function DetailHouseForRent() {
             </div>
           </div>
         </div>
-      </div>
+      </div></> : ''}  
       <Footer/>
     </>
   );

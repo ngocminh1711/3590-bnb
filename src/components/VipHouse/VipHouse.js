@@ -10,7 +10,7 @@ import Footer from "../footer/Footer";
 import VipHouseForRent from "./VipHouseForRent";
 
 
-function TopHouse(props) {
+function VipHouse(props) {
     return (
         <>
             <Header/>
@@ -22,4 +22,4 @@ function TopHouse(props) {
     );
 }
 
-export default TopHouse;
+export default VipHouse;

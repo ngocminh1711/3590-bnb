@@ -8,30 +8,52 @@ import {FaCampground, FaFilter} from 'react-icons/fa';
 
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
-import {BsSnow} from "react-icons/bs";
+import {BsFillHouseFill, BsSnow} from "react-icons/bs";
 import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer} from "react-icons/gi";
-import {AiOutlineCoffee} from "react-icons/ai";
+
 import {BiHomeAlt} from "react-icons/bi";
+import {useDispatch} from "react-redux";
+import {
+    searchMultipleBedRoom,
+    searchNormalHouse,
+    searchOneBedRoom,
+    searchTop4,
+    searchVipHouse
+} from "../../features/search/searchSlice";
+import topHouseForRent from "../TopHouseForRent/TopHouseForRent";
+import vipHouse from "../VipHouse/VipHouse";
+import normalHouse from "../NormalHouse/NormalHouse";
+import oneBedRoom from "../BedRoom/OneBedRoom";
+import multipleBedRoom from "../BedRoom/MultipleBedRoom";
 
 const OptionsTab = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const handleClickHome = () => {
+        navigate('/home')
+    }
     const handleClickTop4 = () => {
+        dispatch(searchTop4(topHouseForRent))
         navigate('/top4')
     }
     const handleClickVipHouse = () => {
+        dispatch(searchVipHouse(vipHouse))
         navigate('/vip')
     }
     const handleClickNormalHouse = () => {
+        dispatch(searchNormalHouse(normalHouse))
         navigate('/normal')
     }
     const handleClickOneBedRoom = () => {
+        dispatch(searchOneBedRoom(oneBedRoom))
         navigate('/onebedroom')
     }
     const handleClickMultipleBedRoom = () => {
+        dispatch(searchMultipleBedRoom(multipleBedRoom))
         navigate('/multiplebedroom')
     }
 
@@ -64,6 +86,7 @@ const OptionsTab = () => {
                         color: '#000000'
                     }}
                 >
+                        <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={24}/>} label='ALL'/>;
                         <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
                         <Tab onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
                         <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={24} />} label='Normal house'/>;
@@ -77,7 +100,7 @@ const OptionsTab = () => {
                         <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
                         <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
 
-                    )}
+
                 </Tabs>
                 <Button
                     sx={{

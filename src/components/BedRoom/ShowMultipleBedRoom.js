@@ -1,25 +1,26 @@
-import HomestayList from "../HomestayList.js";
 import Header from "../header/Header";
 import React from "react";
-import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
-import './Index.css'
+
+import '../home/Index.css'
 
 import OptionsTab from "../iconSlide/optionsTab";
 
 import Footer from "../footer/Footer";
+import MultipleBedRoom from "./MultipleBedRoom";
 
 
-function Home(props) {
+
+
+function ShowMultipleBedRoom(props) {
     return (
         <>
             <Header/>
             <OptionsTab/>
             {/* <Banner/> */}
-            <TopHouseForRent/>
-            <HomestayList/>
-            <Footer/>
+            <MultipleBedRoom />
+            <Footer />
         </>
     );
 }
 
-export default Home;
+export default ShowMultipleBedRoom;

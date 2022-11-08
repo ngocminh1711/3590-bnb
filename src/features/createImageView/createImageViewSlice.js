@@ -6,15 +6,12 @@ const initialState = {
     urls: []
 }
 
-
-
 export const createImageViewSlice = createSlice({
     name: 'createImageView',
     initialState,
     reducers: {
         createImageViewURL: (state, action) => {
             state.urls.push(action.payload)
-
         }
     }
 })

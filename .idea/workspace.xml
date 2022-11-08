@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/getStarted/GetStarted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/EditProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/EditProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/ChangePassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/ChangePassword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +22,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="2H1DoE8MSObXMd9wW4OtD4OSiXT" />
   <component name="ProjectViewState">

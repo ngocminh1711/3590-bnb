@@ -7,6 +7,12 @@ import likeHouseForRentReducer from "../features/likeanddislikeSlice/likeSlice"
 import dislikeHouseForRentReducer from "../features/likeanddislikeSlice/disLikeSlice"
 // import searchReducer from "../features/search/searchSlice";
 import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
+import searchReducer from "../features/search/searchSlice";
+import profileUserReducer from '../features/userProfile/UserProfileSlice.js';
+import getHouseDetail from "../features/getHouseDetail/GetHouseDetailSlice";
+
+
+
 export const store = configureStore({
   reducer: {
     createBackdrop: createBackdropURL,
@@ -15,7 +21,8 @@ export const store = configureStore({
     search: searchReducer,
     like : likeHouseForRentReducer,
     dislike:dislikeHouseForRentReducer,
-    profileUser: profileUserReducer
+    profileUser: profileUserReducer,
+    getHouse: getHouseDetail,
   },
 });
 

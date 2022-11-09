@@ -69,8 +69,6 @@ function ListHost() {
         });
     }, []);
 
-
-    console.log(products)
     return (
         <div>
 

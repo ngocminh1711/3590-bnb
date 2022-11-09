@@ -1,13 +1,18 @@
 import "./DetailHouseForRent.css";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import { useEffect, useState } from "react";
+import React from "react";
 
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import Header from "../header/Header";
+
 import Footer from "../footer/Footer";
 
 function DetailHouseForRent() {
+    const [startDate, setStartDate] = useState(new Date());
   const [houseForRent, setHouseForRent] = useState({
     name: "",
     address: "",
@@ -47,7 +52,6 @@ function DetailHouseForRent() {
     }, [])
     return (
         <>
-            <Header />
             {houseForRent && houseForRent ?<> <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 ">
                     <div>
@@ -165,6 +169,8 @@ function DetailHouseForRent() {
                                 </h1>
                             </div>
                         </div>
+                        <hr className="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"/>
+
                     </div>
                     <div>
                         <div className="z-20 mt-2 h-auto">
@@ -177,8 +183,8 @@ function DetailHouseForRent() {
                                             </h1>
                                             <div className="px-5 pb-5 pt-5">
                                                 <div className=" rounded-full border grid grid-cols-2 grid-flow-row ">
-                                                    <input type="date" />
-                                                    <input type="date" />
+                                                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                                                        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
                                                     <div className="col-span-2">
                                                         <select className="w-full">
                                                             <option>1</option>
@@ -216,6 +222,7 @@ function DetailHouseForRent() {
                         {houseForRent.description}
                     </h1>
                 </div>
+                <hr className="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700"/>
                 <div className="grid grid-cols-2  gap-4 py-10 px-24 pr-0">
                     <div className="grid grid-cols-2 grid-rows-3 gap-4 py-10 px-24 pl-0 pt-0">
                         <div>
@@ -319,7 +326,9 @@ function DetailHouseForRent() {
                             </svg>
                             <p className="inline pl-2">Kitchen </p>
                         </div>
+
                     </div>
+
                 </div>
                 <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-0">
                     <div>

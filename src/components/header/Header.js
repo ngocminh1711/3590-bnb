@@ -27,19 +27,14 @@ const Hr = styled.hr`
 `;
 
 function Header({ lightMode, setLightMode }) {
-  const userId  = useSelector(state=>state.profileUser)
-  let id = userId.idUserLogin
-  console.log(id)
   let token = localStorage.getItem("token");
-  const userLoginProfile = useSelector(state => state.profileUser)
-  console.log('id--------' + userLoginProfile.idUserLogin);
+  
   const PORT = process.env.PORT || 8000;
   const dispatch = useDispatch();
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
+  let user;
+  if (token) {
+    user = jwtDecode(token);
+  }
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
@@ -79,7 +74,7 @@ function Header({ lightMode, setLightMode }) {
       }
     });
   };
-
+  
   const handleLogin = (e) => {
     setTimeout(() => {
       navigate("/login");
@@ -92,9 +87,9 @@ function Header({ lightMode, setLightMode }) {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-  
+
     if (token) {
-      navigate(`/profile/${userLoginProfile.idUserLogin}`)
+      navigate(`/profile/${user.id}`)
     } else {
       navigate("/login");
     }
@@ -102,10 +97,10 @@ function Header({ lightMode, setLightMode }) {
 
 
   const handleSaveChange = () => {};
-  const handleChangePassword = (id) => {
+  const handleChangePassword = () => {
     setTimeout(() => {
-      navigate(`/change-password/${id}`);
-      dispatch((userId))
+      navigate(`/change-password`);
+      
     }, 500);
   };
   const handleCreate = (e) => {
@@ -227,6 +222,17 @@ function Header({ lightMode, setLightMode }) {
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
+                            onClick={() => handleChangePassword()}
+                          >
+                            Change Password
+                          </button>
+                          <hr></hr>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
                             onClick={(e) => handleDashBoard(e)}
                           >
                             Dash Board
@@ -242,17 +248,7 @@ function Header({ lightMode, setLightMode }) {
                           >
                             Logout
                           </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={() => handleChangePassword()}
-                          >
-                            Change Password
-                          </button>
+                          
                         </div>
                       </>
                     )}

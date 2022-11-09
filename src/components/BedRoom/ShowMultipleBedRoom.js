@@ -6,7 +6,7 @@ import '../home/Index.css'
 
 import Footer from "../footer/Footer";
 import MultipleBedRoom from "./MultipleBedRoom";
-import OptionsTabMutiBed from "../../OptionTab/OptionTabMutiBed";
+import OptionsTab from "../iconSlide/optionsTab";
 
 
 
@@ -14,8 +14,8 @@ import OptionsTabMutiBed from "../../OptionTab/OptionTabMutiBed";
 function ShowMultipleBedRoom(props) {
     return (
         <>
-            
-            <OptionsTabMutiBed/>
+
+            <OptionsTab/>
             {/* <Banner/> */}
             <MultipleBedRoom />
             <Footer />

@@ -1,28 +1,18 @@
 
-import Header from "../header/Header";
 import React from "react";
-
 import '../home/Index.css'
-
 import OptionsTab from "../iconSlide/optionsTab";
-
 import Footer from "../footer/Footer";
-
-
-
-import PriceThan1000 from "./Pricethan1000";
-
-
-function ShowLess1000(props) {
+import OneBathRoom from "./OneBathRoom";
+function ShowOneBathRoom(props) {
     return (
         <>
-
             <OptionsTab/>
             {/* <Banner/> */}
-            <PriceThan1000/>
+            <OneBathRoom />
             <Footer />
         </>
     );
 }
 
-export default ShowLess1000;
+export default ShowOneBathRoom;

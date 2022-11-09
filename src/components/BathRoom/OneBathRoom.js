@@ -5,15 +5,15 @@ import '../TopHouseForRent/TopHouseForRent.css'
 
 
 
-function PriceThan500() {
+function OneBathRoom() {
 
-    const [houseThan500, setHouseThan500] = useState([]);
+    const [oneBathRoom, setOneBathRoom] = useState([]);
 
     const navigate = useNavigate()
 
 
-    const getHouseThan500 = async () => {
-        return await axios.get('http://localhost:8000/api/products/than500')
+    const getOneBedRoom = async () => {
+        return await axios.get('http://localhost:8000/api/products/one-bath-room')
     }
 
     const handleClick = (e) => {
@@ -23,27 +23,26 @@ function PriceThan500() {
 
     useEffect(() => {
 
-        getHouseThan500().then(res => {
-
-            setHouseThan500(res.data.roomRates)
+        getOneBedRoom().then(res => {
+            setOneBathRoom(res.data.oneBathRoom)
         })
 
     }, [])
 
 
-    console.log(houseThan500)
+    console.log(oneBathRoom)
 
     return (
         <div>
-            {houseThan500.length > 0 ? (
+            {oneBathRoom.length > 0 ? (
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">House Price 500-1000$
+                        <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">House One Bath Room
                         </h2>
                         <div
                             className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {houseThan500.map((item, index) => (
+                            {oneBathRoom.map((item, index) => (
                                 <div key={item._id}
                                      className="group relative"
                                      onClick={() => handleClick(item._id)}
@@ -64,7 +63,8 @@ function PriceThan500() {
                                                 {item.name}
                                             </h2>
                                             <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
-                                            <div className="text-sm font-medium text-gray-900">${item.roomRates} per night
+                                            <div className="text-sm font-medium text-gray-900">${item.roomRates} per
+                                                night
                                             </div>
 
                                         </div>
@@ -78,6 +78,7 @@ function PriceThan500() {
                     </div>
                 </div>
             ) : (
+
                 <div className="text-center">
                     <img
                         src="https://www.surjen.com/resources/assets/frontend/img/nodatafound.png"
@@ -85,10 +86,9 @@ function PriceThan500() {
                         className="ml-44 h-100 w-50"
                     />
                 </div>
-
             )}
         </div>
     )
 }
 
-export default PriceThan500;
+export default OneBathRoom;

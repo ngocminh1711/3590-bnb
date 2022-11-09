@@ -9,6 +9,8 @@ const initialState = {
     searchedNormalHouse: [],
     searchedOneBedRoom: [],
     searchedMultipleBedRoom: [],
+    searchedOneBathRoom: [],
+    searchedMultipleBathRoom: [],
     searchedHouseLess500: [],
     searchedHouseThan500: [],
     searchedHouseThan1000: [],
@@ -39,6 +41,12 @@ export const searchSlice = createSlice({
             searchMultipleBedRoom: (state, action) => {
                 state.searchedMultipleBedRoom = action.payload
             },
+            searchOneBathRoom: (state, action) => {
+                state.searchedOneBathRoom = action.payload
+            },
+            searchMultipleBathRoom: (state, action) => {
+                state.searchedMultipleBathRoom = action.payload
+            },
             searchHouseLess500: (state, action) => {
                 state.searchedHouseLess500 = action.payload
             },
@@ -53,5 +61,5 @@ export const searchSlice = createSlice({
         }
 })
 
-export const { searchHouse, searchTop4, searchVipHouse ,searchNormalHouse,searchOneBedRoom,searchMultipleBedRoom,searchHouseLess500,searchHouseThan500,searchHouseThan1000 } = searchSlice.actions
+export const { searchHouse, searchTop4, searchVipHouse ,searchNormalHouse,searchOneBedRoom,searchMultipleBedRoom,searchHouseLess500,searchHouseThan500,searchHouseThan1000,searchOneBathRoom,searchMultipleBathRoom } = searchSlice.actions
 export default searchSlice.reducer

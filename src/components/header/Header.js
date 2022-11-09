@@ -29,14 +29,13 @@ const Hr = styled.hr`
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector(state => state.profileUser)
-  console.log('id--------' + userLoginProfile.idUserLogin);
   const PORT = process.env.PORT || 8000;
   const dispatch = useDispatch();
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
+  let user;
+  if (token) {
+    user = jwtDecode(token);
+  }
+  console.log(user)
 
   const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);

@@ -15,7 +15,7 @@ import PriceThan500 from "./PriceThan500";
 function ShowLess500(props) {
     return (
         <>
-            <Header/>
+
             <OptionsTab/>
             {/* <Banner/> */}
             <PriceThan500/>

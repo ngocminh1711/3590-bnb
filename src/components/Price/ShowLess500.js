@@ -14,7 +14,7 @@ import PriceLess500 from "./PriceLess500";
 function ShowLess500(props) {
     return (
         <>
-            <Header/>
+
             <OptionsTab/>
             {/* <Banner/> */}
             <PriceLess500/>

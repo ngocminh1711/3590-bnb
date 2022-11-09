@@ -4,16 +4,12 @@ import {useNavigate} from "react-router";
 import '../TopHouseForRent/TopHouseForRent.css'
 
 
-
-function PriceThan500() {
-
-    const [houseThan500, setHouseThan500] = useState([]);
-
+function MultipleBathRoom() {
+    const [multipleBathRoom, setMultipleBathRoom] = useState([]);
     const navigate = useNavigate()
 
-
-    const getHouseThan500 = async () => {
-        return await axios.get('http://localhost:8000/api/products/than500')
+    const getMultipleBedRoom = async () => {
+        return await axios.get('http://localhost:8000/api/products/multi-bath-room')
     }
 
     const handleClick = (e) => {
@@ -23,27 +19,26 @@ function PriceThan500() {
 
     useEffect(() => {
 
-        getHouseThan500().then(res => {
-
-            setHouseThan500(res.data.roomRates)
+        getMultipleBedRoom().then(res => {
+            setMultipleBathRoom(res.data.multipleBathRoom)
         })
 
     }, [])
 
 
-    console.log(houseThan500)
+    console.log(multipleBathRoom)
 
     return (
         <div>
-            {houseThan500.length > 0 ? (
+            {multipleBathRoom.length > 0 ? (
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
-                        <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">House Price 500-1000$
+                        <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">House Multiple Bath Room
                         </h2>
                         <div
                             className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                            {houseThan500.map((item, index) => (
+                            {multipleBathRoom.map((item, index) => (
                                 <div key={item._id}
                                      className="group relative"
                                      onClick={() => handleClick(item._id)}
@@ -91,4 +86,4 @@ function PriceThan500() {
     )
 }
 
-export default PriceThan500;
+export default MultipleBathRoom;

@@ -50,8 +50,7 @@ function SearchedHouseList() {
                                             <p className="mt-1 text-sm text-gray-500">
                                                 Địa chỉ : {item.address}
                                             </p>
-                                            <div className="text-sm font-medium text-gray-900">
-                                                VNĐ {item.roomRates} Đêm
+                                            <div className="text-sm font-medium text-gray-900">${item.roomRates} per night
                                             </div>
                                         </div>
                                     </div>

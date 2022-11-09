@@ -3,9 +3,7 @@ import Header from "../header/Header";
 import React from "react";
 import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
 import './Index.css'
-
 import OptionsTab from "../iconSlide/optionsTab";
-
 import Footer from "../footer/Footer";
 
 
@@ -14,7 +12,6 @@ function Home(props) {
         <>
             <Header/>
             <OptionsTab/>
-            {/* <Banner/> */}
             <TopHouseForRent/>
             <HomestayList/>
             <Footer/>

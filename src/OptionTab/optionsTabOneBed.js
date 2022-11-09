@@ -66,7 +66,7 @@ const OptionsTabOneBed = () => {
                         <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
                         <Tab  onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
                         <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding   size={24} />} label='Normal house'  />;
-                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
+                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater color={"#ec6078"} size={24} />} label='Single bedroom'/>;
                         <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide  size={24} />} label='Multiple bedroom'/>;
                         <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
                         <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;

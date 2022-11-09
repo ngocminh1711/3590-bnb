@@ -66,7 +66,7 @@ function ListHost() {
     getApi().then((res) => {
       setProducts(res.data.houseForRents);
     });
-  }, []);
+  }, [handleDelete]);
 
 
   console.log(products)
@@ -124,8 +124,9 @@ function ListHost() {
                     </td>
                     <td className="px-6 py-3 whitespace-no-wrap border-b border-gray-500 text-center">
                       <img
-                        className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
-                        src={item.image_backdrop}
+                        className="w-25 h-20 border-gray-200 border -m-1 transform hover:scale-150"
+                        src={item.image_backdrop} 
+                        style={{width:'200px', height:'120px'}}
                         alt="null"
                       />
                     </td>
@@ -151,7 +152,7 @@ function ListHost() {
                     </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                       <div className="text-left">
-                        <div>
+                        {/* <div>
                           <button
                             type="button"
                             className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700  hover:bg-gray-50 hover:shadow-md "
@@ -166,7 +167,7 @@ function ListHost() {
                               </i>
                             </a>
                           </button>
-                        </div>
+                        </div> */}
                         <div
                           className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                           role="menu"
@@ -231,7 +232,7 @@ function ListHost() {
                       >
                         <a className="text-blue-400 hover:text-blue-200 mr-2">
                           <i className="material-icons-outlined text-base">
-                            favorite_outline
+                          visibility
                           </i>
                         </a>
                       </button>

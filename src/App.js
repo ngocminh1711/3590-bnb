@@ -21,22 +21,16 @@ import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
-import ProfileExample from "./components/Profile/ProfileExample.js";
-import EditProfile from "./components/Profile/EditProfile.js";
-import DemoSlide from "./components/DemoSlide/DemoSlide";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
 import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
 import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
-
 const Container = styled.div`
 flex`;
-
 const Main = styled.div`
   background-color: ${({ theme }) => theme.bg} !important;
 `;
-
 function App() {
   const [lightMode, setLightMode] = useState(true);
   return (
@@ -53,10 +47,9 @@ function App() {
               <Route path="/dashboard" element={<ListHost />} />
               <Route
                 path="/admin/host-create"
-                element={<CreateHouseForRent />}
-              />
+                element={<CreateHouseForRent />} />
               <Route path="/detail-house" element={<DetailHouseForRent />} />
-              <Route path="/change-password" element={<ChangePassword />} />
+              <Route path="/change-password/:id" element={<ChangePassword />} />
               <Route path="/searchList" element={<SearchedHouseList />} />
               <Route path="/slide" element={<Slide />} />
               <Route path="/example" element={<Example />} />

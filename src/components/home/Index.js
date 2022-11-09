@@ -12,7 +12,6 @@ import Footer from "../footer/Footer";
 function Home(props) {
     return (
         <>
-        
             <OptionsTab/>
             {/* <Banner/> */}
             <TopHouseForRent/>

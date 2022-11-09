@@ -18,7 +18,6 @@ import Header from "./components/header/Header.js";
 import Example from "./components/home/Example.js";
 import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
-import DemoSlide from "./components/DemoSlide/DemoSlide";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
@@ -32,13 +31,9 @@ const Main = styled.div`
   background-color: ${({ theme }) => theme.bg} !important;
 `;
 function App() {
-  const [lightMode, setLightMode] = useState(true);
+ 
   return (
     <>
-      <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-        <Container>
-          <Header lightMode={lightMode} setLightMode={setLightMode} />
-          <Main>
             <Routes>
               <Route path="/" element={<GetStarted />} />
               <Route path="/home" element={<Home />} />
@@ -67,9 +62,7 @@ function App() {
                 element={<ShowMultipleBedRoom />}
               />
             </Routes>
-          </Main>
-        </Container>
-      </ThemeProvider>
+            <ScrollTop />
     </>
   );
 }

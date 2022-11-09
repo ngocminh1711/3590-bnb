@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="thao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BedRoom/MultipleBedRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BedRoom/MultipleBedRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BedRoom/OneBedRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BedRoom/OneBedRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomestayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomestayList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VipHouse/VipHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VipHouse/VipHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/search/searchSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/search/searchSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +71,7 @@
       <workItem from="1667527952963" duration="2219000" />
       <workItem from="1667546261984" duration="1645000" />
       <workItem from="1667888816471" duration="15051000" />
+      <workItem from="1667959235180" duration="95000" />
     </task>
     <task id="LOCAL-00001" summary="thao">
       <created>1667897778891</created>

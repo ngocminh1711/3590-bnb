@@ -1,13 +1,13 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
 import { FaEdit } from "react-icons/fa";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
+// import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
 
 import jwtDecode from "jwt-decode";
 
@@ -28,8 +28,8 @@ const Hr = styled.hr`
 
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
-  const userLoginProfile = useSelector(state => state.profileUser)
-  console.log('id--------' + userLoginProfile.idUserLogin);
+  const userLoginProfile = useSelector((state) => state.profileUser);
+  console.log("id--------" + userLoginProfile.idUserLogin);
   const PORT = process.env.PORT || 8000;
   const dispatch = useDispatch();
   // let user;
@@ -89,14 +89,13 @@ function Header({ lightMode, setLightMode }) {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-  
+
     if (token) {
-      navigate(`/profile/${userLoginProfile.idUserLogin}`)
+      navigate(`/profile/${userLoginProfile.idUserLogin}`);
     } else {
       navigate("/login");
     }
   };
-
 
   const handleSaveChange = () => {};
 
@@ -108,6 +107,11 @@ function Header({ lightMode, setLightMode }) {
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
+
+  const handleMyNotifications = () => {
+    navigate(`/check-booking/${userLoginProfile.idUserLogin}`)
+  };
+
   const handleDashBoard = (e) => {
     navigate("/dashboard");
   };
@@ -216,6 +220,17 @@ function Header({ lightMode, setLightMode }) {
                             onClick={(e) => handleCreate(e)}
                           >
                             Create House
+                          </button>
+                          <br></br>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleMyNotifications(e)}
+                          >
+                            My Notifications
                           </button>
                           <br></br>
                           <button

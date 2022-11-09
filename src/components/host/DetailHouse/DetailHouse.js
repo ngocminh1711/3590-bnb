@@ -8,7 +8,6 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 
 
-
 function DetailHouse() {
 
     const {id} = useParams()
@@ -176,7 +175,7 @@ function DetailHouse() {
                                         <p className="text-gray-900 text-2xl title-font inline">Image</p>
                                         <button
                                             onClick={() => setShowModal(true)}
-                                            className="pr-10 underline decoration-solid inline float-right">Edit >
+                                            className="pr-10 underline decoration-solid inline float-right">Edit
                                         </button>
                                         {showModal ? (
                                             <>

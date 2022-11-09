@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
+
 const initialState = {
     searchedHouse: [],
     searchedTop4: [],
@@ -8,6 +9,9 @@ const initialState = {
     searchedNormalHouse: [],
     searchedOneBedRoom: [],
     searchedMultipleBedRoom: [],
+    searchedHouseLess500: [],
+    searchedHouseThan500: [],
+    searchedHouseThan1000: [],
 
 };
 
@@ -34,10 +38,20 @@ export const searchSlice = createSlice({
             },
             searchMultipleBedRoom: (state, action) => {
                 state.searchedMultipleBedRoom = action.payload
+            },
+            searchHouseLess500: (state, action) => {
+                state.searchedHouseLess500 = action.payload
+            },
+            searchHouseThan500:(state, action)=> {
+                state.searchedHouseThan500 = action.payload
+            },
+            searchHouseThan1000:(state, action)=> {
+                state.searchedHouseThan1000 = action.payload
             }
+
 
         }
 })
 
-export const { searchHouse, searchTop4, searchVipHouse ,searchNormalHouse,searchOneBedRoom,searchMultipleBedRoom } = searchSlice.actions
+export const { searchHouse, searchTop4, searchVipHouse ,searchNormalHouse,searchOneBedRoom,searchMultipleBedRoom,searchHouseLess500,searchHouseThan500,searchHouseThan1000 } = searchSlice.actions
 export default searchSlice.reducer

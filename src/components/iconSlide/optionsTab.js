@@ -1,10 +1,9 @@
 import Box from '@mui/material/Box';
 import Tabs, {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import {useState} from 'react'
-import {FaCampground, FaFilter} from 'react-icons/fa';
+import {FaCampground} from 'react-icons/fa';
 
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
@@ -14,6 +13,7 @@ import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer}
 import {BiHomeAlt} from "react-icons/bi";
 import {useDispatch} from "react-redux";
 import {
+    searchHouseLess500, searchHouseThan1000, searchHouseThan500,
     searchMultipleBedRoom,
     searchNormalHouse,
     searchOneBedRoom,
@@ -25,6 +25,9 @@ import vipHouse from "../VipHouse/VipHouse";
 import normalHouse from "../NormalHouse/NormalHouse";
 import oneBedRoom from "../BedRoom/OneBedRoom";
 import multipleBedRoom from "../BedRoom/MultipleBedRoom";
+import priceLess500 from "../Price/PriceLess500";
+import priceThan500 from "../Price/PriceThan500";
+import priceThan1000 from "../Price/Pricethan1000";
 
 const OptionsTab = () => {
     const dispatch = useDispatch();
@@ -56,6 +59,18 @@ const OptionsTab = () => {
         dispatch(searchMultipleBedRoom(multipleBedRoom))
         navigate('/multiplebedroom')
     }
+    const handleClickLess500 = () => {
+        dispatch(searchHouseLess500(priceLess500))
+        navigate('/less500')
+    }
+    const handleClickThan500 = () => {
+        dispatch(searchHouseThan500(priceThan500))
+        navigate('/than500')
+    }
+    const handleClickThan1000 = () => {
+        dispatch(searchHouseThan1000(priceThan1000))
+        navigate('/than1000')
+    }
 
 
     return (
@@ -86,36 +101,25 @@ const OptionsTab = () => {
                         color: '#000000'
                     }}
                 >
-                        <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={24}/>} label='ALL'/>;
-                        <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
-                        <Tab onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
-                        <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={24} />} label='Normal house'/>;
-                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
-                        <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
-                        <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
-                        <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
-                        <Tab icon={<FaCampground size={24} />} label='Address'/>;
-                        <Tab icon={<BiHomeAlt size={24} />} label='Tiny Homes'/>;
-                        <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
-                        <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
-                        <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
+                    <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={24}/>} label='ALL'/>;
+                    <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
+                    <Tab onClick={handleClickVipHouse} icon={<BsSnow size={24}/>} label='Vip house'/>;
+                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={24}/>} label='Normal house'/>;
+                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24}/>} label='Single bedroom'/>;
+                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24}/>} label='Multiple bedroom'/>;
+                    <Tab icon={<MdOutlineBathroom size={24}/>} label='Single bathroom'/>;
+                    <Tab icon={<GiSpaceNeedle size={24}/>} label='Multiple bathroom'/>;
+                    <Tab onClick={handleClickLess500} icon={<GiCampingTent size={24}/>} label='Home price <500$'/>;
+                    <Tab onClick={handleClickThan500} icon={<BiHomeAlt size={24}/>} label='Home price 500$-1000$'/>;
+                    <Tab onClick={handleClickThan1000} icon={<GiWaveSurfer size={24}/>} label='Home price >1000$'/>;
+                    <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
+                    <Tab icon={<FaCampground size={24}/>} label='Address'/>;
+
+
 
 
                 </Tabs>
-                <Button
-                    sx={{
-                        display: {xs: 'none', md: 'block'},
-                        border: '1px solid #DDDDD',
-                        minWidth: 90,
-                        justifyContent: 'space-between',
-                        borderRadius: 2,
-                        textTransform: 'capitalize',
-                        py: 1,
-                        color: "#000000"
-                    }}
-                >
-                    <FaFilter/> Filters
-                </Button>
+
             </Box>
         </Container>
     );

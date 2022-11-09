@@ -21,6 +21,9 @@ import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
 import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
+import ShowLess500 from "./components/Price/ShowLess500";
+import ShowThan500 from "./components/Price/ShowThan500";
+import ShowThan1000 from "./components/Price/ShowThan1000";
 
 
 
@@ -50,6 +53,10 @@ function App() {
         <Route path="/normal" element={<NormalHouse/>}/>
         <Route path="/onebedroom" element={<ShowOneBedRoom/>}/>
         <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
+        <Route path="/less500" element={<ShowLess500/>}/>
+        <Route path="/than500" element={<ShowThan500/>}/>
+        <Route path="/than1000" element={<ShowThan1000/>}/>
+
       </Routes>
 
     </>

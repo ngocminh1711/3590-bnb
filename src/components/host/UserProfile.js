@@ -10,4 +10,4 @@ function UserProfile() {
   );
 }
 
-export
+export default UserProfile

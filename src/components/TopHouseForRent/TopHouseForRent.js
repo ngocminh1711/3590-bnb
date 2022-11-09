@@ -20,19 +20,22 @@ function TopHouseForRent() {
 
     const handleClick = (e) => {
         let id = e
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
         navigate('/detail-house', {state: {houseId: id}})
     }
 
     useEffect(() => {
 
         getTopHouseForRent().then(res => {
+            console.log(res)
             setTopHouseForRent(res.data.topHouseForRent)
         })
 
     }, [])
 
-
-    console.log(topHouseForRent)
 
     return (
         <div>

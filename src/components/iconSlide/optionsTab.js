@@ -2,14 +2,12 @@ import Box from '@mui/material/Box';
 import Tabs, {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Container from '@mui/material/Container';
-import {useState} from 'react'
-import {FaCampground} from 'react-icons/fa';
-
+import {useEffect, useState} from 'react'
+import {FaCampground, FaFilter} from 'react-icons/fa';
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import {BsFillHouseFill, BsSnow} from "react-icons/bs";
 import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer} from "react-icons/gi";
-
 import {BiHomeAlt} from "react-icons/bi";
 import {useDispatch} from "react-redux";
 import {
@@ -29,10 +27,11 @@ import priceLess500 from "../Price/PriceLess500";
 import priceThan500 from "../Price/PriceThan500";
 import priceThan1000 from "../Price/Pricethan1000";
 
-const OptionsTab = () => {
-    const dispatch = useDispatch();
+
+const OptionsTabOneBed = () => {
     const navigate = useNavigate()
     const [value, setValue] = useState(0);
+    const dispatch = useDispatch();
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -89,11 +88,10 @@ const OptionsTab = () => {
                 <Tabs
                     value={value}
                     onChange={handleChange}
-                    indicatorColor="secondary"
-                    textColor="primary"
+                    indicatorColor=""
+                    textColor=""
                     variant="scrollable"
                     scrollButtons
-
                     sx={{
                         [`& .${tabsClasses.scrollButtons}`]: {
                             '&.Mui-disabled': {opacity: 0.3},
@@ -116,8 +114,6 @@ const OptionsTab = () => {
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;
 
 
-
-
                 </Tabs>
 
             </Box>
@@ -125,4 +121,4 @@ const OptionsTab = () => {
     );
 };
 
-export default OptionsTab;
+export default OptionsTabOneBed;

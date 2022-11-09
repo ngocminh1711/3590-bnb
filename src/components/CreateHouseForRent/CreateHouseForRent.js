@@ -9,7 +9,9 @@ import Header from "../header/Header";
 import { useNavigate } from "react-router";
 import Footer from "../footer/Footer";
 
+
 function CreateHouseForRent() {
+  const userLogin = useSelector(state => state.profileUser)
   const [typeRooms, setTypeRooms] = useState([]);
   const [houseStatus, setHouseStatus] = useState([]);
   const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -22,7 +24,8 @@ function CreateHouseForRent() {
     numberOfBedrooms: "",
     roomRates: "",
     description: "",
-    status:""
+    status:"",
+    userId: userLogin.idUserLogin
   });
 
   const [statusCreate, setStatusCreate] = useState(false);
@@ -54,7 +57,8 @@ function CreateHouseForRent() {
       image_backdrop: backdropURL,
       image_view: viewURL,
       description: newHouseForRent.description,
-      status: newHouseForRent.status
+      status: newHouseForRent.status,
+      userId: userLogin.idUserLogin
     };
     console.log(data)
     // if (!isValid)  return
@@ -77,10 +81,9 @@ function CreateHouseForRent() {
       .then((res) => setHouseStatus(res.data.data))
       .catch((err) => console.log(err));
   }, []);
-    console.log(newHouseForRent)
+
   return (
     <>
-      <Header />
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 pl-2 pr-2 ">
           <img

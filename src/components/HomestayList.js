@@ -14,13 +14,16 @@ function HomestayList() {
 
     const handleClick = (e) => {
         let id = e;
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
         navigate("/detail-house", {state: {houseId: id}});
     };
 
 
     useEffect(() => {
         getApiHouse().then((res) => {
-            console.log(res);
             setHouseForRents(res.data.houseForRents);
         });
     }, []);
@@ -59,7 +62,8 @@ function HomestayList() {
                                             Address : {item.address}
                                         </p>
                                         <div className="text-sm font-medium text-gray-900">
-                                            $ {item.roomRates}/night
+                                            ${item.roomRates} per night
+
                                         </div>
                                     </div>
                                 </div>

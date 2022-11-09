@@ -3,10 +3,10 @@ import React from "react";
 
 import '../home/Index.css'
 
-import OptionsTab from "../iconSlide/optionsTab";
 
 import Footer from "../footer/Footer";
 import MultipleBedRoom from "./MultipleBedRoom";
+import OptionsTabMutiBed from "../../OptionTab/OptionTabMutiBed";
 
 
 
@@ -14,8 +14,8 @@ import MultipleBedRoom from "./MultipleBedRoom";
 function ShowMultipleBedRoom(props) {
     return (
         <>
-            <Header/>
-            <OptionsTab/>
+            
+            <OptionsTabMutiBed/>
             {/* <Banner/> */}
             <MultipleBedRoom />
             <Footer />

@@ -1,24 +1,24 @@
-import { Button } from "@material-tailwind/react";
+import {Button} from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Switch from "react-switch";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {getDetailHouse} from "../../features/getHouseDetail/GetHouseDetailSlice";
+
 function ListHost() {
   const userLogin = useSelector((state) => state.profileUser);
-  const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
+    const [value, setValue] = useState(false);
 
-  const [value, setValue] = useState(false);
-  // console.log(value);
-
-  console.log(userLogin.idUserLogin);
 
   const getApiStatus = async (id) => {
-    // console.log(id)
+  
     return await axios.put(`http://localhost:8000/api/products/${id}`);
   };
   const handleChangeStatus = (id) => {

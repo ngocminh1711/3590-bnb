@@ -3,8 +3,9 @@ import Tabs, {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {FaCampground, FaFilter} from 'react-icons/fa';
+
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import {BsSnow} from "react-icons/bs";
@@ -12,11 +13,9 @@ import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer}
 import {AiOutlineCoffee} from "react-icons/ai";
 import {BiHomeAlt} from "react-icons/bi";
 
-
-const OptionsTabOneBed = () => {
+const OptionsTabVip = () => {
     const navigate = useNavigate()
     const [value, setValue] = useState(0);
-    
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -65,10 +64,10 @@ const OptionsTabOneBed = () => {
                     }}
                 >
                         <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
-                        <Tab  onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
-                        <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding   size={24} />} label='Normal house'  />;
-                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater color={"#ec6078"} size={24} />} label='Single bedroom'/>;
-                        <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide  size={24} />} label='Multiple bedroom'/>;
+                        <Tab onClick={handleClickVipHouse} icon={<BsSnow color={"#ec6078"} size={24 } />} label='Vip house'/>;
+                        <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={24} />} label='Normal house'/>;
+                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
+                        <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
                         <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
                         <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
                         <Tab icon={<FaCampground size={24} />} label='Address'/>;
@@ -76,6 +75,8 @@ const OptionsTabOneBed = () => {
                         <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
                         <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
                         <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
+
+                    
                 </Tabs>
                 <Button
                     sx={{
@@ -96,4 +97,4 @@ const OptionsTabOneBed = () => {
     );
 };
 
-export default OptionsTabOneBed;
+export default OptionsTabVip;

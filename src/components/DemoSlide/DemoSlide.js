@@ -1,6 +1,11 @@
+import {useEffect, useRef, useState} from "react";
 import "./DemoSlide.css";
 import "flowbite";
 import Footer from "../footer/Footer";
+
+import data from './data.json';
+import 'tw-elements';
+
 
 function DemoSlide() {
   return (
@@ -118,5 +123,5 @@ function DemoSlide() {
     </>
   );
 }
-//fix
+
 export default DemoSlide;

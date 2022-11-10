@@ -214,4 +214,3 @@ function CheckBooking() {
   );
 }
 export default CheckBooking;
-/// abc

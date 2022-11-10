@@ -1,14 +1,11 @@
-import {Button} from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import Switch from "react-switch";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {getDetailHouse} from "../../features/getHouseDetail/GetHouseDetailSlice";
+
 
 function CheckBooking() {
     const PORT = process.env.PORT || 8000;

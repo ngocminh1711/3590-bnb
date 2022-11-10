@@ -111,9 +111,9 @@ function Header({ lightMode, setLightMode }) {
   const handleMyNotifications = () => {
     navigate(`/check-booking/${userLoginProfile.idUserLogin}`)
   };
-  // const handleShowHistoryBooking = () => {
-  //   navigate(`/hi-booking/${userLoginProfile.idUserLogin}`)
-  // }
+  const handleShowHistoryBooking = () => {
+    navigate(`/history-booking/${userLoginProfile.idUserLogin}`)
+  }
 
   const handleDashBoard = (e) => {
     navigate("/dashboard");
@@ -231,9 +231,9 @@ function Header({ lightMode, setLightMode }) {
                               role="menuitem"
                               tabIndex="-1"
                               id="menu-item-0"
-                              // onClick={() => handleShowHistoryBooking(e)}
+                              onClick={(e) => handleShowHistoryBooking(e)}
                           >
-                            My Notifications
+                            My History Booking
                           </button>
                           <br></br>
                           <button

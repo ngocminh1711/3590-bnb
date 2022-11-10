@@ -22,7 +22,7 @@ function DetailHouse() {
     const [typeRooms, setTypeRooms] = useState([]);
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const [updateCompleted, setUpdateCompleted] = useState(false)
+    const [updateCompleted, setUpdateCompleted] = useState(0)
     const [formEdit, setFormEdit] = useState({
         name: "",
         address: "",
@@ -66,10 +66,7 @@ function DetailHouse() {
         setShowModal(false)
         return await axios.patch(`http://localhost:${PORT}/api/products/edit/${id}`, data)
             .then(res => {
-
-                    console.log(res)
-                }
-                )
+                console.log(res)})
             .catch(err => console.log(err.message))
     };
 
@@ -88,12 +85,10 @@ function DetailHouse() {
 
     useEffect(() => {
         getHouse().then(res => {
-            setUpdateCompleted(true)
             setHouse(res.data.data)
-            navigate(`/dashboard/detail/${id}`)
-        }, [house])
-
-    }, [])
+            setUpdateCompleted(updateCompleted + 1)
+        })
+    }, [updateCompleted])
 
     // const handleSave = (e) => {
     //     navigate(`/dashboard/detail/${id}`)

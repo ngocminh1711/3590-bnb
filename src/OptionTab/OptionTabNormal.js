@@ -15,7 +15,7 @@ import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabNormal = () => {
     const navigate = useNavigate()
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(3);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -63,20 +63,20 @@ const OptionsTabNormal = () => {
                         color: '#000000'
                     }}
                 >
-                        <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
-                        <Tab  onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
-                        <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding color={"#ec6078"}  size={24} />} label='Normal house'  />;
-                        <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
-                        <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
-                        <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
-                        <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
-                        <Tab icon={<FaCampground size={24} />} label='Address'/>;
-                        <Tab icon={<BiHomeAlt size={24} />} label='Tiny Homes'/>;
-                        <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
-                        <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
-                        <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
+                    <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
+                    <Tab  onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
+                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding color={"#ec6078"}  size={24} />} label='Normal house'  />;
+                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
+                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
+                    <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
+                    <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
+                    <Tab icon={<FaCampground size={24} />} label='Address'/>;
+                    <Tab icon={<BiHomeAlt size={24} />} label='Tiny Homes'/>;
+                    <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
+                    <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
+                    <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
 
-                    
+
                 </Tabs>
                 <Button
                     sx={{

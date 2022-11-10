@@ -27,6 +27,8 @@ import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
 import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
 import ScrollTop from "./components/iconSlide/iconScrollTop.js";
+import DateDemo from "./components/dateDemo.js";
+import CheckBooking from "./components/host/CheckBooking.js";
 
 
 
@@ -58,6 +60,8 @@ function App() {
               <Route path="/vip" element={<VipHouse />} />
               <Route path="/normal" element={<NormalHouse />} />
               <Route path="/onebedroom" element={<ShowOneBedRoom />} />
+              <Route path="/date" element={<DateDemo />} />
+              <Route path="/check-booking/:id" element={<CheckBooking />} />
               <Route
                 path="/multiplebedroom"
                 element={<ShowMultipleBedRoom />}

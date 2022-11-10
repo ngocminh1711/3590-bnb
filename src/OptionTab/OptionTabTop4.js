@@ -14,7 +14,7 @@ import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabTop4 = () => {
     const navigate = useNavigate()
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(1);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

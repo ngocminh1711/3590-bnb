@@ -31,8 +31,14 @@ const Hr = styled.hr`
 
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
-
-  const PORT = process.env.PORT || 8000;
+  const userLoginProfile = useSelector((state) => state.profileUser);
+  console.log("id--------" + userLoginProfile.idUserLogin);
+  const dispatch = useDispatch();
+  // let user;
+  // if (token) {
+  //   user = jwtDecode(token);
+  // }
+  // console.log(user)
   let user;
   if (token) {
     user = jwtDecode(token);
@@ -107,7 +113,7 @@ function Header({ lightMode, setLightMode }) {
     setShowDropDown(false);
 
     if (token) {
-      navigate(`/profile/${user.id}`);
+      navigate(`/profile/${userLoginProfile.idUserLogin}`);
     } else {
       navigate("/login");
     }
@@ -115,6 +121,11 @@ function Header({ lightMode, setLightMode }) {
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
+
+  const handleMyNotifications = () => {
+    navigate(`/check-booking/${userLoginProfile.idUserLogin}`)
+  };
+
   const handleDashBoard = (e) => {
     navigate("/dashboard");
   };
@@ -381,6 +392,17 @@ function Header({ lightMode, setLightMode }) {
                                           </div>
 
                           <hr></hr>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleMyNotifications(e)}
+                          >
+                            My Notifications
+                          </button>
+                          <br></br>
                           <button
                             href="#"
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"

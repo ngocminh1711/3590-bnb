@@ -1,16 +1,19 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaSlash } from "react-icons/fa";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-import { DarkModeToggle } from '@anatoliygatt/dark-mode-toggle';
-
+import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import axios from "axios";
+import swal from "sweetalert";
+import Footer from "../footer/Footer";
 import jwtDecode from "jwt-decode";
-
 const Item = styled.div`
   display: flex;
   align-items: center;
@@ -28,15 +31,13 @@ const Hr = styled.hr`
 
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
-  
+
   const PORT = process.env.PORT || 8000;
-  const dispatch = useDispatch();
   let user;
   if (token) {
     user = jwtDecode(token);
   }
 
-  const [searchInput, setSearchInput] = useState("");
   const [showDropDown, setShowDropDown] = useState(false);
   // const [showProfile, setShowProfile] = useState(false);
   const [blockInput, setBlockInput] = useState(true);
@@ -74,7 +75,24 @@ function Header({ lightMode, setLightMode }) {
       }
     });
   };
-  
+  const [form, setForm] = useState({
+    currentPassword: "",
+    newPassword: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const handleChangePassword = async (data, id) => {
+    const a = await axios.put(
+      `http://localhost:8000/api/user/change-password/${id}`,
+      data
+    );
+    setForm({currentPassword:"",
+  newPassword:""})
+    return a;
+  };
+
   const handleLogin = (e) => {
     setTimeout(() => {
       navigate("/login");
@@ -89,19 +107,10 @@ function Header({ lightMode, setLightMode }) {
     setShowDropDown(false);
 
     if (token) {
-      navigate(`/profile/${user.id}`)
+      navigate(`/profile/${user.id}`);
     } else {
       navigate("/login");
     }
-  };
-
-
-  const handleSaveChange = () => {};
-  const handleChangePassword = () => {
-    setTimeout(() => {
-      navigate(`/change-password`);
-      
-    }, 500);
   };
   const handleCreate = (e) => {
     navigate("/admin/host-create");
@@ -114,6 +123,7 @@ function Header({ lightMode, setLightMode }) {
       navigate("/register");
     }, 500);
   };
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <header className="py-6 mb-0">
@@ -216,16 +226,160 @@ function Header({ lightMode, setLightMode }) {
                             Create House
                           </button>
                           <br></br>
+
+                          <div>
+                          
+                          {/* Button trigger modal */}
                           <button
-                            href="#"
+                          onClick={()=>{setShowModal(true)}}
+                            type="button"
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={() => handleChangePassword()}
+                            data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
                           >
-                            Change Password
+                            ChangePassword
                           </button>
+                          {/* Modal */}
+                          {showModal ? (
+                        <>
+                          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
+                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                              {/*content*/}
+                              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                  <h3 className="text-3xl font-semibold">Change Password</h3>
+                
+                                  <button
+                                  className="text-2xl hover:bg-rose-400"
+                                    onClick={() => {
+                                      setShowModal(false);
+                                      
+                                    }}
+                                  >
+                                    X
+                                  </button>
+                                </div>
+                                {/*body*/}
+                                <div
+                                  className="relative p-6 flex-auto"
+                                  style={{ width: "600px" }}
+                                >
+                                  <Formik
+                                    initialValues={form}
+                                    // validationSchema={RegisterSchema}
+                                    onSubmit={async (e) => {
+                                      console.log(e);
+                                      let user;
+                                      if (token) {
+                                        user = jwtDecode(token);
+                                      }
+                                      const id = user.id;
+                
+                                      let data = {
+                                        currentPassword: form.currentPassword,
+                                        newPassword: form.newPassword,
+                                      };
+                                      handleChangePassword(data, id)
+                                        .then((res) => {
+                                          console.log(res);
+                
+                                          if (res.data.success === true) {
+                                            setShowModal(false)
+                                            swal({
+                                              title: "ChangePass Suscess!",
+                                              text: "You clicked OK!",
+                                              icon: "success",
+                                              button: "Ok!",
+                                            });
+                                           
+                                          }
+                                        })
+                                        .catch((e) => console.log(e.message));
+                                    }}
+                                  >
+                                    {({ errors, touched }) => (
+                                      <Form>
+                                        <section className="text-gray-600 body-font">
+                                          <div>
+                                            <div className=" w-full bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
+                                              <div className="relative mb-4">
+                                                <label
+                                                  htmlFor="Password-old"
+                                                  className="leading-7  text-gray-600 block text-sm font-semibold"
+                                                >
+                                                  Password Current
+                                                </label>
+                                                <Field
+                                                  type="password"
+                                                  name="currentPassword"
+                                                  required
+                                                  value={form.currentPassword}
+                                                  onChange={handleChange}
+                                                  placeholder="Current Password"
+                                                  id="currentPassword"
+                                                  autocomplete="off"
+                                                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                />
+                                                 {errors.oldPassword &&
+                                                    touched.oldPassword ? (
+                                                      <div
+                                                        style={{ color: "red" }}
+                                                      >
+                                                        {errors.oldPassword}
+                                                      </div>
+                                                    ) : null}
+                                              </div>
+                                              <div className="relative mb-4">
+                                                <label
+                                                  htmlFor="New password"
+                                                  className="leading-7  text-gray-600 block text-sm font-semibold"
+                                                >
+                                                  New Password
+                                                </label>
+                                                <Field
+                                                  type="password"
+                                                  name="newPassword"
+                                                  id="newPassword"
+                                                  required
+                                                  value={form.newPassword}
+                                                  onChange={handleChange}
+                                                  autocomplete="off"
+                                                  placeholder="New Password"
+
+                                                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                />
+                                               {errors.password &&
+                                                    touched.password ? (
+                                                      <div
+                                                        style={{ color: "red" }}
+                                                      >
+                                                        {errors.password}
+                                                      </div>
+                                                    ) : null}
+                                              </div>
+                                              <button
+                                                type="submit"
+                                                className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                              >
+                                                Save
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </section>
+                                      </Form>
+                                    )}
+                                  </Formik>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                        </>
+                      ) : null}
+                                          </div>
+
                           <hr></hr>
                           <button
                             href="#"
@@ -248,7 +402,6 @@ function Header({ lightMode, setLightMode }) {
                           >
                             Logout
                           </button>
-                          
                         </div>
                       </>
                     )}

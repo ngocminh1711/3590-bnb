@@ -122,6 +122,7 @@ function DetailHouseForRent() {
                             *{houseForRent.numberOfBedrooms} bedrooms *{" "}
                             {houseForRent.numberOfBathrooms} bathrooms{" "}
                         </p>
+                        <hr></hr>
                         <div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +165,9 @@ function DetailHouseForRent() {
                                     Free cancellation for 48 hours.
                                 </h1>
                             </div>
+                            
                         </div>
+                        
                     </div>
                     <div>
                         <div className="z-20 mt-2 h-auto">

@@ -19,19 +19,22 @@ function TopHouseForRent() {
 
     const handleClick = (e) => {
         let id = e
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
         navigate('/detail-house', {state: {houseId: id}})
     }
 
     useEffect(() => {
 
         getTopHouseForRent().then(res => {
+            console.log(res)
             setTopHouseForRent(res.data.topHouseForRent)
         })
 
     }, [])
 
-
-    console.log(topHouseForRent)
 
     return (
         <div>
@@ -71,7 +74,7 @@ function TopHouseForRent() {
                                             {item.name}
                                         </h2>
                                         <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
-                                        <div className="text-sm font-medium text-gray-900">$ {item.roomRates} Night
+                                        <div className="text-sm font-medium text-gray-900">$ {item.roomRates.toLocaleString()} per night
                                         </div>
 
                                         </div>

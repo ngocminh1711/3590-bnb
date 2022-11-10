@@ -17,31 +17,25 @@ import { darkTheme, lightTheme } from "./utils/Theme";
 import Header from "./components/header/Header.js";
 import Example from "./components/home/Example.js";
 import ProfileExample from "./components/Profile/ProfileExample.js";
+import EditProfile from "./components/Profile/EditProfile.js";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
-import EditProfile from "./components/Profile/EditProfile.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
 import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
 import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
+import ScrollTop from "./components/iconSlide/iconScrollTop.js";
+import DateDemo from "./components/dateDemo.js";
+import CheckBooking from "./components/host/CheckBooking.js";
 
-const Container = styled.div`
-flex`;
 
-const Main = styled.div`
-  background-color: ${({ theme }) => theme.bg} !important;
-`;
 
 function App() {
-  const [lightMode, setLightMode] = useState(true);
+
   return (
     <>
-      <ThemeProvider theme={lightMode ? lightTheme : darkTheme}>
-        <Container>
-          <Header lightMode={lightMode} setLightMode={setLightMode} />
-          <Main>
             <Routes>
               <Route path="/" element={<GetStarted />} />
               <Route path="/home" element={<Home />} />
@@ -66,14 +60,14 @@ function App() {
               <Route path="/vip" element={<VipHouse />} />
               <Route path="/normal" element={<NormalHouse />} />
               <Route path="/onebedroom" element={<ShowOneBedRoom />} />
+              <Route path="/date" element={<DateDemo />} />
+              <Route path="/check-booking/:id" element={<CheckBooking />} />
               <Route
                 path="/multiplebedroom"
                 element={<ShowMultipleBedRoom />}
               />
             </Routes>
-          </Main>
-        </Container>
-      </ThemeProvider>
+            <ScrollTop />
     </>
   );
 }

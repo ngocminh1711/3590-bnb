@@ -3,9 +3,8 @@ import Tabs, {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import {FaCampground, FaFilter} from 'react-icons/fa';
-
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import {BsSnow} from "react-icons/bs";
@@ -13,9 +12,11 @@ import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer}
 import {AiOutlineCoffee} from "react-icons/ai";
 import {BiHomeAlt} from "react-icons/bi";
 
+
 const OptionsTabOneBed = () => {
     const navigate = useNavigate()
     const [value, setValue] = useState(0);
+    
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -75,9 +76,6 @@ const OptionsTabOneBed = () => {
                         <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
                         <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
                         <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
-
-                    
-                   
                 </Tabs>
                 <Button
                     sx={{

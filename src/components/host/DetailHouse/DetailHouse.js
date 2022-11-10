@@ -6,13 +6,14 @@ import './DetailHouse.css'
 import Footer from "../../footer/Footer";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-
+import {useNavigate} from 'react-router'
 
 
 function DetailHouse() {
 
     const {id} = useParams()
     const PORT = process.env.PORT || 8000;
+    const navigate = useNavigate();
 
     const [house, setHouse] = useState({})
     const [loading, setLoading] = useState(false)
@@ -21,6 +22,7 @@ function DetailHouse() {
     const [typeRooms, setTypeRooms] = useState([]);
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const [updateCompleted, setUpdateCompleted] = useState(false)
     const [formEdit, setFormEdit] = useState({
         name: "",
         address: "",
@@ -29,7 +31,7 @@ function DetailHouse() {
         numberOfBedrooms: "",
         roomRates: "",
         description: "",
-        status:""
+        status: ""
     });
 
 
@@ -46,7 +48,7 @@ function DetailHouse() {
     };
 
     const handleChange = (e) => {
-        setFormEdit({ ...formEdit, [e.target.name]: e.target.value });
+        setFormEdit({...formEdit, [e.target.name]: e.target.value});
     };
 
     const handleSubmit = async (e) => {
@@ -62,17 +64,15 @@ function DetailHouse() {
             status: formEdit.status
         };
         setShowModal(false)
-        return await axios.patch(`http://localhost:${PORT}/api/products/edit/${id}`,data)
-            .then(res => console.log(res))
+        return await axios.patch(`http://localhost:${PORT}/api/products/edit/${id}`, data)
+            .then(res => {
+
+                    console.log(res)
+                }
+                )
             .catch(err => console.log(err.message))
     };
 
-    useEffect(() => {
-        getHouse().then(res => {
-            setHouse(res.data.data)
-        },[])
-
-    }, [])
 
     useEffect(() => {
         getTypeRooms()
@@ -85,16 +85,29 @@ function DetailHouse() {
             .then((res) => setHouseStatus(res.data.data))
             .catch((err) => console.log(err));
     }, []);
-    console.log(formEdit)
+
+    useEffect(() => {
+        getHouse().then(res => {
+            setUpdateCompleted(true)
+            setHouse(res.data.data)
+            navigate(`/dashboard/detail/${id}`)
+        }, [house])
+
+    }, [])
+
+    // const handleSave = (e) => {
+    //     navigate(`/dashboard/detail/${id}`)
+    // }
 
     return (
         <>
+            <Header />
             {house && house.name ?
                 <div className="bg-white">
                     <div className="mx-auto max-w-10xl py-14 sm:py-14 sm:px-6 lg:max-w-7xl lg:px-8">
                         <div className="flex flex-row">
                             <div className="basis-1/4">
-                                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{house.name}</h1>
+                                <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 font-sans ">{house.name}</h1>
                                 <span></span>
                             </div>
                             <div className="basis-3/4">
@@ -174,7 +187,7 @@ function DetailHouse() {
                                         <p className="text-gray-900 text-2xl title-font inline">Image</p>
                                         <button
                                             onClick={() => setShowModal(true)}
-                                            className="pr-10 underline decoration-solid inline float-right">Edit >
+                                            className="pr-10 underline decoration-solid inline float-right">Edit
                                         </button>
                                         {showModal ? (
                                             <>
@@ -183,9 +196,11 @@ function DetailHouse() {
                                                 >
                                                     <div className="relative w-auto my-6 mx-auto max-w-3xl">
                                                         {/*content*/}
-                                                        <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                        <div
+                                                            className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                                             {/*header*/}
-                                                            <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                                            <div
+                                                                className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                                                 <h3 className="text-3xl font-semibold">
                                                                     Edit Your House
                                                                 </h3>
@@ -193,7 +208,8 @@ function DetailHouse() {
                                                                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                                                     onClick={() => setShowModal(false)}
                                                                 >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span
+                        className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                                                                 </button>
@@ -203,7 +219,8 @@ function DetailHouse() {
                                                                 <form
                                                                     onSubmit={handleSubmit}>
                                                                     <div className="flex bg-100 h-auto">
-                                                                        <div className="mt-5 bg-white rounded-lg shadow">
+                                                                        <div
+                                                                            className="mt-5 bg-white rounded-lg shadow">
                                                                             <div className="px-5 pb-5">
                                                                                 <input
                                                                                     onChange={handleChange}
@@ -219,7 +236,8 @@ function DetailHouse() {
                                                                                     className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                                                                                 />
                                                                                 <div className="flex">
-                                                                                    <div className="flex-grow w-1/4 pr-2">
+                                                                                    <div
+                                                                                        className="flex-grow w-1/4 pr-2">
                                                                                         <select
                                                                                             name="typeRoom"
                                                                                             onChange={(e) => {
@@ -228,10 +246,13 @@ function DetailHouse() {
                                                                                                     [e.target.name]: e.target.value,
                                                                                                 });
                                                                                             }}
-                                                                                            defaultValue={'Choose somethings ...'}
                                                                                             className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                                                                                         >
-                                                                                            <option value='' selected disabled hidden >Choose type ...</option>
+                                                                                            <option value='' selected
+                                                                                                    disabled
+                                                                                                    hidden>Choose type
+                                                                                                ...
+                                                                                            </option>
                                                                                             {typeRooms.map((typeRoom) => (
                                                                                                 <option
                                                                                                     key={typeRoom._id}
@@ -263,7 +284,10 @@ function DetailHouse() {
                                                                                         }}
                                                                                         className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                                                                                     >
-                                                                                        <option value='' selected disabled hidden >Choose status ...</option>
+                                                                                        <option value='' selected
+                                                                                                disabled hidden>Choose
+                                                                                            status ...
+                                                                                        </option>
                                                                                         {houseStatus.map((houseStatus) => (
                                                                                             <option
                                                                                                 key={houseStatus._id}
@@ -275,7 +299,8 @@ function DetailHouse() {
                                                                                     </select>
                                                                                 </div>
                                                                                 <div className="flex">
-                                                                                    <div className="flex-grow w-1/4 pr-2">
+                                                                                    <div
+                                                                                        className="flex-grow w-1/4 pr-2">
                                                                                         <select
                                                                                             name="numberOfBedrooms"
                                                                                             onChange={(e) => {
@@ -286,15 +311,19 @@ function DetailHouse() {
                                                                                             }}
                                                                                             className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                                                                                         >
-                                                                                            <option value="">Number Of Bedrooms</option>
+                                                                                            <option value="">Number Of
+                                                                                                Bedrooms
+                                                                                            </option>
                                                                                             {numberOfBedrooms.map((item, index) => (
-                                                                                                <option key={index} value={item}>
+                                                                                                <option key={index}
+                                                                                                        value={item}>
                                                                                                     {item}
                                                                                                 </option>
                                                                                             ))}
                                                                                         </select>
                                                                                     </div>
-                                                                                    <div className="flex-grow w-1/4 pr-2">
+                                                                                    <div
+                                                                                        className="flex-grow w-1/4 pr-2">
                                                                                         <select
                                                                                             name="numberOfBathrooms"
                                                                                             onChange={(e) => {
@@ -305,11 +334,14 @@ function DetailHouse() {
                                                                                             }}
                                                                                             className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                                                                                         >
-                                                                                            <option value="">Number Of Bathrooms</option>
+                                                                                            <option value="">Number Of
+                                                                                                Bathrooms
+                                                                                            </option>
                                                                                             {numberOfBathrooms.map((item, index) => (
-                                                                                                <option key={index} value={item}>
+                                                                                                <option key={index}
+                                                                                                        value={item}>
                                                                                                     {item}
-                                                                                                </option >
+                                                                                                </option>
                                                                                             ))}
                                                                                         </select>
                                                                                     </div>
@@ -325,7 +357,8 @@ function DetailHouse() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                                                                    <div
+                                                                        className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                                                                         <button
                                                                             className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                                                             type="button"
@@ -335,7 +368,8 @@ function DetailHouse() {
                                                                         </button>
                                                                         <button
                                                                             type="submit"
-                                                                            className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                                                            className="bg-rose-500 text-white active:bg-rose-300 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+
                                                                         >
                                                                             Save Changes
                                                                         </button>
@@ -429,7 +463,7 @@ function DetailHouse() {
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div className="pt-4 mt-10">
                                     <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 inline ">Listing
                                         Basic</h1>
 
@@ -455,7 +489,8 @@ function DetailHouse() {
                                 </div>
                                 <span></span>
                                 <div className="py-4">
-                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Property and
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Property
+                                        and
                                         rooms</h2>
                                     <p className="text-slate-400">{house?.typeRoom.name}</p>
                                     <p className="text-slate-400">Bedroom: {house?.numberOfBedrooms}</p>
@@ -463,7 +498,7 @@ function DetailHouse() {
                                 </div>
                             </div>
                         </div>
-                            </div>
+                    </div>
 
                 </div> : <div> loading </div>
             }

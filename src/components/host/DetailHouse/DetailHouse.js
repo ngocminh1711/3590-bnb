@@ -184,7 +184,7 @@ function DetailHouse() {
                             <div className="basis-3/4">
                                 <div>
                                     <div className="pb-2">
-                                        <p className="text-gray-900 text-2xl title-font inline">Image</p>
+                                        <p className="text-gray-900 text-2xl title-font inline">Photos</p>
                                         <button
                                             onClick={() => setShowModal(true)}
                                             className="pr-10 underline decoration-solid inline float-right">Edit

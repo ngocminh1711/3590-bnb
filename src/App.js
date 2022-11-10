@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Register from "./components/login/Register.js";
 import Login from "./components/login/Login.js";
 import Home from "./components/home/Index.js";
@@ -7,7 +7,6 @@ import ListHost from "./components/host/Dashboard.js";
 import CreateHouseForRent from "./components/CreateHouseForRent/CreateHouseForRent";
 import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
-import ChangePassword from "./components/host/ChangePassword.js";
 import Profile from "./components/Profile/Profile.js";
 import Slide from "./components/Slide.js";
 import Example from "./components/home/Example.js";
@@ -35,13 +34,9 @@ function App() {
                 <Route path="/home" element={<Home/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/dashboard" element={<ListHost/>}/>
-                <Route
-                    path="/admin/host-create"
-                    element={<CreateHouseForRent/>}
-                />
+                <Route path="/dashboard/:id" element={<ListHost/>}/>
+                <Route path="/admin/host-create" element={<CreateHouseForRent/>}/>
                 <Route path="/detail-house" element={<DetailHouseForRent/>}/>
-                <Route path="/change-password" element={<ChangePassword/>}/>
                 <Route path="/searchList" element={<SearchedHouseList/>}/>
                 <Route path="/slide" element={<Slide/>}/>
                 <Route path="/example" element={<Example/>}/>
@@ -57,10 +52,7 @@ function App() {
                 <Route path="/date" element={<DateDemo/>}/>
                 <Route path="/check-booking/:id" element={<CheckBooking/>}/>
                 <Route path="/history-booking/:id" element={<HistoryBooking/>}/>
-                <Route
-                    path="/multiplebedroom"
-                    element={<ShowMultipleBedRoom/>}
-                />
+                <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
             </Routes>
             <ScrollTop/>
         </>

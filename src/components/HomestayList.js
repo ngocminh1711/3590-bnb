@@ -20,8 +20,6 @@ function HomestayList() {
           });
         navigate("/detail-house", {state: {houseId: id}});
     };
-
-
     useEffect(() => {
         getApiHouse().then((res) => {
             setHouseForRents(res.data.houseForRents);
@@ -37,20 +35,18 @@ function HomestayList() {
 
 
                     <div
-                        className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
+                        className="mt-3 grid grid-cols-1 gap-y-103 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
                         {houseForRents && houseForRents.map((item) => (
-                            <div
+                            <div 
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}
                                 className="group relative cursor-pointer"
                             >
                                 <div
                                     className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
-                                    <img
-                                        style={{width: 560, height: 300}}
-                                        src={item.image_backdrop}
-                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                    />
+                                    <img  src={item.image_backdrop}
+                                        style={{width: "700px", height: "400px"}}
+                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full" />
                                 </div>
                                 <div className="mt-4 flex justify-between">
                                     <div>
@@ -63,7 +59,6 @@ function HomestayList() {
                                         </p>
                                         <div className="text-sm font-medium text-gray-900">
                                             ${item.roomRates.toLocaleString()} per night
-
                                         </div>
                                     </div>
                                 </div>

@@ -22,7 +22,6 @@ function DetailHouse() {
     const [typeRooms, setTypeRooms] = useState([]);
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const [updateCompleted, setUpdateCompleted] = useState(0)
     const [formEdit, setFormEdit] = useState({
         name: "",
         address: "",
@@ -86,9 +85,9 @@ function DetailHouse() {
     useEffect(() => {
         getHouse().then(res => {
             setHouse(res.data.data)
-            setUpdateCompleted(updateCompleted + 1)
+
         })
-    }, [updateCompleted])
+    }, [])
 
     // const handleSave = (e) => {
     //     navigate(`/dashboard/detail/${id}`)

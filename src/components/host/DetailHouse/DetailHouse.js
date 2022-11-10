@@ -16,7 +16,7 @@ function DetailHouse() {
     const navigate = useNavigate();
 
     const [house, setHouse] = useState({})
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(0)
     const [showModal, setShowModal] = React.useState(false);
     const [houseStatus, setHouseStatus] = useState([]);
     const [typeRooms, setTypeRooms] = useState([]);
@@ -63,6 +63,7 @@ function DetailHouse() {
             status: formEdit.status
         };
         setShowModal(false)
+        setLoading(loading + 1)
         return await axios.patch(`http://localhost:${PORT}/api/products/edit/${id}`, data)
             .then(res => {
                 console.log(res)})
@@ -85,13 +86,9 @@ function DetailHouse() {
     useEffect(() => {
         getHouse().then(res => {
             setHouse(res.data.data)
-
         })
-    }, [])
-
-    // const handleSave = (e) => {
-    //     navigate(`/dashboard/detail/${id}`)
-    // }
+    }, [loading])
+    console.log(house)
 
     return (
         <>

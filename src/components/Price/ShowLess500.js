@@ -1,4 +1,3 @@
-
 import Header from "../header/Header";
 import React from "react";
 
@@ -9,16 +8,17 @@ import OptionsTab from "../iconSlide/optionsTab";
 import Footer from "../footer/Footer";
 
 import PriceLess500 from "./PriceLess500";
+import OptionsTabLess500 from "../../OptionTab/OptionTabLess500";
 
 
 function ShowLess500(props) {
     return (
         <>
-
-            <OptionsTab/>
+            <Header/>
+            <OptionsTabLess500/>
             {/* <Banner/> */}
             <PriceLess500/>
-            <Footer />
+            <Footer/>
         </>
     );
 }

@@ -1,23 +1,17 @@
-
 import Header from "../header/Header";
 import React from "react";
-
 import '../home/Index.css'
-
 import OptionsTab from "../iconSlide/optionsTab";
-
 import Footer from "../footer/Footer";
-
-
-
 import PriceThan1000 from "./Pricethan1000";
+import OptionsTabThan1000 from "../../OptionTab/OptionTabThan1000";
 
 
-function ShowLess1000(props) {
+function ShowThan1000(props) {
     return (
         <>
-
-            <OptionsTab/>
+            <Header />
+            <OptionsTabThan1000/>
             {/* <Banner/> */}
             <PriceThan1000/>
             <Footer />
@@ -25,4 +19,4 @@ function ShowLess1000(props) {
     );
 }
 
-export default ShowLess1000;
+export default ShowThan1000;

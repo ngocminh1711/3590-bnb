@@ -84,7 +84,7 @@ const OptionsTab = () => {
 
     return (
         <>
-            <Header/>
+
             <Container maxWidth="xl">
                 <Box
                     sx={{
@@ -122,7 +122,7 @@ const OptionsTab = () => {
                         <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7} label='Single bathroom'/>;
                         <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8} label='Multiple bathroom'/>;
                         <Tab onClick={handleClickLess500} icon={<GiCampingTent size={18}/>} value={9} label='House price <500$'/>;
-                        <Tab   onClick={handleClickThan500} icon={<BiHomeAlt size={18}/>} value={10} label='House price 500$-1000$'/>;
+                        <Tab onClick={handleClickThan500} icon={<BiHomeAlt size={18}/>} value={10} label='House price 500$-1000$'/>;
                         <Tab onClick={handleClickThan1000} icon={<GiWaveSurfer size={18}/>} value={11} label='House price >1000$'/>;
                         <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                         <Tab icon={<FaCampground size={24}/>} label='Address'/>;

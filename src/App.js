@@ -22,8 +22,12 @@ import ShowLess500 from "./components/Price/ShowLess500";
 import ShowThan500 from "./components/Price/ShowThan500";
 import ShowThan1000 from "./components/Price/ShowThan1000";
 import ScrollTop from "./components/iconSlide/iconScrollTop.js";
+
 import ShowOneBathRoom from "./components/BathRoom/ShowOneBathRoom";
 import ShowMultipleBathRoom from "./components/BathRoom/ShowMultipleBathRoom";
+
+import DateDemo from "./components/dateDemo.js";
+import CheckBooking from "./components/host/CheckBooking.js";
 
 
 function App() {
@@ -56,7 +60,9 @@ function App() {
                 <Route path="/less500" element={<ShowLess500/>}/>
                 <Route path="/than500" element={<ShowThan500/>}/>
                 <Route path="/than1000" element={<ShowThan1000/>}/>
-
+                <Route path="/date" element={<DateDemo/>}/>
+                <Route path="/check-booking/:id" element={<CheckBooking/>}/>
+              
             </Routes>
             <ScrollTop/>
         </>

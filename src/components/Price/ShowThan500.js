@@ -1,4 +1,3 @@
-
 import Header from "../header/Header";
 import React from "react";
 
@@ -10,18 +9,19 @@ import Footer from "../footer/Footer";
 
 
 import PriceThan500 from "./PriceThan500";
+import OptionsTabThan500 from "../../OptionTab/OptionTabThan500";
 
 
-function ShowLess500(props) {
+function ShowThan500(props) {
     return (
         <>
-
-            <OptionsTab/>
+            <Header/>
+            <OptionsTabThan500/>
             {/* <Banner/> */}
             <PriceThan500/>
-            <Footer />
+            <Footer/>
         </>
     );
 }
 
-export default ShowLess500;
+export default ShowThan500;

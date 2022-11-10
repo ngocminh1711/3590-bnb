@@ -1,15 +1,11 @@
-import { Button } from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Switch from "react-switch";
-import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getDetailHouse } from "../../features/getHouseDetail/GetHouseDetailSlice";
-
+import HeaderDashBoard from  "../header/HeaderDashBoard"
+import jwtDecode from "jwt-decode";
 function ListHost() {
   const userLogin = useSelector((state) => state.profileUser);
   const navigate = useNavigate();
@@ -34,7 +30,6 @@ function ListHost() {
       `http://localhost:8000/api/products/${userLogin.idUserLogin}`
     );
   };
-  
   const handleClick = (e) => {
     let id = e;
     navigate(`/detail-house`, { state: { houseId: id } });
@@ -46,6 +41,18 @@ function ListHost() {
   const handleShowInfo = () => {
     setShowDropDown(!showDropDown);
   };
+  let token = localStorage.getItem("token");
+  let user;
+  if (token) {
+    user = jwtDecode(token);
+    console.log(user);
+  }
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -72,6 +79,80 @@ function ListHost() {
   console.log(products);
   return (
     <>
+    <HeaderDashBoard/>
+    <nav className="
+  relative
+  w-full
+  flex flex-wrap
+  items-center
+  justify-between
+  py-4
+  bg-gray-100
+  text-gray-500
+  hover:text-gray-700
+  focus:text-gray-700
+  shadow-lg
+  navbar navbar-expand-lg navbar-light
+  ">
+        <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+          <button className="
+      navbar-toggler
+      text-gray-500
+      border-0
+      hover:shadow-none hover:no-underline
+      py-2
+      px-2.5
+      bg-transparent
+      focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline
+    " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" className="w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z">
+              </path>
+            </svg>
+          </button>
+          <div className="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
+            <a className="
+        flex
+        items-center
+        text-gray-900
+        hover:text-gray-900
+        focus:text-gray-900
+        mt-2
+        lg:mt-0
+        mr-1
+      " href="#">
+              <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" style={{height: '15px'}} alt="" loading="lazy" />
+            </a>
+            {/* Left links */}
+            <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+              <li className="nav-item p-2">
+                <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Dashboard</a>
+              </li>
+              <li className="nav-item p-2">
+                <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
+              </li>
+              <li className="nav-item p-2">
+                <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projects</a>
+              </li>
+            </ul>
+            {/* Left links */}
+          </div>
+          {/* Collapsible wrapper */}
+          {/* Right elements */}
+          <div className="flex items-center relative">
+            {/* Icon */}
+            <a className="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4" href="#">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" className="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
+                </path>
+              </svg>
+            </a>
+            
+            
+          </div>
+          {/* Right elements */}
+        </div>
+      </nav>
       <div>
         <>
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">

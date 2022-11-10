@@ -127,7 +127,7 @@ function Header({ lightMode, setLightMode }) {
   };
 
   const handleDashBoard = (e) => {
-    navigate("/dashboard");
+    navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
   };
   const handleSignup = (e) => {
     setTimeout(() => {
@@ -150,10 +150,7 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0">
             <SearchHouses />
           </div>
-          <button onClick={() => setLightMode(!lightMode)}>
-            <SettingsBrightnessOutlinedIcon />
-            {lightMode ? "Pink" : "Light"} Mode
-          </button>
+          
           {userLogin ? (
             <>
               <>

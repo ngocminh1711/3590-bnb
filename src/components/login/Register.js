@@ -71,9 +71,9 @@ export default function Register() {
       >
         <Form>
           <section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
+            <div className="container px-5 py-18 mx-auto flex flex-wrap items-center justify-center">
               <div className="lg:w-3/5 lg:pr-0 pr-0">
-                <img src={BannerImg} alt="" />
+                <img src="https://a0.muscache.com/im/pictures/44695671-e125-4ad5-bf64-c79a82f0acc5.jpg?im_w=960" alt="" />
               </div>
               <div className="lg:w-2/6 xl:w-2/5 md:w-2/3 bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
                 <h2 className="mt-5 text-center text-3xl font-bold tracking-tight text-gray-900">
@@ -90,7 +90,7 @@ export default function Register() {
                       focusable="false"
                       data-prefix="fas"
                       data-icon="times-circle"
-                      class="w-4 h-4 mr-2 fill-current"
+                      class="w-4 h-4 mr-2 -ml-2 fill-current"
                       role="img"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 500 500"

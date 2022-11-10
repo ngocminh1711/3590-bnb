@@ -32,37 +32,53 @@ function App() {
   const [lightMode, setLightMode] = useState(true);
   return (
     <>
-            <Routes>
-              <Route path="/" element={<GetStarted />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/dashboard" element={<ListHost />} />
-              <Route
-                path="/admin/host-create"
-                element={<CreateHouseForRent />}
-              />
-              <Route path="/detail-house" element={<DetailHouseForRent />} />
-              <Route path="/searchList" element={<SearchedHouseList />} />
-              <Route path="/slide" element={<Slide />} />
-              <Route path="/example" element={<Example />} />
-              <Route path="/profile/:id" element={<Profile />} />
-              <Route path="/profile/edit/:id" element={<EditProfile />} />
-              <Route path="/demo" element={<DemoSlide />} />
-              <Route path="/dashboard/detail/:id" element={<DetailHouse />} />
-              <Route path="/get-started" element={<GetStarted />} />
-              <Route path="/top4" element={<TopHouse />} />
-              <Route path="/vip" element={<VipHouse />} />
-              <Route path="/normal" element={<NormalHouse />} />
-              <Route path="/onebedroom" element={<ShowOneBedRoom />} />
-              <Route path="/date" element={<DateDemo />} />
-              <Route path="/check-booking/:id" element={<CheckBooking />} />
-              <Route
-                path="/multiplebedroom"
-                element={<ShowMultipleBedRoom />}
-              />
-            </Routes>
-            <ScrollTop />
+    
+      <Routes>
+        <Route path="/" element={<GetStarted />} />
+        
+        <Route path="/home" element={<Home />} />
+
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/dashboard/:id" element={<ListHost />} />
+
+        <Route path="/admin/host-create" element={<CreateHouseForRent />} />
+
+        <Route path="/detail-house" element={<DetailHouseForRent />} />
+
+        <Route path="/searchList" element={<SearchedHouseList />} />
+
+        <Route path="/slide" element={<Slide />} />
+
+        <Route path="/example" element={<Example />} />
+
+        <Route path="/profile/:id" element={<Profile />} />
+
+        <Route path="/profile/edit/:id" element={<EditProfile />} />
+
+        <Route path="/demo" element={<DemoSlide />} />
+
+        <Route path="/dashboard/detail/:id" element={<DetailHouse />} />
+
+        <Route path="/get-started" element={<GetStarted />} />
+
+        <Route path="/top4" element={<TopHouse />} />
+
+        <Route path="/vip" element={<VipHouse />} />
+
+        <Route path="/normal" element={<NormalHouse />} />
+
+        <Route path="/onebedroom" element={<ShowOneBedRoom />} />
+
+        <Route path="/date" element={<DateDemo />} />
+
+        <Route path="/check-booking/:id" element={<CheckBooking />} />
+
+        <Route path="/multiplebedroom" element={<ShowMultipleBedRoom />} />
+      </Routes>
+      <ScrollTop />
     </>
   );
 }

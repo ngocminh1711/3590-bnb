@@ -15,7 +15,7 @@ import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabMutiBed = () => {
     const navigate = useNavigate()
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(5);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

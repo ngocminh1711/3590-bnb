@@ -11,22 +11,23 @@ import { useDispatch } from "react-redux";
 import { getDetailHouse } from "../../features/getHouseDetail/GetHouseDetailSlice";
 
 function CheckBooking() {
+  const PORT = process.env.PORT || 8000;
   const userLogin = useSelector((state) => state.profileUser);
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
+  const [booking, setBooking] = useState([]);
   const [value, setValue] = useState(false);
+  let bookingProduct;
 
-
-  const getApi = async () => {
+  const getApiResever = async () => {
     return await axios.get(
-      `http://localhost:8000/api/resever/${userLogin.idUserLogin}`
+      `http://localhost:${PORT}/api/resever/${userLogin.idUserLogin}`
     );
   };
   const handleClick = (e) => {
     let id = e;
     navigate(`/detail-house`, { state: { houseId: id } });
   };
-  
+
   const [showDropDown, setShowDropDown] = useState(false);
   const handleShowInfo = () => {
     setShowDropDown(!showDropDown);
@@ -48,9 +49,9 @@ function CheckBooking() {
     });
   };
   useEffect(() => {
-    getApi().then((res) => {
-      // console.log(res);
-      setProducts(res.data.houseForRents);
+    getApiResever().then((res) => {
+      console.log(res);
+      setBooking(res.data.listBooking);
     });
   }, [value]);
   return (
@@ -77,13 +78,13 @@ function CheckBooking() {
                       Name
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
-                      Status
+                      Check in day
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
-                      Price
+                      Check out day
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
-                      Renter
+                      Total Money
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
                       Actions
@@ -92,8 +93,8 @@ function CheckBooking() {
                   </tr>
                 </thead>
                 <tbody className="bg-white">
-                  {products &&
-                    products.map((item, index) => (
+                  {booking &&
+                    booking.map((item, index) => (
                       <tr
                         key={item._id}
                         // onClick={()=>{handleClick(item._id)}}
@@ -110,32 +111,30 @@ function CheckBooking() {
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <img
                             className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
-                            src={item.image_backdrop}
+                            src={item.image}
                             alt="null"
                           />
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.name}
+                            {item.houseName}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                          <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span
-                              aria-hidden
-                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                            />
-                            <span className="relative text-xs">
-                              {item.status.name}
-                            </span>
-                          </span>
+                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                          <div className="text-sm leading-5 text-blue-900 text-center ">
+                            {item.checkInDay}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                          {item.roomRates.toLocaleString()}.00$
+                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                          <div className="text-sm leading-5 text-blue-900 text-center ">
+                            {item.checkOutDay}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                          {item.renter}
-                        </td>
+                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                          <div className="text-sm leading-5 text-blue-900 text-center ">
+                            {item.totalMoney}
+                          </div>
+                        </td>         
                         <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                           <div className="text-left">
                             <div>

@@ -55,25 +55,28 @@ function DetailHouseForRent() {
     });
   }, []);
 
-  let totalTime = endDate.getTime() - startDate.getTime();
-  let totalDay = Math.round(totalTime / (60 * 60 * 1000 * 24));
-  let totalMoney = totalDay * houseForRent.roomRates;
-
-  let data = {
-    houseId: state.houseId,
-    tenantId: userId,
-    checkInDay: startDate,
-    checkOutDay: endDate,
-    totalMoney: totalMoney,
-  };
-
-  const getApiResever = async () => {
+  const getApiResever = async (data) => {
     return await axios.post(`http://localhost:${PORT}/api/resever`, data);
   };
 
+
+    let totalTime = endDate.getTime() - startDate.getTime();
+    let totalDay = Math.round(totalTime / (60 * 60 * 1000 * 24));
+    let totalMoney = totalDay * houseForRent.roomRates;
+
+
   const handleReserver = (e) => {
     e.preventDefault();
-    getApiResever()
+    let data = {
+      houseId: state.houseId,
+      tenantId: userId,
+      checkInDay: startDate,
+      checkOutDay: endDate,
+      totalMoney: totalMoney,
+      houseName: houseForRent.name,
+      image: houseForRent.image_backdrop,
+    };
+    getApiResever(data)
       .then((res) => {
         console.log(res);
       })

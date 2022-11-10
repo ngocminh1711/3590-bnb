@@ -13,7 +13,7 @@ import OptionsTabTop4 from "../../OptionTab/OptionTabTop4";
 function TopHouse(props) {
     return (
         <>
-            
+            <Header/>
             <OptionsTabTop4/>
             <TopHouseForRent/>
             <Footer />

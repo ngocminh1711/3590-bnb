@@ -20,8 +20,9 @@ export default function Profile() {
       navigate("/login");
     }
   }, []);
+  //add
   return (
-    <>
+    <>  
       {/* <div>
     <div className="px-6 mt-20">
                   <div className="flex flex-wrap justify-center">

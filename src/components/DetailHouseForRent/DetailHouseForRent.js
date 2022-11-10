@@ -1,7 +1,7 @@
 import "./DetailHouseForRent.css";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ function DetailHouseForRent() {
   const userLogin = useSelector((state) => state.profileUser);
   const [money, setMoney] = useState(0);
   let userId = userLogin.idUserLogin;
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -78,6 +79,7 @@ function DetailHouseForRent() {
     };
     getApiResever(data)
       .then((res) => {
+        navigate('/home')
         console.log(res);
       })
       .catch((err) => {

@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="thao">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabMutiBed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabMutiBed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabNormal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabNormal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabTop4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabTop4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabVip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabVip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BathRoom/ShowMultipleBathRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BathRoom/ShowMultipleBathRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BathRoom/ShowOneBathRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BathRoom/ShowOneBathRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BedRoom/ShowMultipleBedRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BedRoom/ShowMultipleBedRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BedRoom/ShowOneBedRoom.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BedRoom/ShowOneBedRoom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NormalHouse/NormalHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Price/ShowLess500.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Price/ShowLess500.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Price/ShowThan1000.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Price/ShowThan1000.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Price/ShowThan500.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Price/ShowThan500.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/VipHouse/VipHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/VipHouse/VipHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/iconSlide/optionsTab.js" afterDir="false" />
-    </list>
+    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="thao" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Admin/WebstormProjects/3590-bnb-api",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/WebstormProjects/3590-bnb-api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

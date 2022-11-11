@@ -29,7 +29,7 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-        hostName: "",
+        // hostName: "",
     });
 
 
@@ -41,11 +41,12 @@ function DetailHouseForRent() {
         );
     };
 
+
     useEffect(() => {
         let id = state.houseId;
 
         getData(id).then((res) => {
-            dispatch(setIdUserLogin(res.data.data.userId))
+                console.log(res)
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -61,10 +62,9 @@ function DetailHouseForRent() {
         });
     }, []);
 
-    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
 
     const getHost = async () => {
-        return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
+        return await axios.get(`http://localhost:8000/api/user/${userId}`)
     }
 
     useEffect(() => {
@@ -108,7 +108,7 @@ function DetailHouseForRent() {
     return (
         <>
             <Header/>
-            {houseForRent && houseForRent && host ? (
+            {houseForRent && host ? (
                 <>
                     {" "}
                     <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -180,7 +180,8 @@ function DetailHouseForRent() {
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">
                                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
-                                    Entire rental unti hosted by {host.name}
+                                    Entire rental unti hosted by
+                                    {host.name}
                                 </h1>
                                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
                                     *{houseForRent.numberOfBedrooms} bedrooms *{" "}
@@ -205,7 +206,9 @@ function DetailHouseForRent() {
                                         <h1 className="text-black-300 text-1.5xl title-font font-medium mb-1 float-left pl-2">
                                             Designed by
                                         </h1>
-                                        <p className="text-gray-500 text-1.5xl">{host.name}</p>
+                                        <p className="text-gray-500 text-1.5xl">
+                                            {host.name}
+                                        </p>
                                     </div>
                                 </div>
                                 <div>

@@ -31,8 +31,9 @@ const Hr = styled.hr`
 
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
+
   const userLoginProfile = useSelector((state) => state.profileUser);
-  console.log("id--------" + userLoginProfile.idUserLogin);
+  console.log(userLoginProfile.idUserLogin)
   const dispatch = useDispatch();
   // let user;
   // if (token) {
@@ -118,16 +119,7 @@ function Header({ lightMode, setLightMode }) {
       navigate("/login");
     }
   };
-  const handleCreate = (e) => {
-    navigate("/admin/host-create");
-  };
 
-  const handleMyNotifications = () => {
-    navigate(`/check-booking/${userLoginProfile.idUserLogin}`)
-  };
-  const handleShowHistoryBooking = () => {
-    navigate(`/history-booking/${userLoginProfile.idUserLogin}`)
-  }
 
   const handleDashBoard = (e) => {
     navigate(`/dashboard/${userLoginProfile.idUserLogin}`);

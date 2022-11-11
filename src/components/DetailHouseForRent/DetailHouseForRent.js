@@ -246,8 +246,7 @@ function DetailHouseForRent() {
                                                         $ {houseForRent.roomRates} per night
                                                     </h1>
                                                     <div className="px-5 pb-5 pt-5">
-                                                        <div
-                                                            className=" rounded-full border grid grid-cols-2 grid-flow-row ">
+                                                        <div className=" rounded-full border grid grid-cols-2 grid-flow-row ">
                                                             <div className="col-span-2">
                                                                 <div className="flex items-center justify-center">
                                                                     <DatePicker

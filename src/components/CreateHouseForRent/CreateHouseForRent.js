@@ -8,8 +8,7 @@ import { Alert } from "@material-tailwind/react";
 import Header from "../header/Header";
 import { useNavigate } from "react-router";
 import Footer from "../footer/Footer";
-import HeaderDashBoard from "../header/HeaderDashBoard";
-
+import swal from "sweetalert";
 
 function CreateHouseForRent() {
   const userLogin = useSelector(state => state.profileUser)
@@ -68,6 +67,12 @@ function CreateHouseForRent() {
       .post("http://localhost:8000/api/products", data)
       .then((res) => {
         setStatusCreate(true);
+        swal({
+          title: "Create Suscess!",
+          text: "You clicked OK!",
+          icon: "success",
+          button: "Ok!",
+        });
         navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
       })
       .catch((err) => console.log(err.message));
@@ -117,9 +122,7 @@ function CreateHouseForRent() {
                       </button>
                       {statusCreate ? (
                         <div className="flex w-full flex-col gap-2 z-30">
-                          <Alert color="green">
-                            A success alert for showing message.
-                          </Alert>
+
                         </div>
                       ) : (
                         ""

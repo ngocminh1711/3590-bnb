@@ -46,7 +46,7 @@ function CreateImageView () {
             );
         });
         Promise.all(promises)
-            .then(() => alert("All images uploaded"))
+            .then(() => console.log(1))
             .catch((err) => console.log(err));
     }
 

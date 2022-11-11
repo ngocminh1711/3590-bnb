@@ -68,19 +68,19 @@ function ListHost() {
       // console.log(res);
       setProducts(res.data.houseForRents);
     });
-  }, [value]);
+  }, [handleDelete]);
 
   return (<>
     <div>
       <HeaderDashBoard/>
       <>
-        <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+        <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 ">
           <link
               href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
               rel="stylesheet"
           ></link>
           <div
-              className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+              className=" ml-32 mr-32 align-middle inline-block min-w-800 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
             <table className="min-w-full">
               <thead>
               <tr>
@@ -102,7 +102,7 @@ function ListHost() {
                 <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
                   Renter
                 </th>
-                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider ml-5 text-center">
                   Actions
                 </th>
                 <th className="px-6 py-3 border-b-2 border-gray-300"/>
@@ -116,15 +116,15 @@ function ListHost() {
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
                   <div className="flex items-center">
                     <div>
-                      <div className="text-sm leading-5 text-gray-800">
+                      <div className="ml-5 text-sm leading-5 text-gray-800">
                         {index + 1}
                       </div>
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                <td className="px-6 py-4 whitespace-no-wraptext-center border-b border-gray-500 w-auto">
                   <img
-                      className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
+                      className="w-30 h-20 -m-1 transform ml-5 hover:scale-150"
                       src={item.image_backdrop}
                       alt="null"
                   />
@@ -151,7 +151,8 @@ function ListHost() {
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                   {item.renter}
                 </td>
-                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
+                <td className="px-6 py-4 whitespace-no-wrap border-b  border-gray-500 text-sm leading-5 text-center">
+                   <div className="ml-5 w-full">
                       <button
                         onClick={() => {
                           handleClick(item._id);
@@ -183,6 +184,7 @@ function ListHost() {
                           </i>
                         </a>
                       </button>
+                      </div>
                 </td>
               </tr>))}
               </tbody>

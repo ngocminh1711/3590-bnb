@@ -31,8 +31,9 @@ const Hr = styled.hr`
 
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
+
   const userLoginProfile = useSelector((state) => state.profileUser);
-  console.log("id--------" + userLoginProfile.idUserLogin);
+  console.log(userLoginProfile.idUserLogin)
   const dispatch = useDispatch();
   // let user;
   // if (token) {
@@ -94,7 +95,8 @@ function Header({ lightMode, setLightMode }) {
       `http://localhost:8000/api/user/change-password/${id}`,
       data
     );
-    setForm({ currentPassword: "", newPassword: "" });
+    setForm({currentPassword:"",
+  newPassword:""})
     return a;
   };
 
@@ -117,16 +119,7 @@ function Header({ lightMode, setLightMode }) {
       navigate("/login");
     }
   };
-  const handleCreate = (e) => {
-    navigate("/admin/host-create");
-  };
 
-  const handleMyNotifications = () => {
-    navigate(`/check-booking/${userLoginProfile.idUserLogin}`);
-  };
-  const handleShowHistoryBooking = () => {
-    navigate(`/history-booking/${userLoginProfile.idUserLogin}`);
-  };
 
   const handleDashBoard = (e) => {
     navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
@@ -152,7 +145,7 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0">
             <SearchHouses />
           </div>
-
+          
           {userLogin ? (
             <>
               <>
@@ -203,7 +196,7 @@ function Header({ lightMode, setLightMode }) {
                     </button>
                   </div>
                   <div
-                    className="absolute right-0 z-10 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-50 mt-2 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="menu-button"
@@ -216,7 +209,7 @@ function Header({ lightMode, setLightMode }) {
                         <div className="py-1" role="none">
                           <button
                             href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -224,218 +217,167 @@ function Header({ lightMode, setLightMode }) {
                           >
                             {userLogin}
                           </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleCreate(e)}
-                          >
-                            Create House
-                          </button>
+                          
                           <br></br>
 
                           <div>
-                            {/* Button trigger modal */}
-                            <button
-                              onClick={() => {
-                                setShowModal(true);
-                              }}
-                              type="button"
-                              className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                              data-bs-toggle="modal"
-                              data-bs-target="#staticBackdrop"
-                            >
-                              ChangePassword
-                            </button>
-                            {/* Modal */}
-                            {showModal ? (
-                              <>
-                                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
-                                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    {/*content*/}
-                                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                      {/*header*/}
-                                      <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                        <h3 className="text-3xl font-semibold">
-                                          Change Password
-                                        </h3>
-
-                                        <button
-                                          className="text-2xl hover:bg-rose-400"
-                                          onClick={() => {
-                                            setShowModal(false);
-                                          }}
-                                        >
-                                          X
-                                        </button>
-                                      </div>
-                                      {/*body*/}
-                                      <div
-                                        className="relative p-6 flex-auto"
-                                        style={{ width: "600px" }}
-                                      >
-                                        <Formik
-                                          initialValues={form}
-                                          // validationSchema={RegisterSchema}
-                                          onSubmit={async (e) => {
-                                            console.log(e);
-                                            let user;
-                                            if (token) {
-                                              user = jwtDecode(token);
-                                            }
-                                            const id = user.id;
-
-                                            let data = {
-                                              currentPassword:
-                                                form.currentPassword,
-                                              newPassword: form.newPassword,
-                                            };
-                                            handleChangePassword(data, id)
-                                              .then((res) => {
-                                                console.log(res);
-
-                                                if (res.data.success === true) {
-                                                  setShowModal(false);
-                                                  swal({
-                                                    title:
-                                                      "ChangePass Suscess!",
-                                                    text: "You clicked OK!",
-                                                    icon: "success",
-                                                    button: "Ok!",
-                                                  });
-                                                }
-                                              })
-                                              .catch((e) =>
-                                                console.log(e.message)
-                                              );
-                                          }}
-                                        >
-                                          {({ errors, touched }) => (
-                                            <Form>
-                                              <section className="text-gray-600 body-font">
-                                                <div>
-                                                  <div className=" w-full bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
-                                                    <div className="relative mb-4">
-                                                      <label
-                                                        htmlFor="Password-old"
-                                                        className="leading-7  text-gray-600 block text-sm font-semibold"
-                                                      >
-                                                        Password Current
-                                                      </label>
-                                                      <Field
-                                                        type="password"
-                                                        name="currentPassword"
-                                                        required
-                                                        value={
-                                                          form.currentPassword
-                                                        }
-                                                        onChange={handleChange}
-                                                        placeholder="Current Password"
-                                                        id="currentPassword"
-                                                        autocomplete="off"
-                                                        className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                      />
-                                                      {errors.oldPassword &&
-                                                      touched.oldPassword ? (
-                                                        <div
-                                                          style={{
-                                                            color: "red",
-                                                          }}
-                                                        >
-                                                          {errors.oldPassword}
-                                                        </div>
-                                                      ) : null}
-                                                    </div>
-                                                    <div className="relative mb-4">
-                                                      <label
-                                                        htmlFor="New password"
-                                                        className="leading-7  text-gray-600 block text-sm font-semibold"
-                                                      >
-                                                        New Password
-                                                      </label>
-                                                      <Field
-                                                        type="password"
-                                                        name="newPassword"
-                                                        id="newPassword"
-                                                        required
-                                                        value={form.newPassword}
-                                                        onChange={handleChange}
-                                                        autocomplete="off"
-                                                        placeholder="New Password"
-                                                        className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                      />
-                                                      {errors.password &&
-                                                      touched.password ? (
-                                                        <div
-                                                          style={{
-                                                            color: "red",
-                                                          }}
-                                                        >
-                                                          {errors.password}
-                                                        </div>
-                                                      ) : null}
-                                                    </div>
-                                                    <button
-                                                      type="submit"
-                                                      className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                                    >
-                                                      Save
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                              </section>
-                                            </Form>
-                                          )}
-                                        </Formik>
-                                      </div>
-                                    </div>
-                                  </div>
+                          
+                          {/* Button trigger modal */}
+                          <button
+                          onClick={()=>{setShowModal(true)}}
+                            type="button"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
+                          >
+                            ChangePassword
+                          </button>
+                          {/* Modal */}
+                          {showModal ? (
+                        <>
+                          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
+                            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                              {/*content*/}
+                              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                {/*header*/}
+                                <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                  <h3 className="text-3xl font-semibold">Change Password</h3>
+                
+                                  <button
+                                  className="text-2xl hover:bg-rose-400"
+                                    onClick={() => {
+                                      setShowModal(false);
+                                      
+                                    }}
+                                  >
+                                    X
+                                  </button>
                                 </div>
-                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                              </>
-                            ) : null}
-                          </div>
+                                {/*body*/}
+                                <div
+                                  className="relative p-6 flex-auto"
+                                  style={{ width: "600px" }}
+                                >
+                                  <Formik
+                                    initialValues={form}
+                                    // validationSchema={RegisterSchema}
+                                    onSubmit={async (e) => {
+                                      console.log(e);
+                                      let user;
+                                      if (token) {
+                                        user = jwtDecode(token);
+                                      }
+                                      const id = user.id;
+                
+                                      let data = {
+                                        currentPassword: form.currentPassword,
+                                        newPassword: form.newPassword,
+                                      };
+                                      handleChangePassword(data, id)
+                                        .then((res) => {
+                                          console.log(res);
+                
+                                          if (res.data.success === true) {
+                                            setShowModal(false)
+                                            swal({
+                                              title: "ChangePass Suscess!",
+                                              text: "You clicked OK!",
+                                              icon: "success",
+                                              button: "Ok!",
+                                            });
+                                           
+                                          }
+                                        })
+                                        .catch((e) => console.log(e.message));
+                                    }}
+                                  >
+                                    {({ errors, touched }) => (
+                                      <Form>
+                                        <section className="text-gray-600 body-font">
+                                          <div>
+                                            <div className=" w-full bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
+                                              <div className="relative mb-4">
+                                                <label
+                                                  htmlFor="Password-old"
+                                                  className="leading-7  text-gray-600 block text-sm font-semibold"
+                                                >
+                                                  Password Current
+                                                </label>
+                                                <Field
+                                                  type="password"
+                                                  name="currentPassword"
+                                                  required
+                                                  value={form.currentPassword}
+                                                  onChange={handleChange}
+                                                  placeholder="Current Password"
+                                                  id="currentPassword"
+                                                  autocomplete="off"
+                                                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                />
+                                                 {errors.oldPassword &&
+                                                    touched.oldPassword ? (
+                                                      <div
+                                                        style={{ color: "red" }}
+                                                      >
+                                                        {errors.oldPassword}
+                                                      </div>
+                                                    ) : null}
+                                              </div>
+                                              <div className="relative mb-4">
+                                                <label
+                                                  htmlFor="New password"
+                                                  className="leading-7  text-gray-600 block text-sm font-semibold"
+                                                >
+                                                  New Password
+                                                </label>
+                                                <Field
+                                                  type="password"
+                                                  name="newPassword"
+                                                  id="newPassword"
+                                                  required
+                                                  value={form.newPassword}
+                                                  onChange={handleChange}
+                                                  autocomplete="off"
+                                                  placeholder="New Password"
 
-                          <hr></hr>
+                                                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                                />
+                                               {errors.password &&
+                                                    touched.password ? (
+                                                      <div
+                                                        style={{ color: "red" }}
+                                                      >
+                                                        {errors.password}
+                                                      </div>
+                                                    ) : null}
+                                              </div>
+                                              <button
+                                                type="submit"
+                                                className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                              >
+                                                Save
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </section>
+                                      </Form>
+                                    )}
+                                  </Formik>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                        </>
+                      ) : null}
+                                          </div>
+
+                          
+                         
                           <button
                             href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleShowHistoryBooking(e)}
-                          >
-                            My History Booking
-                          </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleMyNotifications(e)}
-                          >
-                            My Notifications
-                          </button>
-                          {/* <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleRentHistory(e)}
-                          >
-                            Rent history
-                          </button> */}
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -446,7 +388,7 @@ function Header({ lightMode, setLightMode }) {
                           <br></br>
                           <button
                             href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"

@@ -15,6 +15,7 @@ import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
+import ChangePassword from "./components/host/ChangePassword.js";
 import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
@@ -22,41 +23,43 @@ import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
 import ScrollTop from "./components/iconSlide/iconScrollTop.js";
 import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
+import RentHistory from "./components/host/HistoryBooking/RentHistory.js";
 import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
 
 
 function App() {
-
-    return (
-        <>
-            <Routes>
-                <Route path="/" element={<GetStarted/>}/>
-                <Route path="/home" element={<Home/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/register" element={<Register/>}/>
-                <Route path="/dashboard/:id" element={<ListHost/>}/>
-                <Route path="/admin/host-create" element={<CreateHouseForRent/>}/>
-                <Route path="/detail-house" element={<DetailHouseForRent/>}/>
-                <Route path="/searchList" element={<SearchedHouseList/>}/>
-                <Route path="/slide" element={<Slide/>}/>
-                <Route path="/example" element={<Example/>}/>
-                <Route path="/profile/:id" element={<Profile/>}/>
-                <Route path="/profile/edit/:id" element={<EditProfile/>}/>
-                <Route path="/demo" element={<DemoSlide/>}/>
-                <Route path="/dashboard/detail/:id" element={<DetailHouse/>}/>
-                <Route path="/get-started" element={<GetStarted/>}/>
-                <Route path="/top4" element={<TopHouse/>}/>
-                <Route path="/vip" element={<VipHouse/>}/>
-                <Route path="/normal" element={<NormalHouse/>}/>
-                <Route path="/onebedroom" element={<ShowOneBedRoom/>}/>
-                <Route path="/date" element={<DateDemo/>}/>
-                <Route path="/check-booking/:id" element={<CheckBooking/>}/>
-                <Route path="/history-booking/:id" element={<HistoryBooking/>}/>
-                <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
-            </Routes>
-            <ScrollTop/>
-        </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<GetStarted />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard/:id" element={<ListHost/>}/>
+        <Route path="/admin/host-create" element={<CreateHouseForRent />} />
+        <Route path="/detail-house" element={<DetailHouseForRent />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/searchList" element={<SearchedHouseList />} />
+        <Route path="/slide" element={<Slide />} />
+        <Route path="/rent/history/:id" element={<RentHistory />} />
+        <Route path="/example" element={<Example />} />
+        <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile/edit/:id" element={<EditProfile />} />
+        <Route path="/demo" element={<DemoSlide />} />
+        <Route path="/dashboard/detail/:id" element={<DetailHouse />} />
+        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/top4" element={<TopHouse />} />
+        <Route path="/vip" element={<VipHouse />} />
+        <Route path="/normal" element={<NormalHouse />} />
+        <Route path="/onebedroom" element={<ShowOneBedRoom />} />
+        <Route path="/date" element={<DateDemo />} />
+        <Route path="/check-booking/:id" element={<CheckBooking />} />
+        <Route path="/multiplebedroom" element={<ShowMultipleBedRoom />} />
+        <Route path="/history-booking/:id" element={<HistoryBooking/>}/>
+      </Routes>
+      <ScrollTop />
+    </>
+  );
 }
 
 export default App;

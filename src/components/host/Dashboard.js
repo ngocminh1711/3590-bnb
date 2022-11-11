@@ -5,6 +5,7 @@ import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function ListHost() {
   const userLogin = useSelector((state) => state.profileUser);
@@ -71,7 +72,7 @@ function ListHost() {
 
   return (<>
     <div>
-      <Header/>
+      <HeaderDashBoard/>
       <>
         <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
           <link

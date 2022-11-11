@@ -120,6 +120,10 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
   const handleMyNotifications = () => {
     navigate(`/check-booking/${userLoginProfile.idUserLogin}`);
   };
+  const handleShowHistoryBooking = () => {
+    navigate(`/history-booking/${userLoginProfile.idUserLogin}`)
+  }
+
   const id = userLoginProfile.userLogin;
   console.log(id);
   const handleDashBoard = (e) => {
@@ -193,7 +197,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         whitespace-nowrap
         bg-transparent
         text-gray-700
-        hover:bg-gray-100
+        hover:bg-rose-200
       "
                   onClick={(e) => handleCreate(e)}
                 >
@@ -213,11 +217,11 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         whitespace-nowrap
         bg-transparent
         text-gray-700
-        hover:bg-gray-100
+        hover:bg-rose-200
       "
-                  onClick={(e) => handleCreate(e)}
+      onClick={(e) => handleShowHistoryBooking(e)}
                 >
-                  Create House
+                  History Booking
                 </button>
               </li>
 
@@ -234,33 +238,14 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         whitespace-nowrap
         bg-transparent
         text-gray-700
-        hover:bg-gray-100
+        hover:bg-rose-200
       "
                   onClick={(e) => handleMyNotifications(e)}
                 >
                   My Notifications
                 </button>
               </li>
-              <li>
-                <button
-                  className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      "
-                  onClick={(e) => handleCreate(e)}
-                >
-                  Create House
-                </button>
-              </li>
+              
             </ul>
           </div>
           <div className="text-left">
@@ -362,7 +347,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
                         <div className="py-1" role="none">
                           <button
                             href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
@@ -370,19 +355,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
                           >
                             {userLogin}
                           </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleCreate(e)}
-                          >
-                            Create House
-                          </button>
-                          <br></br>
-
+                          <br></br> 
                           <div>
                             {/* Button trigger modal */}
                             <button
@@ -390,7 +363,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
                                 setShowModal(true);
                               }}
                               type="button"
-                              className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                              className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"
                             >
@@ -544,13 +517,9 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
                               </>
                             ) : null}
                           </div>
-
-                          <hr></hr>
-                         
-                          <br></br>
                           <button
                             href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-2020 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"

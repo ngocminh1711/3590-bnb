@@ -34,7 +34,9 @@ import priceThan1000 from "../components/Price/Pricethan1000";
 
 const OptionsTabVip = () => {
     const navigate = useNavigate()
+
     const [value, setValue] = useState(3);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

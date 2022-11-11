@@ -15,7 +15,9 @@ import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabMutiBed = () => {
     const navigate = useNavigate()
+
     const [value, setValue] = useState(6);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -80,6 +82,7 @@ const OptionsTabMutiBed = () => {
                         color: '#000000'
                     }}
                 >
+
                     <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={18}/>} value={1} label='All'/>;
                     <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
                     <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
@@ -101,8 +104,6 @@ const OptionsTabMutiBed = () => {
                          label='House price >1000$'/>;
                     <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;
-
-                    
                 </Tabs>
                 <Button
                     sx={{

@@ -1,5 +1,5 @@
 import "./DetailHouseForRent.css";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import Header from "../header/Header";
@@ -7,12 +7,14 @@ import Footer from "../footer/Footer";
 import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
+    const [host, setHost] = useState();
+    const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
@@ -26,7 +28,8 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-    });
+        hostName: ""
+    })
 
     const {state} = useLocation();
 
@@ -40,6 +43,7 @@ function DetailHouseForRent() {
         let id = state.houseId;
 
         getData(id).then((res) => {
+            dispatch(setIdUserLogin(res.data.data.userId))
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -54,6 +58,23 @@ function DetailHouseForRent() {
             });
         });
     }, []);
+
+    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
+
+    console.log({id: idUserLogin})
+
+
+    const getHost = async () => {
+        return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
+    }
+
+    useEffect(() => {
+        getHost()
+            .then(res => setHost(res.data.data))
+            .catch(err => console.log(err.message))
+    }, [])
+    console.log({host: host})
+
 
     const getApiResever = async (data) => {
         return await axios.post(`http://localhost:${PORT}/api/resever`, data);
@@ -92,7 +113,8 @@ function DetailHouseForRent() {
     return (
         <>
             <Header/>
-            {houseForRent && houseForRent ? (
+
+            {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
                     <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -164,7 +186,8 @@ function DetailHouseForRent() {
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">
                                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
-                                    Entire rental unti hosted by Nguyen
+
+                                    Entire rental unti hosted by {host.name}
                                 </h1>
                                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
                                     *{houseForRent.numberOfBedrooms} bedrooms *{" "}
@@ -446,6 +469,7 @@ function DetailHouseForRent() {
                                         </h2>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -459,3 +483,5 @@ function DetailHouseForRent() {
 }
 
 export default DetailHouseForRent;
+
+

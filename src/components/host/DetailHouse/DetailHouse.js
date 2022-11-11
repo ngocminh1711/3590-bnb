@@ -7,83 +7,89 @@ import Footer from "../../footer/Footer";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import {useNavigate} from 'react-router'
+
+
 function DetailHouse() {
-  const { id } = useParams();
-  const PORT = process.env.PORT || 8000;
 
-  const [house, setHouse] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = React.useState(false);
-  const [houseStatus, setHouseStatus] = useState([]);
-  const [typeRooms, setTypeRooms] = useState([]);
-  const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [formEdit, setFormEdit] = useState({
-    name: "",
-    address: "",
-    typeRoom: "",
-    numberOfBathrooms: "",
-    numberOfBedrooms: "",
-    roomRates: "",
-    description: "",
-    status: "",
-  });
+    const {id} = useParams()
+    const PORT = process.env.PORT || 8000;
+    const navigate = useNavigate();
 
-  const getHouse = async () => {
-    return await axios.get(
-      `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
-    );
-  };
+    const [house, setHouse] = useState({})
+    const [loading, setLoading] = useState(0)
+    const [showModal, setShowModal] = React.useState(false);
+    const [houseStatus, setHouseStatus] = useState([]);
+    const [typeRooms, setTypeRooms] = useState([]);
+    const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const numberOfBathrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const [formEdit, setFormEdit] = useState({
+        name: "",
+        address: "",
+        typeRoom: "",
+        numberOfBathrooms: "",
+        numberOfBedrooms: "",
+        roomRates: "",
+        description: "",
+        status: ""
+    });
 
-  const getTypeRooms = async () => {
-    return await axios.get("http://localhost:8000/api/products/type-room");
-  };
 
-  const getHouseStatus = async () => {
-    return await axios.get("http://localhost:8000/api/products/house-status");
-  };
+    const getHouse = async () => {
+        return await axios.get(`http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`)
+    }
 
-  const handleChange = (e) => {
-    setFormEdit({ ...formEdit, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let data = {
-      name: formEdit.name,
-      address: formEdit.address,
-      typeRoom: formEdit.typeRoom,
-      numberOfBathrooms: formEdit.numberOfBathrooms,
-      numberOfBedrooms: formEdit.numberOfBedrooms,
-      roomRates: formEdit.roomRates,
-      description: formEdit.description,
-      status: formEdit.status,
+    const getTypeRooms = async () => {
+        return await axios.get("http://localhost:8000/api/products/type-room");
     };
-    setShowModal(false);
-    return await axios
-      .patch(`http://localhost:${PORT}/api/products/edit/${id}`, data)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.message));
-  };
 
-  useEffect(() => {
-    getHouse().then((res) => {
-      setHouse(res.data.data);
+    const getHouseStatus = async () => {
+        return await axios.get("http://localhost:8000/api/products/house-status");
+    };
+
+    const handleChange = (e) => {
+        setFormEdit({...formEdit, [e.target.name]: e.target.value});
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let data = {
+            name: formEdit.name,
+            address: formEdit.address,
+            typeRoom: formEdit.typeRoom,
+            numberOfBathrooms: formEdit.numberOfBathrooms,
+            numberOfBedrooms: formEdit.numberOfBedrooms,
+            roomRates: formEdit.roomRates,
+            description: formEdit.description,
+            status: formEdit.status
+        };
+        setShowModal(false)
+        setLoading(loading + 1)
+        return await axios.patch(`http://localhost:${PORT}/api/products/edit/${id}`, data)
+            .then(res => {
+                console.log(res)})
+            .catch(err => console.log(err.message))
+    };
+
+
+    useEffect(() => {
+        getTypeRooms()
+            .then((res) => setTypeRooms(res.data.data))
+            .catch((err) => console.log(err));
     }, []);
-  }, []);
 
-  useEffect(() => {
-    getTypeRooms()
-      .then((res) => setTypeRooms(res.data.data))
-      .catch((err) => console.log(err));
-  }, []);
+    useEffect(() => {
+        getHouseStatus()
+            .then((res) => setHouseStatus(res.data.data))
+            .catch((err) => console.log(err));
+    }, []);
 
-  useEffect(() => {
-    getHouseStatus()
-      .then((res) => setHouseStatus(res.data.data))
-      .catch((err) => console.log(err));
-  }, []);
-  console.log(formEdit);
+    useEffect(() => {
+        getHouse().then(res => {
+            setHouse(res.data.data)
+        })
+    }, [loading])
+    console.log(house)
 
   return (
     <>
@@ -524,25 +530,23 @@ function DetailHouse() {
                     Listing Basic
                   </h1>
 
-                  <div className="py-4">
-                    <h2 className="text-gray-900 text-1xl title-font font-medium">
-                      Listing title
-                    </h2>
-                    <p className="text-slate-400">{house?.name}</p>
-                  </div>
-                </div>
-                <span></span>
-                <div className="py-4">
-                  <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">
-                    Listing description
-                  </h2>
-                  <p className="text-slate-400">{house?.description}</p>
-                </div>
-                <span></span>
-                <div className="py-4">
-                  <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">
-                    Listing description
-                  </h2>
+                                    <div className="py-4">
+                                        <h2 className="text-gray-900 text-1xl title-font font-medium">Listing title</h2>
+                                        <p className="text-slate-400">{house?.name}</p>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div className="py-4">
+
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
+                                        description</h2>
+                                    <p className="text-slate-400">{house?.description}</p>
+                                </div>
+                                <span></span>
+                                <div className="py-4">
+
+                                    <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
+                                        description</h2>
 
                   <p className="text-slate-400">{house?.address}</p>
                 </div>

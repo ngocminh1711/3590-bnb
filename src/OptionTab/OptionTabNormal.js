@@ -15,7 +15,9 @@ import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabNormal = () => {
     const navigate = useNavigate()
+
     const [value, setValue] = useState(4);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -81,6 +83,7 @@ const OptionsTabNormal = () => {
                         color: '#000000'
                     }}
                 >
+
                     <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={18}/>} value={1} label='All'/>;
                     <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
                     <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
@@ -103,6 +106,7 @@ const OptionsTabNormal = () => {
                     <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;
                     
+
                 </Tabs>
                 <Button
                     sx={{

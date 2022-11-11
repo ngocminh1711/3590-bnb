@@ -8,7 +8,7 @@ import { Alert } from "@material-tailwind/react";
 import Header from "../header/Header";
 import { useNavigate } from "react-router";
 import Footer from "../footer/Footer";
-
+import swal from "sweetalert";
 
 function CreateHouseForRent() {
   const userLogin = useSelector(state => state.profileUser)
@@ -33,7 +33,8 @@ function CreateHouseForRent() {
   const backdropURL = useSelector((state) => state.createBackdrop.backdropURl);
   const viewURL = useSelector((state) => state.createImageView.urls);
   const navigate = useNavigate();
-
+  let token = localStorage.getItem("token");
+  const userLoginProfile = useSelector((state) => state.profileUser);
   const getTypeRooms = async () => {
     return await axios.get("http://localhost:8000/api/products/type-room");
   };
@@ -66,7 +67,13 @@ function CreateHouseForRent() {
       .post("http://localhost:8000/api/products", data)
       .then((res) => {
         setStatusCreate(true);
-        navigate("/home");
+        swal({
+          title: "Create Suscess!",
+          text: "You clicked OK!",
+          icon: "success",
+          button: "Ok!",
+        });
+        navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
       })
       .catch((err) => console.log(err.message));
   };
@@ -84,6 +91,8 @@ function CreateHouseForRent() {
 
   return (
     <>
+    <Header/>
+    <div>
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 pl-2 pr-2 ">
           <img
@@ -91,7 +100,7 @@ function CreateHouseForRent() {
             src="https://vr360.com.vn/uploads/images/anh%20chup%20khach%20san.jpg"
           />
           <div className=" z-20 flex items-center h-auto justify-center mb-12 overflow-hidden">
-            <div className="z-20 mt-2 h-auto">
+            <div className="z-20 mt-2 h-auto mt-0">
               <form onSubmit={handleSubmit}>
                 <div className="flex bg-100 h-auto">
                   <div className="m-auto">
@@ -113,9 +122,7 @@ function CreateHouseForRent() {
                       </button>
                       {statusCreate ? (
                         <div className="flex w-full flex-col gap-2 z-30">
-                          <Alert color="green">
-                            A success alert for showing message.
-                          </Alert>
+
                         </div>
                       ) : (
                         ""
@@ -295,6 +302,7 @@ function CreateHouseForRent() {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <Footer />
     </>

@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/header/HeaderDashBoard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/host/HistoryBooking/HistoryBooking.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabMutiBed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabMutiBed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabNormal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabNormal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabTop4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabTop4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OptionTab/OptionTabVip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/OptionTab/OptionTabVip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateBackdrop/CreateBackdrop.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateBackdrop/CreateBackdrop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateImageView/CreateImageView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateImageView/CreateImageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DemoSlide/DemoSlide.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomestayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomestayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/ChangePassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/CheckBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/CheckBooking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

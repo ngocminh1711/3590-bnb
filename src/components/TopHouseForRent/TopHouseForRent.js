@@ -71,6 +71,7 @@ function TopHouseForRent() {
                                             <div className="text-sm font-medium text-gray-900">${item.roomRates} per night
                                             </div>
 
+
                                         </div>
 
 

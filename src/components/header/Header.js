@@ -111,9 +111,11 @@ function Header({ lightMode, setLightMode }) {
   const handleMyNotifications = () => {
     navigate(`/check-booking/${userLoginProfile.idUserLogin}`)
   };
-  // const handleShowHistoryBooking = () => {
-  //   navigate(`/hi-booking/${userLoginProfile.idUserLogin}`)
-  // }
+ 
+
+  const handleRentHistory = () => {
+    navigate(`/rent/history/${userLoginProfile.idUserLogin}`)
+  }
 
   const handleDashBoard = (e) => {
     navigate("/dashboard");
@@ -245,6 +247,17 @@ function Header({ lightMode, setLightMode }) {
                             onClick={(e) => handleMyNotifications(e)}
                           >
                             My Notifications
+                          </button>
+                          <br></br>
+                          <button
+                            href="#"
+                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                            role="menuitem"
+                            tabIndex="-1"
+                            id="menu-item-0"
+                            onClick={(e) => handleRentHistory(e)}
+                          >
+                            Rent history
                           </button>
                           <br></br>
                           <button

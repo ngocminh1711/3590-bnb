@@ -15,7 +15,8 @@ function DetailHouseForRent() {
   let userId = userLogin.idUserLogin;
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
+  const [houseStatus, setHouseStatus] = useState();
+  const [houseId, setHouseId] = useState();
   const [houseForRent, setHouseForRent] = useState({
     name: "",
     address: "",
@@ -40,6 +41,9 @@ function DetailHouseForRent() {
     let id = state.houseId;
 
     getData(id).then((res) => {
+      console.log(res)
+      setHouseStatus(res.data.data.status.name)
+      setHouseId(res.data.data._id)
       setHouseForRent({
         ...houseForRent,
         name: res.data.data.name,
@@ -54,6 +58,8 @@ function DetailHouseForRent() {
       });
     });
   }, []);
+
+  console.log(houseId)
 
   const getApiResever = async (data) => {
     return await axios.post(`http://localhost:${PORT}/api/resever`, data);
@@ -76,6 +82,8 @@ function DetailHouseForRent() {
       houseName: houseForRent.name,
       image: houseForRent.image_backdrop,
     };
+
+
     getApiResever(data)
         .then((res) => {
           console.log(res);

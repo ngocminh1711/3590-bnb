@@ -84,6 +84,7 @@ function CreateHouseForRent() {
 
   return (
     <>
+      <Header/>
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 pl-2 pr-2 ">
           <img
@@ -91,7 +92,7 @@ function CreateHouseForRent() {
             src="https://vr360.com.vn/uploads/images/anh%20chup%20khach%20san.jpg"
           />
           <div className=" z-20 flex items-center h-auto justify-center mb-12 overflow-hidden">
-            <div className="z-20 mt-2 h-auto">
+            <div className="z-20 mt-2 h-auto mt-0">
               <form onSubmit={handleSubmit}>
                 <div className="flex bg-100 h-auto">
                   <div className="m-auto">

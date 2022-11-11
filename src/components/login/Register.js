@@ -1,157 +1,3 @@
-// import {useState} from 'react'
-// import axios from 'axios'
-// import { Navigate } from 'react-router-dom'
-// import * as Yup from "yup";
-// import { Formik, Form, Field, ErrorMessage } from "formik";
-// const RegisterSchema = Yup.object().shape({
-// name: Yup.string()
-// .min(4, "Tối thiểu 4 ký tự!")
-// .max(50, "Tối đa 50 ký tự!")
-// .required("Bắt buộc!"),
-
-// email: Yup.string()
-// .email("Email không hợp lệ!")
-// .required("Bắt buộc!")
-// .matches(
-//   /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-//   "Email không đúng định dạng.(vd: abc@gmail.com)"
-// ),
-// password: Yup.string()
-// .required("Bắt buộc")
-// .matches(
-//   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-//   "Mật khẩu phải ít nhất 8 ký tự ít nhất một viết hoa, một viết thường và một số."
-// ),
-// confirmPassword: Yup.string()
-// .required("Bắt buộc!")
-// .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp!"),
-// });
-// function Register() {
-//   const [message,setMessage]= useState("")
-//   const [form,setForm]=useState({
-//     username:"",
-//     email:"",
-//     password:""
-//   })
-//   const navigate =Navigate()
-//   const [registersuscess,setRegisterSuscess]= useState(false)
-//   const handleChange = (e)=>{
-//     setForm({...form,[e.target.name]:e.target.value})
-//   }
-//   const handleRegister = async()=>{
-//     console.log(1)
-//     const res = await axios.post ("http://localhost:8000/api/auth/register",form)
-//     console.log(res)
-//       if(res.data.success === true){
-//         setRegisterSuscess(true)
-//       }
-//   }
-//   return (
-//     // <>
-//     //   {" "}
-//     //   <div className="hidden sm:block" aria-hidden="true">
-//     //     <div className="py-5">
-//     //       <div className="border-t border-gray-200" />
-//     //     </div>
-//     //   </div>
-//     //   <div className="mt-10 sm:mt-0">
-//     //     <div className="md:grid md:grid-cols-3 md:gap-6">
-//     //       <div className="mt-5 md:col-span-2 md:mt-0">
-//     //         <form action="#" method="POST">
-//     //           <div className="overflow-hidden shadow sm:rounded-md">
-//     //             <div className="bg-white px-4 py-5 sm:p-6">
-//     //               <div className="grid grid-cols-6 gap-6">
-//     //                 <div className="col-span-6 sm:col-span-3">
-//     //                   <label
-//     //                     htmlFor="last-name"
-//     //                     className="block text-sm font-medium text-gray-700"
-//     //                   >
-//     //                     Username
-//     //                   </label>
-//     //                   <input
-//     //                     type="text"
-//     //                     name="username"
-//     //                     id="last-name"
-//     //                     onChange={handleChange}
-//     //                     autoComplete="family-name"
-//     //                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-//     //                   />
-//     //                 </div>
-//     //                 <div className="col-span-6 sm:col-span-4">
-//     //                   <label
-//     //                     htmlFor="email-address"
-//     //                     className="block text-sm font-medium text-gray-700"
-//     //                   >
-//     //                     Email
-//     //                   </label>
-//     //                   <input
-//     //                     type="text"
-//     //                     name="email"
-//     //                     id="email-address"
-//     //                     onChange = {handleChange}
-//     //                     autoComplete="email"
-//     //                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-//     //                   />
-//     //                 </div>
-
-//     //                 <div className="col-span-6">
-//     //                   <label
-//     //                     htmlFor="street-address"
-//     //                     className="block text-sm font-medium text-gray-700"
-//     //                   >
-//     //                     Password
-//     //                   </label>
-//     //                   <input
-//     //                     type="text"
-//     //                     name="password"
-//     //                     id="street-address"
-//     //                     onChange = {handleChange}
-//     //                     autoComplete="street-address"
-//     //                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-//     //                   />
-
-//     //                 </div>
-//     //                 <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-//     //                   <label
-//     //                     htmlFor="city"
-//     //                     name="password"
-//     //                     onChange={handleChange}
-//     //                     className="block text-sm font-medium text-gray-700"
-//     //                   >
-//     //                     Retype Password
-//     //                   </label>
-//     //                   <input
-//     //                     type="text"
-//     //                     name="city"
-//     //                     id="city"
-//     //                     autoComplete="address-level2"
-//     //                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-//     //                   />
-//     //                 </div>
-//     //               </div>
-//     //             </div>
-//     //             <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-//     //               <button
-//     //                 type="submit"
-//     //                 onSubmit ={handleRegister}
-//     //                 className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-//     //               >
-//     //                 Save
-//     //               </button>
-//     //             </div>
-//     //           </div>
-//     //         </form>
-//     //       </div>
-//     //     </div>
-//     //   </div>
-//     // </>
-//     <>
-
-// </>
-//   );
-// }
-// export default Register;
-
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -160,7 +6,7 @@ import axios from "axios";
 import swal from "sweetalert";
 import BannerImg from "../../assets/img/house-banner.png";
 import Footer from "../footer/Footer";
-
+import Header from "../header/Header";
 // import 'flowbite';
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
@@ -194,11 +40,15 @@ export default function Register() {
     email: "",
     password: "",
   });
+  console.log(form)
   const handleRegister = async (data) => {
+    console.log(1)
     return await axios.post("http://localhost:8000/api/auth/register", data);
+    
   };
   return (
     <>
+    <Header />
       <Formik
         initialValues={form}
         validationSchema={RegisterSchema}
@@ -221,9 +71,9 @@ export default function Register() {
       >
         <Form>
           <section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
+            <div className="container px-5 py-18 mx-auto flex flex-wrap items-center justify-center">
               <div className="lg:w-3/5 lg:pr-0 pr-0">
-                <img src={BannerImg} alt="" />
+                <img src="https://a0.muscache.com/im/pictures/44695671-e125-4ad5-bf64-c79a82f0acc5.jpg?im_w=960" alt="" />
               </div>
               <div className="lg:w-2/6 xl:w-2/5 md:w-2/3 bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
                 <h2 className="mt-5 text-center text-3xl font-bold tracking-tight text-gray-900">
@@ -240,7 +90,7 @@ export default function Register() {
                       focusable="false"
                       data-prefix="fas"
                       data-icon="times-circle"
-                      class="w-4 h-4 mr-2 fill-current"
+                      class="w-4 h-4 mr-2 -ml-2 fill-current"
                       role="img"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 500 500"

@@ -33,7 +33,6 @@ function DetailHouseForRent() {
     });
 
 
-
     const {state} = useLocation();
 
     const getData = async (id) => {
@@ -64,9 +63,6 @@ function DetailHouseForRent() {
 
     const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
 
-    console.log({id: idUserLogin})
-
-
     const getHost = async () => {
         return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
     }
@@ -76,8 +72,6 @@ function DetailHouseForRent() {
             .then(res => setHost(res.data.data))
             .catch(err => console.log(err.message))
     }, [])
-    console.log({host: host})
-
 
     const getApiResever = async (data) => {
         return await axios.post(`http://localhost:${PORT}/api/resever`, data);
@@ -242,35 +236,34 @@ function DetailHouseForRent() {
                                         <div className="flex bg-100 h-auto">
                                             <div className="m-auto">
                                                 <div className="mt-5 rounded-lg shadow">
-                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                    <h1 className="flex justify-start text-gray-900 text-2xl title-font  font-medium mb-1 px-7 py-5 pb-5 inline">
                                                         $ {houseForRent.roomRates} per night
                                                     </h1>
-                                                    <div className="px-5 pb-5 pt-5">
-                                                        <div
-                                                            className=" rounded-full border grid grid-cols-2 grid-flow-row ">
-                                                            <div className="col-span-2">
-                                                                <div className="flex items-center justify-center">
-                                                                    <DatePicker
-                                                                        className="border-red-100"
-                                                                        selected={startDate}
-                                                                        onChange={(date) => setStartDate(date)}
-                                                                    />
-                                                                </div>
-                                                                <div className="flex items-center justify-center">
-                                                                    <DatePicker
-                                                                        className="border-red-100"
-                                                                        selected={endDate}
-                                                                        onChange={(date) => setEndDate(date)}
-                                                                    />
-                                                                </div>
-                                                                <select className="w-full">
-                                                                    <option>1</option>
-                                                                    <option>1</option>
-                                                                    <option>1</option>
-                                                                </select>
+
+                                                    <div className="flex">
+                                                        <div className="flex flex-row">
+                                                            <div className="basis-1/2">
+                                                                <DatePicker
+                                                                    className="border-red-100"
+                                                                    selected={startDate}
+                                                                    onChange={(date) => setStartDate(date)}
+                                                                />
+                                                            </div>
+                                                            <div className="basis-1/2">
+                                                                <DatePicker
+                                                                    className="border-red-100"
+                                                                    selected={endDate}
+                                                                    onChange={(date) => setEndDate(date)}
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <select className="w-full">
+                                                        <option>1</option>
+                                                        <option>1</option>
+                                                        <option>1</option>
+                                                    </select>
+
                                                     <div className="px-5 pt-0">
                                                         <button
                                                             type="submit"

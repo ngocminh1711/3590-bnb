@@ -8,18 +8,15 @@ import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
-import {getHostProfile} from "../../features/getHostName/getHostProfileSlice";
-
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
+    const [host, setHost] = useState();
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-
-    const [host, setHost] = useState()
 
     const [houseForRent, setHouseForRent] = useState({
         name: "",
@@ -31,36 +28,22 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-        userId: "",
-        host: "",
-    });
-
+        hostName: ""
+    })
 
     const {state} = useLocation();
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
+            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
         );
     };
-
-    const getHost = async (id) => {
-        return await axios.get(
-            `http://localhost:${PORT}/api/products/getHost/${id}`
-        );
-    }
-
-    useEffect(() => {
-        let id = state.houseId;
-        getHost(id).then((res) =>setHost(res.data.host))
-    }, [])
-    console.log(host)
-
 
     useEffect(() => {
         let id = state.houseId;
 
         getData(id).then((res) => {
+            dispatch(setIdUserLogin(res.data.data.userId))
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -76,14 +59,32 @@ function DetailHouseForRent() {
         });
     }, []);
 
+    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
+
+    console.log({id: idUserLogin})
+
+
+    const getHost = async () => {
+        return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
+    }
+
+    useEffect(() => {
+        getHost()
+            .then(res => setHost(res.data.data))
+            .catch(err => console.log(err.message))
+    }, [])
+    console.log({host: host})
+
 
     const getApiResever = async (data) => {
         return await axios.post(`http://localhost:${PORT}/api/resever`, data);
     };
 
+
     let totalTime = endDate.getTime() - startDate.getTime();
     let totalDay = Math.round(totalTime / (60 * 60 * 1000 * 24));
     let totalMoney = totalDay * houseForRent.roomRates;
+
 
     const handleReserver = (e) => {
         e.preventDefault();
@@ -112,6 +113,7 @@ function DetailHouseForRent() {
     return (
         <>
             <Header/>
+
             {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
@@ -184,6 +186,7 @@ function DetailHouseForRent() {
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">
                                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
+
                                     Entire rental unti hosted by {host.name}
                                 </h1>
                                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
@@ -209,9 +212,7 @@ function DetailHouseForRent() {
                                         <h1 className="text-black-300 text-1.5xl title-font font-medium mb-1 float-left pl-2">
                                             Designed by
                                         </h1>
-                                        <p className="text-gray-500 text-1.5xl">
-                                            {host.name}
-                                        </p>
+                                        <p className="text-gray-500 text-1.5xl">Ngo Minh Ngoc</p>
                                     </div>
                                 </div>
                                 <div>
@@ -237,40 +238,52 @@ function DetailHouseForRent() {
                                 </div>
                             </div>
                             <div>
-                                <div className="z-20 mt-2 h-auto">
+                                <div className="z-20 mt-2 h-auto shadow-2xl">
                                     <form onSubmit={(e) => handleReserver(e)}>
-                                        <div className="flex bg-100 h-auto">
+                                        <div className="flex bg-100 h-auto ">
                                             <div className="m-auto">
-                                                <div className="mt-5 rounded-lg shadow">
-                                                    <h1 className="flex justify-start text-gray-900 text-2xl title-font  font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                <div className="mt-0 rounded-lg shadow ">
+                                                    <br></br>
+                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
                                                         $ {houseForRent.roomRates} per night
                                                     </h1>
-
-                                                    <div className="flex">
-                                                        <div className="flex flex-row">
-                                                            <div className="basis-1/2">
-                                                                <DatePicker
-                                                                    className="border-red-100"
-                                                                    selected={startDate}
-                                                                    onChange={(date) => setStartDate(date)}
-                                                                />
-                                                            </div>
-                                                            <div className="basis-1/2">
-                                                                <DatePicker
-                                                                    className="border-red-100"
-                                                                    selected={endDate}
-                                                                    onChange={(date) => setEndDate(date)}
-                                                                />
+                                                    <div className="px-5 pt-5">
+                                                        <div
+                                                            className=" rounded-full border-b-black grid grid-cols-2 grid-flow-row ">
+                                                            <div className="col-span-2 border-2 rounded-lg ml-15  ">
+                                                                <div
+                                                                    className=" flex items-center justify-center w-auto ">
+                                                                    <div className="ml-2 border-r-2 border-b-2 ">
+                                                                        <strong>Check In</strong>
+                                                                        <DatePicker
+                                                                            selected={startDate}
+                                                                            onChange={(date) => setStartDate(date)}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="mr-2 border-b-2 border-l-2">
+                                                                        <div className='ml-2'>
+                                                                        <strong>Check Out</strong>
+                                                                        <DatePicker
+                                                                            selected={endDate}
+                                                                            onChange={(date) => setEndDate(date)}
+                                                                        />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <span></span>
+                                                                <span></span>
+                                                                <div className='ml-2'>
+                                                                    <strong>Guests</strong>
+                                                                    <select className="w-full">
+                                                                        <option>1 Guest</option>
+                                                                        <option>2 Guests</option>
+                                                                        <option>3 Guests</option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <select className="w-full">
-                                                        <option>1</option>
-                                                        <option>1</option>
-                                                        <option>1</option>
-                                                    </select>
-
-                                                    <div className="px-5 pt-0">
+                                                    <div className="px-5 pt-4">
                                                         <button
                                                             type="submit"
                                                             className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
@@ -278,14 +291,18 @@ function DetailHouseForRent() {
                                                             <span>Reserve</span>
                                                         </button>
                                                     </div>
-                                                    <div className="px-5 pt-0">
+                                                    <br></br>
+                                                    <hr></hr>
+                                                    <div className="px-5 pt-4">
+
                                                         <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
                                                             Total before taxes{" "}
                                                         </h1>
                                                         <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                                            ${money.toLocaleString()}
+                                                            ${money}
                                                         </h1>
                                                     </div>
+                                                    <br></br>
                                                 </div>
                                             </div>
                                         </div>
@@ -452,6 +469,7 @@ function DetailHouseForRent() {
                                         </h2>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -465,3 +483,4 @@ function DetailHouseForRent() {
 }
 
 export default DetailHouseForRent;
+

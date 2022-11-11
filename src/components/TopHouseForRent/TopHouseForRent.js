@@ -6,6 +6,7 @@ import './TopHouseForRent.css'
 let count = 0;
 
 function TopHouseForRent() {
+    const PORT = process.env.PORT || 8000;
 
     const [topHouseForRent, setTopHouseForRent] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -14,7 +15,7 @@ function TopHouseForRent() {
 
 
     const getTopHouseForRent = async () => {
-        return await axios.get('http://localhost:8000/api/products/top-house')
+        return await axios.get(`http://localhost:${PORT}/api/products/top-house`)
     }
 
     const handleClick = (e) => {
@@ -29,7 +30,6 @@ function TopHouseForRent() {
     useEffect(() => {
 
         getTopHouseForRent().then(res => {
-            console.log(res)
             setTopHouseForRent(res.data.topHouseForRent)
         })
 

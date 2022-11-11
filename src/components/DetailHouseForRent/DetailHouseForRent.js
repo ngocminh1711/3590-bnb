@@ -8,16 +8,18 @@ import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
+import {getHostProfile} from "../../features/getHostName/getHostProfileSlice";
 
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
-    const [host, setHost] = useState();
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
+    const [host, setHost] = useState()
 
     const [houseForRent, setHouseForRent] = useState({
         name: "",
@@ -29,24 +31,36 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-        hostName: "",
+        userId: "",
+        host: "",
     });
-
 
 
     const {state} = useLocation();
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
+            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
+
+    const getHost = async (id) => {
+        return await axios.get(
+            `http://localhost:${PORT}/api/products/getHost/${id}`
+        );
+    }
+
+    useEffect(() => {
+        let id = state.houseId;
+        getHost(id).then((res) =>setHost(res.data.host))
+    }, [])
+    console.log(host)
+
 
     useEffect(() => {
         let id = state.houseId;
 
         getData(id).then((res) => {
-            dispatch(setIdUserLogin(res.data.data.userId))
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -61,22 +75,6 @@ function DetailHouseForRent() {
             });
         });
     }, []);
-
-    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
-
-    console.log({id: idUserLogin})
-
-
-    const getHost = async () => {
-        return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
-    }
-
-    useEffect(() => {
-        getHost()
-            .then(res => setHost(res.data.data))
-            .catch(err => console.log(err.message))
-    }, [])
-    console.log({host: host})
 
 
     const getApiResever = async (data) => {
@@ -211,7 +209,9 @@ function DetailHouseForRent() {
                                         <h1 className="text-black-300 text-1.5xl title-font font-medium mb-1 float-left pl-2">
                                             Designed by
                                         </h1>
-                                        <p className="text-gray-500 text-1.5xl">{host.name}</p>
+                                        <p className="text-gray-500 text-1.5xl">
+                                            {host.name}
+                                        </p>
                                     </div>
                                 </div>
                                 <div>
@@ -242,34 +242,34 @@ function DetailHouseForRent() {
                                         <div className="flex bg-100 h-auto">
                                             <div className="m-auto">
                                                 <div className="mt-5 rounded-lg shadow">
-                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                    <h1 className="flex justify-start text-gray-900 text-2xl title-font  font-medium mb-1 px-7 py-5 pb-5 inline">
                                                         $ {houseForRent.roomRates} per night
                                                     </h1>
-                                                    <div className="px-5 pb-5 pt-5">
-                                                        <div className=" rounded-full border grid grid-cols-2 grid-flow-row ">
-                                                            <div className="col-span-2">
-                                                                <div className="flex items-center justify-center">
-                                                                    <DatePicker
-                                                                        className="border-red-100"
-                                                                        selected={startDate}
-                                                                        onChange={(date) => setStartDate(date)}
-                                                                    />
-                                                                </div>
-                                                                <div className="flex items-center justify-center">
-                                                                    <DatePicker
-                                                                        className="border-red-100"
-                                                                        selected={endDate}
-                                                                        onChange={(date) => setEndDate(date)}
-                                                                    />
-                                                                </div>
-                                                                <select className="w-full">
-                                                                    <option>1</option>
-                                                                    <option>1</option>
-                                                                    <option>1</option>
-                                                                </select>
+
+                                                    <div className="flex">
+                                                        <div className="flex flex-row">
+                                                            <div className="basis-1/2">
+                                                                <DatePicker
+                                                                    className="border-red-100"
+                                                                    selected={startDate}
+                                                                    onChange={(date) => setStartDate(date)}
+                                                                />
+                                                            </div>
+                                                            <div className="basis-1/2">
+                                                                <DatePicker
+                                                                    className="border-red-100"
+                                                                    selected={endDate}
+                                                                    onChange={(date) => setEndDate(date)}
+                                                                />
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <select className="w-full">
+                                                        <option>1</option>
+                                                        <option>1</option>
+                                                        <option>1</option>
+                                                    </select>
+
                                                     <div className="px-5 pt-0">
                                                         <button
                                                             type="submit"

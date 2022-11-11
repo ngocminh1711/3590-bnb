@@ -2,17 +2,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-import { FaEdit, FaSlash } from "react-icons/fa";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import swal from "sweetalert";
-import Footer from "../footer/Footer";
 import jwtDecode from "jwt-decode";
 const Item = styled.div`
   display: flex;
@@ -28,24 +24,24 @@ const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
+const UpdateSchema = Yup.object().shape({
+  oldPassword: Yup.string().required("Mật khẩu không được để trống !"),
+  password: Yup.string().required("Mật khẩu không được để trống !"),
+  confirmpassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Mật khẩu không khớp !")
+    .required("Mật khẩu không được để trống !"),
+});
 
-function Header({ lightMode, setLightMode }) {
+function HeaderDashBoard({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector((state) => state.profileUser);
   console.log("id--------" + userLoginProfile.idUserLogin);
-  const dispatch = useDispatch();
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
+
   let user;
   if (token) {
     user = jwtDecode(token);
   }
-
   const [showDropDown, setShowDropDown] = useState(false);
-  // const [showProfile, setShowProfile] = useState(false);
   const [blockInput, setBlockInput] = useState(true);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
@@ -124,10 +120,8 @@ function Header({ lightMode, setLightMode }) {
   const handleMyNotifications = () => {
     navigate(`/check-booking/${userLoginProfile.idUserLogin}`);
   };
-  const handleShowHistoryBooking = () => {
-    navigate(`/history-booking/${userLoginProfile.idUserLogin}`);
-  };
-
+  const id = userLoginProfile.userLogin;
+  console.log(id);
   const handleDashBoard = (e) => {
     navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
   };
@@ -148,11 +142,142 @@ function Header({ lightMode, setLightMode }) {
               alt=""
             />
           </Link>
+          <SearchHouses />
+          <div className="dropdown relative">
+            <a
+              className="inline-flex w-25 ml-80 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              id="dropdownMenuButton2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Menu
+              <i className="material-icons-round text-base">expand_more</i>
+            </a>
 
-          <div className="mb-0">
-            <SearchHouses />
+            <ul
+              className="
+    dropdown-menu
+    min-w-max
+    absolute
+    hidden
+    bg-white
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1
+    hidden
+    m-0
+    bg-clip-padding
+    border-none
+    left-auto
+    right-0
+  "
+              aria-labelledby="dropdownMenuButton2"
+            >
+              <li>
+                <a
+                  className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      "
+                  href="#"
+                >
+                  My Notifications
+                </a>
+              </li>
+              <li>
+                <button
+                  className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      "
+                  onClick={(e) => handleCreate(e)}
+                >
+                  Create House
+                </button>
+              </li>
+              <li>
+                <a
+                  className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      "
+                  href="#"
+                >
+                  Some Where
+                </a>
+              </li>
+            </ul>
           </div>
-
+          <div className="text-left">
+            <a
+              className="
+          text-gray-500
+          hover:text-gray-700
+          focus:text-gray-700
+          hidden-arrow
+          flex items-right
+          ml-58
+        "
+              href="#"
+              id="dropdownMenuButton1"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                data-prefix="fas"
+                data-icon="bell"
+                className="float-left w-4"
+                role="img"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  fill="currentColor"
+                  d="M224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64zm215.39-149.71c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71z"
+                ></path>
+              </svg>
+              <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">
+                1
+              </span>
+            </a>
+          </div>
           {userLogin ? (
             <>
               <>
@@ -279,7 +404,7 @@ function Header({ lightMode, setLightMode }) {
                                       >
                                         <Formik
                                           initialValues={form}
-                                          // validationSchema={RegisterSchema}
+                                          validationSchema={UpdateSchema}
                                           onSubmit={async (e) => {
                                             console.log(e);
                                             let user;
@@ -406,32 +531,10 @@ function Header({ lightMode, setLightMode }) {
                             role="menuitem"
                             tabIndex="-1"
                             id="menu-item-0"
-                            onClick={(e) => handleShowHistoryBooking(e)}
-                          >
-                            My History Booking
-                          </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
                             onClick={(e) => handleMyNotifications(e)}
                           >
                             My Notifications
                           </button>
-                          {/* <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleRentHistory(e)}
-                          >
-                            Rent history
-                          </button> */}
                           <br></br>
                           <button
                             href="#"
@@ -483,4 +586,4 @@ function Header({ lightMode, setLightMode }) {
     </>
   );
 }
-export default Header;
+export default HeaderDashBoard;

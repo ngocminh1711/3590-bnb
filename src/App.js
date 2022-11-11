@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Register from "./components/login/Register.js";
 import Login from "./components/login/Login.js";
 import Home from "./components/home/Index.js";
@@ -7,8 +7,6 @@ import ListHost from "./components/host/Dashboard.js";
 import CreateHouseForRent from "./components/CreateHouseForRent/CreateHouseForRent";
 import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
-import Footer from "./components/footer/Footer.js";
-import ChangePassword from "./components/host/ChangePassword.js";
 import Profile from "./components/Profile/Profile.js";
 import Slide from "./components/Slide.js";
 import Example from "./components/home/Example.js";
@@ -17,6 +15,7 @@ import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
 import DemoSlide from "./components/DemoSlide/DemoSlide";
 import TopHouse from "./components/TopHouseForRent/TopHouse";
+import ChangePassword from "./components/host/ChangePassword.js";
 import VipHouse from "./components/VipHouse/VipHouse";
 import NormalHouse from "./components/NormalHouse/NormalHouse";
 import ShowOneBedRoom from "./components/BedRoom/ShowOneBedRoom";
@@ -25,6 +24,8 @@ import ScrollTop from "./components/iconSlide/iconScrollTop.js";
 import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
 import RentHistory from "./components/host/HistoryBooking/RentHistory.js";
+import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
+
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<ListHost />} />
+        <Route path="/dashboard/:id" element={<ListHost/>}/>
         <Route path="/admin/host-create" element={<CreateHouseForRent />} />
         <Route path="/detail-house" element={<DetailHouseForRent />} />
         <Route path="/change-password" element={<ChangePassword />} />
@@ -54,9 +55,11 @@ function App() {
         <Route path="/date" element={<DateDemo />} />
         <Route path="/check-booking/:id" element={<CheckBooking />} />
         <Route path="/multiplebedroom" element={<ShowMultipleBedRoom />} />
+        <Route path="/history-booking/:id" element={<HistoryBooking/>}/>
       </Routes>
       <ScrollTop />
     </>
   );
 }
+
 export default App;

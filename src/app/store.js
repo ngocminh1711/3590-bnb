@@ -8,6 +8,7 @@ import dislikeHouseForRentReducer from "../features/likeanddislikeSlice/disLikeS
 // import searchReducer from "../features/search/searchSlice";
 import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
 import getHouseDetail from "../features/getHouseDetail/GetHouseDetailSlice";
+import getHostProfile from "../features/getHostName/getHostProfileSlice";
 
 export const store = configureStore({
     reducer: {
@@ -19,6 +20,7 @@ export const store = configureStore({
         dislike: dislikeHouseForRentReducer,
         profileUser: profileUserReducer,
         getHouse: getHouseDetail,
+        getHostProfile: getHostProfile,
     },
 });
 

@@ -215,7 +215,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         text-gray-700
         hover:bg-gray-100
       "
-      onClick={(e) => handleCreate(e)}
+                  onClick={(e) => handleCreate(e)}
                 >
                   Create House
                 </button>

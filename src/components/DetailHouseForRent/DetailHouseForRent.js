@@ -8,16 +8,18 @@ import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
+import {getHostProfile} from "../../features/getHostName/getHostProfileSlice";
 
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
-    const [host, setHost] = useState();
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+
+    const [host, setHost] = useState()
 
     const [houseForRent, setHouseForRent] = useState({
         name: "",
@@ -29,7 +31,8 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-        // hostName: "",
+        userId: "",
+        host: "",
     });
 
 
@@ -37,16 +40,27 @@ function DetailHouseForRent() {
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
+            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
+
+    const getHost = async (id) => {
+        return await axios.get(
+            `http://localhost:${PORT}/api/products/getHost/${id}`
+        );
+    }
+
+    useEffect(() => {
+        let id = state.houseId;
+        getHost(id).then((res) =>setHost(res.data.host))
+    }, [])
+    console.log(host)
 
 
     useEffect(() => {
         let id = state.houseId;
 
         getData(id).then((res) => {
-                console.log(res)
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -62,16 +76,6 @@ function DetailHouseForRent() {
         });
     }, []);
 
-
-    const getHost = async () => {
-        return await axios.get(`http://localhost:8000/api/user/${userId}`)
-    }
-
-    useEffect(() => {
-        getHost()
-            .then(res => setHost(res.data.data))
-            .catch(err => console.log(err.message))
-    }, [])
 
     const getApiResever = async (data) => {
         return await axios.post(`http://localhost:${PORT}/api/resever`, data);
@@ -108,7 +112,7 @@ function DetailHouseForRent() {
     return (
         <>
             <Header/>
-            {houseForRent && host ? (
+            {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
                     <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -180,8 +184,7 @@ function DetailHouseForRent() {
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">
                                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
-                                    Entire rental unti hosted by
-                                    {host.name}
+                                    Entire rental unti hosted by {host.name}
                                 </h1>
                                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
                                     *{houseForRent.numberOfBedrooms} bedrooms *{" "}

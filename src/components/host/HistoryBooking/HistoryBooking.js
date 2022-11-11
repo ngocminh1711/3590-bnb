@@ -1,38 +1,36 @@
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useSelector} from "react-redux";
-
+import { useSelector } from "react-redux";
+import HeaderDashBoard from "../../header/HeaderDashBoard";
 
 function HistoryBooking() {
-    const PORT = process.env.PORT || 8000;
-    const navigate = useNavigate();
-    const userLogin = useSelector((state) => state.profileUser);
-    const [historyBooking, setHistoryBooking] = useState([])
+  const PORT = process.env.PORT || 8000;
+  const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.profileUser);
+  const [historyBooking, setHistoryBooking] = useState([]);
 
-    const id = userLogin.idUserLogin
+  const id = userLogin.idUserLogin;
 
-    const getHistoryBooking = async () => {
-        return await axios.get(`http://localhost:8000/api/resever/history-booking/${id}`)
-    }
+  const getHistoryBooking = async () => {
+    return await axios.get(
+      `http://localhost:8000/api/resever/history-booking/${id}`
+    );
+  };
 
-    useEffect(() => {
-        getHistoryBooking().then(res =>
-        {
-            console.log(res.data.historyBooking)
-            setHistoryBooking(res.data.historyBooking)
-        }
-             );
-    },[])
+  useEffect(() => {
+    getHistoryBooking().then((res) => {
 
-
+      setHistoryBooking(res.data.historyBooking);
+    });
+  }, []);
 
     return (
         <>
             <div>
-                <Header/>
+                <HeaderDashBoard/>
                 <>
                     <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                         <link

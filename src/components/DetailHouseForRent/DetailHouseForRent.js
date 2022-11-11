@@ -1,5 +1,5 @@
 import "./DetailHouseForRent.css";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import Header from "../header/Header";
@@ -7,17 +7,16 @@ import Footer from "../footer/Footer";
 import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
 
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
-    ;
+    const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-
     const [host, setHost] = useState()
 
     const [houseForRent, setHouseForRent] = useState({
@@ -33,6 +32,7 @@ function DetailHouseForRent() {
         userId: "",
         host: "",
     });
+
 
 
     const {state} = useLocation();
@@ -206,9 +206,7 @@ function DetailHouseForRent() {
                                         <h1 className="text-black-300 text-1.5xl title-font font-medium mb-1 float-left pl-2">
                                             Designed by
                                         </h1>
-                                        <p className="text-gray-500 text-1.5xl">
-                                            {host.name}
-                                        </p>
+                                        <p className="text-gray-500 text-1.5xl">{host.name}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -239,34 +237,34 @@ function DetailHouseForRent() {
                                         <div className="flex bg-100 h-auto">
                                             <div className="m-auto">
                                                 <div className="mt-5 rounded-lg shadow">
-                                                    <h1 className="flex justify-start text-gray-900 text-2xl title-font  font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
                                                         $ {houseForRent.roomRates} per night
                                                     </h1>
-
-                                                    <div className="flex">
-                                                        <div className="flex flex-row">
-                                                            <div className="basis-1/2">
-                                                                <DatePicker
-                                                                    className="border-red-100"
-                                                                    selected={startDate}
-                                                                    onChange={(date) => setStartDate(date)}
-                                                                />
-                                                            </div>
-                                                            <div className="basis-1/2">
-                                                                <DatePicker
-                                                                    className="border-red-100"
-                                                                    selected={endDate}
-                                                                    onChange={(date) => setEndDate(date)}
-                                                                />
+                                                    <div className="px-5 pb-5 pt-5">
+                                                        <div className=" rounded-full border grid grid-cols-2 grid-flow-row ">
+                                                            <div className="col-span-2">
+                                                                <div className="flex items-center justify-center">
+                                                                    <DatePicker
+                                                                        className="border-red-100"
+                                                                        selected={startDate}
+                                                                        onChange={(date) => setStartDate(date)}
+                                                                    />
+                                                                </div>
+                                                                <div className="flex items-center justify-center">
+                                                                    <DatePicker
+                                                                        className="border-red-100"
+                                                                        selected={endDate}
+                                                                        onChange={(date) => setEndDate(date)}
+                                                                    />
+                                                                </div>
+                                                                <select className="w-full">
+                                                                    <option>1</option>
+                                                                    <option>1</option>
+                                                                    <option>1</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <select className="w-full">
-                                                        <option>1</option>
-                                                        <option>1</option>
-                                                        <option>1</option>
-                                                    </select>
-
                                                     <div className="px-5 pt-0">
                                                         <button
                                                             type="submit"

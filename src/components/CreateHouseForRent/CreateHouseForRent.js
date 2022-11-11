@@ -8,6 +8,7 @@ import { Alert } from "@material-tailwind/react";
 import Header from "../header/Header";
 import { useNavigate } from "react-router";
 import Footer from "../footer/Footer";
+import HeaderDashBoard from "../header/HeaderDashBoard";
 
 
 function CreateHouseForRent() {
@@ -33,7 +34,8 @@ function CreateHouseForRent() {
   const backdropURL = useSelector((state) => state.createBackdrop.backdropURl);
   const viewURL = useSelector((state) => state.createImageView.urls);
   const navigate = useNavigate();
-
+  let token = localStorage.getItem("token");
+  const userLoginProfile = useSelector((state) => state.profileUser);
   const getTypeRooms = async () => {
     return await axios.get("http://localhost:8000/api/products/type-room");
   };
@@ -66,7 +68,7 @@ function CreateHouseForRent() {
       .post("http://localhost:8000/api/products", data)
       .then((res) => {
         setStatusCreate(true);
-        navigate("/home");
+        navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
       })
       .catch((err) => console.log(err.message));
   };
@@ -84,6 +86,8 @@ function CreateHouseForRent() {
 
   return (
     <>
+    <Header/>
+    <div>
       <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 pl-2 pr-2 ">
           <img
@@ -295,6 +299,7 @@ function CreateHouseForRent() {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <Footer />
     </>

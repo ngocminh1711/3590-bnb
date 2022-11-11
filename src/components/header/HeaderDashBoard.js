@@ -93,7 +93,6 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
     setForm({ currentPassword: "", newPassword: "" });
     return a;
   };
-
   const handleLogin = (e) => {
     setTimeout(() => {
       navigate("/login");
@@ -123,12 +122,6 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
   const handleShowHistoryBooking = () => {
     navigate(`/history-booking/${userLoginProfile.idUserLogin}`)
   }
-
-  const id = userLoginProfile.userLogin;
-  console.log(id);
-  const handleDashBoard = (e) => {
-    navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
-  };
   const handleSignup = (e) => {
     setTimeout(() => {
       navigate("/register");

@@ -117,7 +117,7 @@ function HistoryBooking() {
                                     </td>
                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                                         <div className="text-sm leading-5 text-blue-900 text-center ">
-                                            {item.totalMoney}
+                                            {item.bookingStatus}
                                         </div>
                                     </td>
                                 </tr>

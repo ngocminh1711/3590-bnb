@@ -1,5 +1,5 @@
 import "./DetailHouseForRent.css";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import axios from "axios";
 import {useLocation} from "react-router-dom";
 import Header from "../header/Header";
@@ -7,15 +7,14 @@ import Footer from "../footer/Footer";
 import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
-import {getHostProfile} from "../../features/getHostName/getHostProfileSlice";
+
 
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
-    const dispatch = useDispatch();
+    ;
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
@@ -52,10 +51,8 @@ function DetailHouseForRent() {
 
     useEffect(() => {
         let id = state.houseId;
-        getHost(id).then((res) =>setHost(res.data.host))
+        getHost(id).then((res) => setHost(res.data.host))
     }, [])
-    console.log(host)
-
 
     useEffect(() => {
         let id = state.houseId;

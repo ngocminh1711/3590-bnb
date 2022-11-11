@@ -2,17 +2,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { SearchIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-import { FaEdit, FaSlash } from "react-icons/fa";
-import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
-import * as Yup from "yup";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import swal from "sweetalert";
-import Footer from "../footer/Footer";
 import jwtDecode from "jwt-decode";
 const Item = styled.div`
   display: flex;
@@ -32,21 +27,13 @@ const Hr = styled.hr`
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
   const userLoginProfile = useSelector((state) => state.profileUser);
-  console.log("id--------" + userLoginProfile.idUserLogin);
-  const dispatch = useDispatch();
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
+
   let user;
   if (token) {
     user = jwtDecode(token);
   }
 
   const [showDropDown, setShowDropDown] = useState(false);
-  // const [showProfile, setShowProfile] = useState(false);
-  const [blockInput, setBlockInput] = useState(true);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
 

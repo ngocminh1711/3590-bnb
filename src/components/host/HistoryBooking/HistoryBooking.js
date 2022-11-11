@@ -54,6 +54,9 @@ function HistoryBooking() {
                                         Name
                                     </th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                        Address
+                                    </th>
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
                                         Check in day
                                     </th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
@@ -90,6 +93,11 @@ function HistoryBooking() {
                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                                         <div className="text-sm leading-5 text-blue-900 text-center ">
                                             {item.houseName}
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                                        <div className="text-sm leading-5 text-blue-900 text-center ">
+                                            {item.address}
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">

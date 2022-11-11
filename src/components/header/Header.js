@@ -136,10 +136,7 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0">
             <SearchHouses />
           </div>
-          <button onClick={() => setLightMode(!lightMode)}>
-            <SettingsBrightnessOutlinedIcon />
-            {lightMode ? "Pink" : "Light"} Mode
-          </button>
+
           {userLogin ? (
             <>
               <>

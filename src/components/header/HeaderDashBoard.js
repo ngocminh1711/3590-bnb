@@ -181,7 +181,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
               aria-labelledby="dropdownMenuButton2"
             >
               <li>
-                <a
+                <button
                   className="
         dropdown-item
         text-sm
@@ -195,10 +195,10 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         text-gray-700
         hover:bg-gray-100
       "
-                  href="#"
+                  onClick={(e) => handleCreate(e)}
                 >
-                  My Notifications
-                </a>
+                  Create House
+                </button>
               </li>
               <li>
                 <button
@@ -215,13 +215,14 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         text-gray-700
         hover:bg-gray-100
       "
-      onClick={(e) => handleCreate(e)}
+                  onClick={(e) => handleCreate(e)}
                 >
                   Create House
                 </button>
               </li>
+
               <li>
-                <a
+                <button
                   className="
         dropdown-item
         text-sm
@@ -235,10 +236,30 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
         text-gray-700
         hover:bg-gray-100
       "
-                  href="#"
+                  onClick={(e) => handleMyNotifications(e)}
                 >
-                  Some Where
-                </a>
+                  My Notifications
+                </button>
+              </li>
+              <li>
+                <button
+                  className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-gray-100
+      "
+                  onClick={(e) => handleCreate(e)}
+                >
+                  Create House
+                </button>
               </li>
             </ul>
           </div>
@@ -525,27 +546,7 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
                           </div>
 
                           <hr></hr>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleMyNotifications(e)}
-                          >
-                            My Notifications
-                          </button>
-                          <br></br>
-                          <button
-                            href="#"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            role="menuitem"
-                            tabIndex="-1"
-                            id="menu-item-0"
-                            onClick={(e) => handleDashBoard(e)}
-                          >
-                            Dash Board
-                          </button>
+                         
                           <br></br>
                           <button
                             href="#"

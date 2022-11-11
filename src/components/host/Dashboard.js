@@ -342,7 +342,7 @@ function ListHost() {
                               aria-labelledby="menu-button"
                               tabIndex="-1"
                             >
-                              git{!showDropDown ? (
+                              {!showDropDown ? (
                                 ""
                               ) : (
                                 <>

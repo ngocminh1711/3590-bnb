@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Register from "./components/login/Register.js";
 import Login from "./components/login/Login.js";
 import Home from "./components/home/Index.js";
@@ -9,12 +9,7 @@ import SearchedHouseList from "./components/searchHouses/SearchedHouseList";
 import DetailHouseForRent from "./components/DetailHouseForRent/DetailHouseForRent";
 import Profile from "./components/Profile/Profile.js";
 import Slide from "./components/Slide.js";
-import styled, { ThemeProvider } from "styled-components";
-import { useState } from "react";
-import { darkTheme, lightTheme } from "./utils/Theme";
-import Header from "./components/header/Header.js";
 import Example from "./components/home/Example.js";
-import ProfileExample from "./components/Profile/ProfileExample.js";
 import EditProfile from "./components/Profile/EditProfile.js";
 import DetailHouse from "./components/host/DetailHouse/DetailHouse";
 import GetStarted from "./components/getStarted/GetStarted.js";
@@ -27,59 +22,41 @@ import ShowMultipleBedRoom from "./components/BedRoom/ShowMultipleBedRoom";
 import ScrollTop from "./components/iconSlide/iconScrollTop.js";
 import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
+import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
+
 
 function App() {
-  const [lightMode, setLightMode] = useState(true);
-  return (
-    <>
-    
-      <Routes>
-        <Route path="/" element={<GetStarted />} />
-        
-        <Route path="/home" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
-
-        <Route path="/register" element={<Register />} />
-
-        <Route path="/dashboard/:id" element={<ListHost />} />
-
-        <Route path="/admin/host-create" element={<CreateHouseForRent />} />
-
-        <Route path="/detail-house" element={<DetailHouseForRent />} />
-
-        <Route path="/searchList" element={<SearchedHouseList />} />
-
-        <Route path="/slide" element={<Slide />} />
-
-        <Route path="/example" element={<Example />} />
-
-        <Route path="/profile/:id" element={<Profile />} />
-
-        <Route path="/profile/edit/:id" element={<EditProfile />} />
-
-        <Route path="/demo" element={<DemoSlide />} />
-
-        <Route path="/dashboard/detail/:id" element={<DetailHouse />} />
-
-        <Route path="/get-started" element={<GetStarted />} />
-
-        <Route path="/top4" element={<TopHouse />} />
-
-        <Route path="/vip" element={<VipHouse />} />
-
-        <Route path="/normal" element={<NormalHouse />} />
-
-        <Route path="/onebedroom" element={<ShowOneBedRoom />} />
-
-        <Route path="/date" element={<DateDemo />} />
-
-        <Route path="/check-booking/:id" element={<CheckBooking />} />
-
-        <Route path="/multiplebedroom" element={<ShowMultipleBedRoom />} />
-      </Routes>
-      <ScrollTop />
-    </>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<GetStarted/>}/>
+                <Route path="/home" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/dashboard/:id" element={<ListHost/>}/>
+                <Route path="/admin/host-create" element={<CreateHouseForRent/>}/>
+                <Route path="/detail-house" element={<DetailHouseForRent/>}/>
+                <Route path="/searchList" element={<SearchedHouseList/>}/>
+                <Route path="/slide" element={<Slide/>}/>
+                <Route path="/example" element={<Example/>}/>
+                <Route path="/profile/:id" element={<Profile/>}/>
+                <Route path="/profile/edit/:id" element={<EditProfile/>}/>
+                <Route path="/demo" element={<DemoSlide/>}/>
+                <Route path="/dashboard/detail/:id" element={<DetailHouse/>}/>
+                <Route path="/get-started" element={<GetStarted/>}/>
+                <Route path="/top4" element={<TopHouse/>}/>
+                <Route path="/vip" element={<VipHouse/>}/>
+                <Route path="/normal" element={<NormalHouse/>}/>
+                <Route path="/onebedroom" element={<ShowOneBedRoom/>}/>
+                <Route path="/date" element={<DateDemo/>}/>
+                <Route path="/check-booking/:id" element={<CheckBooking/>}/>
+                <Route path="/history-booking/:id" element={<HistoryBooking/>}/>
+                <Route path="/multiplebedroom" element={<ShowMultipleBedRoom/>}/>
+            </Routes>
+            <ScrollTop/>
+        </>
+    );
 }
+
 export default App;

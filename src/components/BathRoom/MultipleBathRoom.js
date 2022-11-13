@@ -1,20 +1,15 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import '../TopHouseForRent/TopHouseForRent.css'
 
 
-let count = 0;
-
-function NormalHouseForRent() {
-
-    const [normalHouseForRent, setNormalHouseForRent] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [imageView, setImageView] = useState([])
+function MultipleBathRoom() {
+    const [multipleBathRoom, setMultipleBathRoom] = useState([]);
     const navigate = useNavigate()
 
-
-    const getNormalHouseForRent = async () => {
-        return await axios.get('http://localhost:8000/api/products/normal-house')
+    const getMultipleBedRoom = async () => {
+        return await axios.get('http://localhost:8000/api/products/multi-bath-room')
     }
 
     const handleClick = (e) => {
@@ -24,14 +19,14 @@ function NormalHouseForRent() {
 
     useEffect(() => {
 
-        getNormalHouseForRent().then(res => {
-            setNormalHouseForRent(res.data.normalHouse)
+        getMultipleBedRoom().then(res => {
+            setMultipleBathRoom(res.data.multipleBathRoom)
         })
 
     }, [])
 
 
-    console.log(normalHouseForRent)
+    console.log(multipleBathRoom)
 
     return (
         <div>
@@ -39,12 +34,11 @@ function NormalHouseForRent() {
             <div className="bg-white">
                 <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
-                    <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">
-                        Normal House
+                    <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">House Multiple Bath Room
                     </h2>
                     <div
                         className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {normalHouseForRent.map((item, index) => (
+                        {multipleBathRoom.map((item, index) => (
                             <div key={item._id}
                                  className="group relative"
                                  onClick={() => handleClick(item._id)}
@@ -82,4 +76,4 @@ function NormalHouseForRent() {
     )
 }
 
-export default NormalHouseForRent;
+export default MultipleBathRoom;

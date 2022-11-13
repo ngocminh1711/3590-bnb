@@ -1,3 +1,4 @@
+
 import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useState} from "react";
@@ -68,6 +69,7 @@ function ListHost() {
       // console.log(res);
       setProducts(res.data.houseForRents);
     });
+
   }, [handleDelete]);
 
   return (<>

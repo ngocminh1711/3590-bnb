@@ -7,6 +7,7 @@ import { useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
 import { FaEdit, FaSlash } from "react-icons/fa";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+
 import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -31,6 +32,7 @@ const Hr = styled.hr`
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
 
+
   const userLoginProfile = useSelector((state) => state.profileUser);
   const dispatch = useDispatch();
   // let user;
@@ -42,6 +44,7 @@ function Header({ lightMode, setLightMode }) {
   if (token) {
     user = jwtDecode(token);
   }
+  console.log(user)
 
   const [showDropDown, setShowDropDown] = useState(false);
   // const [showProfile, setShowProfile] = useState(false);
@@ -80,6 +83,7 @@ function Header({ lightMode, setLightMode }) {
       }
     });
   };
+
   const [form, setForm] = useState({
     currentPassword: "",
     newPassword: "",
@@ -143,7 +147,7 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0">
             <SearchHouses />
           </div>
-          
+
           {userLogin ? (
             <>
               <>
@@ -218,6 +222,7 @@ function Header({ lightMode, setLightMode }) {
                           <br></br>
                           <button
                             href="#"
+
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"

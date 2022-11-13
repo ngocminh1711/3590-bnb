@@ -7,20 +7,21 @@ import OptionsTab from "../iconSlide/optionsTab";
 
 import Footer from "../footer/Footer";
 
-import NormalHouseForRent from "./NormalHouseForRent";
-import OptionsTabNormal from "../../OptionTab/OptionTabNormal";
+
+import PriceThan500 from "./PriceThan500";
+import OptionsTabThan500 from "../../OptionTab/OptionTabThan500";
 
 
-function NormalHouse(props) {
+function ShowThan500(props) {
     return (
         <>
             <Header/>
-            <OptionsTabNormal/>
+            <OptionsTabThan500/>
             {/* <Banner/> */}
-            <NormalHouseForRent/>
+            <PriceThan500/>
             <Footer/>
         </>
     );
 }
 
-export default NormalHouse;
+export default ShowThan500;

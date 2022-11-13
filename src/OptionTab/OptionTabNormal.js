@@ -8,17 +8,22 @@ import {FaCampground, FaFilter} from 'react-icons/fa';
 
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
-import {BsSnow} from "react-icons/bs";
+import {BsFillHouseFill, BsSnow} from "react-icons/bs";
 import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer} from "react-icons/gi";
 import {AiOutlineCoffee} from "react-icons/ai";
 import {BiHomeAlt} from "react-icons/bi";
 
 const OptionsTabNormal = () => {
     const navigate = useNavigate()
-    const [value, setValue] = useState(3);
+
+    const [value, setValue] = useState(4);
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const handleClickHome = () => {
+        navigate('/home')
+    }
     const handleClickTop4 = () => {
         navigate('/top4')
     }
@@ -33,6 +38,21 @@ const OptionsTabNormal = () => {
     }
     const handleClickMultipleBedRoom = () => {
         navigate('/multiplebedroom')
+    }
+    const handleClickOneBathRoom = () => {
+        navigate('/onebathroom')
+    }
+    const handleClickMultipleBathRoom = () => {
+        navigate('/multiplebathroom')
+    }
+    const handleClickLess500 = () => {
+        navigate('/less500')
+    }
+    const handleClickThan500 = () => {
+        navigate('/than500')
+    }
+    const handleClickThan1000 = () => {
+        navigate('/than1000')
     }
 
 
@@ -63,19 +83,29 @@ const OptionsTabNormal = () => {
                         color: '#000000'
                     }}
                 >
-                    <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={24}/>} label='Top 4'/>;
-                    <Tab  onClick={handleClickVipHouse} icon={<BsSnow size={24 } />} label='Vip house'/>;
-                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding color={"#ec6078"}  size={24} />} label='Normal house'  />;
-                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={24} />} label='Single bedroom'/>;
-                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={24} />} label='Multiple bedroom'/>;
-                    <Tab icon={<MdOutlineBathroom size={24} />} label='Single bathroom'/>;
-                    <Tab icon={<GiSpaceNeedle size={24} />} label='Multiple bathroom'/>;
-                    <Tab icon={<FaCampground size={24} />} label='Address'/>;
-                    <Tab icon={<BiHomeAlt size={24} />} label='Tiny Homes'/>;
-                    <Tab icon={<GiLightningDome size={24} />} label='Domes'/>;
-                    <Tab icon={<GiCampingTent size={24} />} label='A-frames'/>;
-                    <Tab icon={<GiWaveSurfer size={24} />} label='Surfing'/>;
 
+                    <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={18}/>} value={1} label='All'/>;
+                    <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
+                    <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
+                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4}
+                         label='Normal house'/>;
+                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5}
+                         label='Single bedroom'/>;
+                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={18}/>} value={6}
+                         label='Multiple bedroom'/>;
+                    <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7}
+                         label='Single bathroom'/>;
+                    <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8}
+                         label='Multiple bathroom'/>;
+                    <Tab onClick={handleClickLess500} icon={<GiCampingTent size={18}/>} value={9}
+                         label='House price <500$'/>;
+                    <Tab onClick={handleClickThan500} icon={<BiHomeAlt size={18}/>} value={10}
+                         label='House price 500$-1000$'/>;
+                    <Tab onClick={handleClickThan1000} icon={<GiWaveSurfer size={18}/>} value={11}
+                         label='House price >1000$'/>;
+                    <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
+                    <Tab icon={<FaCampground size={24}/>} label='Address'/>;
+                    
 
                 </Tabs>
                 <Button

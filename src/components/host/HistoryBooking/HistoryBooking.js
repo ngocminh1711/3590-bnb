@@ -33,14 +33,14 @@ function HistoryBooking() {
         <HeaderDashBoard/>
         
                 <>
-                    <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+                    <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64 mt-32 mb-32">
                         <link
                             href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
                             rel="stylesheet"
                         ></link>
-                        <div
-                            className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-                            <table className="min-w-full">
+                        <div 
+              className=" ml-32 mr-32 align-middle inline-block min-w-800 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+              <table className="min-w-full">
                                 <thead>
                                 <tr>
                                     <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-rose-500 tracking-wider">
@@ -86,6 +86,7 @@ function HistoryBooking() {
                                         <img
                                             src={item.image}
                                             className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
+                                            style={{width:"400px", height:"80px"}}
                                             alt="null"
                                         />
                                     </td>
@@ -126,9 +127,6 @@ function HistoryBooking() {
                         </div>
                     </div>
                 </>
-              
-            
-        
         <Footer />
       </div>
     </>

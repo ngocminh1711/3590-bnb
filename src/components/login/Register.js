@@ -40,15 +40,15 @@ export default function Register() {
     email: "",
     password: "",
   });
-  console.log(form)
+  
   const handleRegister = async (data) => {
-    console.log(1)
-    return await axios.post("http://localhost:8000/api/auth/register", data);
-    
+    const a = await axios.post("http://localhost:8000/api/auth/register", data);
+    return a
   };
   return (
     <>
     <Header />
+    <div className="mt-32">
       <Formik
         initialValues={form}
         validationSchema={RegisterSchema}
@@ -206,6 +206,7 @@ export default function Register() {
           </section>
         </Form>
       </Formik>
+      </div>
       <Footer/>
     </>
   );

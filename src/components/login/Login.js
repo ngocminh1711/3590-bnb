@@ -13,7 +13,6 @@ import Footer from "../footer/Footer.js";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const [errMessage, setErrMessage] = useState("");
 
   const PORT = process.env.PORT || 8000;
@@ -71,7 +70,10 @@ function Login() {
       }
     },
   });
-
+  const handleRegister =()=>{
+    navigate("/register")
+    
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
@@ -79,17 +81,16 @@ function Login() {
       username: form.username,
       password: form.password,
     };
+   
     axios
       .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
-
-          
           localStorage.setItem("token", JSON.stringify(res.data.token));
 
           localStorage.setItem("username", form.username);
-
-          localStorage.setItem("userId", form._id);
+          localStorage.userItem("_id",form._id)
+          // localStorage.setItem("userId", form._id);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -98,7 +99,7 @@ function Login() {
             timer: 1000,
           });
           setTimeout(() => {
-            navigate("/");
+            navigate("/home");
           }, 1500);
         }
       })
@@ -106,6 +107,7 @@ function Login() {
         console.log(err);
         setErrMessage(err.response.data.message);
       });
+
   };
 
   return (
@@ -182,12 +184,11 @@ function Login() {
                 </label>
               </div>
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
+                <p className="">
+                  Do not have an account ?
+                  <a className="text-rose-500" 
+                   onClick={handleRegister}>{" "}Register</a>
+                  </p>
               </div>
             </div>
             <div>
@@ -221,7 +222,9 @@ function Login() {
               </svg>
                   <h2 className="ml-10 -mt-5">Login With Google </h2></button>
             </div>
+
           </form>
+         
         </div>
       </div>
       <Footer />

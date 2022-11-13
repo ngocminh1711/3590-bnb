@@ -127,10 +127,13 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
       navigate("/register");
     }, 500);
   };
+  const handleDashBoard = (e) => {
+    navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
+  };
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <header className="py-6 mb-0">
+      <header className="py-6 mb-0 w-full bg-white z-50" style={{position:"fixed",top:0}}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/home">
             <img
@@ -177,6 +180,26 @@ function HeaderDashBoard({ lightMode, setLightMode }) {
   "
               aria-labelledby="dropdownMenuButton2"
             >
+               <li>
+                <button
+                  className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+        hover:bg-rose-200
+      "
+                  onClick={(e) => handleDashBoard(e)}
+                >
+                  Dash Board
+                </button>
+              </li>
               <li>
                 <button
                   className="

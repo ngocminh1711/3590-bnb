@@ -39,13 +39,12 @@ function TopHouseForRent() {
     return (
         <div>
             {topHouseForRent.length === 0 ? (
-                <div className="text-center">
-                    <img
-                        src="https://www.surjen.com/resources/assets/frontend/img/nodatafound.png"
-                        alt="anh"
-                        className="ml-44 h-100 w-50"
-                    />
-                </div>
+                <button type="button" class="bg-indigo-500 ..." disabled>
+                <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                
+                </svg>
+                Processing...
+              </button>
             ) : (
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">

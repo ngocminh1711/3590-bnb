@@ -1,7 +1,7 @@
 function Footer() {
   return (
     
-    <footer className="text-center text-white" style={{backgroundColor: '#f1f1f1'}}>
+    <footer className="text-center text-white w-full "style={{backgroundColor: '#f1f1f1',bottom:0}}>
         <div className="container pt-9 max-w-full ">
           <div className="flex justify-center mb-9 ">
             <a href="#!" className="mr-9 text-gray-400">

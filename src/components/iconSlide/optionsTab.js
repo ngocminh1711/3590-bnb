@@ -38,7 +38,8 @@ const OptionsTabOneBed = () => {
 
 
     return (
-        <Container maxWidth="xl">
+        
+        <Container maxWidth="xl" className="mt-32">
             <Box
                 sx={{
                     display: 'flex',

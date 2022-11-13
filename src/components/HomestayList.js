@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 
 function HomestayList() {
     const PORT = process.env.PORT || 8000;
+    const [noOfElement,setNoOfElement] = useState(8)
 
     const [houseForRents, setHouseForRents] = useState([]);
     const navigate = useNavigate();
@@ -11,6 +12,12 @@ function HomestayList() {
     const getApiHouse = async () => {
         return await axios.get(`http://localhost:${PORT}/api/products`);
     };
+
+    const loadMore = async () => {
+        await setNoOfElement(noOfElement + noOfElement)
+
+    }
+    const slice = houseForRents.slice(0,noOfElement)
 
     const handleClick = (e) => {
         let id = e;
@@ -31,14 +38,10 @@ function HomestayList() {
     return (
         <div>
             <div className="bg-white">
-
                 <div className="mx-auto max-w-2xl  py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 className="text-2xl pt-0 font-bold tracking-tight text-gray-900">All House For Rent</h2>
-
-
-                    <div
-                        className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
-                        {houseForRents && houseForRents.map((item) => (
+                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
+                        {houseForRents && slice.map((item) => (
                             <div
                                 key={item._id}
                                 onClick={() => handleClick(item._id)}
@@ -69,6 +72,9 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
+                    <div className='text-center border bg-black text-white' >
+                    <button className='text-center' onClick={()=>loadMore()}>Load More</button>
+                        </div>
                 </div>
             </div>
         </div>

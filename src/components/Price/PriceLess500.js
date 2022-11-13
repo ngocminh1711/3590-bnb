@@ -34,7 +34,7 @@ function PriceLess500() {
 
     return (
         <div>
-            {houseLess500.length > 0 ? (
+
                 <div className="bg-white">
                     <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
 
@@ -75,16 +75,6 @@ function PriceLess500() {
                         </div>
                     </div>
                 </div>
-            ) : (
-                <div className="text-center">
-                    <img
-                        src="https://www.surjen.com/resources/assets/frontend/img/nodatafound.png"
-                        alt="anh"
-                        className="ml-44 h-100 w-50"
-                    />
-                </div>
-
-            )}
         </div>
     )
 }

@@ -35,7 +35,7 @@ function CheckBooking() {
 
     const createApiNotification = async (bookingId) => {
         return await axios.post(
-            `http://localhost:${PORT}/api/notification/${bookingId}`
+            `http://localhost:${PORT}/api/notification/create?bookingId=${bookingId}&hostId=${userLogin.idUserLogin}`
         );
     };
 

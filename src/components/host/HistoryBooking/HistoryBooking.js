@@ -32,12 +32,13 @@ function HistoryBooking() {
 
   const createApiNotifications = async (id) => {
     return await axios.post(
-        `http://localhost:${PORT}/api/notification/${id}`
+        `http://localhost:${PORT}/api/notification/create?bookingId=${id}&hostId=${userLogin.idUserLogin}`
     )
   }
 
   const handleCancelOrder = (item) => {
-    console.log(item);
+    let id = item._id;
+    console.log({itemId : id})
     let currentDay = Date.now();
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
@@ -67,11 +68,11 @@ function HistoryBooking() {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              createApiNotifications(id).then((res => console.log(res)))
             })
             .catch((err) => {
               console.log(err.message);
             });
+          createApiNotifications(id).then((res => console.log(res)))
         }
       });
     } else {

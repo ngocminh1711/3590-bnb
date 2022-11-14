@@ -21,6 +21,7 @@ const RegisterSchema = Yup.object().shape({
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
       "Email invalidate.(vd: abc@gmail.com)"
     ),
+
   password: Yup.string()
     .required("compulsory!")
     .matches(
@@ -34,18 +35,22 @@ const RegisterSchema = Yup.object().shape({
 
 export default function Register() {
   const [existedEmail, setExistedEmail] = useState("");
+  const [username, setUsername] = useState("");
+
   const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
     email: "",
     password: "",
   });
+
   const handleRegister = async (data) => {
     return await axios.post("http://localhost:8000/api/auth/register", data);
   };
   return (
     <>
     <Header />
+    <div className="mt-32">
       <Formik
         initialValues={form}
         validationSchema={RegisterSchema}
@@ -63,7 +68,8 @@ export default function Register() {
                 navigate("/login");
               }
             })
-            .catch((e) => setExistedEmail("Email da ton tai"));
+            .catch((e) => setExistedEmail("Username already exists"),
+                        );
         }}
       >
         <Form>
@@ -82,6 +88,7 @@ export default function Register() {
                     class="rounded-lg py-2 px-2 mb-3 text-base text-red-700 inline-flex items-center  "
                     role="alert"
                   >
+                    
                     <svg
                       aria-hidden="true"
                       focusable="false"
@@ -203,6 +210,7 @@ export default function Register() {
           </section>
         </Form>
       </Formik>
+      </div>
       <Footer/>
     </>
   );

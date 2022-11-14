@@ -5,7 +5,6 @@ import "./TopHouseForRent.css";
 import { useDispatch } from "react-redux";
 
 let count = 0;
-
 function TopHouseForRent() {
   const PORT = process.env.PORT || 8000;
 
@@ -35,7 +34,7 @@ function TopHouseForRent() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-36">
       <div className="bg-white">
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 pt-0">

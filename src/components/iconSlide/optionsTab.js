@@ -84,11 +84,11 @@ const OptionsTab = () => {
 
     return (
         <>
-
+<div className="py-1 mb-0 z-30 bg-white w-full " style={{position:"fixed",top:70}}>
             <Container maxWidth="xl">
                 <Box
                     sx={{
-                        display: 'flex',
+                        
                         flexGrow: 1,
                         px: {xs: 0, md: 2},
                         alignItems: 'center',
@@ -130,6 +130,7 @@ const OptionsTab = () => {
 
                 </Box>
             </Container>
+            </div>
         </>
 
     );

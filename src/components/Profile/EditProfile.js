@@ -25,7 +25,6 @@ export default function EditProfile() {
     }).catch(err => console.log(err.message))
 }, []);
 
-
   const handleChange = (e) => {
     setInfoProfile({...infoProfile, [e.target.name]: e.target.value})
   }
@@ -41,16 +40,16 @@ export default function EditProfile() {
       address: infoProfile.address,
       phone: infoProfile.phone
     }
+    console.log(data)
     await axios.patch(`http://localhost:${PORT}/api/user/edit/${id}`,data)
-    .then(res => navigate(`/profile/${id}`))
+    .then(res =>
+       navigate(`/profile/${id}`))
     .catch(err => console.log(err.message))
   }
- 
-
   return (
     <>
       <Header />
-        <div className="mt-10 sm:mt-0">
+        <div className="mt-32 sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="md:col-span-1">
               <div className="px-4 sm:px-0">

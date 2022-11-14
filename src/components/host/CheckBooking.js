@@ -8,6 +8,7 @@ import Footer from "../footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {getBookingId} from "../../features/notificationSlice/notificationSlice";
+import HeaderDashBoard from "../header/HeaderDashBoard";
 
 
 function CheckBooking() {
@@ -95,16 +96,18 @@ function CheckBooking() {
 
     return (
         <>
+        
             <div>
-                <Header/>
+                <HeaderDashBoard/>
                 <>
-                    <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+                    <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64">
                         <link
                             href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
                             rel="stylesheet"
                         ></link>
+                        <div className="mr-32 ml-32">
                         <div
-                            className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                            className=" align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                             <table className="min-w-full">
                                 <thead>
                                 <tr>
@@ -230,6 +233,7 @@ function CheckBooking() {
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </>

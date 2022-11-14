@@ -28,12 +28,11 @@ import ShowMultipleBathRoom from "./components/BathRoom/ShowMultipleBathRoom";
 import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
 import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
-
-
 function App() {
 
     return (
         <>
+
             <Routes>
                 <Route path="/" element={<GetStarted/>}/>
                 <Route path="/home" element={<Home/>}/>

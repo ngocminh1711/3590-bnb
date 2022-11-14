@@ -8,6 +8,10 @@ import {useEffect, useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
+import {Field, Form, Formik} from "formik";
+import jwtDecode from "jwt-decode";
+import swal from "sweetalert";
+
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
@@ -17,7 +21,7 @@ function DetailHouseForRent() {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-
+    const [showModal, setShowModal] = useState(false);
     const [houseForRent, setHouseForRent] = useState({
         name: "",
         address: "",
@@ -109,7 +113,9 @@ function DetailHouseForRent() {
     useEffect(() => {
         setMoney(totalMoney);
     }, [totalMoney]);
-
+    const handleModal = () => {
+        setShowModal(true);
+    }
     return (
         <>
             <Header/>
@@ -147,41 +153,97 @@ function DetailHouseForRent() {
                                 </div>
                             </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-3 pb-3 ">
-                            <img
-                                style={{width: 560, height: 300}}
-                                className="rounded-l-3xl border"
-                                src={houseForRent.image_backdrop}
-                            />
+                        <div>
 
-                            <div className="flex flex-row">
-                                <div className="basis-1/2">
+                            <button className=""
+                                    onClick={handleModal}
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">
+                                <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-3 pb-3 ">
                                     <img
-                                        style={{width: 280, height: 150}}
-                                        className="rounded border"
-                                        src={houseForRent.image_view[0]}
+                                        style={{width: 560, height: 300}}
+                                        className="rounded-l-3xl border"
+                                        src={houseForRent.image_backdrop}
                                     />
-                                    <img
-                                        className="rounded border"
-                                        style={{width: 280, height: 150}}
-                                        src={houseForRent.image_view[1]}
-                                    />
+
+                                    <div className="flex flex-row">
+                                        <div className="basis-1/2">
+                                            <img
+                                                style={{width: 280, height: 150}}
+                                                className="rounded border"
+                                                src={houseForRent.image_view[0]}
+                                            />
+                                            <img
+                                                className="rounded border"
+                                                style={{width: 280, height: 150}}
+                                                src={houseForRent.image_view[1]}
+                                            />
+                                        </div>
+                                        <div className="basic-1/2">
+                                            <img
+                                                style={{width: 280, height: 150}}
+                                                className="rounded-tr-3xl border"
+                                                src={houseForRent.image_view[2]}
+                                                alt="image not found"
+                                            />
+                                            <img
+                                                className="rounded-br-3xl border "
+                                                style={{width: 280, height: 150}}
+                                                src={houseForRent.image_view[3]}
+                                                alt="image not found"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="basic-1/2">
-                                    <img
-                                        style={{width: 280, height: 150}}
-                                        className="rounded-tr-3xl border"
-                                        src={houseForRent.image_view[2]}
-                                        alt="image not found"
-                                    />
-                                    <img
-                                        className="rounded-br-3xl border "
-                                        style={{width: 280, height: 150}}
-                                        src={houseForRent.image_view[3]}
-                                        alt="image not found"
-                                    />
-                                </div>
-                            </div>
+                            </button>
+                            {showModal ? (
+                                <>
+
+                                    <div
+                                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50">
+                                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                            {/*content*/}
+                                            <div
+                                                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                {/*header*/}
+                                                <div
+                                                    className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+
+                                                </div>
+                                                {/*body*/}
+                                                <div
+                                                    className="relative p-6 flex-auto top-0 w-fit "
+                                                    style={{width: "full"}}
+                                                >
+                                                    <div className=" flex gap-3 overflow-y-auto ">
+                                                        <img src={houseForRent.image_backdrop} alt="ok"/>
+                                                        <img src={houseForRent.image_view[0]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[1]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[2]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[3]} alt="ok"/>
+
+                                                    </div>
+                                                    <div
+                                                        className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+
+                                                        <button
+                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out"
+                                                            onClick={() => {
+                                                                setShowModal(false);
+
+                                                            }}
+                                                        >
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                </>
+                            ) : null}
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">
@@ -262,11 +324,11 @@ function DetailHouseForRent() {
                                                                     </div>
                                                                     <div className="mr-2 border-b-2 border-l-2">
                                                                         <div className='ml-2'>
-                                                                        <strong>Check Out</strong>
-                                                                        <DatePicker
-                                                                            selected={endDate}
-                                                                            onChange={(date) => setEndDate(date)}
-                                                                        />
+                                                                            <strong>Check Out</strong>
+                                                                            <DatePicker
+                                                                                selected={endDate}
+                                                                                onChange={(date) => setEndDate(date)}
+                                                                            />
                                                                         </div>
                                                                     </div>
                                                                 </div>

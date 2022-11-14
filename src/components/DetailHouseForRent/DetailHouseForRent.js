@@ -1,16 +1,14 @@
 import "./DetailHouseForRent.css";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {setIdUserLogin} from "../../features/userProfile/UserProfileSlice";
-import {Field, Form, Formik} from "formik";
-import jwtDecode from "jwt-decode";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
+
 
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
@@ -21,7 +19,9 @@ function DetailHouseForRent() {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const [houseStatus, setHouseStatus] = useState(false);
     const [showModal, setShowModal] = useState(false);
+
     const [houseForRent, setHouseForRent] = useState({
         name: "",
         address: "",
@@ -32,22 +32,35 @@ function DetailHouseForRent() {
         description: "",
         image_backdrop: "",
         image_view: [],
-        hostName: ""
-    })
+        status: "",
+        userId: "",
+        host: "",
+    });
 
     const {state} = useLocation();
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
+            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
+
+    const getHost = async (id) => {
+        return await axios.get(
+            `http://localhost:${PORT}/api/products/getHost/${id}`
+        );
+    }
+
+    useEffect(() => {
+        let id = state.houseId;
+        getHost(id).then((res) => setHost(res.data.host))
+    }, [])
 
     useEffect(() => {
         let id = state.houseId;
 
         getData(id).then((res) => {
-            dispatch(setIdUserLogin(res.data.data.userId))
+            console.log(res);
             setHouseForRent({
                 ...houseForRent,
                 name: res.data.data.name,
@@ -59,67 +72,89 @@ function DetailHouseForRent() {
                 description: res.data.data.description,
                 image_backdrop: res.data.data.image_backdrop,
                 image_view: res.data.data.image_view,
+                status: res.data.data.status.name,
             });
         });
     }, []);
 
-    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
-
-    console.log({id: idUserLogin})
-
-
-    const getHost = async () => {
-        return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
-    }
 
     useEffect(() => {
         getHost()
-            .then(res => setHost(res.data.data))
-            .catch(err => console.log(err.message))
-    }, [])
-    console.log({host: host})
+            .then((res) => setHost(res.data.data))
+            .catch((err) => console.log(err.message));
+    }, []);
 
 
     const getApiResever = async (data) => {
         return await axios.post(`http://localhost:${PORT}/api/resever`, data);
     };
 
-
+    let moneyNeedToRent = 0;
     let totalTime = endDate.getTime() - startDate.getTime();
     let totalDay = Math.round(totalTime / (60 * 60 * 1000 * 24));
     let totalMoney = totalDay * houseForRent.roomRates;
-
+    if (totalMoney < 0) {
+        moneyNeedToRent = 0;
+    } else {
+        moneyNeedToRent = totalMoney;
+    }
 
     const handleReserver = (e) => {
         e.preventDefault();
-        let data = {
-            houseId: state.houseId,
-            tenantId: userId,
-            checkInDay: startDate,
-            checkOutDay: endDate,
-            totalMoney: totalMoney,
-            houseName: houseForRent.name,
-            image: houseForRent.image_backdrop,
-        };
-        getApiResever(data)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err.message);
+        if (endDate.getTime() === startDate.getTime()) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You must rent at least 1 day",
+                footer: '<a href="">Why do I have this issue?</a>',
             });
+        } else if (startDate.getTime() > endDate.getTime()) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Check out date can't be less than check in date ",
+                footer: '<a href="">Why do I have this issue?</a>',
+            });
+        } else {
+            let data = {
+                houseId: state.houseId,
+                tenantId: userId,
+                checkInDay: startDate,
+                checkOutDay: endDate,
+                totalMoney: totalMoney,
+                houseName: houseForRent.name,
+                image: houseForRent.image_backdrop,
+            };
+            getApiResever(data)
+                .then((res) => {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Thanks you for choosing our's house",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
     };
 
     useEffect(() => {
-        setMoney(totalMoney);
-    }, [totalMoney]);
+        setMoney(moneyNeedToRent);
+
+    }, [moneyNeedToRent]);
+
     const handleModal = () => {
         setShowModal(true);
     }
+
+
     return (
         <>
             <Header/>
-
             {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
@@ -166,89 +201,88 @@ function DetailHouseForRent() {
                                         src={houseForRent.image_backdrop}
                                     />
 
-                                    <div className="flex flex-row">
-                                        <div className="basis-1/2">
-                                            <img
-                                                style={{width: 280, height: 150}}
-                                                className="rounded border"
-                                                src={houseForRent.image_view[0]}
-                                            />
-                                            <img
-                                                className="rounded border"
-                                                style={{width: 280, height: 150}}
-                                                src={houseForRent.image_view[1]}
-                                            />
-                                        </div>
-                                        <div className="basic-1/2">
-                                            <img
-                                                style={{width: 280, height: 150}}
-                                                className="rounded-tr-3xl border"
-                                                src={houseForRent.image_view[2]}
-                                                alt="image not found"
-                                            />
-                                            <img
-                                                className="rounded-br-3xl border "
-                                                style={{width: 280, height: 150}}
-                                                src={houseForRent.image_view[3]}
-                                                alt="image not found"
-                                            />
-                                        </div>
-                                    </div>
+                            <div className="flex flex-row">
+                                <div className="basis-1/2">
+                                    <img
+                                        style={{width: 280, height: 150}}
+                                        className="rounded border"
+                                        src={houseForRent.image_view[0]}
+                                    />
+                                    <img
+                                        className="rounded border"
+                                        style={{width: 280, height: 150}}
+                                        src={houseForRent.image_view[1]}
+                                    />
                                 </div>
+                                <div className="basic-1/2">
+                                    <img
+                                        style={{width: 280, height: 150}}
+                                        className="rounded-tr-3xl border"
+                                        src={houseForRent.image_view[2]}
+                                        alt="image not found"
+                                    />
+                                    <img
+                                        className="rounded-br-3xl border "
+                                        style={{width: 280, height: 150}}
+                                        src={houseForRent.image_view[3]}
+                                        alt="image not found"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                             </button>
-                            {showModal ? (
-                                <>
+                          {showModal ? (
+                              <>
 
+                                <div
+                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50">
+                                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                    {/*content*/}
                                     <div
-                                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50">
-                                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                            {/*content*/}
-                                            <div
-                                                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                                {/*header*/}
-                                                <div
-                                                    className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+                                        className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                      {/*header*/}
+                                      <div
+                                          className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
 
-                                                </div>
-                                                {/*body*/}
-                                                <div
-                                                    className="relative p-6 flex-auto top-0 w-fit "
-                                                    style={{width: "full"}}
-                                                >
-                                                    <div className=" flex gap-3 overflow-y-auto ">
-                                                        <img src={houseForRent.image_backdrop} alt="ok"/>
-                                                        <img src={houseForRent.image_view[0]} alt="ok"/>
-                                                        <img src={houseForRent.image_view[1]} alt="ok"/>
-                                                        <img src={houseForRent.image_view[2]} alt="ok"/>
-                                                        <img src={houseForRent.image_view[3]} alt="ok"/>
+                                      </div>
+                                      {/*body*/}
+                                      <div
+                                          className="relative p-6 flex-auto top-0 w-fit "
+                                          style={{width: "full"}}
+                                      >
+                                        <div className=" flex gap-3 overflow-y-auto ">
+                                          <img src={houseForRent.image_backdrop} alt="ok"/>
+                                          <img src={houseForRent.image_view[0]} alt="ok"/>
+                                          <img src={houseForRent.image_view[1]} alt="ok"/>
+                                          <img src={houseForRent.image_view[2]} alt="ok"/>
+                                          <img src={houseForRent.image_view[3]} alt="ok"/>
 
-                                                    </div>
-                                                    <div
-                                                        className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-
-                                                        <button
-                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out"
-                                                            onClick={() => {
-                                                                setShowModal(false);
-
-                                                            }}
-                                                        >
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
                                         </div>
+                                        <div
+                                            className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+
+                                          <button
+                                              className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out"
+                                              onClick={() => {
+                                                setShowModal(false);
+
+                                              }}
+                                          >
+                                            Close
+                                          </button>
+                                        </div>
+                                      </div>
+
                                     </div>
-                                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                                </>
-                            ) : null}
+                                  </div>
+                                </div>
+                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                              </>
+                          ) : null}
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
-                            <div className="grid grid-rows-4 gap-4">
+                            <div className="grid grid-rows-4">
                                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
-
                                     Entire rental unti hosted by {host.name}
                                 </h1>
                                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
@@ -274,7 +308,7 @@ function DetailHouseForRent() {
                                         <h1 className="text-black-300 text-1.5xl title-font font-medium mb-1 float-left pl-2">
                                             Designed by
                                         </h1>
-                                        <p className="text-gray-500 text-1.5xl">Ngo Minh Ngoc</p>
+                                        <p className="text-gray-500 text-1.5xl">{host.name}</p>
                                     </div>
                                 </div>
                                 <div>
@@ -299,78 +333,78 @@ function DetailHouseForRent() {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div className="z-20 mt-2 h-auto shadow-2xl">
-                                    <form onSubmit={(e) => handleReserver(e)}>
-                                        <div className="flex bg-100 h-auto ">
-                                            <div className="m-auto">
-                                                <div className="mt-0 rounded-lg shadow ">
-                                                    <br></br>
-                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                                        $ {houseForRent.roomRates} per night
-                                                    </h1>
-                                                    <div className="px-5 pt-5">
-                                                        <div
-                                                            className=" rounded-full border-b-black grid grid-cols-2 grid-flow-row ">
-                                                            <div className="col-span-2 border-2 rounded-lg ml-15  ">
-                                                                <div
-                                                                    className=" flex items-center justify-center w-auto ">
-                                                                    <div className="ml-2 border-r-2 border-b-2 ">
-                                                                        <strong>Check In</strong>
-                                                                        <DatePicker
-                                                                            selected={startDate}
-                                                                            onChange={(date) => setStartDate(date)}
-                                                                        />
-                                                                    </div>
-                                                                    <div className="mr-2 border-b-2 border-l-2">
-                                                                        <div className='ml-2'>
-                                                                            <strong>Check Out</strong>
-                                                                            <DatePicker
-                                                                                selected={endDate}
-                                                                                onChange={(date) => setEndDate(date)}
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <span></span>
-                                                                <span></span>
-                                                                <div className='ml-2'>
-                                                                    <strong>Guests</strong>
-                                                                    <select className="w-full">
-                                                                        <option>1 Guest</option>
-                                                                        <option>2 Guests</option>
-                                                                        <option>3 Guests</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="px-5 pt-4">
-                                                        <button
-                                                            type="submit"
-                                                            className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
-                                                        >
-                                                            <span>Reserve</span>
-                                                        </button>
-                                                    </div>
-                                                    <br></br>
-                                                    <hr></hr>
-                                                    <div className="px-5 pt-4">
-
-                                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                                            Total before taxes{" "}
-                                                        </h1>
-                                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                                            ${money}
-                                                        </h1>
-                                                    </div>
-                                                    <br></br>
+                          <div>
+                            <div className="z-20 mt-2 h-auto shadow-2xl">
+                              <form onSubmit={(e) => handleReserver(e)}>
+                                <div className="flex bg-100 h-auto ">
+                                  <div className="m-auto">
+                                    <div className="mt-0 rounded-lg shadow ">
+                                      <br></br>
+                                      <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                        $ {houseForRent.roomRates} per night
+                                      </h1>
+                                      <div className="px-5 pt-5">
+                                        <div
+                                            className=" rounded-full border-b-black grid grid-cols-2 grid-flow-row ">
+                                          <div className="col-span-2 border-2 rounded-lg ml-15  ">
+                                            <div
+                                                className=" flex items-center justify-center w-auto ">
+                                              <div className="ml-2 border-r-2 border-b-2 ">
+                                                <strong>Check In</strong>
+                                                <DatePicker
+                                                    selected={startDate}
+                                                    onChange={(date) => setStartDate(date)}
+                                                />
+                                              </div>
+                                              <div className="mr-2 border-b-2 border-l-2">
+                                                <div className='ml-2'>
+                                                  <strong>Check Out</strong>
+                                                  <DatePicker
+                                                      selected={endDate}
+                                                      onChange={(date) => setEndDate(date)}
+                                                  />
                                                 </div>
+                                              </div>
                                             </div>
+                                            <span></span>
+                                            <span></span>
+                                            <div className='ml-2'>
+                                              <strong>Guests</strong>
+                                              <select className="w-full">
+                                                <option>1 Guest</option>
+                                                <option>2 Guests</option>
+                                                <option>3 Guests</option>
+                                              </select>
+                                            </div>
+                                          </div>
                                         </div>
-                                    </form>
+                                      </div>
+                                      <div className="px-5 pt-4">
+                                        <button
+                                            type="submit"
+                                            className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
+                                        >
+                                          <span>Reserve</span>
+                                        </button>
+                                      </div>
+                                      <br></br>
+                                      <hr></hr>
+                                      <div className="px-5 pt-4">
+
+                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                          Total before taxes{" "}
+                                        </h1>
+                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                          ${money}
+                                        </h1>
+                                      </div>
+                                      <br></br>
+                                    </div>
+                                  </div>
                                 </div>
+                              </form>
                             </div>
+                          </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-0 pb-0">
                             <h1 className=" text-black-300 text-1xl title-font font-normal mb-1">
@@ -531,7 +565,6 @@ function DetailHouseForRent() {
                                         </h2>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -545,5 +578,3 @@ function DetailHouseForRent() {
 }
 
 export default DetailHouseForRent;
-
-

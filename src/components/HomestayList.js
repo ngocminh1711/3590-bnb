@@ -1,17 +1,17 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function HomestayList() {
     const PORT = process.env.PORT || 8000;
     const [noOfElement,setNoOfElement] = useState(8)
 
-    const [houseForRents, setHouseForRents] = useState([]);
-    const navigate = useNavigate();
+  const [houseForRents, setHouseForRents] = useState([]);
+  const navigate = useNavigate();
 
-    const getApiHouse = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/products`);
-    };
+  const getApiHouse = async () => {
+    return await axios.get(`http://localhost:${PORT}/api/products`);
+  };
 
     const loadMore = async () => {
         await setNoOfElement(noOfElement + noOfElement)

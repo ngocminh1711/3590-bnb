@@ -1,12 +1,12 @@
-import { BiBed, BiBath, BiArea } from 'react-icons/bi';
+import {BiBed, BiBath, BiArea} from 'react-icons/bi';
 
-const House = ({ house }) => {
+const House = ({house}) => {
     const [image, type, country, address, bedrooms, bathrooms, surface, price] = house;
 
-    return(
+    return (
         <>
             <div>
-                <img src={image} alt='' />
+                <img src={image} alt=''/>
             </div>
         </>
     )

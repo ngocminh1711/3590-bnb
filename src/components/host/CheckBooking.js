@@ -1,12 +1,13 @@
-
+import {Button} from "@material-tailwind/react";
 import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import Switch from "react-switch";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import HeaderDashBoard from "../header/HeaderDashBoard";
+import {getBookingId} from "../../features/notificationSlice/notificationSlice";
 
 
 function CheckBooking() {
@@ -14,8 +15,9 @@ function CheckBooking() {
     const userLogin = useSelector((state) => state.profileUser);
     const navigate = useNavigate();
     const [booking, setBooking] = useState([]);
-    const [value, setValue] = useState(false);
-    const [showDropDown, setShowDropDown] = useState(false);
+    const [button, setButton] = useState(true);
+    const [flag, setFlag] = useState(0);
+    const dispatch = useDispatch();
     let bookingProduct;
 
     const getApiResever = async () => {
@@ -23,41 +25,78 @@ function CheckBooking() {
             `http://localhost:${PORT}/api/resever/${userLogin.idUserLogin}`
         );
     };
-    const handleClick = (e) => {
+
+    const getApiChangeStatus = async (id, status) => {
+        return await axios.patch(
+            `http://localhost:${PORT}/api/resever/change-status/${id}`,
+            status
+        );
+    };
+
+    const createApiNotification = async (bookingId) => {
+        return await axios.post(
+            `http://localhost:${PORT}/api/notification/${bookingId}`
+        );
+    };
+
+    const DetailPage = (e) => {
         let id = e;
-        navigate(`/detail-house`, {state: {houseId: id}});
-    };
-
-
-    const handleShowInfo = () => {
-        setShowDropDown(!showDropDown);
-    };
-    const handleDelete = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`http://localhost:8000/api/products/${id}`);
-                Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            }
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
         });
+        navigate("/detail-house", {state: {houseId: id}});
     };
+
+    const handleClickYes = (item) => {
+
+        let id = item._id;
+
+        let idTenant = item.tenantId;
+        let status = {
+            bookingStatus: "Success",
+        };
+
+        dispatch(getBookingId(idTenant))
+
+        getApiChangeStatus(id, status)
+            .then((res) => {
+                setFlag(flag + 1);
+                console.log("Change success");
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+        createApiNotification(id).then(res => console.log(res))
+    };
+
+    const handleClickNo = (item) => {
+        let id = item._id;
+
+        let status = {
+            bookingStatus: "Failed",
+        };
+
+        getApiChangeStatus(id, status)
+            .then((res) => {
+                setFlag(flag + 1);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    };
+
     useEffect(() => {
         getApiResever().then((res) => {
             console.log(res);
             setBooking(res.data.listBooking);
         });
-    }, [value]);
+    }, [flag]);
+
     return (
         <>
             <div>
-                <HeaderDashBoard/>
+                <Header/>
                 <>
                     <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                         <link
@@ -69,25 +108,28 @@ function CheckBooking() {
                             <table className="min-w-full">
                                 <thead>
                                 <tr>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-rose-500 tracking-wider">
+                                    <th className="px-6 py-3 text-base border-b-2 border-gray-300 text-left leading-4 text-rose-500 tracking-wider">
                                         STT
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 text-base border-b-2 border-gray-300 text-left leading-4 text-rose-500 tracking-wider text-center">
                                         Image
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
                                         Name
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
                                         Check in day
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
                                         Check out day
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
                                         Total Money
                                     </th>
-                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
+                                        Status
+                                    </th>
+                                    <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-base leading-4 text-rose-500 tracking-wider text-center">
                                         Actions
                                     </th>
                                     <th className="px-6 py-3 border-b-2 border-gray-300"/>
@@ -117,7 +159,10 @@ function CheckBooking() {
                                                 />
                                             </td>
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                                                <div className="text-sm leading-5 text-blue-900 text-center ">
+                                                <div
+                                                    className="text-sm leading-5 cursor-pointer hover:text-red-500 text-blue-900 text-center"
+                                                    onClick={() => DetailPage(item.houseId)}
+                                                >
                                                     {item.houseName}
                                                 </div>
                                             </td>
@@ -136,29 +181,50 @@ function CheckBooking() {
                                                     {item.totalMoney}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                                                
-                                            <button
-                        onClick={() => {
-                          handleClick(item._id);
-                        }}
-                      >
-                        <a
-                          className="text-blue-400 hover:text-blue-200 mr-2">
-                          <i className="material-icons-outlined text-base">
-                            visibility
-                          </i>
-                        </a>
-                      </button> 
-                      <button
-                        
-                      >
-                        <a className="text-red-400 hover:text-orange-300  mx-2">
-                          <i className="material-icons-round text-base">
-                            delete_outline
-                          </i>
-                        </a>
-                      </button>
+                                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                                                <div className="text-sm leading-5 text-blue-900 text-center ">
+                                                    {item.bookingStatus}
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+
+                                                {item.bookingStatus === 'Processing ...' ?
+                                                    <div className=" text-sm leading-5 text-blue-900 text-center">
+                                                        <svg
+                                                            onClick={() => handleClickYes(item)}
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            strokeWidth={1.5}
+                                                            stroke="currentColor"
+                                                            className="w-6 h-6 cursor-pointer"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                d="M4.5 12.75l6 6 9-13.5"
+                                                            />
+                                                        </svg>
+
+                                                        <svg
+                                                            disable={button}
+                                                            onClick={() => handleClickNo(item)}
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            strokeWidth={1.5}
+                                                            stroke="currentColor"
+                                                            className="w-6 h-6 cursor-pointer"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                d="M6 18L18 6M6 6l12 12"
+                                                            />
+                                                        </svg>
+                                                    </div> :
+                                                    <div
+                                                        className="text-rose-600 text-sm rounded-lg border">processed</div>}
                                             </td>
                                         </tr>
                                     ))}

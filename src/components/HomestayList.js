@@ -65,7 +65,7 @@ function HomestayList() {
                                             Address : {item.address}
                                         </p>
                                         <div className="text-sm font-medium text-gray-900">
-                                            ${item.roomRates.toLocaleString()} per night
+                                            ${item.roomRates?.toLocaleString()} per night
                                         </div>
                                     </div>
                                 </div>

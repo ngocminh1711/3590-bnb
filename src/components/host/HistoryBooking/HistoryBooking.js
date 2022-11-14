@@ -3,9 +3,10 @@ import Footer from "../../footer/Footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Swal from "sweetalert2";
 import HeaderDashBoard from "../../header/HeaderDashBoard";
+import {getBookingId} from "../../../features/notificationSlice/notificationSlice";
 
 function HistoryBooking() {
   const PORT = process.env.PORT || 8000;
@@ -14,6 +15,7 @@ function HistoryBooking() {
   const [historyBooking, setHistoryBooking] = useState([]);
   const [flag, setFlag] = useState(0);
   const id = userLogin.idUserLogin;
+  const dispatch = useDispatch();
 
   const getHistoryBooking = async () => {
     return await axios.get(
@@ -28,14 +30,14 @@ function HistoryBooking() {
     );
   };
 
-  // const getApiDeleteBooking = async (id) => {
-  //   return await axios.delete(
-  //     `http://localhost:${PORT}/api/resever/history-booking/delete/${id}`
-  //   );
-  // };
+  const createApiNotifications = async (id) => {
+    return await axios.post(
+        `http://localhost:${PORT}/api/notification/${id}`
+    )
+  }
 
   const handleCancelOrder = (item) => {
-    let id = item._id;
+    console.log(item);
     let currentDay = Date.now();
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
@@ -65,6 +67,7 @@ function HistoryBooking() {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              createApiNotifications(id).then((res => console.log(res)))
             })
             .catch((err) => {
               console.log(err.message);

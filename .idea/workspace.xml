@@ -4,12 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="">
+    <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="thao">
+      <change afterPath="$PROJECT_DIR$/src/components/header/IconNotification/IconNotfification.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/IconNotification/IconNotification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/host/ChangePassword.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/host/HistoryBooking/RentHistory.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/getHostName/getHostProfileSlice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/notificationSlice/notificationSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomestayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomestayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/House.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/House.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Slide.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Slide.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/HeaderDashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/HeaderDashBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/CheckBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/CheckBooking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/DetailHouse/DetailHouse.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/HistoryBooking/HistoryBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/HistoryBooking/HistoryBooking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/iconSlide/iconScrollTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/iconSlide/iconScrollTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,10 +64,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/WebstormProjects/3590-bnb-api&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/WebstormProjects/Module4-CaseStudy-Demo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -73,8 +94,25 @@
       <workItem from="1667524235047" duration="1265000" />
       <workItem from="1667527952963" duration="2219000" />
       <workItem from="1667546261984" duration="1645000" />
-      <workItem from="1667888816471" duration="7599000" />
+      <workItem from="1667888816471" duration="15051000" />
+      <workItem from="1667959235180" duration="95000" />
+      <workItem from="1667959351242" duration="10404000" />
+      <workItem from="1667975402498" duration="9059000" />
+      <workItem from="1668041010095" duration="5036000" />
+      <workItem from="1668128394768" duration="523000" />
+      <workItem from="1668148292923" duration="10791000" />
+      <workItem from="1668177771372" duration="2848000" />
+      <workItem from="1668348367086" duration="96000" />
+      <workItem from="1668386589611" duration="9946000" />
     </task>
+    <task id="LOCAL-00001" summary="thao">
+      <created>1667897778891</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667897778892</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -90,5 +128,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="thao" />
+    <option name="LAST_COMMIT_MESSAGE" value="thao" />
   </component>
 </project>

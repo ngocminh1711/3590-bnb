@@ -2,7 +2,7 @@ function Footer() {
   return (
     
     <footer className="text-center text-white" style={{backgroundColor: '#f1f1f1'}}>
-        <div className="container pt-9">
+        <div className="container pt-9 max-w-full" >
           <div className="flex justify-center mb-9">
             <a href="#!" className="mr-9 text-gray-400">
               <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" className="svg-inline--fa fa-facebook-f w-2.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">

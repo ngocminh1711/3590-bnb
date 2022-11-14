@@ -89,32 +89,33 @@ export default function IconNotification() {
                                 {/*body*/}
                                 {notification && notification.map(item => (
                                     <div className="relative p-6 flex-auto">
-                                        <button
-                                            onClick={() => handleDelete(item)}
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 strokeWidth="1.5" stroke="currentColor"
-                                                 className="absolute top-5 right-0 h-6 w-6"
-
+                                        <div>
+                                            <p className="bg-slate-200 my-4 text-slate-500 text-medium leading-relaxed">
+                                                {item.booking.bookingStatus === "Success" ?
+                                                    "Successfully rented " + item.house.name
+                                                    + " check in date "
+                                                    + item.booking.checkInDay
+                                                    + " and check out date "
+                                                    + item.booking.checkOutDay
+                                                    + " with the price of $"
+                                                    + item.booking.totalMoney
+                                                    :
+                                                    "Rent House " + item.house.name + " failed"}
+                                            </p>
+                                            <button
+                                                onClick={() => handleDelete(item)}
                                             >
-                                                <path strokeLinecap="round" strokeLinejoin="round"
-                                                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                        </button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                     strokeWidth="1.5" stroke="currentColor"
+                                                     className="absolute top-5 right-0 h-6 w-6 hover:bg-rose-500 border rounded-lg"
 
+                                                >
+                                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
 
-                                        <p className="bg-slate-200 my-4 text-slate-500 text-medium leading-relaxed">
-                                            {item.booking.bookingStatus === "Success" ?
-                                                "Successfully rented " + item.house.name
-                                                + " check in date "
-                                                + item.booking.checkInDay
-                                                + " and check out date "
-                                                + item.booking.checkOutDay
-                                                + " with the price of $"
-                                                + item.booking.totalMoney
-                                                :
-                                                "Rent House " + item.house.name + " failed"}
-                                        </p>
                                     </div>
                                 ))}
 

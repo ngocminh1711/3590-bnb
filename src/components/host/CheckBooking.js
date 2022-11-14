@@ -88,6 +88,7 @@ function CheckBooking() {
 
     useEffect(() => {
         getApiResever().then((res) => {
+            console.log(res);
             setBooking(res.data.listBooking);
         });
     }, [flag]);

@@ -104,8 +104,8 @@ const OptionsTabVip = () => {
                 >
                     <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={18}/>} value={1} label='All'/>;
                     <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
-                    <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
-                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4}
+                    <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house' style={{color : "#b91c1c"}}/>;
+                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4} 
                          label='Normal house'/>;
                     <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5}
                          label='Single bedroom'/>;
@@ -123,9 +123,7 @@ const OptionsTabVip = () => {
                          label='House price >1000$'/>;
                     <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;
-
                 </Tabs>
-
             </Box>
         </Container>
     );

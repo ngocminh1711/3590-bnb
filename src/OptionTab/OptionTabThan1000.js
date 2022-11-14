@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import {useState} from 'react'
 import {FaCampground, FaFilter} from 'react-icons/fa';
-
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import {BsFillHouseFill, BsSnow} from "react-icons/bs";
@@ -117,7 +116,7 @@ const OptionsTabThan1000 = () => {
                          label='House price <500$'/>;
                     <Tab onClick={handleClickThan500} icon={<BiHomeAlt size={18}/>} value={10}
                          label='House price 500$-1000$'/>;
-                    <Tab onClick={handleClickThan1000} icon={<GiWaveSurfer size={18}/>} value={11}
+                    <Tab onClick={handleClickThan1000} icon={<GiWaveSurfer size={18}/>} value={11} style={{color : "#b91c1c"}}
                          label='House price >1000$'/>;
                     <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;

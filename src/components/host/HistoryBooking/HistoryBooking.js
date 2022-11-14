@@ -3,10 +3,10 @@ import Footer from "../../footer/Footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import HeaderDashBoard from "../../header/HeaderDashBoard";
-import {getBookingId} from "../../../features/notificationSlice/notificationSlice";
+import { getBookingId } from "../../../features/notificationSlice/notificationSlice";
 
 function HistoryBooking() {
   const PORT = process.env.PORT || 8000;
@@ -25,20 +25,18 @@ function HistoryBooking() {
 
   const getApiChangeStatus = async (id, status) => {
     return await axios.patch(
-      `http://localhost:${PORT}/api/resever/change-status/${id}`,
-      status
-    );
+      `http://localhost:${PORT}/api/resever/change-status/${id}`, status);
   };
 
   const createApiNotifications = async (id) => {
-    return await axios.post(
-        `http://localhost:${PORT}/api/notification/${id}`
-    )
-  }
+    return await axios.post(`http://localhost:${PORT}/api/notification/${id}`);
+  };
 
   const handleCancelOrder = (item) => {
-    console.log(item);
     let currentDay = Date.now();
+    let id = item._id;
+    let date = new Date(item.checkInDay).getDate()
+    console.log(date)
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
     if (currentDay + oneDay <= startDay) {
@@ -59,7 +57,6 @@ function HistoryBooking() {
           getApiChangeStatus(id, status)
             .then((res) => {
               setFlag(flag + 1);
-              console.log("Change success");
               Swal.fire({
                 position: "center",
                 icon: "success",
@@ -67,11 +64,11 @@ function HistoryBooking() {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              createApiNotifications(id).then((res => console.log(res)))
             })
             .catch((err) => {
               console.log(err.message);
             });
+          createApiNotifications(id).then((res => console.log(res)))
         }
       });
     } else {
@@ -93,14 +90,15 @@ function HistoryBooking() {
   return (
     <>
       <div>
-        <Header />
+        <HeaderDashBoard />
         <>
-          <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+          <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64">
             <link
               href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
               rel="stylesheet"
             ></link>
-            <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+            <div className="mr-32 ml-32">
+            <div className=" align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg ">
               <table className="min-w-full">
                 <thead>
                   <tr>
@@ -173,7 +171,8 @@ function HistoryBooking() {
                             {item.bookingStatus}
                           </div>
                         </td>
-                        {item.bookingStatus === "Cancelled"|| item.bookingStatus ==="Failed" || item.bookingStatus ==="Success"  ? (
+                        {item.bookingStatus === "Cancelled" ||
+                        item.bookingStatus === "Failed" ? (
                           <>
                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                               <div className="text-rose-600 text-sm rounded-lg border">
@@ -196,6 +195,7 @@ function HistoryBooking() {
                     ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </>

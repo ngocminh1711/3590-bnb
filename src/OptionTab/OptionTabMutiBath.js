@@ -111,7 +111,7 @@ const OptionsTabMutiBath = () => {
                          label='Multiple bedroom'/>;
                     <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7}
                          label='Single bathroom'/>;
-                    <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8}
+                    <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8} style={{color : "#b91c1c"}}
                          label='Multiple bathroom'/>;
                     <Tab onClick={handleClickLess500} icon={<GiCampingTent size={18}/>} value={9}
                          label='House price <500$'/>;

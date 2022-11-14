@@ -113,7 +113,7 @@ const OptionsTabLess500 = () => {
                          label='Single bathroom'/>;
                     <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8}
                          label='Multiple bathroom'/>;
-                    <Tab onClick={handleClickLess500} icon={<GiCampingTent size={18}/>} value={9}
+                    <Tab onClick={handleClickLess500} icon={<GiCampingTent size={18}/>} value={9} style={{color : "#b91c1c"}}
                          label='House price <500$'/>;
                     <Tab onClick={handleClickThan500} icon={<BiHomeAlt size={18}/>} value={10}
                          label='House price 500$-1000$'/>;

@@ -9,9 +9,9 @@ import Footer from "../footer/Footer";
 function Home(props) {
   return (
     <>
+    
       <Header />
       <OptionsTab />
-      <TopHouseForRent />
       <HomestayList />
       <Footer />
     </>

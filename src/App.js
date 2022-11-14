@@ -30,8 +30,6 @@ import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
 import RentHistory from "./components/host/HistoryBooking/RentHistory.js";
 import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
-
-
 function App() {
   return (
     <>

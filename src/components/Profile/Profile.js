@@ -6,7 +6,7 @@ import { useState } from "react";
 import Footer from "../footer/Footer";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field} from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert2";
 const UpdateSchema = Yup.object().shape({

@@ -67,7 +67,7 @@ function Header({ lightMode, setLightMode }) {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Welcome back",
+          title: "Good Bye",
           showConfirmButton: false,
           timer: 1000,
         });

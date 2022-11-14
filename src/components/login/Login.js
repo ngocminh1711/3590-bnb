@@ -56,13 +56,21 @@ function Login() {
             let token = res.data.data.token;
             let data = jwtDecode(token);
             console.log(jwtDecode(token));
-
             localStorage.setItem("username", JSON.stringify(data.username));
             localStorage.setItem("token", JSON.stringify(token));
-            localStorage.setItem("_id", JSON.stringify(data._id));
+            localStorage.setItem("_id",form._id)
+            // localStorage.setItem("_id", JSON.stringify(data._id));
             dispatch(setIdUserLogin(data._id))
+            
             setTimeout(() => {
               navigate("/home");
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Welcome back",
+                showConfirmButton: false,
+                timer: 1000,
+              });
             }, 1000);
           });
       } catch (err) {

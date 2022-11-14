@@ -54,6 +54,7 @@ function HomestayList() {
                                         src={item.image_backdrop}
                                         className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                     />
+                                    <button  className="border border-rose-400 bg-rose-300"style={{position: 'absolute', top:'20px', left:'250px'}}>A</button>
                                 </div>
                                 <div className="mt-4 flex justify-between">
                                     <div>
@@ -72,8 +73,10 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
-                    <div className='text-center border bg-black text-white' >
-                    <button className='text-center' onClick={()=>loadMore()}>Load More</button>
+                    <div className="max-w-full text-center">
+                    <button
+                     className=' w-32 border bg-rose-400 text-white mr-96 ml-96 hover:bg-rose-500' onClick={()=>loadMore()}>Load More
+                    </button>
                         </div>
                 </div>
             </div>

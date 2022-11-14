@@ -5,16 +5,12 @@ import './TopHouseForRent.css'
 import {useDispatch} from "react-redux";
 
 let count = 0;
-
 function TopHouseForRent() {
     const PORT = process.env.PORT || 8000;
-
     const [topHouseForRent, setTopHouseForRent] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0)
     const [imageView, setImageView] = useState([])
     const navigate = useNavigate()
-
-
     const getTopHouseForRent = async () => {
         return await axios.get(`http://localhost:${PORT}/api/products/top-house`)
     }
@@ -52,12 +48,15 @@ function TopHouseForRent() {
                                      onClick={() => handleClick(item._id)}
                                 >
                                     <div
-                                        className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75  ">
+                                        className=" aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75  "
+                                        >
                                         <img
                                             style={{width: 560, height: 300}}
                                             src={item.image_backdrop}
                                             className="h-300 w-full object-cover object-center lg:h-full lg:w-full"
                                         />
+                                    <button  className="border border-rose-400 bg-rose-300"style={{position: 'absolute', top:'20px', left:'250px'}}>A</button>
+
                                     </div>
                                     <div className="mt-4 flex justify-between">
                                         <div>

@@ -17,7 +17,7 @@ function DetailHouseForRent() {
     const dispatch = useDispatch();
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-
+    const [showModal,setShowModal] = useState(false);
     const [houseForRent, setHouseForRent] = useState({
         name: "",
         address: "",
@@ -62,7 +62,9 @@ function DetailHouseForRent() {
     const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
 
     console.log({id: idUserLogin})
-
+    const handleModal = ()=>{
+        setShowModal(true)
+    }
 
     const getHost = async () => {
         return await axios.get(`http://localhost:8000/api/user/${idUserLogin}`)
@@ -117,7 +119,7 @@ function DetailHouseForRent() {
             {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
-                    <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8 mt-32">
                         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 ">
                             <div>
                                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -153,6 +155,11 @@ function DetailHouseForRent() {
                                 className="rounded-l-3xl border"
                                 src={houseForRent.image_backdrop}
                             />
+                                <button onClick={handleModal}
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#staticBackdrop"
+                                  
+                                >
 
                             <div className="flex flex-row">
                                 <div className="basis-1/2">
@@ -180,8 +187,13 @@ function DetailHouseForRent() {
                                         src={houseForRent.image_view[3]}
                                         alt="image not found"
                                     />
+                                    <div>
+                                        
+                                    </div>
                                 </div>
+                                
                             </div>
+                            </button>
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4 gap-4">

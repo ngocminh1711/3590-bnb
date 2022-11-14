@@ -83,6 +83,7 @@ export default function Register() {
                     class="rounded-lg py-2 px-2 mb-3 text-base text-red-700 inline-flex items-center  "
                     role="alert"
                   >
+                    
                     <svg
                       aria-hidden="true"
                       focusable="false"

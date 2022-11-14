@@ -8,17 +8,17 @@ import OptionsTab from "../iconSlide/optionsTab";
 import Footer from "../footer/Footer";
 
 import OneBedRoom from "./OneBedRoom";
-import OptionsTabOneBed from "../iconSlide/optionsTab";
+import OptionsTabOneBed from "../../OptionTab/OptionTabOneBed";
 
 
 function ShowOneBedRoom(props) {
     return (
         <>
-           
+            <Header/>
             <OptionsTabOneBed/>
             {/* <Banner/> */}
-            <OneBedRoom />
-            <Footer />
+            <OneBedRoom/>
+            <Footer/>
         </>
     );
 }

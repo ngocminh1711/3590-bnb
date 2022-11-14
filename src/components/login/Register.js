@@ -40,9 +40,8 @@ export default function Register() {
     email: "",
     password: "",
   });
-  console.log(form)
   const handleRegister = async (data) => {
-    return await axios.post("http://localhost:8000/api/auth/register", data); 
+    return await axios.post("http://localhost:8000/api/auth/register", data);
   };
   return (
     <>

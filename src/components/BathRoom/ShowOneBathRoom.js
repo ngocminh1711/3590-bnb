@@ -1,22 +1,21 @@
+
 import React from "react";
 import '../home/Index.css'
 import OptionsTab from "../iconSlide/optionsTab";
 import Footer from "../footer/Footer";
-import VipHouseForRent from "./VipHouseForRent";
+import OneBathRoom from "./OneBathRoom";
+import OptionsTabOneBath from "../../OptionTab/OptionTabOneBath";
 import Header from "../header/Header";
-import OptionsTabVip from "../../OptionTab/OptionTabVip";
-
-
-function VipHouse(props) {
+function ShowOneBathRoom(props) {
     return (
         <>
             <Header />
-            <OptionsTabVip/>
+            <OptionsTabOneBath/>
             {/* <Banner/> */}
-            <VipHouseForRent/>
+            <OneBathRoom />
             <Footer />
         </>
     );
 }
 
-export default VipHouse;
+export default ShowOneBathRoom;

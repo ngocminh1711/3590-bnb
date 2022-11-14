@@ -1,11 +1,12 @@
 import Header from "../../header/Header";
 import React from "react";
-import {useEffect, useRef, useState} from "react";
-import "tw-elements"
-import './DetailHouse.css'
+import { useEffect, useRef, useState } from "react";
+import "tw-elements";
+import "./DetailHouse.css";
 import Footer from "../../footer/Footer";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+
 import {useNavigate} from 'react-router'
 
 

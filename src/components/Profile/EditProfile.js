@@ -18,6 +18,7 @@ export default function EditProfile() {
   const getApiProfile = async () => {
     return await axios.get(`http://localhost:${PORT}/api/user/${id}`);
   }
+
   useEffect(() => {
     getApiProfile().then(res => {
       setInfoProfile(res.data.data)
@@ -32,6 +33,7 @@ export default function EditProfile() {
   const handleBack = (e) => {
     navigate(`/profile/${id}`)
   } 
+
   const handleSaveChange = async (e) => {
     e.preventDefault();
     let data = {

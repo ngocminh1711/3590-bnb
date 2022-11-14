@@ -41,7 +41,7 @@ export default function Profile() {
 
   return (
     <>
-    <Header/>
+      <Header />
       {profile && profile ? (
         <div
           className="p-16 px-0 pb-0 w-auto bg-[url('/src/public/background_sea.jpg')]"

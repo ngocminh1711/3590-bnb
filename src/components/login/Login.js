@@ -54,7 +54,7 @@ function Login() {
             let data = jwtDecode(token);
             console.log(jwtDecode(token));
 
-            localStorage.setItem("username", JSON.stringify(data.username));
+            localStorage.setItem("username", JSON.stringify(data.name));
             localStorage.setItem("token", JSON.stringify(token));
             localStorage.setItem("_id", JSON.stringify(data._id));
             dispatch(setIdUserLogin(data._id));
@@ -80,10 +80,11 @@ function Login() {
         if (res.status === 200) {
           let token = res.data.token;
           let data = jwtDecode(token);
-          console.log(jwtDecode(token));
+          console.log(data);
           localStorage.setItem("token", JSON.stringify(res.data.token));
-          localStorage.setItem("username", form.username);
-          localStorage.setItem("_id", data.id);
+          localStorage.setItem("username",JSON.stringify(data.name));
+          localStorage.setItem("_id",JSON.stringify(data.id));
+          dispatch(setIdUserLogin(data.id));
           Swal.fire({
             position: "center",
             icon: "success",

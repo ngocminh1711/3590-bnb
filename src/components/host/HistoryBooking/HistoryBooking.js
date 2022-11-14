@@ -21,14 +21,21 @@ function HistoryBooking() {
     );
   };
 
-  const getApiDeleteBooking = async (id) => {
-    return await axios.delete(
-      `http://localhost:${PORT}/api/resever/history-booking/delete/${id}`
+  const getApiChangeStatus = async (id, status) => {
+    return await axios.patch(
+      `http://localhost:${PORT}/api/resever/change-status/${id}`,
+      status
     );
   };
 
+  // const getApiDeleteBooking = async (id) => {
+  //   return await axios.delete(
+  //     `http://localhost:${PORT}/api/resever/history-booking/delete/${id}`
+  //   );
+  // };
+
   const handleCancelOrder = (item) => {
-    console.log(item);
+    let id = item._id;
     let currentDay = Date.now();
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
@@ -44,13 +51,17 @@ function HistoryBooking() {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          getApiDeleteBooking(item._id)
+          let status = {
+            bookingStatus: "Cancelled",
+          };
+          getApiChangeStatus(id, status)
             .then((res) => {
               setFlag(flag + 1);
+              console.log("Change success");
               Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Cancel booking success",
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -159,13 +170,25 @@ function HistoryBooking() {
                             {item.bookingStatus}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            <button onClick={() => handleCancelOrder(item)}>
-                              Cancel Order
-                            </button>
-                          </div>
-                        </td>
+                        {item.bookingStatus === "Cancelled"|| item.bookingStatus ==="Failed" || item.bookingStatus ==="Success"  ? (
+                          <>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-rose-600 text-sm rounded-lg border">
+                                <p>processed</p>
+                              </div>
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                <button onClick={() => handleCancelOrder(item)}>
+                                  Cancel Order
+                                </button>
+                              </div>
+                            </td>
+                          </>
+                        )}
                       </tr>
                     ))}
                 </tbody>

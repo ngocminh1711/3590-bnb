@@ -263,7 +263,7 @@ function Header({ lightMode, setLightMode }) {
                                     initialValues={form}
                                     // validationSchema={RegisterSchema}
                                     onSubmit={async (e) => {
-                                      console.log(e);
+                                      
                                       let user;
                                       if (token) {
                                         user = jwtDecode(token);

@@ -1,12 +1,11 @@
 import Header from "../../header/Header";
 import React from "react";
-import { useEffect, useRef, useState } from "react";
-import "tw-elements";
-import "./DetailHouse.css";
+import {useEffect, useRef, useState} from "react";
+import "tw-elements"
+import './DetailHouse.css'
 import Footer from "../../footer/Footer";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import axios from "axios";
-
 import {useNavigate} from 'react-router'
 
 
@@ -119,7 +118,7 @@ function DetailHouse() {
                                         <li>
                                             <div className="bg-gray-50">
                                                 <a href="#"
-                                                   className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                                   className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                     <span className="text-gray-900 text-md-2xl title-font">Listing Detail</span>
                                                 </a>
                                             </div>
@@ -127,45 +126,45 @@ function DetailHouse() {
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                                     className="bx bx-music"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Music</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                                     className="bx bx-drink"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Drink</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                                     className="bx bx-shopping-bag"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Shopping</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                                     className="bx bx-chat"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Chat</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
                                                     className="bx bx-user"/></span>
                                                 <span className="text-gray-900 text-sm-1xl title-font">Profile</span>
                                             </a>
@@ -215,7 +214,6 @@ function DetailHouse() {
                                                                             className="mt-5 bg-white rounded-lg shadow">
                                                                             <div className="px-5 pb-5">
                                                                                 <input
-                                                                                    defaultValue={house.name}
                                                                                     onChange={handleChange}
                                                                                     name="name"
                                                                                     placeholder="Name House For Rent"
@@ -223,7 +221,6 @@ function DetailHouse() {
                                                                                 />
 
                                                                                 <input
-                                                                                    defaultValue={house.address}
                                                                                     onChange={handleChange}
                                                                                     name="address"
                                                                                     placeholder="Address"
@@ -259,7 +256,6 @@ function DetailHouse() {
                                                                                     </div>
                                                                                     <div className="flex-grow">
                                                                                         <input
-                                                                                            defaultValue={house.roomRates}
                                                                                             onChange={handleChange}
                                                                                             type="number"
                                                                                             name="roomRates"
@@ -342,7 +338,6 @@ function DetailHouse() {
                                                                                     </div>
                                                                                 </div>
                                                                                 <textarea
-                                                                                    defaultValue={house.description}
                                                                                     onChange={handleChange}
                                                                                     name="description"
                                                                                     placeholder="Description"
@@ -479,7 +474,7 @@ function DetailHouse() {
                                 <div className="py-4">
 
                                     <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
-                                        address</h2>
+                                        description</h2>
 
                                     <p className="text-slate-400">{house?.address}</p>
                                 </div>

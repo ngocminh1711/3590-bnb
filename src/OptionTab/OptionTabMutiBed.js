@@ -105,20 +105,7 @@ const OptionsTabMutiBed = () => {
                     <Tab icon={<GiLightningDome size={24}/>} label='Domes'/>;
                     <Tab icon={<FaCampground size={24}/>} label='Address'/>;
                 </Tabs>
-                <Button
-                    sx={{
-                        display: {xs: 'none', md: 'block'},
-                        border: '1px solid #DDDDD',
-                        minWidth: 90,
-                        justifyContent: 'space-between',
-                        borderRadius: 2,
-                        textTransform: 'capitalize',
-                        py: 1,
-                        color: "#000000"
-                    }}
-                >
-                    <FaFilter/> Filters
-                </Button>
+
             </Box>
         </Container>
     );

@@ -83,7 +83,6 @@ function Header({ lightMode, setLightMode }) {
       }
     });
   };
-
   const [form, setForm] = useState({
     currentPassword: "",
     newPassword: "",
@@ -114,13 +113,19 @@ function Header({ lightMode, setLightMode }) {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-
     if (token) {
       navigate(`/profile/${userLoginProfile.idUserLogin}`);
     } else {
       navigate("/login");
     }
   };
+  const handleCreateHouse =()=>{
+    if (token) {
+      navigate("/admin/host-create");
+    } else {
+      navigate("/login");
+    }
+  }
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
@@ -148,7 +153,8 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0 ml-64">
             <SearchHouses />
           </div>
-          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2"><button onClick={handleCreate}>Become a host </button></div>
+          
+          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white"><button onClick={handleCreateHouse}>Become a host </button></div>
           <div>
             <IconNotification/>
           </div>
@@ -226,7 +232,6 @@ function Header({ lightMode, setLightMode }) {
                           <br></br>
                           <button
                             href="#"
-
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
                             role="menuitem"
                             tabIndex="-1"

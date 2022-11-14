@@ -29,8 +29,8 @@ function ScrollTop() {
           onClick={goToTop}
           style={{
             position: "fixed",
-            bottom: "50px",
-            right: "75px",
+            bottom: "60px",
+            right: "8px",
             height: "50px",
             width: "50px",
             fontSize: "80px",

@@ -118,7 +118,7 @@ function DetailHouse() {
                                         <li>
                                             <div className="bg-gray-50">
                                                 <a href="#"
-                                                   className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                                   className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                     <span className="text-gray-900 text-md-2xl title-font">Listing Detail</span>
                                                 </a>
                                             </div>
@@ -126,45 +126,45 @@ function DetailHouse() {
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
                                                     className="bx bx-music"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Music</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
                                                     className="bx bx-drink"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Drink</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
                                                     className="bx bx-shopping-bag"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Shopping</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
                                                     className="bx bx-chat"/></span>
                                                 <span className="text-gray-900 text-sm-2xl title-font">Chat</span>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#"
-                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                                               className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-600 hover:text-gray-800">
                                                 <span
-                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i
+                                                    className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-600"><i
                                                     className="bx bx-user"/></span>
                                                 <span className="text-gray-900 text-sm-1xl title-font">Profile</span>
                                             </a>

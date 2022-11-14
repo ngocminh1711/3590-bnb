@@ -71,6 +71,7 @@ function Header({ lightMode, setLightMode }) {
         });
         localStorage.removeItem("username");
         localStorage.removeItem("token");
+        localStorage.removeItem("_id");
         setTimeout(() => {
           navigate("/login");
         }, 1500);

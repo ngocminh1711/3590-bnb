@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 import { setIdUserLogin } from "../../features/userProfile/UserProfileSlice";
 
 function DetailHouseForRent() {
@@ -18,6 +19,7 @@ function DetailHouseForRent() {
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [houseStatus, setHouseStatus] = useState(false);
 
   const [houseForRent, setHouseForRent] = useState({
     name: "",
@@ -29,6 +31,7 @@ function DetailHouseForRent() {
     description: "",
     image_backdrop: "",
     image_view: [],
+    status: "",
     // hostName: "",
   });
 
@@ -56,6 +59,7 @@ function DetailHouseForRent() {
         description: res.data.data.description,
         image_backdrop: res.data.data.image_backdrop,
         image_view: res.data.data.image_view,
+        status: res.data.data.status.name,
       });
     });
   }, []);
@@ -74,12 +78,33 @@ function DetailHouseForRent() {
     return await axios.post(`http://localhost:${PORT}/api/resever`, data);
   };
 
+  let moneyNeedToRent = 0;
   let totalTime = endDate.getTime() - startDate.getTime();
   let totalDay = Math.round(totalTime / (60 * 60 * 1000 * 24));
   let totalMoney = totalDay * houseForRent.roomRates;
+  if (totalMoney < 0) {
+    moneyNeedToRent = 0;
+  } else {
+    moneyNeedToRent = totalMoney;
+  }
 
   const handleReserver = (e) => {
     e.preventDefault();
+    if (endDate.getTime() === startDate.getTime()) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You must rent at least 1 day",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+    } else if (startDate.getTime() > endDate.getTime()) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Check out date can't be less than check in date ",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+    }else{
     let data = {
       houseId: state.houseId,
       tenantId: userId,
@@ -91,16 +116,24 @@ function DetailHouseForRent() {
     };
     getApiResever(data)
       .then((res) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Thanks you for choosing our's house",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(res);
       })
       .catch((err) => {
         console.log(err.message);
       });
+    }
   };
 
   useEffect(() => {
-    setMoney(totalMoney);
-  }, [totalMoney]);
+    setMoney(moneyNeedToRent);
+  }, [moneyNeedToRent]);
 
   return (
     <>
@@ -174,11 +207,52 @@ function DetailHouseForRent() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
-              <div className="grid grid-rows-4 gap-4">
+              <div className="grid grid-rows-4">
                 <h1 className="text-black-500 text-2xl title-font font-medium mb-1">
-                  Entire rental unti hosted by
-                  {host.name}
+                  Entire rental unti hosted by {houseForRent.name}
                 </h1>
+                {houseForRent.status &&
+                houseForRent.status === "Ready to rent" ? (
+                  <span className="relative bg-cover w-1.5/6 h-2.5/5 inline-block px-3 py-1 font-semibold text-black leading-tight">
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                    />
+                    <span className="relative text-xs text-center">
+                      {houseForRent.status}
+                    </span>
+                  </span>
+                ) : (
+                  <>
+                    {houseForRent.status &&
+                    houseForRent.status === "Upgrading" ? (
+                      <>
+                        <span className="relative bg-cover w-1.5/6 h-2.5/5 inline-block px-5 py-1 font-semibold text-black leading-tight">
+                          <span
+                            aria-hidden
+                            className="absolute inset-0 bg-orange-500 opacity-50 rounded-full"
+                          />
+                          <span className="relative text-xs text-center">
+                            {houseForRent.status}
+                          </span>
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="relative bg-cover w-1.5/6 h-2.5/5 inline-block px-6 py-1 font-semibold text-black leading-tight">
+                          <span
+                            aria-hidden
+                            className="absolute inset-0 bg-red-600 opacity-50 rounded-full"
+                          />
+                          <span className="relative text-xs text-center">
+                            {houseForRent.status}
+                          </span>
+                        </span>
+                      </>
+                    )}
+                  </>
+                )}
+
                 <p className="text-gray-500 title-font font-medium py-3 float-left pt-0">
                   *{houseForRent.numberOfBedrooms} bedrooms *{" "}
                   {houseForRent.numberOfBathrooms} bathrooms{" "}
@@ -234,7 +308,7 @@ function DetailHouseForRent() {
                       <div className="m-auto">
                         <div className="mt-5 rounded-lg shadow">
                           <h1 className="flex justify-start text-gray-900 text-2xl title-font  font-medium mb-1 px-7 py-5 pb-5 inline">
-                            $ {houseForRent.roomRates} per night
+                            $ {houseForRent.roomRates} /night
                           </h1>
 
                           <div className="flex">

@@ -45,7 +45,7 @@ function HomestayList() {
                   <div className="flex aspect-w-1 aspect-h-1 w-6/6 h-4/6 overflow-hidden rounded-2xl border bg-gray-200 group-hover:opacity-75 ">
                     <img
                       src={item.image_backdrop}
-                      style={{ width: "700px", height: "400px" }}
+                      style={{width: 560, height: 300}}
                       className="z-10 h-full w-full object-cover object-center lg:h-full lg:w-full"
                     />
                   </div>
@@ -59,7 +59,7 @@ function HomestayList() {
                         Address : {item.address}
                       </p>
                       <div className="text-sm font-medium text-gray-900">
-                        ${item.roomRates.toLocaleString()} per night
+                        ${item.roomRates?.toLocaleString()} per night
                       </div>
                     </div>
                   </div>

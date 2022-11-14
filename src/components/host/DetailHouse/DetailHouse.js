@@ -214,6 +214,7 @@ function DetailHouse() {
                                                                             className="mt-5 bg-white rounded-lg shadow">
                                                                             <div className="px-5 pb-5">
                                                                                 <input
+                                                                                    defaultValue={house.name}
                                                                                     onChange={handleChange}
                                                                                     name="name"
                                                                                     placeholder="Name House For Rent"
@@ -221,6 +222,7 @@ function DetailHouse() {
                                                                                 />
 
                                                                                 <input
+                                                                                    defaultValue={house.address}
                                                                                     onChange={handleChange}
                                                                                     name="address"
                                                                                     placeholder="Address"
@@ -256,6 +258,7 @@ function DetailHouse() {
                                                                                     </div>
                                                                                     <div className="flex-grow">
                                                                                         <input
+                                                                                            defaultValue={house.roomRates}
                                                                                             onChange={handleChange}
                                                                                             type="number"
                                                                                             name="roomRates"
@@ -338,6 +341,7 @@ function DetailHouse() {
                                                                                     </div>
                                                                                 </div>
                                                                                 <textarea
+                                                                                    defaultValue={house.description}
                                                                                     onChange={handleChange}
                                                                                     name="description"
                                                                                     placeholder="Description"
@@ -474,7 +478,7 @@ function DetailHouse() {
                                 <div className="py-4">
 
                                     <h2 className="text-gray-900 text-1xl title-font font-medium mb-1 inline">Listing
-                                        description</h2>
+                                        address</h2>
 
                                     <p className="text-slate-400">{house?.address}</p>
                                 </div>

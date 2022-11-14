@@ -48,7 +48,7 @@ function TopHouseForRent() {
                         tenants</h2>
                     <div
                         className="mt-6 cursor-pointer grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {topHouseForRent.map((item, index) => (
+                        {topHouseForRent && topHouseForRent.map((item, index) => (
                             <div key={item._id}
                                  className="group relative cursor-pointer"
                                  onClick={() => handleClick(item._id)}

@@ -3,10 +3,10 @@ import Footer from "../../footer/Footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import HeaderDashBoard from "../../header/HeaderDashBoard";
-import {getBookingId} from "../../../features/notificationSlice/notificationSlice";
+import { getBookingId } from "../../../features/notificationSlice/notificationSlice";
 
 function HistoryBooking() {
   const PORT = process.env.PORT || 8000;
@@ -16,6 +16,7 @@ function HistoryBooking() {
   const [flag, setFlag] = useState(0);
   const id = userLogin.idUserLogin;
   const dispatch = useDispatch();
+
 
   const getHistoryBooking = async () => {
     return await axios.get(
@@ -31,14 +32,13 @@ function HistoryBooking() {
   };
 
   const createApiNotifications = async (id) => {
-    return await axios.post(
-        `http://localhost:${PORT}/api/notification/${id}`
-    )
-  }
+    return await axios.post(`http://localhost:${PORT}/api/notification/${id}`);
+  };
 
   const handleCancelOrder = (item) => {
-    console.log(item);
     let currentDay = Date.now();
+    let date = new Date(item.checkInDay).getDate()
+    console.log(date)
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
     if (currentDay + oneDay <= startDay) {
@@ -59,7 +59,6 @@ function HistoryBooking() {
           getApiChangeStatus(id, status)
             .then((res) => {
               setFlag(flag + 1);
-              console.log("Change success");
               Swal.fire({
                 position: "center",
                 icon: "success",
@@ -67,7 +66,7 @@ function HistoryBooking() {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              createApiNotifications(id).then((res => console.log(res)))
+              createApiNotifications(id).then((res) => console.log(res));
             })
             .catch((err) => {
               console.log(err.message);
@@ -89,6 +88,7 @@ function HistoryBooking() {
       setHistoryBooking(res.data.historyBooking);
     });
   }, [flag]);
+
 
   return (
     <>
@@ -155,12 +155,12 @@ function HistoryBooking() {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.checkInDay}
+                          {new Date(item.checkInDay).toLocaleDateString() + " " + "(" + new Date(item.checkInDay).toLocaleTimeString() + ")"}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.checkOutDay}
+                          {new Date(item.checkOutDay).toLocaleDateString() + " " + "(" + new Date(item.checkOutDay).toLocaleTimeString() + ")"}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
@@ -173,7 +173,8 @@ function HistoryBooking() {
                             {item.bookingStatus}
                           </div>
                         </td>
-                        {item.bookingStatus === "Cancelled"|| item.bookingStatus ==="Failed" || item.bookingStatus ==="Success"  ? (
+                        {item.bookingStatus === "Cancelled" ||
+                        item.bookingStatus === "Failed" ? (
                           <>
                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                               <div className="text-rose-600 text-sm rounded-lg border">

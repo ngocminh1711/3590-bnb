@@ -168,12 +168,12 @@ function CheckBooking() {
                                             </td>
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                                                 <div className="text-sm leading-5 text-blue-900 text-center ">
-                                                    {item.checkInDay}
+                                                {new Date(item.checkInDay).toLocaleDateString() + " " + "(" + new Date(item.checkInDay).toLocaleTimeString() + ")"}
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                                                 <div className="text-sm leading-5 text-blue-900 text-center ">
-                                                    {item.checkOutDay}
+                                                {new Date(item.checkOutDay).toLocaleDateString() + " " + "(" + new Date(item.checkOutDay).toLocaleTimeString() + ")"}
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">

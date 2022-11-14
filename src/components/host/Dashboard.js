@@ -4,50 +4,29 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import {useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function ListHost() {
-  const userLogin = useSelector((state) => state.profileUser);
+  const userLogin = useSelector((state) => state.profileUser.idUserLogin);
 
   const navigate = useNavigate();
-
+  const [flag, setFlag] = useState(0)
   const [products, setProducts] = useState([]);
-
-  const [value, setValue] = useState(false);
-
-  const getApiStatus = async (id) => {
-
-    return await axios.put(`http://localhost:8000/api/products/${id}`);
-  };
-  const handleChangeStatus = (id) => {
-    setValue(true);
-    getApiStatus(id)
-        .then((res) => {
-          // console.log(res);
-        })
-        .catch((err) => console.log(err));
-  };
 
 
   const getApi = async () => {
-    return await axios.get(`http://localhost:8000/api/products/${userLogin.idUserLogin}`);
+    return await axios.get(
+      `http://localhost:8000/api/products/${userLogin}`
+    );
   };
   const handleClick = (e) => {
     let id = e;
     navigate(`/dashboard/detail/${id}`);
   };
-  // const handleUpdate = (id)=>{
-  //     navigate(`/update-house/${id}`)
-  // }
-  const [showDropDown, setShowDropDown] = useState(false);
 
-  const handleShowInfo = () => {
-    setShowDropDown(!showDropDown);
-  };
-
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -58,15 +37,15 @@ function ListHost() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:8000/api/products/${id}`);
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        setFlag(flag + 1)
+        axios.delete(`http://localhost:8000/api/products/${id}`)
+        Swal.fire("Deleted!", "Your file has been deleted.", "success")
       }
     });
   };
 
   useEffect(() => {
     getApi().then((res) => {
-      // console.log(res);
       setProducts(res.data.houseForRents);
     });
 
@@ -149,7 +128,7 @@ function ListHost() {
                           </span>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                  {item.roomRates.toLocaleString()}.00$
+                  {item.roomRates?.toLocaleString()}.00$
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                   {item.renter}

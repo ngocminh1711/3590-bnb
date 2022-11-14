@@ -9,14 +9,11 @@ import Header from "../header/Header.js";
 import { setIdUserLogin } from "../../features/userProfile/UserProfileSlice";
 import Footer from "../footer/Footer.js";
 
-
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errMessage, setErrMessage] = useState("");
-
   const PORT = process.env.PORT || 8000;
-
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -58,10 +55,8 @@ function Login() {
             console.log(jwtDecode(token));
             localStorage.setItem("username", JSON.stringify(data.username));
             localStorage.setItem("token", JSON.stringify(token));
-            localStorage.setItem("_id",form._id)
-            // localStorage.setItem("_id", JSON.stringify(data._id));
-            dispatch(setIdUserLogin(data._id))
-            
+            localStorage.setItem("_id", JSON.stringify(data._id));
+            dispatch(setIdUserLogin(data._id));
             setTimeout(() => {
               navigate("/home");
               Swal.fire({
@@ -85,7 +80,6 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
-      
       username: form.username,
       password: form.password,
     };
@@ -94,11 +88,12 @@ function Login() {
       .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
+          let token = res.data.token;
+          let data = jwtDecode(token);
+          console.log(jwtDecode(token));
           localStorage.setItem("token", JSON.stringify(res.data.token));
-
           localStorage.setItem("username", form.username);
-          localStorage.userItem("_id",form._id)
-          // localStorage.setItem("userId", form._id);
+          localStorage.setItem("_id", data.id);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -120,7 +115,6 @@ function Login() {
 
   return (
     <>
-      
       <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>

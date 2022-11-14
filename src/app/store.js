@@ -9,6 +9,7 @@ import dislikeHouseForRentReducer from "../features/likeanddislikeSlice/disLikeS
 import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
 import getHouseDetail from "../features/getHouseDetail/GetHouseDetailSlice";
 import getHostProfile from "../features/getHostName/getHostProfileSlice";
+import notification from "../features/notificationSlice/notificationSlice";
 
 export const store = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
         profileUser: profileUserReducer,
         getHouse: getHouseDetail,
         getHostProfile: getHostProfile,
+        notification: notification,
     },
 });
 

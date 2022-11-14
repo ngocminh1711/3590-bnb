@@ -71,19 +71,13 @@ function TopHouseForRent() {
                                         <p className="mt-1 text-sm text-gray-500">Address : {item.address}</p>
                                         <div className="text-sm font-medium text-gray-900">${item.roomRates} per night
                                         </div>
-
-
                                     </div>
-
-
                                 </div>
-
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
-            )}
         </div>
     )
 }

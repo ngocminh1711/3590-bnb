@@ -124,8 +124,6 @@ function Header({ lightMode, setLightMode }) {
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
-
-
   const handleDashBoard = (e) => {
     navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
   };
@@ -137,7 +135,7 @@ function Header({ lightMode, setLightMode }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <header className="py-6 mb-0 z-50 bg-white w-full -" style={{position:"fixed",top:0}}>
+      <header className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/home">
             <img
@@ -147,9 +145,10 @@ function Header({ lightMode, setLightMode }) {
             />
           </Link>
 
-          <div className="mb-0">
+          <div className="mb-0 ml-64">
             <SearchHouses />
           </div>
+          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2"><button onClick={handleCreate}>Become a host </button></div>
           <div>
             <IconNotification/>
           </div>

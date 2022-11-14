@@ -84,7 +84,7 @@ const OptionsTab = () => {
 
     return (
         <>
-<div className="mt-32">
+<div className="py-1 mb-0 z-30 bg-white w-full " style={{position:"fixed",top:70}}>
             <Container maxWidth="xl">
                 <Box
                     sx={{

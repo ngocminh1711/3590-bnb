@@ -8,6 +8,7 @@ import { Alert } from "@material-tailwind/react";
 import Header from "../header/Header";
 import { useNavigate } from "react-router";
 import Footer from "../footer/Footer";
+import HeaderDashBoard from "../header/HeaderDashBoard";
 
 
 function CreateHouseForRent() {

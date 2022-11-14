@@ -94,6 +94,7 @@ function Login() {
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
           localStorage.setItem("_id", data.id);
+          dispatch(setIdUserLogin(data.id));
           Swal.fire({
             position: "center",
             icon: "success",

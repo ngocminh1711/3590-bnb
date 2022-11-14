@@ -20,7 +20,6 @@ function DetailHouseForRent() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [houseStatus, setHouseStatus] = useState(false);
-
   const [houseForRent, setHouseForRent] = useState({
     name: "",
     address: "",
@@ -40,7 +39,7 @@ function DetailHouseForRent() {
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
+            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
 
@@ -82,21 +81,6 @@ function DetailHouseForRent() {
       .then((res) => setHost(res.data.data))
       .catch((err) => console.log(err.message));
   }, []);
-
-    const idUserLogin = useSelector((state => state.profileUser.idUserLogin))
-
-    console.log({id: idUserLogin})
-    const handleModal = ()=>{
-        setShowModal(true)
-    }
-
-
-    useEffect(() => {
-        getHost()
-            .then(res => setHost(res.data.data))
-            .catch(err => console.log(err.message))
-    }, [])
-    console.log({host: host})
 
 
     const getApiResever = async (data) => {
@@ -163,11 +147,11 @@ function DetailHouseForRent() {
     return (
         <>
             <Header/>
-
+            <div className="mt-32">
             {houseForRent && houseForRent && host ? (
                 <>
                     {" "}
-                    <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8 mt-32">
+                    <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
                         <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 ">
                             <div>
                                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -203,11 +187,6 @@ function DetailHouseForRent() {
                                 className="rounded-l-3xl border"
                                 src={houseForRent.image_backdrop}
                             />
-                                <button onClick={handleModal}
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#staticBackdrop"
-                                  
-                                >
 
               <div className="flex flex-row">
                 <div className="basis-1/2">
@@ -556,6 +535,7 @@ function DetailHouseForRent() {
       ) : (
         ""
       )}
+      </div>
       <Footer />
     </>
   );

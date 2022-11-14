@@ -94,7 +94,7 @@ function DetailHouse() {
   return (
     <>
       <Header />
-
+<div className="mt-32">  
       {house && house.name ? (
         <div className="bg-white">
           <div className="mx-auto max-w-10xl py-14 sm:py-14 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -120,9 +120,9 @@ function DetailHouse() {
               </div>
             </div>
             <div className="flex flex-row">
-              <div className="basis-1/4">
-                <div className="max-h-screen max-w-screen flex flex-row bg-white">
-                  <ul className="flex flex-col py-4">
+              <div className="basis-1/4"   >
+                <div className="max-h-screen max-w-screen flex flex-row bg-white " >
+                  <ul className="flex flex-col py-4 " style={{position:'fixed', top:250}}>
                     <li>
                       <div className="bg-gray-50">
                         <a
@@ -535,6 +535,7 @@ function DetailHouse() {
                                         <p className="text-slate-400">{house?.name}</p>
                                     </div>
                                 </div>
+
                                 <span></span>
                                 <div className="py-4">
 
@@ -570,6 +571,8 @@ function DetailHouse() {
       ) : (
         <div> loading </div>
       )}
+      </div>
+
       <Footer />
     </>
   );

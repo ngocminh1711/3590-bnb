@@ -124,7 +124,7 @@ function ListHost() {
                           </span>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                  {item.roomRates.toLocaleString()}.00$
+                  {item.roomRates?.toLocaleString()}.00$
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                   {item.renter}

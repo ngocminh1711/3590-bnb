@@ -1,4 +1,4 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import {useSelector, useDispatch} from "react-redux";
@@ -23,7 +23,6 @@ const Item = styled.div`
   gap: 20px;
   cursor: pointer;
   padding: 7.5px 0px;
-
   &:hover {
     background-color: ${({theme}) => theme.soft};
   }
@@ -53,63 +52,43 @@ function Header({lightMode, setLightMode}) {
     const navigate = useNavigate();
     const userLogin = localStorage.getItem("username");
 
-    const handleLogout = async (e) => {
+  const handleLogout = async (e) => {
+    Swal.fire({
+      title: "Are you sure to logout?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
         Swal.fire({
-            title: "Are you sure to logout?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes",
-            cancelButtonText: "No",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Good Bye",
-                    showConfirmButton: false,
-                    timer: 1000,
-                });
-                localStorage.removeItem("username");
-                localStorage.removeItem("token");
-                localStorage.removeItem("_id");
-                setTimeout(() => {
-                    navigate("/login");
-                }, 1500);
-            } else {
-                setTimeout(() => {
-                    navigate("/");
-                }, 500);
-            }
+          position: "center",
+          icon: "success",
+          title: "Good Bye",
+          showConfirmButton: false,
+          timer: 1000,
         });
-    };
-    const [form, setForm] = useState({
-        currentPassword: "",
-        newPassword: "",
-    });
-
-    const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value});
-    };
-    const handleChangePassword = async (data, id) => {
-        const a = await axios.put(
-            `http://localhost:8000/api/user/change-password/${id}`,
-            data
-        );
-        setForm({
-            currentPassword: "",
-            newPassword: ""
-        })
-        return a;
-    };
-
-    const handleLogin = (e) => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("token");
+        localStorage.removeItem("_id");
         setTimeout(() => {
-            navigate("/login");
+          navigate("/login");
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          navigate("/");
         }, 500);
-    };
+      }
+    });
+  };
+  const handleLogin = (e) => {
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
+  };
 
     const handleShowInfo = () => {
         setShowDropDown(!showDropDown);
@@ -296,5 +275,4 @@ function Header({lightMode, setLightMode}) {
         </>
     );
 }
-
 export default Header;

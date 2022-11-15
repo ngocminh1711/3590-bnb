@@ -21,31 +21,29 @@ function CheckBooking() {
 
   const getApiResever = async () => {
     return await axios.get(
-      `http://localhost:${PORT}/api/resever/${userLogin.idUserLogin}`
+        `http://localhost:${PORT}/api/resever/${userLogin.idUserLogin}`
     );
   };
 
   const getApiChangeStatus = async (id, status) => {
     return await axios.patch(
-      `http://localhost:${PORT}/api/resever/change-status/${id}`,
-      status
+        `http://localhost:${PORT}/api/resever/change-status/${id}`,
+        status
     );
   };
 
   const getApiChangeProductStatus = async (houseId, data) => {
     return await axios.patch(
-      `http://localhost:${PORT}/api/products/chang-status-product/${houseId}`,
-      data
+        `http://localhost:${PORT}/api/products/chang-status-product/${houseId}`,
+        data
     );
   };
 
-  const createApiNotification = async (id) => {
+  const createApiNotification = async (bookingId) => {
     return await axios.post(
-      `http://localhost:${PORT}/api/notification/create?bookingId=${id}&hostId=${userLogin.idUserLogin}`
+        `http://localhost:${PORT}/api/notification/${bookingId}`
     );
   };
-
-
 
   const DetailPage = (e) => {
     let id = e;
@@ -57,6 +55,7 @@ function CheckBooking() {
   };
 
   const handleClickYes = (item) => {
+    console.log(item);
     let id = item._id;
     let idTenant = item.tenantId;
     let status = {
@@ -69,17 +68,17 @@ function CheckBooking() {
       },
     };
     dispatch(getBookingId(idTenant));
-    
+
     getApiChangeProductStatus(item.houseId, data);
     getApiChangeStatus(id, status)
-      .then((res) => {
-        setFlag(flag + 1);
-        console.log("Change success");
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-      createApiNotification(id).then((res) => console.log("success"));
+        .then((res) => {
+          setFlag(flag + 1);
+          console.log("Change success");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    createApiNotification(id).then((res) => console.log("success"));
   };
 
   const handleClickNo = (item) => {
@@ -90,33 +89,35 @@ function CheckBooking() {
     };
 
     getApiChangeStatus(id, status)
-      .then((res) => {
-        setFlag(flag + 1);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+        .then((res) => {
+          setFlag(flag + 1);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
   };
 
   useEffect(() => {
     getApiResever().then((res) => {
+      console.log(res);
       setBooking(res.data.listBooking.reverse());
     });
   }, [flag]);
 
   return (
-    <>
-      <div>
-        <Header />
-        <>
-          <div className="my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mt-20">
-            <link
-              href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-              rel="stylesheet"
-            ></link>
-            <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-              <table className="min-w-full">
-                <thead>
+      <>
+        <div>
+          <Header />
+          <>
+            <div className="mt-32 -my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-32">
+              <link
+                  href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+                  rel="stylesheet"
+              ></link>
+              <div className="mr-32 ml-32">
+              <div className=" align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                <table className="min-w-full">
+                  <thead>
                   <tr>
                     <th className="px-6 py-3 text-base border-b-2 border-gray-300 text-left leading-4 text-rose-500 tracking-wider">
                       STT
@@ -144,118 +145,119 @@ function CheckBooking() {
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300" />
                   </tr>
-                </thead>
-                <tbody className="bg-white">
+                  </thead>
+                  <tbody className="bg-white">
                   {booking &&
-                    booking.map((item, index) => (
-                      <tr
-                        key={item._id}
-                        // onClick={()=>{handleClick(item._id)}}
-                      >
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
-                          <div className="flex items-center">
-                            <div>
-                              <div className="text-sm leading-5 text-gray-800">
-                                {index + 1}
-                              </div>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <img
-                            className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
-                            src={item.image}
-                            alt="null"
-                          />
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div
-                            className="text-sm leading-5 cursor-pointer hover:text-red-500 text-blue-900 text-center"
-                            onClick={() => DetailPage(item.houseId)}
+                      booking.map((item, index) => (
+                          <tr
+                              key={item._id}
+                              // onClick={()=>{handleClick(item._id)}}
                           >
-                            {item.houseName}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {new Date(item.checkInDay).toLocaleDateString() +
-                              " " +
-                              "(" +
-                              new Date(item.checkInDay).toLocaleTimeString() +
-                              ")"}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {new Date(item.checkOutDay).toLocaleDateString() +
-                              " " +
-                              "(" +
-                              new Date(item.checkOutDay).toLocaleTimeString() +
-                              ")"}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.totalMoney}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.bookingStatus}
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          {item.bookingStatus === "Processing ..." ? (
-                            <div className=" text-sm leading-5 text-blue-900 text-center">
-                              <svg
-                                onClick={() => handleClickYes(item)}
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 cursor-pointer"
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                              <div className="flex items-center">
+                                <div>
+                                  <div className="text-sm leading-5 text-gray-800">
+                                    {index + 1}
+                                  </div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <img
+                                  className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
+                                  src={item.image}
+                                  alt="null"
+                              />
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div
+                                  className="text-sm leading-5 cursor-pointer hover:text-red-500 text-blue-900 text-center"
+                                  onClick={() => DetailPage(item.houseId)}
                               >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M4.5 12.75l6 6 9-13.5"
-                                />
-                              </svg>
+                                {item.houseName}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                {new Date(item.checkInDay).toLocaleDateString() +
+                                    " " +
+                                    "(" +
+                                    new Date(item.checkInDay).toLocaleTimeString() +
+                                    ")"}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                {new Date(item.checkOutDay).toLocaleDateString() +
+                                    " " +
+                                    "(" +
+                                    new Date(item.checkOutDay).toLocaleTimeString() +
+                                    ")"}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                {item.totalMoney}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                {item.bookingStatus}
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              {item.bookingStatus === "Processing ..." ? (
+                                  <div className=" text-sm leading-5 text-blue-900 text-center">
+                                    <svg
+                                        onClick={() => handleClickYes(item)}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-6 h-6 cursor-pointer"
+                                    >
+                                      <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          d="M4.5 12.75l6 6 9-13.5"
+                                      />
+                                    </svg>
 
-                              <svg
-                                disable={button}
-                                onClick={() => handleClickNo(item)}
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="w-6 h-6 cursor-pointer"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M6 18L18 6M6 6l12 12"
-                                />
-                              </svg>
-                            </div>
-                          ) : (
-                            <div className="text-rose-600 text-sm rounded-lg border">
-                              processed
-                            </div>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
+                                    <svg
+                                        disable={button}
+                                        onClick={() => handleClickNo(item)}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="w-6 h-6 cursor-pointer"
+                                    >
+                                      <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          d="M6 18L18 6M6 6l12 12"
+                                      />
+                                    </svg>
+                                  </div>
+                              ) : (
+                                  <div className="text-rose-600 text-sm rounded-lg border">
+                                    processed
+                                  </div>
+                              )}
+                            </td>
+                          </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
-        </>
-        <Footer />
-      </div>
-    </>
+            </div>
+          </>
+          <Footer />
+        </div>
+      </>
   );
 }
 

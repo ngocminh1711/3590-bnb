@@ -76,6 +76,7 @@ const OptionsTabVip = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -128,6 +129,7 @@ const OptionsTabVip = () => {
 
             </Box>
         </Container>
+        </div>
     );
 };
 

@@ -5,20 +5,15 @@ import './TopHouseForRent.css'
 import {useDispatch} from "react-redux";
 
 let count = 0;
-
 function TopHouseForRent() {
-    const PORT = process.env.PORT || 8000;
-
-    const dispatch = useDispatch();
-    const [topHouseForRent, setTopHouseForRent] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0)
-    const [imageView, setImageView] = useState([])
-    const navigate = useNavigate()
-
-
-    const getTopHouseForRent = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/products/top-house`)
-    }
+  const PORT = process.env.PORT || 8000;
+  const [topHouseForRent, setTopHouseForRent] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [imageView, setImageView] = useState([]);
+  const navigate = useNavigate();
+  const getTopHouseForRent = async () => {
+    return await axios.get(`http://localhost:${PORT}/api/products/top-house`);
+  };
 
     const handleClick = (e) => {
         let id = e
@@ -29,14 +24,11 @@ function TopHouseForRent() {
         navigate('/detail-house', {state: {houseId: id}})
     }
 
-    useEffect(() => {
-
-        getTopHouseForRent().then(res => {
-            setTopHouseForRent(res.data.topHouseForRent)
-        })
-
-    }, [])
-
+  useEffect(() => {
+    getTopHouseForRent().then((res) => {
+      setTopHouseForRent(res.data.topHouseForRent);
+    });
+  }, []);
 
     return (
         <div>
@@ -83,7 +75,7 @@ function TopHouseForRent() {
                     </div>
                 </div>
             </div>
-            )}
+
         </div>
     )
 }

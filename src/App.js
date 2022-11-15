@@ -30,8 +30,6 @@ import DateDemo from "./components/dateDemo.js";
 import CheckBooking from "./components/host/CheckBooking.js";
 import RentHistory from "./components/host/HistoryBooking/RentHistory.js";
 import HistoryBooking from "./components/host/HistoryBooking/HistoryBooking";
-
-
 function App() {
   return (
     <>
@@ -41,7 +39,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard/:id" element={<ListHost/>}/>
-        <Route path="/admin/host-create" element={<CreateHouseForRent />} />
+        <Route path="/admin/host-create" element={<CreateHouseForRent />}/>
         <Route path="/detail-house" element={<DetailHouseForRent />} />
         <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/searchList" element={<SearchedHouseList />} />

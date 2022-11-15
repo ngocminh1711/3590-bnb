@@ -74,6 +74,7 @@ const OptionsTabOneBed = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -126,7 +127,8 @@ const OptionsTabOneBed = () => {
 
             </Box>
         </Container>
-    );
+        </div>
+            );
 };
 
 export default OptionsTabOneBed;

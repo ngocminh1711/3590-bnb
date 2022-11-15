@@ -1,6 +1,7 @@
+
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import { useSelector } from "react-redux";
@@ -52,13 +53,14 @@ function ListHost() {
     <div>
       <HeaderDashBoard/>
       <>
-        <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 ">
+        <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64  ">
           <link
               href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
               rel="stylesheet"
           ></link>
+          <div className=" ml-32 mr-32">
           <div
-              className=" ml-32 mr-32 align-middle inline-block min-w-800 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+              className="w-full text-center align-middle inline-block min-w-800 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
             <table className="min-w-full">
               <thead>
               <tr>
@@ -104,6 +106,7 @@ function ListHost() {
                   <img
                       className="w-30 h-20 -m-1 transform ml-5 hover:scale-150"
                       src={item.image_backdrop}
+                      style={{width:"200px", height:"100px"}}
                       alt="null"
                   />
                 </td>
@@ -115,8 +118,8 @@ function ListHost() {
                 <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
                           <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                             <span
-                              aria-hidden
-                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
+                                aria-hidden
+                                className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                             />
                             <span className="relative text-xs">
                               {item.status.name}
@@ -144,7 +147,6 @@ function ListHost() {
                         </a>
                       </button>
                       <button
-                      onClick={(e)=>{}}
                       >
                         <a className="text-orange-400 hover:text-orange-300  mx-2">
                           <i className="material-icons-outlined text-base">
@@ -169,6 +171,7 @@ function ListHost() {
               </tbody>
             </table>
           </div>
+        </div>
         </div>
       </>
       <Footer/>

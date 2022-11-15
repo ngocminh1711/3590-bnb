@@ -72,8 +72,8 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
-                    <div className='text-center border bg-black text-white' >
-                    <button className='text-center' onClick={()=>loadMore()}>Load More</button>
+                    <div className='text-center border bg-rose-500 text-white ' onClick={()=>loadMore()} >
+                    <button className='text-center' >Load More</button>
                         </div>
                 </div>
             </div>

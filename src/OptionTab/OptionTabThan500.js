@@ -74,6 +74,7 @@ const OptionsTabThan500 = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -126,7 +127,8 @@ const OptionsTabThan500 = () => {
 
             </Box>
         </Container>
-    );
+        </div>
+            );
 };
 
 export default OptionsTabThan500;

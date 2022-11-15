@@ -200,84 +200,84 @@ function DetailHouseForRent() {
                                         src={houseForRent.image_backdrop}
                                     />
 
-                            <div className="flex flex-row">
-                                <div className="basis-1/2">
-                                    <img
-                                        style={{width: 280, height: 150}}
-                                        className="rounded border"
-                                        src={houseForRent.image_view[0]}
-                                    />
-                                    <img
-                                        className="rounded border"
-                                        style={{width: 280, height: 150}}
-                                        src={houseForRent.image_view[1]}
-                                    />
-                                </div>
-                                <div className="basic-1/2">
-                                    <img
-                                        style={{width: 280, height: 150}}
-                                        className="rounded-tr-3xl border"
-                                        src={houseForRent.image_view[2]}
-                                        alt="image not found"
-                                    />
-                                    <img
-                                        className="rounded-br-3xl border "
-                                        style={{width: 280, height: 150}}
-                                        src={houseForRent.image_view[3]}
-                                        alt="image not found"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                            </button>
-                          {showModal ? (
-                              <>
-
-                                <div
-                                    className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50">
-                                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    {/*content*/}
-                                    <div
-                                        className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                      {/*header*/}
-                                      <div
-                                          className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-
-                                      </div>
-                                      {/*body*/}
-                                      <div
-                                          className="relative p-6 flex-auto top-0 w-fit "
-                                          style={{width: "full"}}
-                                      >
-                                        <div className=" flex gap-3 overflow-y-auto ">
-                                          <img src={houseForRent.image_backdrop} alt="ok"/>
-                                          <img src={houseForRent.image_view[0]} alt="ok"/>
-                                          <img src={houseForRent.image_view[1]} alt="ok"/>
-                                          <img src={houseForRent.image_view[2]} alt="ok"/>
-                                          <img src={houseForRent.image_view[3]} alt="ok"/>
-
+                                    <div className="flex flex-row">
+                                        <div className="basis-1/2">
+                                            <img
+                                                style={{width: 280, height: 150}}
+                                                className="rounded border"
+                                                src={houseForRent.image_view[0]}
+                                            />
+                                            <img
+                                                className="rounded border"
+                                                style={{width: 280, height: 150}}
+                                                src={houseForRent.image_view[1]}
+                                            />
                                         </div>
-                                        <div
-                                            className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t float-right">
-
-                                          <button
-                                              className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out"
-                                              onClick={() => {
-                                                setShowModal(false);
-
-                                              }}
-                                          >
-                                            Close
-                                          </button>
+                                        <div className="basic-1/2">
+                                            <img
+                                                style={{width: 280, height: 150}}
+                                                className="rounded-tr-3xl border"
+                                                src={houseForRent.image_view[2]}
+                                                alt="image not found"
+                                            />
+                                            <img
+                                                className="rounded-br-3xl border "
+                                                style={{width: 280, height: 150}}
+                                                src={houseForRent.image_view[3]}
+                                                alt="image not found"
+                                            />
                                         </div>
-                                      </div>
-
                                     </div>
-                                  </div>
                                 </div>
-                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                              </>
-                          ) : null}
+                            </button>
+                            {showModal ? (
+                                <>
+
+                                    <div
+                                        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50">
+                                        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                                            {/*content*/}
+                                            <div
+                                                className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                {/*header*/}
+                                                <div
+                                                    className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+
+                                                </div>
+                                                {/*body*/}
+                                                <div
+                                                    className="relative p-6 flex-auto top-0 w-fit "
+                                                    style={{width: "full"}}
+                                                >
+                                                    <div className=" flex gap-3 overflow-y-auto ">
+                                                        <img src={houseForRent.image_backdrop} alt="ok"/>
+                                                        <img src={houseForRent.image_view[0]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[1]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[2]} alt="ok"/>
+                                                        <img src={houseForRent.image_view[3]} alt="ok"/>
+
+                                                    </div>
+                                                    <div
+                                                        className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t float-right">
+
+                                                        <button
+                                                            className="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out"
+                                                            onClick={() => {
+                                                                setShowModal(false);
+
+                                                            }}
+                                                        >
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                </>
+                            ) : null}
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pb-0">
                             <div className="grid grid-rows-4">
@@ -332,78 +332,78 @@ function DetailHouseForRent() {
                                     </div>
                                 </div>
                             </div>
-                          <div>
-                            <div className="z-20 mt-2 h-auto shadow-2xl">
-                              <form onSubmit={(e) => handleReserver(e)}>
-                                <div className="flex bg-100 h-auto ">
-                                  <div className="m-auto">
-                                    <div className="mt-0 rounded-lg shadow ">
-                                      <br></br>
-                                      <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                        $ {houseForRent.roomRates} per night
-                                      </h1>
-                                      <div className="px-5 pt-5">
-                                        <div
-                                            className=" rounded-full border-b-black grid grid-cols-2 grid-flow-row ">
-                                          <div className="col-span-2 border-2 rounded-lg ml-15  ">
-                                            <div
-                                                className=" flex items-center justify-center w-auto ">
-                                              <div className="ml-2 border-r-2 border-b-2 ">
-                                                <strong>Check In</strong>
-                                                <DatePicker
-                                                    selected={startDate}
-                                                    onChange={(date) => setStartDate(date)}
-                                                />
-                                              </div>
-                                              <div className="mr-2 border-b-2 border-l-2">
-                                                <div className='ml-2'>
-                                                  <strong>Check Out</strong>
-                                                  <DatePicker
-                                                      selected={endDate}
-                                                      onChange={(date) => setEndDate(date)}
-                                                  />
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <span></span>
-                                            <span></span>
-                                            <div className='ml-2'>
-                                              <strong>Guests</strong>
-                                              <select className="w-full">
-                                                <option>1 Guest</option>
-                                                <option>2 Guests</option>
-                                                <option>3 Guests</option>
-                                              </select>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div className="px-5 pt-4">
-                                        <button
-                                            type="submit"
-                                            className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
-                                        >
-                                          <span>Reserve</span>
-                                        </button>
-                                      </div>
-                                      <br></br>
-                                      <hr></hr>
-                                      <div className="px-5 pt-4">
+                            <div>
+                                <div className="z-20 mt-2 h-auto shadow-2xl">
+                                    <form onSubmit={(e) => handleReserver(e)}>
+                                        <div className="flex bg-100 h-auto ">
+                                            <div className="m-auto">
+                                                <div className="mt-0 rounded-lg shadow ">
+                                                    <br></br>
+                                                    <h1 className="text-gray-900 text-2xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                        $ {houseForRent.roomRates} per night
+                                                    </h1>
+                                                    <div className="px-5 pt-5">
+                                                        <div
+                                                            className=" rounded-full border-b-black grid grid-cols-2 grid-flow-row ">
+                                                            <div className="col-span-2 border-2 rounded-lg ml-15  ">
+                                                                <div
+                                                                    className=" flex items-center justify-center w-auto ">
+                                                                    <div className="ml-2 border-r-2 border-b-2 ">
+                                                                        <strong>Check In</strong>
+                                                                        <DatePicker
+                                                                            selected={startDate}
+                                                                            onChange={(date) => setStartDate(date)}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="mr-2 border-b-2 border-l-2">
+                                                                        <div className='ml-2'>
+                                                                            <strong>Check Out</strong>
+                                                                            <DatePicker
+                                                                                selected={endDate}
+                                                                                onChange={(date) => setEndDate(date)}
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <span></span>
+                                                                <span></span>
+                                                                <div className='ml-2'>
+                                                                    <strong>Guests</strong>
+                                                                    <select className="w-full">
+                                                                        <option>1 Guest</option>
+                                                                        <option>2 Guests</option>
+                                                                        <option>3 Guests</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="px-5 pt-4">
+                                                        <button
+                                                            type="submit"
+                                                            className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
+                                                        >
+                                                            <span>Reserve</span>
+                                                        </button>
+                                                    </div>
+                                                    <br></br>
+                                                    <hr></hr>
+                                                    <div className="px-5 pt-4">
 
-                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                          Total before taxes{" "}
-                                        </h1>
-                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
-                                          ${money}
-                                        </h1>
-                                      </div>
-                                      <br></br>
-                                    </div>
-                                  </div>
+                                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                            Total before taxes{" "}
+                                                        </h1>
+                                                        <h1 className="text-gray-900 text-1.75xl title-font font-medium mb-1 px-7 py-5 pb-5 inline">
+                                                            ${money}
+                                                        </h1>
+                                                    </div>
+                                                    <br></br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                              </form>
                             </div>
-                          </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4 py-10 px-24 pt-0 pb-0">
                             <h1 className=" text-black-300 text-1xl title-font font-normal mb-1">

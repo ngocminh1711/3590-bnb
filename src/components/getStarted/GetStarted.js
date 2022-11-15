@@ -28,14 +28,14 @@ const GetStarted = () => {
             <p className="text-6xl font-extrabold uppercase text-white">
               Welcome
             </p>
-            <p className="text-2xl font-medium text-white">to 3950BnB</p>
+            <p className="text-2xl font-medium text-white">To 3950BnB</p>
             <br />
             <button
               type="button"
               class="text-white text-xl bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-4 font-medium rounded-full px-5 py-2.5 text-center mr-2 mb-2 "
               onClick={(e)=> headToWebside(e)}
             >
-              Head to our website
+              Head To Our Website
             </button>
           </div>
         </div>

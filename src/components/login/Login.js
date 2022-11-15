@@ -53,13 +53,19 @@ function Login() {
             let token = res.data.data.token;
             let data = jwtDecode(token);
             console.log(jwtDecode(token));
-
             localStorage.setItem("username", JSON.stringify(data.username));
             localStorage.setItem("token", JSON.stringify(token));
             localStorage.setItem("_id", JSON.stringify(data._id));
             dispatch(setIdUserLogin(data._id));
             setTimeout(() => {
               navigate("/home");
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Welcome back",
+                showConfirmButton: false,
+                timer: 1000,
+              });
             }, 1000);
           });
       } catch (err) {
@@ -67,13 +73,17 @@ function Login() {
       }
     },
   });
-
+  const handleRegister =()=>{
+    navigate("/register")
+    
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = {
       username: form.username,
       password: form.password,
     };
+   
     axios
       .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
@@ -84,6 +94,7 @@ function Login() {
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
           localStorage.setItem("_id", data.id);
+          dispatch(setIdUserLogin(data.id));
           Swal.fire({
             position: "center",
             icon: "success",
@@ -92,7 +103,7 @@ function Login() {
             timer: 1000,
           });
           setTimeout(() => {
-            navigate("/");
+            navigate("/home");
           }, 1500);
         }
       })
@@ -100,6 +111,7 @@ function Login() {
         console.log(err);
         setErrMessage(err.response.data.message);
       });
+
   };
 
   return (
@@ -142,6 +154,7 @@ function Login() {
                   placeholder="Username"
                 />
               </div>
+             
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -174,12 +187,11 @@ function Login() {
                 </label>
               </div>
               <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
+                <p className="">
+                  Do not have an account ?
+                  <a className="text-rose-500" 
+                   onClick={handleRegister}>{" "}Register</a>
+                  </p>
               </div>
             </div>
             <div>
@@ -207,9 +219,15 @@ function Login() {
               </button>
             </div>
             <div>
-              <button onClick={loginGoogle}>Login with google</button>
+              <button onClick={loginGoogle}>
+              <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" className="svg-inline--fa fa-google w-5 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512" style={{"color":"red"}}>
+                <path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z" />
+              </svg>
+                  <h2 className="ml-10 -mt-5">Login With Google </h2></button>
             </div>
+
           </form>
+         
         </div>
       </div>
       <Footer />

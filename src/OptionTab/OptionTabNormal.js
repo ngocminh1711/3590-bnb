@@ -57,6 +57,7 @@ const OptionsTabNormal = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -111,7 +112,8 @@ const OptionsTabNormal = () => {
 
             </Box>
         </Container>
-    );
+        </div>
+            );
 };
 
 export default OptionsTabNormal;

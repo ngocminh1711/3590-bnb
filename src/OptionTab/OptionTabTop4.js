@@ -56,6 +56,7 @@ const OptionsTabTop4 = () => {
 
 
     return (
+        <div className="mt-32" >
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -109,6 +110,7 @@ const OptionsTabTop4 = () => {
 
             </Box>
         </Container>
+        </div>
     );
 };
 

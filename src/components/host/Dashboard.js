@@ -44,7 +44,7 @@ function ListHost() {
 
   useEffect(() => {
     getApi().then((res) => {
-      setProducts(res.data.houseForRents);
+      setProducts(res.data.houseForRents.reverse());
     });
   }, [flag]);
 

@@ -40,7 +40,6 @@ export default function EditProfile() {
       address: infoProfile.address,
       phone: infoProfile.phone
     }
-    console.log(data)
     await axios.patch(`http://localhost:${PORT}/api/user/edit/${id}`,data)
     .then(res =>
        navigate(`/profile/${id}`))

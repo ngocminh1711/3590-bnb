@@ -13,18 +13,13 @@ export default function IconNotification() {
     (state) => state.profileUser.idUserLogin
   );
 
-  const getNotification = async () => {
-    return await axios.get(
-      `http://localhost:${PORT}/api/notification/${userLoginProfile}`
-    );
-  };
 
-  const handleDelete = async (item) => {
-    setFlag(flag + 1);
-    return await axios.delete(
-      `http://localhost:${PORT}/api/notification/${item._id}`
-    );
-  };
+
+    console.log({userId: userLoginProfile})
+
+    const getNotification = async () => {
+        return await axios.get(`http://localhost:${PORT}/api/notification/${userLoginProfile}`)
+    }
 
   useEffect(() => {
     getNotification().then((res) => setNotification(res.data.notification));

@@ -10,6 +10,7 @@ import profileUserReducer from '../features/userProfile/UserProfileSlice.js'
 import getHouseDetail from "../features/getHouseDetail/GetHouseDetailSlice";
 import getHostProfile from "../features/getHostName/getHostProfileSlice";
 import notification from "../features/notificationSlice/notificationSlice";
+import avatarUser from "../features/avatarUser/avatarUserSlice"
 
 export const store = configureStore({
     reducer: {
@@ -23,6 +24,7 @@ export const store = configureStore({
         getHouse: getHouseDetail,
         getHostProfile: getHostProfile,
         notification: notification,
+        avatarUser: avatarUser,
     },
 });
 

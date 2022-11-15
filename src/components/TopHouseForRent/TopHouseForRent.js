@@ -7,10 +7,13 @@ import { useDispatch } from "react-redux";
 let count = 0;
 function TopHouseForRent() {
   const PORT = process.env.PORT || 8000;
+
+  const dispatch = useDispatch();
   const [topHouseForRent, setTopHouseForRent] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imageView, setImageView] = useState([]);
   const navigate = useNavigate();
+
   const getTopHouseForRent = async () => {
     return await axios.get(`http://localhost:${PORT}/api/products/top-house`);
   };

@@ -102,7 +102,7 @@ const OptionsTab = () => {
                         value={value}
                         onChange={handleChange}
                         indicatorColor=""
-                        textColor="inherit"
+                        textColor=""
                         variant="scrollable"
                         textSize="5"
                         scrollButtons
@@ -113,7 +113,7 @@ const OptionsTab = () => {
                             color: '#000000'
                         }}
                     >
-                        <Tab onClick={handleClickHome} icon={<BsFillHouseFill  size={18}/>} value={1} label='All'/>;
+                        <Tab onClick={handleClickHome} icon={<BsFillHouseFill  size={18}/>} value={1} label='All' style={{color : "#b91c1c"}}/>;
                         <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
                         <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
                         <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4} label='Normal house'/>;

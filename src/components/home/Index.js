@@ -11,7 +11,6 @@ function Home(props) {
     <>
       <Header />
       <OptionsTab />
-      <TopHouseForRent />
       <HomestayList />
       <Footer />
     </>

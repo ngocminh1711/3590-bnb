@@ -2,14 +2,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { SearchIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchHouses from "../searchHouses/searchHouses";
-import { FaEdit, FaSlash } from "react-icons/fa";
-import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-
-import { DarkModeToggle } from "@anatoliygatt/dark-mode-toggle";
-import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import swal from "sweetalert";
@@ -30,26 +24,36 @@ const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
-function Header({ lightMode, setLightMode }) {
+function Header() {
   let token = localStorage.getItem("token");
-
-
+  const PORT = process.env.PORT || 8000;
   const userLoginProfile = useSelector((state) => state.profileUser);
   const dispatch = useDispatch();
-  // let user;
-  // if (token) {
-  //   user = jwtDecode(token);
-  // }
-  // console.log(user)
+  const [nameUser, setNameUser] = useState("");
   let user;
   if (token) {
     user = jwtDecode(token);
   }
-  console.log(user)
 
   const [showDropDown, setShowDropDown] = useState(false);
   const navigate = useNavigate();
   const userLogin = localStorage.getItem("username");
+
+  const getApiUserLogin = async () => {
+    return axios.get(
+      `http://localhost:${PORT}/api/user/${userLoginProfile.idUserLogin}`
+    );
+  };
+
+  useEffect(() => {
+    getApiUserLogin()
+      .then((res) => {
+        setNameUser(res.data.data.name);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  });
 
   const handleLogout = async (e) => {
     Swal.fire({
@@ -96,8 +100,7 @@ function Header({ lightMode, setLightMode }) {
       `http://localhost:8000/api/user/change-password/${id}`,
       data
     );
-    setForm({currentPassword:"",
-  newPassword:""})
+    setForm({ currentPassword: "", newPassword: "" });
     return a;
   };
 
@@ -119,13 +122,13 @@ function Header({ lightMode, setLightMode }) {
       navigate("/login");
     }
   };
-  const handleCreateHouse =()=>{
+  const handleCreateHouse = () => {
     if (token) {
       navigate("/admin/host-create");
     } else {
       navigate("/login");
     }
-  }
+  };
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
@@ -137,10 +140,14 @@ function Header({ lightMode, setLightMode }) {
       navigate("/register");
     }, 500);
   };
+
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <header className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}}>
+      <header
+        className="py-3 mb-0 z-50 bg-white w-full border-b-2"
+        style={{ position: "fixed", top: 0 }}
+      >
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/home">
             <img
@@ -153,10 +160,12 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0 ml-64">
             <SearchHouses />
           </div>
-          
-          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white"><button onClick={handleCreateHouse}>Become a host </button></div>
+
+          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white">
+            <button onClick={handleCreateHouse}>Become a host </button>
+          </div>
           <div>
-            <IconNotification/>
+            <IconNotification />
           </div>
           {userLogin ? (
             <>
@@ -227,7 +236,7 @@ function Header({ lightMode, setLightMode }) {
                             id="menu-item-0"
                             onClick={(e) => handleShowProfile(e)}
                           >
-                            {userLogin}
+                            {nameUser}
                           </button>
                           <br></br>
                           <button

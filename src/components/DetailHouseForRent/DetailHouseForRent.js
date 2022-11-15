@@ -62,7 +62,6 @@ function DetailHouseForRent() {
     let id = state.houseId;
 
     getData(id).then((res) => {
-      console.log(res);
       setHouseForRent({
         ...houseForRent,
         name: res.data.data.name,
@@ -101,7 +100,6 @@ function DetailHouseForRent() {
 
   const handleReserver = async (e) => {
     e.preventDefault();
-    console.log(e);
     let date = Date.now();
     if (endDate.getTime() === startDate.getTime()) {
       Swal.fire({

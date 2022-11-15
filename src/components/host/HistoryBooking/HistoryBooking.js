@@ -32,6 +32,13 @@ function HistoryBooking() {
     return await axios.post(`http://localhost:${PORT}/api/notification/${id}`);
   };
 
+  const getApiChangeProductStatus = async (houseId, data) => {
+    return await axios.patch(
+      `http://localhost:${PORT}/api/products/chang-status-product/${houseId}`,
+      data
+    );
+  };
+
   const handleCancelOrder = (item) => {
     let id = item._id
     let currentDay = Date.now();
@@ -53,6 +60,13 @@ function HistoryBooking() {
           let status = {
             bookingStatus: "Cancelled",
           };
+          let data = {
+            status: {
+              _id: "6369df8a72b4563b2fc6ab36",
+              name: "Ready to rent",
+            },
+          };
+          getApiChangeProductStatus(item.houseId, data);
           getApiChangeStatus(id, status)
             .then((res) => {
               console.log(res)
@@ -90,7 +104,7 @@ function HistoryBooking() {
   return (
     <>
       <div>
-        <HeaderDashBoard />
+        <HeaderDashBoard className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}}/>
         <>
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64">
             <link

@@ -8,6 +8,7 @@ import Footer from "../footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getBookingId } from "../../features/notificationSlice/notificationSlice";
+import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function CheckBooking() {
   const PORT = process.env.PORT || 8000;
@@ -55,7 +56,6 @@ function CheckBooking() {
   };
 
   const handleClickYes = (item) => {
-    console.log(item);
     let id = item._id;
     let idTenant = item.tenantId;
     let status = {
@@ -107,7 +107,7 @@ function CheckBooking() {
   return (
     <>
       <div>
-        <Header />
+        <HeaderDashBoard />
         <>
           <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
             <link

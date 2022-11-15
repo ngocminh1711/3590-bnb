@@ -91,8 +91,6 @@ function DetailHouse() {
       setHouse(res.data.data);
     });
   }, [loading]);
-  console.log(house);
-  console.log(houseStatus);
 
     return (
         <>

@@ -62,7 +62,6 @@ function DetailHouseForRent() {
     let id = state.houseId;
 
     getData(id).then((res) => {
-      console.log(res);
       setHouseForRent({
         ...houseForRent,
         name: res.data.data.name,
@@ -101,7 +100,6 @@ function DetailHouseForRent() {
 
   const handleReserver = async (e) => {
     e.preventDefault();
-    console.log(e);
     let date = Date.now();
     if (endDate.getTime() === startDate.getTime()) {
       Swal.fire({
@@ -167,7 +165,7 @@ function DetailHouseForRent() {
       {houseForRent && houseForRent && host ? (
         <>
           {" "}
-          <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8">
+          <div className="mx-auto max-w-10xl py-2  sm:py-2 sm:px-6 lg:max-w-7xl lg:px-8 mt-20">
             <div className="grid grid-cols-2 gap-4 py-5 px-24 mx-2 ">
               <div>
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">

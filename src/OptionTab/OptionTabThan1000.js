@@ -73,6 +73,7 @@ const OptionsTabThan1000 = () => {
 
 
     return (
+        <div  className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -125,6 +126,7 @@ const OptionsTabThan1000 = () => {
 
             </Box>
         </Container>
+        </div>
     );
 };
 

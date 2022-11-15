@@ -35,8 +35,6 @@ const RegisterSchema = Yup.object().shape({
 
 export default function Register() {
   const [existedEmail, setExistedEmail] = useState("");
-  const [username, setUsername] = useState("");
-
   const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
@@ -68,8 +66,10 @@ export default function Register() {
                 navigate("/login");
               }
             })
-            .catch((e) => setExistedEmail("Username already exists"),
-                        );
+            .catch((e) =>
+            console.log(e.message),
+
+             setExistedEmail("Email and Username not found"));
         }}
       >
         <Form>

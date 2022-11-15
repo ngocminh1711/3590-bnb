@@ -196,9 +196,34 @@ function HistoryBooking() {
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                            <div className="text-sm leading-5 text-blue-900 text-center ">
+                            {/* <div className="text-sm leading-5 text-blue-900 text-center ">
                               {item.bookingStatus}
-                            </div>
+                            </div> */}
+                             {item.bookingStatus &&
+                          item.bookingStatus === "Processing ..." ? (
+                            <>
+                              <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                {item.bookingStatus}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {item.bookingStatus &&
+                                item.bookingStatus === "Success"
+                              ?
+                              (<>
+                                <div className="text-sm leading-5 text-green-700 text-center ">
+                                  {item.bookingStatus}
+                                </div>
+                              </>)
+                              :
+                              (<>
+                                <div className="text-sm leading-5 text-red-600 text-center ">
+                                  {item.bookingStatus}
+                                </div>
+                              </>)}
+                            </>
+                          )}
                           </td>
                           {item.bookingStatus === "Cancelled" ||
                           item.bookingStatus === "Failed" ? (

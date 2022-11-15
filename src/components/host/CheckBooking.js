@@ -68,7 +68,7 @@ function CheckBooking() {
       },
     };
     dispatch(getBookingId(idTenant));
-    
+
     getApiChangeProductStatus(item.houseId, data);
     getApiChangeStatus(id, status)
       .then((res) => {
@@ -78,7 +78,7 @@ function CheckBooking() {
       .catch((err) => {
         console.log(err.message);
       });
-      createApiNotification(id).then((res) => console.log("success"));
+    createApiNotification(id).then((res) => console.log("success"));
   };
 
   const handleClickNo = (item) => {
@@ -200,9 +200,31 @@ function CheckBooking() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            {item.bookingStatus}
-                          </div>
+                          {item.bookingStatus &&
+                          item.bookingStatus === "Processing ..." ? (
+                            <>
+                              <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                {item.bookingStatus}
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              {item.bookingStatus &&
+                                item.bookingStatus === "Success"
+                              ?
+                              (<>
+                                <div className="text-sm leading-5 text-green-700 text-center ">
+                                  {item.bookingStatus}
+                                </div>
+                              </>)
+                              :
+                              (<>
+                                <div className="text-sm leading-5 text-red-600 text-center ">
+                                  {item.bookingStatus}
+                                </div>
+                              </>)}
+                            </>
+                          )}
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           {item.bookingStatus === "Processing ..." ? (
@@ -214,7 +236,7 @@ function CheckBooking() {
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="w-6 h-6 cursor-pointer"
+                                className="w-6 h-6 text-green-800 cursor-pointer"
                               >
                                 <path
                                   strokeLinecap="round"
@@ -231,7 +253,7 @@ function CheckBooking() {
                                 viewBox="0 0 24 24"
                                 strokeWidth={1.5}
                                 stroke="currentColor"
-                                className="w-6 h-6 cursor-pointer"
+                                className="w-6 h-6 text-red-700 cursor-pointer"
                               >
                                 <path
                                   strokeLinecap="round"

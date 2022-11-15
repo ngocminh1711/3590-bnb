@@ -26,12 +26,11 @@ function HomestayList() {
         navigate("/detail-house", {state: {houseId: id}});
     };
 
-
-    useEffect(() => {
-        getApiHouse().then((res) => {
-            setHouseForRents(res.data.houseForRents.reverse());
-        });
-    }, []);
+  useEffect(() => {
+    getApiHouse().then((res) => {
+      setHouseForRents(res.data.houseForRents.reverse());
+    });
+  }, []);
 
     return (
         <div>

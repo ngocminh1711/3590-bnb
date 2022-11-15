@@ -37,7 +37,6 @@ const UpdateSchema = Yup.object().shape({
 function HeaderDashBoard({lightMode, setLightMode}) {
     let token = localStorage.getItem("token");
     const userLoginProfile = useSelector((state) => state.profileUser);
-    console.log("id--------" + userLoginProfile.idUserLogin);
 
     let user;
     if (token) {
@@ -135,7 +134,7 @@ function HeaderDashBoard({lightMode, setLightMode}) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <header className="py-6 mb-0">
+            <header className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}} >
                 <div className="container mx-auto flex justify-between items-center">
                     <Link to="/home">
                         <img

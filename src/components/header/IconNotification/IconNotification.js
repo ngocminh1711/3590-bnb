@@ -61,17 +61,19 @@ export default function IconNotification() {
             <div className="w-32 h-auto flex absolute mr-32">
               <div className="bg-gray-100">
                 {/*body*/}
-                {notification ?(
-                  notification.map((item) => (
-                    <div className="relative py-2 flex-auto border-b-2">
+                {notification ?
+                  notification.map((item,index) => (
+                    <div
+                        key = {index}
+                        className="relative py-2 flex-auto border-b-2">
                       <div>
                         <p className="px-2 text-slate-500 text-medium leading-relaxed">
-                          {item.booking.bookingStatus === "Success"
+                          {item.booking?.bookingStatus === "Success"
                             ? "Successfully rented " +
-                              item.house.name +
+                              item.house?.name +
                               " with the price of $" +
                               item.booking.totalMoney
-                            : "Rent House " + item.house.name + " failed"}
+                            : "Rent House " + item.house?.name + " failed"}
                         </p>
                         <button onClick={() => handleDelete(item)}>
                           <svg
@@ -92,7 +94,7 @@ export default function IconNotification() {
                       </div>
                     </div>
 
-                  ))):(<h1>no message</h1>)}
+                  )):(<h1>no message</h1>)}
 
                 <button
                   className="border px-16"

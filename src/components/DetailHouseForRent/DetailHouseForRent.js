@@ -10,7 +10,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { date } from "yup";
 
-
 function DetailHouseForRent() {
   const PORT = process.env.PORT || 8000;
   const userLogin = useSelector((state) => state.profileUser);
@@ -51,7 +50,6 @@ function DetailHouseForRent() {
       `http://localhost:${PORT}/api/products/getHost/${id}`
     );
   };
-
 
   useEffect(() => {
     let id = state.houseId;

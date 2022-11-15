@@ -88,7 +88,7 @@ const OptionsTabNormal = () => {
                     <Tab onClick={handleClickHome} icon={<BsFillHouseFill size={18}/>} value={1} label='All'/>;
                     <Tab onClick={handleClickTop4} icon={<MdOutlineApartment size={18}/>} value={2} label='Top 4'/>;
                     <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
-                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4}
+                    <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4} style={{color : "#b91c1c"}}
                          label='Normal house'/>;
                     <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5}
                          label='Single bedroom'/>;

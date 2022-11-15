@@ -156,7 +156,6 @@ function HeaderDashBoard({lightMode, setLightMode}) {
                             aria-expanded="false"
                         >
                             Menu
-                            <i className="material-icons-round text-base">expand_more</i>
                         </a>
 
                         <ul

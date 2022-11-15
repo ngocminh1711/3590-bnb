@@ -91,7 +91,7 @@ const OptionsTabMutiBed = () => {
                          label='Normal house'/>;
                     <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5}
                          label='Single bedroom'/>;
-                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={18}/>} value={6}
+                    <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={18}/>} value={6} style={{color : "#b91c1c"}}
                          label='Multiple bedroom'/>;
                     <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7}
                          label='Single bathroom'/>;

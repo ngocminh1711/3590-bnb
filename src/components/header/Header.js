@@ -113,13 +113,19 @@ function Header({ lightMode, setLightMode }) {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-
     if (token) {
       navigate(`/profile/${userLoginProfile.idUserLogin}`);
     } else {
       navigate("/login");
     }
   };
+  const handleCreateHouse =()=>{
+    if (token) {
+      navigate("/admin/host-create");
+    } else {
+      navigate("/login");
+    }
+  }
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
@@ -155,7 +161,8 @@ function Header({ lightMode, setLightMode }) {
           <div className="mb-0 ml-64">
             <SearchHouses />
           </div>
-          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2"><button onClick={handleCreate}>Become a host </button></div>
+
+          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white"><button onClick={handleCreateHouse}>Become a host </button></div>
           <div>
             <IconNotification/>
           </div>

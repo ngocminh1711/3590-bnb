@@ -106,7 +106,7 @@ const OptionsTabOneBed = () => {
                     <Tab onClick={handleClickVipHouse} icon={<BsSnow size={18}/>} value={3} label='Vip house'/>;
                     <Tab onClick={handleClickNormalHouse} icon={<MdHouseSiding size={18}/>} value={4}
                          label='Normal house'/>;
-                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5}
+                    <Tab onClick={handleClickOneBedRoom} icon={<MdOutlineWater size={18}/>} value={5} style={{color : "#b91c1c"}}
                          label='Single bedroom'/>;
                     <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={18}/>} value={6}
                          label='Multiple bedroom'/>;

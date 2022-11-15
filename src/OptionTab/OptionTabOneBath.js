@@ -110,7 +110,7 @@ const OptionsTabOneBath = () => {
                          label='Single bedroom'/>;
                     <Tab onClick={handleClickMultipleBedRoom} icon={<GiKidSlide size={18}/>} value={6}
                          label='Multiple bedroom'/>;
-                    <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7}
+                    <Tab onClick={handleClickOneBathRoom} icon={<MdOutlineBathroom size={18}/>} value={7} style={{color : "#b91c1c"}}
                          label='Single bathroom'/>;
                     <Tab onClick={handleClickMultipleBathRoom} icon={<GiSpaceNeedle size={18}/>} value={8}
                          label='Multiple bathroom'/>;

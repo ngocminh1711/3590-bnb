@@ -75,7 +75,7 @@ function Login() {
   });
   const handleRegister =()=>{
     navigate("/register")
-    
+
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,14 +83,13 @@ function Login() {
       username: form.username,
       password: form.password,
     };
-   
+
     axios
       .post(`http://localhost:${PORT}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
           let token = res.data.token;
           let data = jwtDecode(token);
-          console.log(jwtDecode(token));
           localStorage.setItem("token", JSON.stringify(res.data.token));
           localStorage.setItem("username", form.username);
           localStorage.setItem("_id", data.id);
@@ -154,7 +153,6 @@ function Login() {
                   placeholder="Username"
                 />
               </div>
-             
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -189,7 +187,7 @@ function Login() {
               <div className="text-sm">
                 <p className="">
                   Do not have an account ?
-                  <a className="text-rose-500" 
+                  <a className="text-rose-500"
                    onClick={handleRegister}>{" "}Register</a>
                   </p>
               </div>
@@ -225,9 +223,7 @@ function Login() {
               </svg>
                   <h2 className="ml-10 -mt-5">Login With Google </h2></button>
             </div>
-
           </form>
-         
         </div>
       </div>
       <Footer />

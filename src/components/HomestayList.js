@@ -1,17 +1,17 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 function HomestayList() {
     const PORT = process.env.PORT || 8000;
-    const [noOfElement, setNoOfElement] = useState(8)
+    const [noOfElement,setNoOfElement] = useState(8)
 
-    const [houseForRents, setHouseForRents] = useState([]);
-    const navigate = useNavigate();
+  const [houseForRents, setHouseForRents] = useState([]);
+  const navigate = useNavigate();
 
-    const getApiHouse = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/products`);
-    };
+  const getApiHouse = async () => {
+    return await axios.get(`http://localhost:${PORT}/api/products`);
+  };
 
     const loadMore = async () => {
         await setNoOfElement(noOfElement + noOfElement)
@@ -31,17 +31,15 @@ function HomestayList() {
 
     useEffect(() => {
         getApiHouse().then((res) => {
-            setHouseForRents(res.data.houseForRents);
+            setHouseForRents(res.data.houseForRents.reverse());
         });
     }, []);
 
     return (
         <div>
             <div className="bg-white">
-                <div className="mx-auto max-w-2xl  py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-
-                    <div
-                        className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
+                <div className="mx-auto mt-20 max-w-2xl  py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <div className="mt-20 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
                         {houseForRents && slice.map((item) => (
                             <div
                                 key={item._id}
@@ -73,9 +71,12 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
-                    <div className='text-center border bg-rose-500 text-white ' onClick={() => loadMore()}>
-                        <button className='text-center'>Load More</button>
-                    </div>
+                    <button className="w-full"
+                    onClick={loadMore}>
+                    <div className="bg-rose-400 ml-64 mr-64 ">
+                        load More
+                        </div>
+                        </button>
                 </div>
             </div>
         </div>

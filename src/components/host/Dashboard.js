@@ -45,7 +45,7 @@ function ListHost() {
 
   useEffect(() => {
     getApi().then((res) => {
-      setProducts(res.data.houseForRents);
+      setProducts(res.data.houseForRents.reverse());
     });
   }, [flag]);
 
@@ -143,14 +143,6 @@ function ListHost() {
                           className="text-blue-400 hover:text-blue-200 mr-2">
                           <i className="material-icons-outlined text-base">
                             visibility
-                          </i>
-                        </a>
-                      </button>
-                      <button
-                      >
-                        <a className="text-orange-400 hover:text-orange-300  mx-2">
-                          <i className="material-icons-outlined text-base">
-                            edit
                           </i>
                         </a>
                       </button>

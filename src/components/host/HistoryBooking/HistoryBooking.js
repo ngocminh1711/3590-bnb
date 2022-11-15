@@ -3,10 +3,10 @@ import Footer from "../../footer/Footer";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import HeaderDashBoard from "../../header/HeaderDashBoard";
-import {getBookingId} from "../../../features/notificationSlice/notificationSlice";
+import { getBookingId } from "../../../features/notificationSlice/notificationSlice";
 
 function HistoryBooking() {
   const PORT = process.env.PORT || 8000;
@@ -23,23 +23,19 @@ function HistoryBooking() {
     );
   };
 
-  const getApiDeleteBooking = async (id) => {
-    return await axios.delete(
-      `http://localhost:${PORT}/api/resever/history-booking/delete/${id}`
-    );
+  const getApiChangeStatus = async (id, status) => {
+    return await axios.patch(
+      `http://localhost:${PORT}/api/resever/change-status/${id}`, status);
   };
 
   const createApiNotifications = async (id) => {
-    return await axios.post(
-        `http://localhost:${PORT}/api/notification/${id}`
-    )
-  }
+    return await axios.post(`http://localhost:${PORT}/api/notification/${id}`);
+  };
 
   const handleCancelOrder = (item) => {
     let id = item._id
-    let idTenant = item.tenantId;
-    dispatch(getBookingId(idTenant))
     let currentDay = Date.now();
+    let date = new Date(item.checkInDay).getDate()
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
     if (currentDay + oneDay <= startDay) {
@@ -54,21 +50,25 @@ function HistoryBooking() {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          getApiDeleteBooking(item._id)
+          let status = {
+            bookingStatus: "Cancelled",
+          };
+          getApiChangeStatus(id, status)
             .then((res) => {
-              setFlag(flag + 1);
+              console.log(res)
+              setFlag(flag + 1); 
               Swal.fire({
                 position: "center",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Cancel booking success",
                 showConfirmButton: false,
                 timer: 1500,
               });
-              createApiNotifications(id).then((res => console.log(res)))
             })
             .catch((err) => {
               console.log(err.message);
             });
+          createApiNotifications(id).then((res => console.log(res)))
         }
       });
     } else {
@@ -83,12 +83,12 @@ function HistoryBooking() {
 
   useEffect(() => {
     getHistoryBooking().then((res) => {
-      setHistoryBooking(res.data.historyBooking);
+      setHistoryBooking(res.data.historyBooking.reverse());
     });
   }, [flag]);
+
   return (
     <>
-
       <div>
         <HeaderDashBoard />
         <>
@@ -171,13 +171,26 @@ function HistoryBooking() {
                             {item.bookingStatus}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                          <div className="text-sm leading-5 text-blue-900 text-center ">
-                            <button onClick={() => handleCancelOrder(item)}>
-                              Cancel Order
-                            </button>
-                          </div>
-                        </td>
+                        {item.bookingStatus === "Cancelled" ||
+                        item.bookingStatus === "Failed" ? (
+                          <>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-rose-600 text-sm rounded-lg border">
+                                <p>processed</p>
+                              </div>
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                              <div className="text-sm leading-5 text-blue-900 text-center ">
+                                <button onClick={() => handleCancelOrder(item)}>
+                                  Cancel Order
+                                </button>
+                              </div>
+                            </td>
+                          </>
+                        )}
                       </tr>
                     ))}
                 </tbody>

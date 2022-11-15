@@ -31,7 +31,7 @@ function HomestayList() {
 
     useEffect(() => {
         getApiHouse().then((res) => {
-            setHouseForRents(res.data.houseForRents);
+            setHouseForRents(res.data.houseForRents.reverse());
         });
     }, []);
 

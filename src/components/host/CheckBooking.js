@@ -100,7 +100,7 @@ function CheckBooking() {
   useEffect(() => {
     getApiResever().then((res) => {
       console.log(res);
-      setBooking(res.data.listBooking);
+      setBooking(res.data.listBooking.reverse());
     });
   }, [flag]);
 

@@ -30,14 +30,17 @@ const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
 `;
-
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
 
 
   const userLoginProfile = useSelector((state) => state.profileUser);
-
-
+  const dispatch = useDispatch();
+  // let user;
+  // if (token) {
+  //   user = jwtDecode(token);
+  // }
+  // console.log(user)
   let user;
   if (token) {
     user = jwtDecode(token);
@@ -63,7 +66,7 @@ function Header({ lightMode, setLightMode }) {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Welcome back",
+          title: "Good Bye",
           showConfirmButton: false,
           timer: 1000,
         });
@@ -93,7 +96,8 @@ function Header({ lightMode, setLightMode }) {
       `http://localhost:8000/api/user/change-password/${id}`,
       data
     );
-    setForm({ currentPassword: "", newPassword: "" });
+    setForm({currentPassword:"",
+  newPassword:""})
     return a;
   };
 
@@ -109,24 +113,22 @@ function Header({ lightMode, setLightMode }) {
 
   const handleShowProfile = () => {
     setShowDropDown(false);
-
     if (token) {
       navigate(`/profile/${userLoginProfile.idUserLogin}`);
     } else {
       navigate("/login");
     }
   };
+  const handleCreateHouse =()=>{
+    if (token) {
+      navigate("/admin/host-create");
+    } else {
+      navigate("/login");
+    }
+  }
   const handleCreate = (e) => {
     navigate("/admin/host-create");
   };
-
-  const handleMyNotifications = () => {
-    navigate(`/check-booking/${userLoginProfile.idUserLogin}`);
-  };
-  const handleShowHistoryBooking = () => {
-    navigate(`/history-booking/${userLoginProfile.idUserLogin}`);
-  };
-
   const handleDashBoard = (e) => {
     navigate(`/dashboard/${userLoginProfile.idUserLogin}`);
   };
@@ -138,7 +140,7 @@ function Header({ lightMode, setLightMode }) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
-      <header className="py-6 mb-0">
+      <header className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/home">
             <img
@@ -148,9 +150,11 @@ function Header({ lightMode, setLightMode }) {
             />
           </Link>
 
-          <div className="mb-0">
+          <div className="mb-0 ml-64">
             <SearchHouses />
           </div>
+          
+          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white"><button onClick={handleCreateHouse}>Become a host </button></div>
           <div>
             <IconNotification/>
           </div>
@@ -225,164 +229,7 @@ function Header({ lightMode, setLightMode }) {
                           >
                             {userLogin}
                           </button>
-
                           <br></br>
-
-                          <div>
-                          
-                          {/* Button trigger modal */}
-                          <button
-                          onClick={()=>{setShowModal(true)}}
-                            type="button"
-                            className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"
-                          >
-                            ChangePassword
-                          </button>
-                          {/* Modal */}
-                          {showModal ? (
-                              <>
-                                <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
-                                  <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    {/*content*/}
-                                    <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                      {/*header*/}
-                                      <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                                        <h3 className="text-3xl font-semibold">Change Password</h3>
-
-                                        <button
-                                            className="text-2xl hover:bg-rose-400"
-                                            onClick={() => {
-                                              setShowModal(false);
-
-                                            }}
-                                        >
-                                          X
-                                        </button>
-                                      </div>
-                                      {/*body*/}
-                                      <div
-                                          className="relative p-6 flex-auto"
-                                          style={{ width: "600px" }}
-                                      >
-                                        <Formik
-                                            initialValues={form}
-                                            // validationSchema={RegisterSchema}
-                                            onSubmit={async (e) => {
-                                              console.log(e);
-                                              let user;
-                                              if (token) {
-                                                user = jwtDecode(token);
-                                              }
-                                              const id = user.id;
-
-                                              let data = {
-                                                currentPassword: form.currentPassword,
-                                                newPassword: form.newPassword,
-                                              };
-                                              handleChangePassword(data, id)
-                                                  .then((res) => {
-                                                    console.log(res);
-
-                                                    if (res.data.success === true) {
-                                                      setShowModal(false)
-                                                      swal({
-                                                        title: "ChangePass Suscess!",
-                                                        text: "You clicked OK!",
-                                                        icon: "success",
-                                                        button: "Ok!",
-                                                      });
-
-                                                    }
-                                                  })
-                                                  .catch((e) => console.log(e.message));
-                                            }}
-                                        >
-                                          {({ errors, touched }) => (
-                                              <Form>
-                                                <section className="text-gray-600 body-font">
-                                                  <div>
-                                                    <div className=" w-full bg-gray-100 rounded-lg p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0">
-                                                      <div className="relative mb-4">
-                                                        <label
-                                                            htmlFor="Password-old"
-                                                            className="leading-7  text-gray-600 block text-sm font-semibold"
-                                                        >
-                                                          Password Current
-                                                        </label>
-                                                        <Field
-                                                            type="password"
-                                                            name="currentPassword"
-                                                            required
-                                                            value={form.currentPassword}
-                                                            onChange={handleChange}
-                                                            placeholder="Current Password"
-                                                            id="currentPassword"
-                                                            autocomplete="off"
-                                                            className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                        />
-                                                        {errors.oldPassword &&
-                                                        touched.oldPassword ? (
-                                                            <div
-                                                                style={{ color: "red" }}
-                                                            >
-                                                              {errors.oldPassword}
-                                                            </div>
-                                                        ) : null}
-                                                      </div>
-                                                      <div className="relative mb-4">
-                                                        <label
-                                                            htmlFor="New password"
-                                                            className="leading-7  text-gray-600 block text-sm font-semibold"
-                                                        >
-                                                          New Password
-                                                        </label>
-                                                        <Field
-                                                            type="password"
-                                                            name="newPassword"
-                                                            id="newPassword"
-                                                            required
-                                                            value={form.newPassword}
-                                                            onChange={handleChange}
-                                                            autocomplete="off"
-                                                            placeholder="New Password"
-
-                                                            className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                                                        />
-                                                        {errors.password &&
-                                                        touched.password ? (
-                                                            <div
-                                                                style={{ color: "red" }}
-                                                            >
-                                                              {errors.password}
-                                                            </div>
-                                                        ) : null}
-                                                      </div>
-                                                      <button
-                                                          type="submit"
-                                                          className="group relative flex w-full justify-center rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                                                      >
-                                                        Save
-                                                      </button>
-                                                    </div>
-                                                  </div>
-                                                </section>
-                                              </Form>
-                                          )}
-                                        </Formik>
-                                      </div>
-
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-                              </>
-                          ) : null}
-                                          </div>
-
-
-
                           <button
                             href="#"
                             className="inline-flex w-40 justify-start rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-rose-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"

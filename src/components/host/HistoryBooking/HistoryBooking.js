@@ -17,7 +17,6 @@ function HistoryBooking() {
   const id = userLogin.idUserLogin;
   const dispatch = useDispatch();
 
-
   const getHistoryBooking = async () => {
     return await axios.get(
       `http://localhost:${PORT}/api/resever/history-booking/${id}`
@@ -26,9 +25,7 @@ function HistoryBooking() {
 
   const getApiChangeStatus = async (id, status) => {
     return await axios.patch(
-      `http://localhost:${PORT}/api/resever/change-status/${id}`,
-      status
-    );
+      `http://localhost:${PORT}/api/resever/change-status/${id}`, status);
   };
 
   const createApiNotifications = async (id) => {
@@ -67,11 +64,11 @@ function HistoryBooking() {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              createApiNotifications(id).then((res) => console.log(res));
             })
             .catch((err) => {
               console.log(err.message);
             });
+          createApiNotifications(id).then((res => console.log(res)))
         }
       });
     } else {
@@ -86,22 +83,22 @@ function HistoryBooking() {
 
   useEffect(() => {
     getHistoryBooking().then((res) => {
-      setHistoryBooking(res.data.historyBooking);
+      setHistoryBooking(res.data.historyBooking.reverse());
     });
   }, [flag]);
-
 
   return (
     <>
       <div>
-        <Header />
+        <HeaderDashBoard />
         <>
-          <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+          <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8 mb-64">
             <link
               href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
               rel="stylesheet"
             ></link>
-            <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+            <div className="mr-32 ml-32">
+            <div className=" align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg ">
               <table className="min-w-full">
                 <thead>
                   <tr>
@@ -156,12 +153,12 @@ function HistoryBooking() {
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <div className="text-sm leading-5 text-blue-900 text-center ">
-                          {new Date(item.checkInDay).toLocaleDateString() + " " + "(" + new Date(item.checkInDay).toLocaleTimeString() + ")"}
+                            {item.checkInDay}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <div className="text-sm leading-5 text-blue-900 text-center ">
-                          {new Date(item.checkOutDay).toLocaleDateString() + " " + "(" + new Date(item.checkOutDay).toLocaleTimeString() + ")"}
+                            {item.checkOutDay}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
@@ -198,6 +195,7 @@ function HistoryBooking() {
                     ))}
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </>

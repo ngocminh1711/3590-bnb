@@ -12,6 +12,8 @@ export default function IconNotification() {
 
     const userLoginProfile = useSelector((state) => state.profileUser.idUserLogin);
 
+    console.log({userId: userLoginProfile})
+
     const getNotification = async () => {
         return await axios.get(`http://localhost:${PORT}/api/notification/${userLoginProfile}`)
     }
@@ -100,7 +102,7 @@ export default function IconNotification() {
                                                     + " with the price of $"
                                                     + item.booking.totalMoney
                                                     :
-                                                    "Rent House " + item.house.name + " failed"}
+                                                    "Rent House " + item.house.name + " has been rejected"}
                                             </p>
                                             <button
                                                 onClick={() => handleDelete(item)}

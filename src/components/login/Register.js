@@ -55,7 +55,7 @@ export default function Register() {
         onSubmit={(value) => {
           handleRegister(value)
             .then((res) => {
-              console.log(res);
+              console.log(res.data);
               if (res.data.success === true) {
                 swal({
                   title: "Register Suscess!",
@@ -66,7 +66,10 @@ export default function Register() {
                 navigate("/login");
               }
             })
-            .catch((e) => setExistedEmail("Email and Username not found"));
+            .catch((e) =>
+            console.log(e.message),
+
+             setExistedEmail("Email and Username not found"));
         }}
       >
         <Form>

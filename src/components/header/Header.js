@@ -82,24 +82,6 @@ function Header({ lightMode, setLightMode }) {
       }
     });
   };
-  const [form, setForm] = useState({
-    currentPassword: "",
-    newPassword: "",
-  });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-  const handleChangePassword = async (data, id) => {
-    const a = await axios.put(
-      `http://localhost:8000/api/user/change-password/${id}`,
-      data
-    );
-    setForm({currentPassword:"",
-  newPassword:""})
-    return a;
-  };
-
   const handleLogin = (e) => {
     setTimeout(() => {
       navigate("/login");

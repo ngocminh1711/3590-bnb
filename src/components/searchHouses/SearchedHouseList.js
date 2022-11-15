@@ -1,4 +1,4 @@
-import Banner from "../Banner";
+
 import { useSelector } from "react-redux";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
@@ -17,7 +17,7 @@ function SearchedHouseList() {
         <>
             <Header />
             {houses.length === 0 ? (
-                <div className="text-center">
+                <div className="text-center ml-20 pt-10">
                     <img
                         src="https://www.surjen.com/resources/assets/frontend/img/nodatafound.png"
                         alt="anh"

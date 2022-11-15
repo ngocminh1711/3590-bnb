@@ -28,12 +28,17 @@ function HistoryBooking() {
       `http://localhost:${PORT}/api/resever/change-status/${id}`, status);
   };
 
-  const createApiNotifications = async (id) => {
-    return await axios.post(`http://localhost:${PORT}/api/notification/${id}`);
+  const createApiNotifications = async (id, hostId) => {
+    return await axios.post(`http://localhost:${PORT}/api/notification/create?bookingId=${id}&hostId=${hostId}`);
   };
 
-  const handleCancelOrder = (item) => {
-    let id = item._id
+  const getHouseForRent = async (id) => {
+    return await axios.get(`http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`)
+  }
+
+  const handleCancelOrder = async(item) => {
+    let id = item._id;
+    let houseId = item.houseId;
     let currentDay = Date.now();
     let date = new Date(item.checkInDay).getDate()
     let startDay = new Date(item.checkInDay).getTime();
@@ -68,6 +73,9 @@ function HistoryBooking() {
             .catch((err) => {
               console.log(err.message);
             });
+          getHouseForRent(houseId).then((res => {
+            console.log(res)
+          }))
           createApiNotifications(id).then((res => console.log(res)))
         }
       });
@@ -86,7 +94,7 @@ function HistoryBooking() {
       setHistoryBooking(res.data.historyBooking.reverse());
     });
   }, [flag]);
-
+  console.log(historyBooking)
   return (
     <>
       <div>

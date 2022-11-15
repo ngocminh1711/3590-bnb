@@ -39,11 +39,13 @@ function CheckBooking() {
     );
   };
 
-  const createApiNotification = async (bookingId) => {
+  const createApiNotification = async (id) => {
     return await axios.post(
-      `http://localhost:${PORT}/api/notification/${bookingId}`
+      `http://localhost:${PORT}/api/notification/create?bookingId=${id}&hostId=${userLogin.idUserLogin}`
     );
   };
+
+
 
   const DetailPage = (e) => {
     let id = e;
@@ -55,7 +57,6 @@ function CheckBooking() {
   };
 
   const handleClickYes = (item) => {
-    console.log(item);
     let id = item._id;
     let idTenant = item.tenantId;
     let status = {
@@ -99,7 +100,6 @@ function CheckBooking() {
 
   useEffect(() => {
     getApiResever().then((res) => {
-      console.log(res);
       setBooking(res.data.listBooking.reverse());
     });
   }, [flag]);

@@ -9,7 +9,6 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function ListHost() {
   const userLogin = useSelector((state) => state.profileUser.idUserLogin);
-
   const navigate = useNavigate();
   const [flag, setFlag] = useState(0)
   const [products, setProducts] = useState([]);

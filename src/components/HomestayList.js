@@ -15,7 +15,6 @@ function HomestayList() {
 
     const loadMore = async () => {
         await setNoOfElement(noOfElement + noOfElement)
-
     }
     const slice = houseForRents.slice(0,noOfElement)
 
@@ -72,12 +71,13 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
-                    <button className="w-full"
+                    <div className="w-full text-center">
+                    <button className="  px-3 py-2 border rounded-2xl hover:bg-gray-200 text-black "
                     onClick={loadMore}>
-                    <div className="bg-rose-400 ml-64 mr-64 ">
-                        load More
-                        </div>
+                        <p className="">
+                            Load More </p>
                         </button>
+                        </div>
                 </div>
             </div>
         </div>

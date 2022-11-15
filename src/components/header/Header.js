@@ -33,7 +33,6 @@ const Hr = styled.hr`
 function Header({ lightMode, setLightMode }) {
   let token = localStorage.getItem("token");
 
-
   const userLoginProfile = useSelector((state) => state.profileUser);
   const dispatch = useDispatch();
   // let user;
@@ -45,7 +44,7 @@ function Header({ lightMode, setLightMode }) {
   if (token) {
     user = jwtDecode(token);
   }
-  console.log(user)
+  // console.log(user)
 
   const [showDropDown, setShowDropDown] = useState(false);
   const navigate = useNavigate();
@@ -137,9 +136,10 @@ function Header({ lightMode, setLightMode }) {
       navigate("/register");
     }, 500);
   };
-  const [showModal, setShowModal] = useState(false);
   return (
     <>
+
+    
       <header className="py-3 mb-0 z-50 bg-white w-full border-b-2" style={{position:"fixed",top:0}}>
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/home">
@@ -154,8 +154,9 @@ function Header({ lightMode, setLightMode }) {
             <SearchHouses />
           </div>
           
-          <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white"><button onClick={handleCreateHouse}>Become a host </button></div>
+          <div className=" rounded-2xl py-2 hover:bg-gray-200 ml-32 px-2 text-black"><button onClick={handleCreateHouse}>Become a host </button></div>
           <div>
+
             <IconNotification/>
           </div>
           {userLogin ? (
@@ -259,7 +260,8 @@ function Header({ lightMode, setLightMode }) {
               </>
             </>
           ) : (
-            <div className="flex items-center gap-6">
+            <div className="border px-3 py-2 rounded-2xl">
+            <div className="flex items-center gap-6 ">
               <button
                 className="hover:text-violet-900 transition"
                 onClick={(e) => handleLogin(e)}
@@ -268,11 +270,12 @@ function Header({ lightMode, setLightMode }) {
               </button>
               <button
                 onClick={(e) => handleSignup(e)}
-                className="bg-rose-500 hover:bg-rose-400 text-white px-4 py-3 rounded-lg transition"
+                className="bg-rose-500 hover:bg-rose-400 text-white px-3 py-2 rounded-2xl transition"
                 to="/"
               >
                 Sign up
               </button>
+            </div>
             </div>
           )}
         </div>

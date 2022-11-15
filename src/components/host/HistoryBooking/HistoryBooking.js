@@ -142,7 +142,8 @@ function HistoryBooking() {
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                           <img
                             src={item.image}
-                            className="w-30 h-20 border-gray-200 border -m-1 transform hover:scale-150"
+                            style={{width:"900px", height:"90px"}}
+                            className="w-30 h-20 -m-1 transform ml-5 hover:scale-150"
                             alt="null"
                           />
                         </td>

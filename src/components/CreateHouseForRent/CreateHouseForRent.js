@@ -127,6 +127,7 @@ function CreateHouseForRent() {
                           <input
                             onChange={handleChange}
                             name="name"
+                            required
                             placeholder="Name House For Rent"
                             className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                           />
@@ -134,6 +135,7 @@ function CreateHouseForRent() {
                           <input
                             onChange={handleChange}
                             name="address"
+                            required
                             placeholder="Address"
                             className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                           />
@@ -167,6 +169,7 @@ function CreateHouseForRent() {
                                 onChange={handleChange}
                                 name="roomRates"
                                 placeholder="Room Rates"
+                                required
                                 className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                               />
                             </div>
@@ -216,12 +219,14 @@ function CreateHouseForRent() {
                             <div className="flex-grow w-1/4 pr-2">
                               <select
                                 name="numberOfBathrooms"
+                                
                                 onChange={(e) => {
                                   setNewHouseForRent({
                                     ...newHouseForRent,
                                     [e.target.name]: e.target.value,
                                   });
                                 }}
+                                
                                 className="text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                               >
                                 <option value="">Number Of Bathrooms</option>
@@ -240,6 +245,7 @@ function CreateHouseForRent() {
                           <textarea
                             onChange={handleChange}
                             name="description"
+                            required
                             placeholder="Description"
                             className="form-textarea block  text-black placeholder-gray-600 w-full max-h-20  px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
                             id="my-textarea"

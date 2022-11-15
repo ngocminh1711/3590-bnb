@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import { date } from "yup";
 
 
 function DetailHouseForRent() {
@@ -50,6 +51,7 @@ function DetailHouseForRent() {
       `http://localhost:${PORT}/api/products/getHost/${id}`
     );
   };
+
 
   useEffect(() => {
     let id = state.houseId;
@@ -97,8 +99,10 @@ function DetailHouseForRent() {
     moneyNeedToRent = totalMoney;
   }
 
-  const handleReserver = (e) => {
+  const handleReserver = async (e) => {
     e.preventDefault();
+    console.log(e);
+    let date = Date.now();
     if (endDate.getTime() === startDate.getTime()) {
       Swal.fire({
         icon: "error",
@@ -113,6 +117,13 @@ function DetailHouseForRent() {
         text: "Check out date can't be less than check in date ",
         footer: '<a href="">Why do I have this issue?</a>',
       });
+    } else if (date - startDate.getTime() > 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The date you booked has passed",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     } else {
       let data = {
         houseId: state.houseId,
@@ -123,7 +134,10 @@ function DetailHouseForRent() {
         houseName: houseForRent.name,
         image: houseForRent.image_backdrop,
       };
-      getApiResever(data)
+      let status = {
+        bookingStatus: "Occupied",
+      };
+      await getApiResever(data)
         .then((res) => {
           Swal.fire({
             position: "center",
@@ -405,27 +419,28 @@ function DetailHouseForRent() {
                             </div>
                           </div>
                           <div className="px-5 pt-4">
-                            {houseForRent.status && (houseForRent.status === "Occupied" || houseForRent.status === "Upgrading") ?
-                            <>
+                            {houseForRent.status &&
+                            (houseForRent.status === "Occupied" ||
+                              houseForRent.status === "Upgrading") ? (
+                              <>
                                 <button
-                              type="submit"
-                              disabled={true}
-                              className="bg-gray-500 text-black font-bold py-2 px-4 rounded-lg border w-full"
-                            >
-                              <span>this house Can't be booking now</span>
-                            </button>
-                            </>
-                            :
-                            <>
+                                  type="submit"
+                                  disabled={true}
+                                  className="bg-gray-500 text-black font-bold py-2 px-4 rounded-lg border w-full"
+                                >
+                                  <span>this house Can't be booking now</span>
+                                </button>
+                              </>
+                            ) : (
+                              <>
                                 <button
-                              type="submit"
-                              className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
-                            >
-                              <span>Reserve</span>
-                            </button>
-                            </>
-                            }
-
+                                  type="submit"
+                                  className="bg-rose-500 hover:bg-rose-400 text-white font-bold py-2 px-4 rounded-lg border w-full"
+                                >
+                                  <span>Reserve</span>
+                                </button>
+                              </>
+                            )}
                           </div>
                           <br></br>
                           <hr></hr>

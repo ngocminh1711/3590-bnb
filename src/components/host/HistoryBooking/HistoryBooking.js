@@ -33,10 +33,9 @@ function HistoryBooking() {
   };
 
   const handleCancelOrder = (item) => {
+    let id = item._id
     let currentDay = Date.now();
-    let id = item._id;
     let date = new Date(item.checkInDay).getDate()
-    console.log(date)
     let startDay = new Date(item.checkInDay).getTime();
     let oneDay = 86400000;
     if (currentDay + oneDay <= startDay) {
@@ -56,7 +55,8 @@ function HistoryBooking() {
           };
           getApiChangeStatus(id, status)
             .then((res) => {
-              setFlag(flag + 1);
+              console.log(res)
+              setFlag(flag + 1); 
               Swal.fire({
                 position: "center",
                 icon: "success",
@@ -83,7 +83,7 @@ function HistoryBooking() {
 
   useEffect(() => {
     getHistoryBooking().then((res) => {
-      setHistoryBooking(res.data.historyBooking);
+      setHistoryBooking(res.data.historyBooking.reverse());
     });
   }, [flag]);
 

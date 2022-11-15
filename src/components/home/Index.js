@@ -1,23 +1,18 @@
-import Banner from "../Banner";
 import HomestayList from "../HomestayList.js";
 import Header from "../header/Header";
 import React from "react";
-import TopHouseForRent from "../TopHouseForRent/TopHouseForRent";
-import './Index.css'
-import IconSlide from "../iconSlide/IconSlide";
-import OptionsTab from "../iconSlide/optionsTab";
-import DemoSlide from "../DemoSlide/DemoSlide";
+import "./Index.css";
+
 import Footer from "../footer/Footer";
+import OptionsTabAll from "../../OptionTab/OptionTabAll";
 
 function Home(props) {
     return (
         <>
             <Header/>
-            <OptionsTab/>
-            {/* <Banner/> */}
-            <TopHouseForRent/>
+            <OptionsTabAll/>
             <HomestayList/>
-            <Footer />
+            <Footer/>
         </>
     );
 }

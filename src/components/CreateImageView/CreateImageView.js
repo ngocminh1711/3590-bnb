@@ -46,7 +46,7 @@ function CreateImageView () {
             );
         });
         Promise.all(promises)
-            .then(() => alert("All images uploaded"))
+            .then(() => console.log(1))
             .catch((err) => console.log(err));
     }
 
@@ -68,7 +68,7 @@ function CreateImageView () {
             <button
                 onClick={handleUpload}
                 type="button"
-                className="flex px-14 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
+                className="flex px-14 py-2.5 font-medium tracking-wide text-white capitalize   bg-rose-500 rounded-md hover:bg-rose-400  focus:outline-none focus:bg-rose-400  transition duration-300 transform active:scale-95 ease-in-out">
                 <span>{percent}%</span>
                 <span className="pl-2 mx-2">Upload</span>
             </button>

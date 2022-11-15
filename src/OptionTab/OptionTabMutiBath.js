@@ -74,6 +74,7 @@ const OptionsTabMutiBath = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -126,7 +127,8 @@ const OptionsTabMutiBath = () => {
 
             </Box>
         </Container>
-    );
+        </div>
+            );
 };
 
 export default OptionsTabMutiBath;

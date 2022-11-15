@@ -1,36 +1,16 @@
 import Box from '@mui/material/Box';
 import Tabs, {tabsClasses} from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Button from '@mui/material/Button';
+
 import Container from '@mui/material/Container';
 import {useState} from 'react'
-import {FaCampground, FaFilter} from 'react-icons/fa';
-
+import {FaCampground} from 'react-icons/fa';
 import {MdHouseSiding, MdOutlineApartment, MdOutlineBathroom, MdOutlineWater} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 import {BsFillHouseFill, BsSnow} from "react-icons/bs";
 import {GiCampingTent, GiKidSlide, GiLightningDome, GiSpaceNeedle, GiWaveSurfer} from "react-icons/gi";
-import {AiOutlineCoffee} from "react-icons/ai";
 import {BiHomeAlt} from "react-icons/bi";
-import {
-    searchHouseLess500, searchHouseThan1000, searchHouseThan500,
-    searchMultipleBathRoom,
-    searchMultipleBedRoom,
-    searchNormalHouse, searchOneBathRoom,
-    searchOneBedRoom,
-    searchTop4,
-    searchVipHouse
-} from "../features/search/searchSlice";
-import topHouseForRent from "../components/TopHouseForRent/TopHouseForRent";
-import vipHouse from "../components/VipHouse/VipHouse";
-import normalHouse from "../components/NormalHouse/NormalHouse";
-import oneBedRoom from "../components/BedRoom/OneBedRoom";
-import multipleBedRoom from "../components/BedRoom/MultipleBedRoom";
-import oneBathRoom from "../components/BathRoom/OneBathRoom";
-import multipleBathRoom from "../components/BathRoom/MultipleBathRoom";
-import priceLess500 from "../components/Price/PriceLess500";
-import priceThan500 from "../components/Price/PriceThan500";
-import priceThan1000 from "../components/Price/Pricethan1000";
+
 
 const OptionsTabVip = () => {
     const navigate = useNavigate()
@@ -76,6 +56,7 @@ const OptionsTabVip = () => {
 
 
     return (
+        <div className="mt-32">
         <Container maxWidth="xl">
             <Box
                 sx={{
@@ -126,6 +107,7 @@ const OptionsTabVip = () => {
                 </Tabs>
             </Box>
         </Container>
+        </div>
     );
 };
 

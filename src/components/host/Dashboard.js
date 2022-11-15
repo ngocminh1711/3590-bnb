@@ -1,3 +1,4 @@
+
 import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useState} from "react";
@@ -12,7 +13,6 @@ function ListHost() {
   const navigate = useNavigate();
   const [flag, setFlag] = useState(0)
   const [products, setProducts] = useState([]);
-
 
   const getApi = async () => {
     return await axios.get(
@@ -88,7 +88,6 @@ function ListHost() {
               </tr>
               </thead>
               <tbody className="bg-white">
-                
               {products && products.map((item, index) => (<tr
                   key={item._id}
                   // onClick={()=>{handleClick(item._id)}}

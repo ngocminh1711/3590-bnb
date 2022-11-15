@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0f8841d3-0c7e-4bb4-98a4-9c152c741173" name="Changes" comment="thao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CreateHouseForRent/CreateHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailHouseForRent/DetailHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomestayList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomestayList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TopHouseForRent/TopHouseForRent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/host/CheckBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/host/CheckBooking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/searchHouses/SearchedHouseList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +86,11 @@
       <workItem from="1668177771372" duration="2848000" />
       <workItem from="1668348367086" duration="96000" />
       <workItem from="1668386589611" duration="11595000" />
-      <workItem from="1668407657897" duration="1462000" />
+      <workItem from="1668407657897" duration="10553000" />
+      <workItem from="1668474354562" duration="331000" />
+      <workItem from="1668474715990" duration="4182000" />
+      <workItem from="1668478971126" duration="7461000" />
+      <workItem from="1668494829915" duration="1485000" />
     </task>
     <task id="LOCAL-00001" summary="thao">
       <created>1667897778891</created>

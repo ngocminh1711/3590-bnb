@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function HomestayList() {
     const PORT = process.env.PORT || 8000;
-    const [noOfElement,setNoOfElement] = useState(8)
+    const [noOfElement, setNoOfElement] = useState(8)
 
-  const [houseForRents, setHouseForRents] = useState([]);
-  const navigate = useNavigate();
+    const [houseForRents, setHouseForRents] = useState([]);
+    const navigate = useNavigate();
 
-  const getApiHouse = async () => {
-    return await axios.get(`http://localhost:${PORT}/api/products`);
-  };
+    const getApiHouse = async () => {
+        return await axios.get(`http://localhost:${PORT}/api/products`);
+    };
 
     const loadMore = async () => {
         await setNoOfElement(noOfElement + noOfElement)
 
     }
-    const slice = houseForRents.slice(0,noOfElement)
+    const slice = houseForRents.slice(0, noOfElement)
 
     const handleClick = (e) => {
         let id = e;
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
-          });
+        });
         navigate("/detail-house", {state: {houseId: id}});
     };
 
@@ -39,8 +39,9 @@ function HomestayList() {
         <div>
             <div className="bg-white">
                 <div className="mx-auto max-w-2xl  py-16 px-4 sm:py-10 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-2xl pt-0 font-bold tracking-tight text-gray-900">All House For Rent</h2>
-                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
+
+                    <div
+                        className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 z-20">
                         {houseForRents && slice.map((item) => (
                             <div
                                 key={item._id}
@@ -72,9 +73,9 @@ function HomestayList() {
                             </div>
                         ))}
                     </div>
-                    <div className='text-center border bg-rose-500 text-white ' onClick={()=>loadMore()} >
-                    <button className='text-center' >Load More</button>
-                        </div>
+                    <div className='text-center border bg-rose-500 text-white ' onClick={() => loadMore()}>
+                        <button className='text-center'>Load More</button>
+                    </div>
                 </div>
             </div>
         </div>

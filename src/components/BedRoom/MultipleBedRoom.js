@@ -8,7 +8,7 @@ let count = 0;
 function MultipleBedRoom() {
 
     const PORT = process.env.PORT || 8000;
-    const domain = "https://airbnb3590.herokuapp.com"
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [multipleBedRoom, setMultipleBedRoom] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0)
     const [imageView, setImageView] = useState([])

@@ -6,7 +6,7 @@ function HomestayList() {
     const PORT = process.env.PORT || 8000;
     const [noOfElement, setNoOfElement] = useState(8)
     const [houseForRents, setHouseForRents] = useState([]);
-    const domain = "https://airbnb3590.herokuapp.com"
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
 
     const getApiHouse = async () => {

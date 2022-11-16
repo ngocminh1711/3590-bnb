@@ -7,17 +7,16 @@ export default function IconNotification() {
   const [notification, setNotification] = useState([]);
   const [flag, setFlag] = useState(0);
   const [dropdown, setDropDown] = useState(false);
-  const domain = "https://airbnb3590.herokuapp.com"
 
   const userLoginProfile = useSelector((state) => state.profileUser.idUserLogin);
 
   const getNotification = async () => {
-    return await axios.get(`${domain}/api/notification/${userLoginProfile}`)
+    return await axios.get(`http://localhost:${PORT}/api/notification/${userLoginProfile}`)
   }
 
   const handleDelete = async (item) => {
     setFlag(flag + 1)
-    return await axios.delete(`${domain}/api/notification/${item._id}`)
+    return await axios.delete(`http://localhost:${PORT}/api/notification/${item._id}`)
   }
 
   useEffect(() => {

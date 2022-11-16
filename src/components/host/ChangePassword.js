@@ -34,7 +34,7 @@ const RegisterSchema = Yup.object().shape({
 function ChangePassword() {
   const PORT = process.env.PORT || 8000;
   const [existedEmail, setExistedEmail] = useState("");
-  const domain = "https://airbnb3590.herokuapp.com"
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const navigate = useNavigate();
   const [form, setForm] = useState({
     currentPassword: "",

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 let count = 0;
 function TopHouseForRent() {
   const PORT = process.env.PORT || 8000;
-  const domain = "https://airbnb3590.herokuapp.com"
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const dispatch = useDispatch();
   const [topHouseForRent, setTopHouseForRent] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);

@@ -14,7 +14,7 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 function CreateHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector(state => state.profileUser)
-    const domain = "https://airbnb3590.herokuapp.com"
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [typeRooms, setTypeRooms] = useState([]);
     const [houseStatus, setHouseStatus] = useState([]);
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];

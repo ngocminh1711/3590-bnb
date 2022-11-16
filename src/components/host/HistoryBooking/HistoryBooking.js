@@ -59,7 +59,6 @@ function HistoryBooking() {
                     };
                     getApiChangeStatus(id, status)
                         .then((res) => {
-                            console.log(res)
                             setFlag(flag + 1);
                             Swal.fire({
                                 position: "center",
@@ -103,7 +102,6 @@ function HistoryBooking() {
         });
     }, [flag]);
 
-    console.log(historyBooking)
     return (
         <>
             <div>
@@ -202,7 +200,8 @@ function HistoryBooking() {
                                                     {item.bookingStatus &&
                                                     item.bookingStatus === "Processing ..." ? (
                                                         <>
-                                                            <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                                            <div
+                                                                className="text-sm leading-5 text-yellow-600 text-center ">
                                                                 {item.bookingStatus}
                                                             </div>
                                                         </>
@@ -212,13 +211,15 @@ function HistoryBooking() {
                                                             item.bookingStatus === "Success"
                                                                 ?
                                                                 (<>
-                                                                    <div className="text-sm leading-5 text-green-700 text-center ">
+                                                                    <div
+                                                                        className="text-sm leading-5 text-green-700 text-center ">
                                                                         {item.bookingStatus}
                                                                     </div>
                                                                 </>)
                                                                 :
                                                                 (<>
-                                                                    <div className="text-sm leading-5 text-red-600 text-center ">
+                                                                    <div
+                                                                        className="text-sm leading-5 text-red-600 text-center ">
                                                                         {item.bookingStatus}
                                                                     </div>
                                                                 </>)}

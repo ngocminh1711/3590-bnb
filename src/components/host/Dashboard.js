@@ -56,7 +56,6 @@ function ListHost() {
         });
     }, [flag]);
 
-    console.log(products)
     return (<>
             <div>
                 <HeaderDashBoard/>

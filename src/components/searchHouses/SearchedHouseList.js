@@ -1,4 +1,3 @@
-
 import { useSelector } from "react-redux";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";

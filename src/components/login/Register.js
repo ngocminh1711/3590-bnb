@@ -55,7 +55,6 @@ export default function Register() {
         onSubmit={(value) => {
           handleRegister(value)
             .then((res) => {
-              console.log(res.data);
               if (res.data.success === true) {
                 swal({
                   title: "Register Suscess!",

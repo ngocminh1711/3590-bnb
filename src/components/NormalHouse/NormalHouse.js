@@ -6,7 +6,7 @@ import NormalHouseForRent from "./NormalHouseForRent";
 import OptionsTabNormal from "../../OptionTab/OptionTabNormal";
 
 
-function NormalHouse(props) {
+function NormalHouse() {
     return (
         <>
             <Header/>

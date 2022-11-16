@@ -1,9 +1,5 @@
-import {Button} from "@material-tailwind/react";
-import Swal from "sweetalert2";
 import axios from "axios";
 import {useEffect, useState} from "react";
-import Switch from "react-switch";
-import Header from "../header/Header";
 import Footer from "../footer/Footer";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
@@ -18,7 +14,6 @@ function CheckBooking() {
     const [button, setButton] = useState(true);
     const [flag, setFlag] = useState(0);
     const dispatch = useDispatch();
-    let bookingProduct;
 
     const getApiResever = async () => {
         return await axios.get(
@@ -204,7 +199,8 @@ function CheckBooking() {
                                                     {item.bookingStatus &&
                                                     item.bookingStatus === "Processing ..." ? (
                                                         <>
-                                                            <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                                            <div
+                                                                className="text-sm leading-5 text-yellow-600 text-center ">
                                                                 {item.bookingStatus}
                                                             </div>
                                                         </>
@@ -214,13 +210,15 @@ function CheckBooking() {
                                                             item.bookingStatus === "Success"
                                                                 ?
                                                                 (<>
-                                                                    <div className="text-sm leading-5 text-green-700 text-center ">
+                                                                    <div
+                                                                        className="text-sm leading-5 text-green-700 text-center ">
                                                                         {item.bookingStatus}
                                                                     </div>
                                                                 </>)
                                                                 :
                                                                 (<>
-                                                                    <div className="text-sm leading-5 text-red-600 text-center ">
+                                                                    <div
+                                                                        className="text-sm leading-5 text-red-600 text-center ">
                                                                         {item.bookingStatus}
                                                                     </div>
                                                                 </>)}

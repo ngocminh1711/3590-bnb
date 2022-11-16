@@ -155,7 +155,7 @@ function Header() {
             navigate("/register");
         }, 500);
     };
-    console.log(userLogin)
+
     return (
     <>
       <header

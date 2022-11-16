@@ -9,10 +9,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { date } from "yup";
+import {useNavigate} from "react-router-dom";
 
 
 function DetailHouseForRent() {
   const PORT = process.env.PORT || 8000;
+  let token = localStorage.getItem("token");
   const userLogin = useSelector((state) => state.profileUser);
   const [money, setMoney] = useState(0);
   let userId = userLogin.idUserLogin;
@@ -22,6 +24,7 @@ function DetailHouseForRent() {
   const [endDate, setEndDate] = useState(new Date());
   const [houseStatus, setHouseStatus] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate()
 
   const [houseForRent, setHouseForRent] = useState({
     name: "",
@@ -135,20 +138,29 @@ function DetailHouseForRent() {
       let status = {
         bookingStatus: "Occupied",
       };
-      await getApiResever(data)
-        .then((res) => {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Thanks you for choosing our's house",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err.message);
+      if(!token){
+        Swal.fire({
+          icon: "warning",
+          title: "Oops...",
+          text: "You must sign in first",
         });
+        navigate("/login")
+      }else{
+        await getApiResever(data)
+            .then((res) => {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Thanks you for choosing our's house",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err.message);
+            });
+      }
     }
   };
 

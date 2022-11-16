@@ -155,6 +155,7 @@ function Header() {
             navigate("/register");
         }, 500);
     };
+    console.log(userLogin)
     return (
     <>
       <header
@@ -248,7 +249,7 @@ function Header() {
                                                         id="menu-item-0"
                                                         onClick={(e) => handleShowProfile(e)}
                                                     >
-                                                        {userLogin}
+                                                        {nameUser}
                                                     </button>
                                                     <br></br>
                                                     <button

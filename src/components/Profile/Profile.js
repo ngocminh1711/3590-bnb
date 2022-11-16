@@ -68,7 +68,7 @@ export default function Profile() {
     };
     const handleSaveChange = async () => {
         let data = {
-            name: infoProfile.username, address: infoProfile.address, phone: infoProfile.phone,
+            name: infoProfile.name, address: infoProfile.address, phone: infoProfile.phone,
         };
 
         return await axios
@@ -86,7 +86,7 @@ export default function Profile() {
         getApiUser().then((res) => {
             setProfile(res.data.data);
         });
-    }, []);
+    }, [checkEditAvatar]);
 
     useEffect(() => {
         getApiProfile()
@@ -112,6 +112,7 @@ export default function Profile() {
         setModalAvatar(false)
         setCheckEditAvatar(checkEditAvatar + 1)
     }
+
     return (<>
             <Header/>
             <div>

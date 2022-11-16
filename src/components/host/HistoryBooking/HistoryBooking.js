@@ -87,13 +87,23 @@ function HistoryBooking() {
             });
         }
     };
+
+    const DetailPage = (e) => {
+        let id = e;
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+        navigate("/detail-house", {state: {houseId: id}});
+    };
+
     useEffect(() => {
         getHistoryBooking().then((res) => {
             setHistoryBooking(res.data.historyBooking.reverse());
         });
     }, [flag]);
 
-
+    console.log(historyBooking)
     return (
         <>
             <div>
@@ -153,14 +163,16 @@ function HistoryBooking() {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-no-wraptext-center border-b border-gray-500 w-auto">
                                                     <img
-                                                        className="w-30 h-20 m-1 transform ml-5 hover:scale-150"
+                                                        className="w-30 h-20 m-1 transform ml-5 hover:scale-150 "
                                                         src={item.image}
-                                                        style={{width: 480, height: 90}}
+                                                        style={{width: 150, height: 90}}
                                                         alt="null"
                                                     />
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                                                    <div className="text-sm leading-5 text-blue-900 text-center ">
+                                                    <div
+                                                        onClick={() => DetailPage(item.houseId)}
+                                                        className="text-sm leading-5 text-blue-900 text-center cursor-pointer hover:text-red-500 ">
                                                         {item.houseName}
                                                     </div>
                                                 </td>

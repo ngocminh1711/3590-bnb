@@ -166,7 +166,7 @@ function CheckBooking() {
                                                     <img
                                                         className="w-30 h-20 m-1 transform ml-5 hover:scale-150"
                                                         src={item.image}
-                                                        style={{width: 480, height: 90}}
+                                                        style={{width: 250, height: 90}}
                                                         alt="null"
                                                     />
                                                 </td>

@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function ListHost() {
+    const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser.idUserLogin);
     const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();

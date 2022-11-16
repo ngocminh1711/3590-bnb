@@ -6,7 +6,7 @@ import '../TopHouseForRent/TopHouseForRent.css'
 
 function MultipleBathRoom() {
     const PORT = process.env.PORT || 8000;
-    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+    const domain = "https://airbnb3590.herokuapp.com"
     const [multipleBathRoom, setMultipleBathRoom] = useState([]);
     const navigate = useNavigate()
 

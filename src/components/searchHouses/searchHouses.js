@@ -9,6 +9,7 @@ function SearchHouses(){
     const dispatch = useDispatch();
     const [keywordSearch, setKeywordSearch] = useState('');
     const [houseForRents, setHouseForRents] = useState([]);
+    const domain = "https://airbnb3590.herokuapp.com"
     let navigate = useNavigate();
 
     const PORT = process.env.PORT || 8000;
@@ -18,7 +19,7 @@ function SearchHouses(){
     }
     let getApiHouseSearch = async () => {
         if (keywordSearch) {
-            return await axios.get(`http://localhost:${PORT}/api/products/search/${keywordSearch}`)
+            return await axios.get(`${domain}/api/products/search/${keywordSearch}`)
         }
 
     }

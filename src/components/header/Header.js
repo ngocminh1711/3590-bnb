@@ -34,7 +34,7 @@ const Hr = styled.hr`
 function Header() {
   let token = localStorage.getItem("token");
   const PORT = process.env.PORT || 8000;
-  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+  const domain = "https://airbnb3590.herokuapp.com"
   const userLoginProfile = useSelector((state) => state.profileUser);
   const dispatch = useDispatch();
   const [nameUser, setNameUser] = useState("");

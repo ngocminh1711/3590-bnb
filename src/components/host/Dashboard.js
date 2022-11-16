@@ -10,7 +10,7 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 function ListHost() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser.idUserLogin);
-    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+    const domain = "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
     const [flag, setFlag] = useState(0)
     const [products, setProducts] = useState([]);

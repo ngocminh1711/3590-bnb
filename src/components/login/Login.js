@@ -13,7 +13,7 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errMessage, setErrMessage] = useState("");
-  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+  const domain = "https://airbnb3590.herokuapp.com"
   const PORT = process.env.PORT || 8000;
   const [form, setForm] = useState({
     username: "",

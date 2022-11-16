@@ -8,7 +8,7 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function CheckBooking() {
     const PORT = process.env.PORT || 8000;
-    const domain = "https://airbnb3590.herokuapp.com"
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const userLogin = useSelector((state) => state.profileUser);
     const navigate = useNavigate();
     const [booking, setBooking] = useState([]);

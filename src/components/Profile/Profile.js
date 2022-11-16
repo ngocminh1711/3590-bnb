@@ -18,7 +18,7 @@ const UpdateSchema = Yup.object().shape({
 });
 export default function Profile() {
     const PORT = process.env.PORT || 8000;
-    const domain = "https://airbnb3590.herokuapp.com"
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
     const userLogin = useSelector((state) => state.profileUser);
     const [profile, setProfile] = useState();

@@ -18,7 +18,7 @@ const GetStarted = () => {
           className="fixed bg-cover  h-full w-full object-cover "
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/ngocminh.appspot.com/o/files%2FTrang%20Ch%C3%A1%C2%BB%C2%A7%20-%2026535.mp4?alt=media&token=7494e22d-31c8-4001-9609-1258e00d0758"
+            src="https://firebasestorage.googleapis.com/v0/b/bnb-c116f.appspot.com/o/files%2FTrang%20Ch%C3%A1%C2%BB%C2%A7%20-%2026535.mp4?alt=media&token=c35a578a-79dc-44d2-b74a-a16cd7db0073"
             type="video/mp4"
           />
         </video>

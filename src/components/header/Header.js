@@ -89,7 +89,7 @@ function Header() {
         }, 1500);
       } else {
         setTimeout(() => {
-          navigate("/");
+          navigate("/home");
         }, 500);
       }
     });

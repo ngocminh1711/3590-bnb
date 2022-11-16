@@ -62,7 +62,7 @@ function HeaderDashBoard({lightMode, setLightMode}) {
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Welcome back",
+                    title: "Goodbye",
                     showConfirmButton: false,
                     timer: 1000,
                 });
@@ -73,7 +73,7 @@ function HeaderDashBoard({lightMode, setLightMode}) {
                 }, 1500);
             } else {
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/home");
                 }, 500);
             }
         });

@@ -81,7 +81,6 @@ function ListHost() {
                                             Renter
                                         </th>
                                         <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider ml-5 text-center">
-                                            Actions
                                         </th>
                                         <th className="px-6 py-3 border-b-2 border-gray-300"/>
                                     </tr>

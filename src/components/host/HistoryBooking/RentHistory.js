@@ -1,10 +1,8 @@
 import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
-import { useState } from "react";
-import { useParams } from "react-router";
+
 
 function RentHistory() {
-  const [showDropDown, setShowDropDown] = useState(false);
 
   return (
     <>

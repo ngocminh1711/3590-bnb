@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-let idUserLogin =  JSON.parse(localStorage.getItem('_id'))?? undefined
+let idUserLogin =  JSON.parse(localStorage.getItem('_id')) ?? null
 
 const initialState = {
     profile : [],

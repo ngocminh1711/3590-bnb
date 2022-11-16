@@ -53,7 +53,6 @@ export default function Profile() {
     };
 
     const handleChangePassword = async (data, id) => {
-        console.log(data);
         const a = await axios.put(`http://localhost:8000/api/user/change-password/${id}`, data);
         setForm({currentPassword: "", newPassword: ""});
         return a;
@@ -68,7 +67,7 @@ export default function Profile() {
     };
     const handleSaveChange = async () => {
         let data = {
-            name: infoProfile.username, address: infoProfile.address, phone: infoProfile.phone,
+            name: infoProfile.name, address: infoProfile.address, phone: infoProfile.phone,
         };
 
         return await axios
@@ -86,7 +85,7 @@ export default function Profile() {
         getApiUser().then((res) => {
             setProfile(res.data.data);
         });
-    }, []);
+    }, [checkEditAvatar]);
 
     useEffect(() => {
         getApiProfile()
@@ -112,6 +111,7 @@ export default function Profile() {
         setModalAvatar(false)
         setCheckEditAvatar(checkEditAvatar + 1)
     }
+
     return (<>
             <Header/>
             <div>
@@ -175,15 +175,12 @@ export default function Profile() {
                                         >
                                             Edit
                                         </button>
-                                        {/* Modal */}
                                         {showModalEdit ? (<>
                                                 <div
                                                     className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
                                                     <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                                        {/*content*/}
                                                         <div
                                                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                                            {/*header*/}
                                                             <div
                                                                 className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                                                 <h3 className="text-3xl font-semibold">
@@ -198,7 +195,6 @@ export default function Profile() {
                                                                     X
                                                                 </button>
                                                             </div>
-                                                            {/*body*/}
                                                             <div
                                                                 className="relative p-6 flex-auto"
                                                                 style={{width: "600px"}}
@@ -298,10 +294,8 @@ export default function Profile() {
                                                 <div
                                                     className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed visible inset-0 z-50  ">
                                                     <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                                        {/*content*/}
                                                         <div
                                                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                                            {/*header*/}
                                                             <div
                                                                 className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                                                 <h3 className="text-3xl font-semibold">
@@ -316,7 +310,6 @@ export default function Profile() {
                                                                     X
                                                                 </button>
                                                             </div>
-                                                            {/*body*/}
                                                             <div
                                                                 className="relative p-6 flex-auto"
                                                                 style={{width: "600px"}}
@@ -325,7 +318,6 @@ export default function Profile() {
                                                                     initialValues={form}
                                                                     // validationSchema={UpdateSchema}
                                                                     onSubmit={async (e) => {
-                                                                        // console.log(e);
                                                                         let user;
                                                                         if (token) {
                                                                             user = jwtDecode(token);
@@ -337,7 +329,6 @@ export default function Profile() {
                                                                         };
                                                                         handleChangePassword(data, id)
                                                                             .then((res) => {
-                                                                                console.log(res);
                                                                                 if (res.data.success === true) {
                                                                                     setShowModal(false);
                                                                                     Swal.fire({
@@ -470,10 +461,8 @@ export default function Profile() {
                                             >
                                                 <form onSubmit={handleSubmitEditAvatar}>
                                                     <div className="relative w-auto my-6 mx-auto max-w-sm">
-                                                        {/*content*/}
                                                         <div
                                                             className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                                                            {/*header*/}
                                                             <div
                                                                 className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                                                                 <h3 className="text-2xl font-sans">
@@ -489,7 +478,6 @@ export default function Profile() {
                                                             </span>
                                                                 </button>
                                                             </div>
-                                                            {/*body*/}
                                                             <div className="relative p-6 flex-auto pt-0">
                                                                 <p className="my-4 text-slate-500 text-lg leading-relaxed mt-0 pt-0">
                                                                     Profile photos help others identify you and also let
@@ -497,7 +485,6 @@ export default function Profile() {
                                                                     know that you're signed in to your account
                                                                 </p>
                                                             </div>
-                                                            {/*footer*/}
                                                             <EditAvatar/>
                                                             <button
                                                                 className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"

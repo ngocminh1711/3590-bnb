@@ -1,4 +1,3 @@
-import Header from "../../header/Header";
 import React from "react";
 import {useEffect, useRef, useState} from "react";
 import "tw-elements";
@@ -64,7 +63,6 @@ function DetailHouse() {
             description: formEdit.description,
             status: formEdit.status,
         };
-        console.log(id)
         setShowModal(false);
         setLoading(loading + 1);
         return await axios
@@ -92,7 +90,7 @@ function DetailHouse() {
             setHouse(res.data.data);
         });
     }, [loading]);
-    console.log(house)
+
     return (
         <>
             <HeaderDashBoard/>

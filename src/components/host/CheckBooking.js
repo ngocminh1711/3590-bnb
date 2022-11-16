@@ -136,10 +136,12 @@ function CheckBooking() {
                                             Check out day
                                         </th>
                                         <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider text-center">
+                                            Total Money
+                                        </th>
+                                        <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider ml-5 text-center">
                                             Status
                                         </th>
                                         <th className="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-rose-500 tracking-wider ml-5 text-center">
-                                            Actions
                                         </th>
                                         <th className="px-6 py-3 border-b-2 border-gray-300"/>
                                     </tr>
@@ -199,9 +201,31 @@ function CheckBooking() {
                                                     {item.totalMoney}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
-                                                    <div className="text-sm leading-5 text-blue-900 text-center ">
-                                                        {item.bookingStatus}
-                                                    </div>
+                                                    {item.bookingStatus &&
+                                                    item.bookingStatus === "Processing ..." ? (
+                                                        <>
+                                                            <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                                                {item.bookingStatus}
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            {item.bookingStatus &&
+                                                            item.bookingStatus === "Success"
+                                                                ?
+                                                                (<>
+                                                                    <div className="text-sm leading-5 text-green-700 text-center ">
+                                                                        {item.bookingStatus}
+                                                                    </div>
+                                                                </>)
+                                                                :
+                                                                (<>
+                                                                    <div className="text-sm leading-5 text-red-600 text-center ">
+                                                                        {item.bookingStatus}
+                                                                    </div>
+                                                                </>)}
+                                                        </>
+                                                    )}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
                                                     {item.bookingStatus === "Processing ..." ? (
@@ -213,7 +237,7 @@ function CheckBooking() {
                                                                 viewBox="0 0 24 24"
                                                                 strokeWidth={1.5}
                                                                 stroke="currentColor"
-                                                                className="w-6 h-6 cursor-pointer"
+                                                                className="w-6 h-6 text-green-800 cursor-pointer"
                                                             >
                                                                 <path
                                                                     strokeLinecap="round"
@@ -230,7 +254,7 @@ function CheckBooking() {
                                                                 viewBox="0 0 24 24"
                                                                 strokeWidth={1.5}
                                                                 stroke="currentColor"
-                                                                className="w-6 h-6 cursor-pointer"
+                                                                className="w-6 h-6 text-red-700 cursor-pointer"
                                                             >
                                                                 <path
                                                                     strokeLinecap="round"

@@ -178,8 +178,40 @@ function HistoryBooking() {
                                                         new Date(item.checkOutDay).toLocaleTimeString() +
                                                         ")"}
                                                 </td>
-                                                <td className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-center">
-                                                    {item.bookingStatus}
+                                                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                                                    <div className="text-sm leading-5 text-blue-900 text-center ">
+                                                        {item.totalMoney}
+                                                    </div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-center">
+                                                    {/* <div className="text-sm leading-5 text-blue-900 text-center ">
+                              {item.bookingStatus}
+                            </div> */}
+                                                    {item.bookingStatus &&
+                                                    item.bookingStatus === "Processing ..." ? (
+                                                        <>
+                                                            <div className="text-sm leading-5 text-yellow-600 text-center ">
+                                                                {item.bookingStatus}
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            {item.bookingStatus &&
+                                                            item.bookingStatus === "Success"
+                                                                ?
+                                                                (<>
+                                                                    <div className="text-sm leading-5 text-green-700 text-center ">
+                                                                        {item.bookingStatus}
+                                                                    </div>
+                                                                </>)
+                                                                :
+                                                                (<>
+                                                                    <div className="text-sm leading-5 text-red-600 text-center ">
+                                                                        {item.bookingStatus}
+                                                                    </div>
+                                                                </>)}
+                                                        </>
+                                                    )}
                                                 </td>
                                                 {item.bookingStatus === "Cancelled" ||
                                                 item.bookingStatus === "Failed" ? (

@@ -13,7 +13,7 @@ import {date} from "yup";
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
-    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+    const domain = "https://airbnb3590.herokuapp.com"
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
     const [host, setHost] = useState();

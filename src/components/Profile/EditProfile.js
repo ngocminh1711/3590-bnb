@@ -9,7 +9,7 @@ export default function EditProfile() {
 
   const navigate = useNavigate();
   const PORT = process.env.PORT || 8000;
-  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+  const domain = "https://airbnb3590.herokuapp.com"
   const [infoProfile, setInfoProfile] = useState({});
   const {id} = useParams();
   let token = localStorage.getItem("token");

@@ -14,7 +14,7 @@ function DetailHouse() {
     const {id} = useParams();
     const PORT = process.env.PORT || 8000;
     const navigate = useNavigate();
-    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+    const domain = "https://airbnb3590.herokuapp.com"
 
     const [house, setHouse] = useState({});
     const [loading, setLoading] = useState(0);

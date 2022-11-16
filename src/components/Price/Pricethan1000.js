@@ -7,7 +7,7 @@ import '../TopHouseForRent/TopHouseForRent.css'
 function PriceThan1000() {
 
     const PORT = process.env.PORT || 8000;
-    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
+    const domain = "https://airbnb3590.herokuapp.com"
     const [houseThan1000, setHouseThan1000] = useState([]);
     const navigate = useNavigate()
 

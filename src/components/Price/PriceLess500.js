@@ -7,13 +7,15 @@ import '../TopHouseForRent/TopHouseForRent.css'
 
 function PriceLess500() {
 
+    const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [houseLess500, setHouseLess500] = useState([]);
 
     const navigate = useNavigate()
 
 
     const getHouseLess500 = async () => {
-        return await axios.get('http://localhost:8000/api/products/less500')
+        return await axios.get(`${domain}/api/products/less500`)
     }
 
     const handleClick = (e) => {

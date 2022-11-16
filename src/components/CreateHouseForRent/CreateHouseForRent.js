@@ -12,7 +12,9 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 
 
 function CreateHouseForRent() {
+    const PORT = process.env.PORT || 8000;
     const userLogin = useSelector(state => state.profileUser)
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [typeRooms, setTypeRooms] = useState([]);
     const [houseStatus, setHouseStatus] = useState([]);
     const numberOfBedrooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -36,11 +38,11 @@ function CreateHouseForRent() {
     const navigate = useNavigate();
 
     const getTypeRooms = async () => {
-        return await axios.get("http://localhost:8000/api/products/type-room");
+        return await axios.get(`${domain}/api/products/type-room`);
     };
 
     const getHouseStatus = async () => {
-        return await axios.get("http://localhost:8000/api/products/house-status");
+        return await axios.get(`${domain}/api/products/house-status`);
     };
 
     const handleChange = (e) => {
@@ -62,7 +64,7 @@ function CreateHouseForRent() {
             userId: userLogin.idUserLogin
         };
         await axios
-            .post("http://localhost:8000/api/products", data)
+            .post(`${domain}/api/products`, data)
             .then((res) => {
                 setStatusCreate(true);
                 navigate("/home");

@@ -14,6 +14,7 @@ function DetailHouse() {
     const {id} = useParams();
     const PORT = process.env.PORT || 8000;
     const navigate = useNavigate();
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
 
     const [house, setHouse] = useState({});
     const [loading, setLoading] = useState(0);
@@ -35,16 +36,16 @@ function DetailHouse() {
 
     const getHouse = async () => {
         return await axios.get(
-            `http://localhost:8000/api/products/get-house-for-rent-by-id/${id}`
+            `${domain}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
 
     const getTypeRooms = async () => {
-        return await axios.get("http://localhost:8000/api/products/type-room");
+        return await axios.get(`${domain}/api/products/type-room`)
     };
 
     const getHouseStatus = async () => {
-        return await axios.get("http://localhost:8000/api/products/house-status");
+        return await axios.get(`${domain}/api/products/house-status`);
     };
 
     const handleChange = (e) => {
@@ -431,7 +432,7 @@ function DetailHouse() {
                                                             style={{height: 300}}
                                                             src={house.image_view[0]}
                                                             className="block w-full"
-                                                            alt="..."
+                                                            alt="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
                                                         />
                                                         <div
                                                             className="carousel-caption hidden md:block absolute text-center">
@@ -443,7 +444,7 @@ function DetailHouse() {
                                                             style={{height: 300}}
                                                             src={house.image_view[1]}
                                                             className="block w-full"
-                                                            alt="..."
+                                                            alt="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
                                                         />
                                                         <div
                                                             className="carousel-caption hidden md:block absolute text-center">
@@ -455,7 +456,7 @@ function DetailHouse() {
                                                             style={{height: 300}}
                                                             src={house.image_view[2]}
                                                             className="block w-full"
-                                                            alt="..."
+                                                            alt="https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.jpg"
                                                         />
                                                         <div
                                                             className="carousel-caption hidden md:block absolute text-center">

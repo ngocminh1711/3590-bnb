@@ -13,6 +13,7 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errMessage, setErrMessage] = useState("");
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const PORT = process.env.PORT || 8000;
   const [form, setForm] = useState({
     username: "",
@@ -47,7 +48,7 @@ function Login() {
         };
 
         await axios
-          .post(`http://localhost:${PORT}/api/auth/login/google`, data)
+          .post(`${domain}/api/auth/login/google`, data)
 
           .then((res) => {
             let token = res.data.data.token;
@@ -84,7 +85,7 @@ function Login() {
     };
 
     axios
-      .post(`http://localhost:${PORT}/api/auth/login`, data)
+      .post(`${domain}/api/auth/login`, data)
       .then((res) => {
         if (res.status === 200) {
           let token = res.data.token;

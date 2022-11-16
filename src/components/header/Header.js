@@ -34,6 +34,7 @@ const Hr = styled.hr`
 function Header() {
   let token = localStorage.getItem("token");
   const PORT = process.env.PORT || 8000;
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const userLoginProfile = useSelector((state) => state.profileUser);
   const dispatch = useDispatch();
   const [nameUser, setNameUser] = useState("");
@@ -48,7 +49,7 @@ function Header() {
 
   const getApiUserLogin = async () => {
     return axios.get(
-      `http://localhost:${PORT}/api/user/${userLoginProfile.idUserLogin}`
+      `${domain}/api/user/${userLoginProfile.idUserLogin}`
     );
   };
 
@@ -104,7 +105,7 @@ function Header() {
   };
   const handleChangePassword = async (data, id) => {
     const a = await axios.put(
-      `http://localhost:8000/api/user/change-password/${id}`,
+      `${domain}/api/user/change-password/${id}`,
       data
     );
     setForm({ currentPassword: "", newPassword: "" });
@@ -174,7 +175,7 @@ function Header() {
                     <div className="mb-0 ml-64">
                         <SearchHouses/>
                     </div>
-                    <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white">
+                    <div className="rounded-2xl py-2 hover:bg-gray-200 ml-32 px-2 text-black">
                         <button onClick={handleCreateHouse}>Become a host</button>
                     </div>
                     <div>

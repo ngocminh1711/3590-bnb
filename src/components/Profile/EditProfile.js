@@ -9,6 +9,7 @@ export default function EditProfile() {
 
   const navigate = useNavigate();
   const PORT = process.env.PORT || 8000;
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const [infoProfile, setInfoProfile] = useState({});
   const {id} = useParams();
   let token = localStorage.getItem("token");
@@ -16,7 +17,7 @@ export default function EditProfile() {
     navigate("/login");
   }
   const getApiProfile = async () => {
-    return await axios.get(`http://localhost:${PORT}/api/user/${id}`);
+    return await axios.get(`${domain}/api/user/${id}`);
   }
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function EditProfile() {
       address: infoProfile.address,
       phone: infoProfile.phone
     }
-    await axios.patch(`http://localhost:${PORT}/api/user/edit/${id}`,data)
+    await axios.patch(`${domain}/api/user/edit/${id}`,data)
     .then(res =>
        navigate(`/profile/${id}`))
     .catch(err => console.log(err.message))

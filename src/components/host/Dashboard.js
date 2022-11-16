@@ -9,13 +9,14 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function ListHost() {
     const userLogin = useSelector((state) => state.profileUser.idUserLogin);
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
     const [flag, setFlag] = useState(0)
     const [products, setProducts] = useState([]);
 
     const getApi = async () => {
         return await axios.get(
-            `http://localhost:8000/api/products/${userLogin}`
+            `${domain}/api/products/${userLogin}`
         );
     };
     const handleClick = (e) => {
@@ -35,7 +36,7 @@ function ListHost() {
         }).then((result) => {
             if (result.isConfirmed) {
                 setFlag(flag + 1)
-                axios.delete(`http://localhost:8000/api/products/${id}`)
+                axios.delete(`${domain}/api/products/${id}`)
                 Swal.fire("Deleted!", "Your file has been deleted.", "success")
             }
         });

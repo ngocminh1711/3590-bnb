@@ -6,15 +6,16 @@ import '../TopHouseForRent/TopHouseForRent.css'
 let count = 0;
 
 function VipHouseForRent() {
-
+    const PORT = process.env.PORT || 8000;
     const [vipHouseForRent, setVipHouseForRent] = useState([]);
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [currentIndex, setCurrentIndex] = useState(0)
     const [imageView, setImageView] = useState([])
     const navigate = useNavigate()
 
 
     const getVipHouseForRent = async () => {
-        return await axios.get('http://localhost:8000/api/products/vip-house')
+        return await axios.get(`${domain}/api/products/vip-house`)
     }
 
     const handleClick = (e) => {

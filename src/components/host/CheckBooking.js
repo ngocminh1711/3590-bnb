@@ -8,6 +8,7 @@ import HeaderDashBoard from "../header/HeaderDashBoard";
 
 function CheckBooking() {
     const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const userLogin = useSelector((state) => state.profileUser);
     const navigate = useNavigate();
     const [booking, setBooking] = useState([]);
@@ -17,27 +18,27 @@ function CheckBooking() {
 
     const getApiResever = async () => {
         return await axios.get(
-            `http://localhost:${PORT}/api/resever/${userLogin.idUserLogin}`
+            `${domain}/api/resever/${userLogin.idUserLogin}`
         );
     };
 
     const getApiChangeStatus = async (id, status) => {
         return await axios.patch(
-            `http://localhost:${PORT}/api/resever/change-status/${id}`,
+            `${domain}/api/resever/change-status/${id}`,
             status
         );
     };
 
     const getApiChangeProductStatus = async (houseId, data) => {
         return await axios.patch(
-            `http://localhost:${PORT}/api/products/chang-status-product/${houseId}`,
+            `${domain}/api/products/chang-status-product/${houseId}`,
             data
         );
     };
 
     const createApiNotification = async (bookingId) => {
         return await axios.post(
-            `http://localhost:${PORT}/api/notification/${bookingId}`
+            `${domain}/api/notification/${bookingId}`
         );
     };
 

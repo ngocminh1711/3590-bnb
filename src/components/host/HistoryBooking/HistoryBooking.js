@@ -8,6 +8,7 @@ import HeaderDashBoard from "../../header/HeaderDashBoard";
 
 function HistoryBooking() {
     const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
     const userLogin = useSelector((state) => state.profileUser);
     const [historyBooking, setHistoryBooking] = useState([]);
@@ -17,21 +18,21 @@ function HistoryBooking() {
 
     const getHistoryBooking = async () => {
         return await axios.get(
-            `http://localhost:${PORT}/api/resever/history-booking/${id}`
+            `${domain}/api/resever/history-booking/${id}`
         );
     };
 
     const getApiChangeStatus = async (id, status) => {
         return await axios.patch(
-            `http://localhost:${PORT}/api/resever/change-status/${id}`, status);
+            `${domain}/api/resever/change-status/${id}`, status);
     };
 
     const createApiNotifications = async (id, hostId) => {
-        return await axios.post(`http://localhost:${PORT}/api/notification/create?bookingId=${id}&hostId=${hostId}`);
+        return await axios.post(`${domain}/api/notification/create?bookingId=${id}&hostId=${hostId}`);
     };
 
     const getHouseForRent = async (id) => {
-        return await axios.get(`http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`)
+        return await axios.get(`${domain}/api/products/get-house-for-rent-by-id/${id}`)
     }
 
 

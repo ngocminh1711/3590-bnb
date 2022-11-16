@@ -175,7 +175,7 @@ function Header() {
                     <div className="mb-0 ml-64">
                         <SearchHouses/>
                     </div>
-                    <div className=" bg-rose-400 rounded-2xl py-2 hover:bg-rose-500 ml-32 px-2 text-white">
+                    <div className="rounded-2xl py-2 hover:bg-gray-200 ml-32 px-2 text-black">
                         <button onClick={handleCreateHouse}>Become a host</button>
                     </div>
                     <div>

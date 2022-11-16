@@ -5,14 +5,15 @@ import '../TopHouseForRent/TopHouseForRent.css'
 
 
 function OneBedRoom() {
-
+    const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [oneBedRoom, setOneBedRoom] = useState([]);
 
     const navigate = useNavigate()
 
 
     const getOneBedRoom = async () => {
-        return await axios.get('http://localhost:8000/api/products/one-bed-room')
+        return await axios.get(`${domain}/api/products/one-bed-room`)
     }
 
     const handleClick = (e) => {

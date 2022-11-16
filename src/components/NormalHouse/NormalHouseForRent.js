@@ -6,7 +6,8 @@ import {useNavigate} from "react-router";
 let count = 0;
 
 function NormalHouseForRent() {
-
+    const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [normalHouseForRent, setNormalHouseForRent] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0)
     const [imageView, setImageView] = useState([])
@@ -14,7 +15,7 @@ function NormalHouseForRent() {
 
 
     const getNormalHouseForRent = async () => {
-        return await axios.get('http://localhost:8000/api/products/normal-house')
+        return await axios.get(`${domain}/api/products/normal-house`)
     }
 
     const handleClick = (e) => {

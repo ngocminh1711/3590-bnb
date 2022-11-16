@@ -18,6 +18,7 @@ const UpdateSchema = Yup.object().shape({
 });
 export default function Profile() {
     const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const navigate = useNavigate();
     const userLogin = useSelector((state) => state.profileUser);
     const [profile, setProfile] = useState();
@@ -41,7 +42,7 @@ export default function Profile() {
     }
 
     const getApiUser = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/user/${userLogin.idUserLogin}`);
+        return await axios.get(`${domain}/api/user/${userLogin.idUserLogin}`);
     };
 
     const handleChange = (e) => {
@@ -53,13 +54,13 @@ export default function Profile() {
     };
 
     const handleChangePassword = async (data, id) => {
-        const a = await axios.put(`http://localhost:8000/api/user/change-password/${id}`, data);
+        const a = await axios.put(`${domain}/api/user/change-password/${id}`, data);
         setForm({currentPassword: "", newPassword: ""});
         return a;
     };
 
     const getApiProfile = async () => {
-        return await axios.get(`http://localhost:${PORT}/api/user/${userLogin.idUserLogin}`);
+        return await axios.get(`${domain}/api/user/${userLogin.idUserLogin}`);
     };
 
     const handleBack = () => {
@@ -71,7 +72,7 @@ export default function Profile() {
         };
 
         return await axios
-            .patch(`http://localhost:${PORT}/api/user/edit/${userLogin.idUserLogin}`, data)
+            .patch(`${domain}/api/user/edit/${userLogin.idUserLogin}`, data)
             .then((res) => {
                 setCheckChangeProfile(checkChangeProfile + 1);
                 setShowModalEdit(false);
@@ -106,7 +107,7 @@ export default function Profile() {
     const handleSubmitEditAvatar = async (e) => {
         e.preventDefault();
         let data = {avatarUrl: avatar};
-        await axios.patch(`http://localhost:${PORT}/api/user/editAvatar/${userLogin.idUserLogin}`, data)
+        await axios.patch(`${domain}/api/user/editAvatar/${userLogin.idUserLogin}`, data)
             .then(res => console.log(res));
         setModalAvatar(false)
         setCheckEditAvatar(checkEditAvatar + 1)

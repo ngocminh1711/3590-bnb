@@ -35,6 +35,7 @@ const RegisterSchema = Yup.object().shape({
 
 export default function Register() {
   const [existedEmail, setExistedEmail] = useState("");
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const navigate = useNavigate();
   const [form, setForm] = useState({
     username: "",
@@ -43,7 +44,7 @@ export default function Register() {
   });
 
   const handleRegister = async (data) => {
-    return await axios.post("http://localhost:8000/api/auth/register", data);
+    return await axios.post(`${domain}/api/auth/register`, data);
   };
   return (
     <>

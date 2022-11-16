@@ -13,6 +13,7 @@ import {date} from "yup";
 function DetailHouseForRent() {
     const PORT = process.env.PORT || 8000;
     const userLogin = useSelector((state) => state.profileUser);
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [money, setMoney] = useState(0);
     let userId = userLogin.idUserLogin;
     const [host, setHost] = useState();
@@ -41,13 +42,13 @@ function DetailHouseForRent() {
 
     const getData = async (id) => {
         return await axios.get(
-            `http://localhost:${PORT}/api/products/get-house-for-rent-by-id/${id}`
+            `${domain}/api/products/get-house-for-rent-by-id/${id}`
         );
     };
 
     const getHost = async (id) => {
         return await axios.get(
-            `http://localhost:${PORT}/api/products/getHost/${id}`
+            `${domain}/api/products/getHost/${id}`
         );
     };
 
@@ -79,7 +80,7 @@ function DetailHouseForRent() {
     }, []);
 
     const getApiResever = async (data) => {
-        return await axios.post(`http://localhost:${PORT}/api/resever`, data);
+        return await axios.post(`${domain}/api/resever`, data);
     };
 
     let moneyNeedToRent = 0;

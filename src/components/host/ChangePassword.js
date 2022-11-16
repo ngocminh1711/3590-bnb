@@ -33,6 +33,7 @@ const RegisterSchema = Yup.object().shape({
 
 function ChangePassword() {
   const [existedEmail, setExistedEmail] = useState("");
+  const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
   const navigate = useNavigate();
   const [form, setForm] = useState({
     currentPassword: "",
@@ -48,7 +49,7 @@ function ChangePassword() {
     try {
       const resp = await axios({
         method: "POST",
-        url: `http://localhost:8000/api/user/change-password`,
+        url: `${domain}/api/user/change-password`,
         headers: {
           "Content-Type": "application/json",
         },

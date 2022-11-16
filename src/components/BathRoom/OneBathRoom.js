@@ -6,13 +6,14 @@ import '../TopHouseForRent/TopHouseForRent.css'
 
 function OneBathRoom() {
 
+    const PORT = process.env.PORT || 8000;
+    const domain = `http://localhost:${PORT}` || "https://airbnb3590.herokuapp.com"
     const [oneBathRoom, setOneBathRoom] = useState([]);
-
     const navigate = useNavigate()
 
 
     const getOneBedRoom = async () => {
-        return await axios.get('http://localhost:8000/api/products/one-bath-room')
+        return await axios.get(`${domain}/api/products/one-bath-room`)
     }
 
     const handleClick = (e) => {
